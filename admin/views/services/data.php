@@ -44,6 +44,7 @@
     } else {
         $totalFiltered = 0;
         $a = array();
+        $b = 0;
     }
     
     $json_data = array(
