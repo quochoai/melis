@@ -16,14 +16,14 @@
         <ul class="nav nav-pills nav-sidebar flex-column <?php echo $def['nav-flat']; ?>" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
-            <a href="<?php echo $def['link_category_product'] ?>" class="nav-link<?php if ($pqh[0] == $def['link_category_product'] || $pqh[0] == $def['link_product']) echo ' active' ?>">
+          <li class="nav-item<?php if ($pqh[0] == $def['link_category_product'] || $pqh[0] == $def['link_product']) echo ' menu-open' ?>">
+            <a href="<?php echo $def['link_category_product'] ?>" class="nav-link">
               <i class="nav-icon fas fa-cubes"></i>
               <p><?php echo $lang['category_product']; ?></p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="<?php echo $def['link_category_service'] ?>" class="nav-link<?php if ($pqh[0] == $def['link_category_service'] || $pqh[0] == $def['link_service']) echo ' active' ?>">
+          <li class="nav-item<?php if ($pqh[0] == $def['link_category_service'] || $pqh[0] == $def['link_service']) echo ' menu-open' ?>">
+            <a href="<?php echo $def['link_category_service'] ?>" class="nav-link">
               <i class="nav-icon fas fa-cubes"></i>
               <p><?php echo $lang['category_service']; ?></p>
             </a>
@@ -134,14 +134,14 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="<?php echo $def['link_partner'] ?>" class="nav-link<?php if ($pqh[1] == $def['link_partner']) echo ' active' ?>">
+          <li class="nav-item<?php if ($pqh[1] == $def['link_partner']) echo ' menu-open' ?>">
+            <a href="<?php echo $def['link_partner'] ?>" class="nav-link">
               <i class="nav-icon fas fa-handshake"></i>
               <p><?php echo $lang['manage_partner']; ?></p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="<?php echo $def['link_information'] ?>" class="nav-link<?php if ($pqh[1] == $def['link_information']) echo ' active' ?>">
+          <li class="nav-item<?php if ($pqh[1] == $def['link_information']) echo ' menu-open' ?>">
+            <a href="<?php echo $def['link_information'] ?>" class="nav-link">
               <i class="nav-icon fas fa-info"></i>
               <p><?php echo $lang['manage_information']; ?></p>
             </a>

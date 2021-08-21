@@ -1,5 +1,5 @@
 RewriteEngine on
-RewriteBase /melis/admin
+RewriteBase /melisbeaute/admin
 RewriteCond %{REQUEST_FILENAME} !-f 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?pqh=$1 [L]

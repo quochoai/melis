@@ -17,7 +17,9 @@
                 $title = $lang['manage_category_product'];
                 break;
             case $def['link_product']:
-                $title = $lang['manage_product'];
+                $product_id = $pqh[1];
+                $cate = $h->getById("name_vi", "products", $product_id, "and deleted_at is null and active = 1");
+                $title = $lang['manage_product'].' - '.$cate['name_vi'];
                 break;
             default:
                 $title = $lang['title_website_home'];

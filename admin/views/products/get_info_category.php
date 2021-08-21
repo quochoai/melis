@@ -64,11 +64,11 @@
             <div class="form-group">
                 <label class="col-form-label" for="name"><?php echo $lang['hs'] ?></label>
                 <div class="form-group clearfix">
-                  <div class="icheck-primary d-inline">
+                  <div class="icheck-success d-inline">
                     <input type="radio" id="active1" name="data[active]" value="1"<?php if ($cate['active'] == 1) echo ' checked' ?> />
                     <label for="active1"><?php echo $lang['active'] ?></label>
                   </div>
-                  <div class="icheck-primary d-inline">
+                  <div class="icheck-success d-inline">
                     <input type="radio" id="active2" name="data[active]" value="0"<?php if ($cate['active'] == 0) echo ' checked' ?> />
                     <label for="active2"><?php echo $lang['hidden'] ?></label>
                   </div>

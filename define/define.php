@@ -1,5 +1,5 @@
 <?php
-    define("URL", "http://localhost/melis/");
+    define("URL", "http://localhost/melisbeaute/");
     define('_process', 'process/');
 
     $def = array(

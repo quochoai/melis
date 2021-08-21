@@ -118,7 +118,7 @@
         <script type="text/javascript" src="<?php echo URL ?>tinymce/tinymce.min.js"></script>
         <script type="text/javascript">
             tinymce.init({
-                selector: "textarea#content, textarea#content_e",
+                selector: "textarea#uudiem_vi, textarea#uudiem_en, textarea#thanhphan_vi, textarea#thanhphan_en, textarea#congdung_vi, textarea#congdung_en, textarea#hdsd_vi, textarea#hdsd_en, textarea#khtn_vi, textarea#khtn_en, textarea#udmuahang_vi, textarea#udmuahang_en",
                 theme: "modern",
                 width: 750,
                 height: 300,
