@@ -6,15 +6,18 @@
         <div class="card">
           <div class="card-header container-fluid">
             <div class="row">
-                <h3 class="col-md-10 card-title">
+                <h3 class="col-md-8 card-title">
                     <?php 
                         $product_id = $pqh[1];
+                        $_SESSION['pid'] = $product_id;
                         $cate = $h->getById("name_vi, name_en", "products", $product_id, "and deleted_at is null");
                         $allcates = $h->getAll("id, name_vi, name_en", "products", "cm = 1 and deleted_at is null and active = 1", "id asc");
                         echo $lang['manage_product'] . ' &raquo; '.$cate['name_vi']; 
                     ?>
                 </h3>
-                <div class="col-md-2"><a class="float-right btn btn-success" data-toggle="modal" data-target="#modal-add-product"><i class="fas fa-plus"></i><?php echo $lang['addnew'] ?></a></div>
+                <div class="col-md-2"><a class="float-right btn btn-success" id="sort"><i class="fas fa-sort"></i> <?php echo $lang['sort'] ?></a></div>
+                <div class="col-md-2"><a class="float-right btn btn-success" data-toggle="modal" data-target="#modal-add-product"><i class="fas fa-plus"></i> <?php echo $lang['addnew'] ?></a></div>
+                
             </div>
           </div>
           <!-- /.card-header -->

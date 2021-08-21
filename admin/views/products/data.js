@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
             processing: true,
             serverSide: true,
             ajax: {
-                "url": backend_categories_list,
+                "url": backend_products_list,
                 "dataType": "json",
                 "type": "GET",
                 "data": {},
@@ -47,7 +47,7 @@ jQuery(document).ready(function($) {
                 { data: 'no', name: 'no', className: "text-center text-nowrap small_text" },
                 { data: 'name_vi', name: 'name_vi', className: "text-left small_text" },
                 { data: 'name_en', name: 'name_en', className: "text-left small_text" },
-                { data: 'manage_product', name: 'manage_product', className: "text-center text-nowrap small_text" },
+                { data: 'sort', name: 'sort', className: "text-center text-nowrap small_text" },
                 { data: 'actions', name: 'actions', className: "text-center text-nowrap small_text" },
             ]
         });
@@ -60,7 +60,7 @@ jQuery(document).ready(function($) {
             $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
             $.post(link_delete, { id: id }, function(data) {
                 if (data == '1')
-                    $('tr#cate' + id).hide();
+                    $('tr#product' + id).hide();
                 else {
                     if (data == '5') {
                         toastr.error(session_timeout);
@@ -113,8 +113,8 @@ jQuery(document).ready(function($) {
     $(document).on('click', '.update', function() {
         let id = $(this).attr('rel');
         $.post(link_get_category_product, { id: id }, function(html) {
-            $('#cate_update').html(html);
-            $('#modal-update-cate').modal('show');
+            $('#product_update').html(html);
+            $('#modal-update-product').modal('show');
         });
     });
     // add
@@ -122,7 +122,7 @@ jQuery(document).ready(function($) {
         let name_vi = $.trim($('#name_vi').val());
         let name_en = $.trim($('#name_en').val());
         if (name_vi == '') {
-            toastr.error(not_name_category_product_vi);
+            toastr.error(not_name_product_vi);
             $('#name_vi').focus();
             $('#name_vi').addClass("is-invalid");
             return false;
@@ -131,7 +131,7 @@ jQuery(document).ready(function($) {
             $('#name_vi_e').addClass("is-valid");
         }
         if (name_en == '') {
-            toastr.error(not_name_category_product_en);
+            toastr.error(not_name_product_en);
             $('#name_en').focus();
             $('#name_en').addClass("is-invalid");
             return false;
@@ -190,7 +190,7 @@ jQuery(document).ready(function($) {
         let name_vi = $.trim($('#name_vi_e').val());
         let name_en = $.trim($('#name_en_e').val());
         if (name_vi == '') {
-            toastr.error(not_name_category_product_vi);
+            toastr.error(not_name_product_vi);
             $('#name_vi_e').focus();
             $('#name_vi_e').addClass("is-invalid");
             return false;
@@ -199,7 +199,7 @@ jQuery(document).ready(function($) {
             $('#name_vi_e').addClass("is-valid");
         }
         if (name_en == '') {
-            toastr.error(not_name_category_product_en);
+            toastr.error(not_name_product_en);
             $('#name_en_e').focus();
             $('#name_en_e').addClass("is-invalid");
             return false;
@@ -231,7 +231,7 @@ jQuery(document).ready(function($) {
                         //window.location.reload();
                         $(table_id).DataTable().destroy();
                         fill_datatable();
-                        $('#modal-update-cate').modal('hide');
+                        $('#modal-update-product').modal('hide');
                     }, 1000);
                 } else {
                     if (text == '5') {
