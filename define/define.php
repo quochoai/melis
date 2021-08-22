@@ -7,7 +7,7 @@
         'link_process_login' => URL.'admin/process/login.php',
         "admin_url" => URL.'admin/',
         
-        'theme' => URL.'theme/',
+        'theme' => URL.'themes/',
         'views' => 'views/',
         //login
         'id_profile_code' => 'profile_code',
