@@ -98,10 +98,12 @@
         'link_process_delete_category_product' => _process.'products/category_delete.php',
         'link_active_category_product' => _process.'products/category_active.php',
         'link_get_category_product' => 'views/products/get_info_category.php',
+        'link_process_sort_category_product' => _process.'products/category_sort.php',
         'link_process_add_product' => _process.'products/add.php',
         'link_process_update_product' => _process.'products/update.php',
         'link_process_delete_product' => _process.'products/delete.php',
         'link_get_product' => 'views/products/get_info.php',
+        'link_process_sort_product' => _process.'products/sort.php',
         
         // services
         'link_category_service' => 'quan-ly-danh-muc-dich-vu',

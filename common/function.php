@@ -1,4 +1,7 @@
 <?php
+function _e($str) {
+	echo $str;
+}
 function GetFileExtention($filename) 
 {  
     return strrchr($filename, ".");
@@ -213,23 +216,6 @@ function delete_rows($table,$fields_arr,$where_ext="") {
   }
   return true;
 }
-
-/*function CountRecord($table,$where_ext = ""){
-  global $con;
-  if (!$con) { return false; }
-  $query = "SELECT count(*) FROM $table ";
-  if($where_ext != "")
-	  $query.= " WHERE " . $where_ext;
-  //echo $query,"<br>"; 
-  $result = mysql_query($query, $con);
-  if ($result) {
-    $rows = mysql_fetch_row($result);
-    return $rows[0];
-  } else {
-    return false;
-  }
-
-}*/
 
 function query_get($query) {
   global $con;

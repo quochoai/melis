@@ -36,7 +36,7 @@
                 "id" => $product['id'],  
                 "name_vi" => $product['name_vi'], 
                 "name_en" => $product['name_en'], 
-                "manage_product" => "<a href='".$def['link_product']."/".$product['id']."' title='".$lang['manage_product']."'>".$lang['manage']."</a>", 
+                'sort' => "<input type='text' name='sort[".$no."]' value='".$$product['sort']."' size='3' class='text-center' /><input type='hidden' name='idd[".$no."]' value='".$product['id']."' />", 
                 "actions" => "<a data-id='".$product['id']."' rel='".$product['active']."' class='btn btn-success btn-sm active' id='ht".$product['id']."' title='".$tte."'><i id='hs".$product['id']."' class='fas fa-".$fontawesome."'></i></a> | <a href='javascript:void(0)' rel='".$product['id']."' class='btn btn-success btn-sm update' title='".$lang['update']."'><i class='fas fa-edit'></i></a> | <a href='javascript:void(0)' rel='".$product['id']."' class='btn btn-danger btn-sm delete' title='".$lang['delete']."'><i class='fas fa-trash'></i></a>"
             );
         }

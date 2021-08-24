@@ -19,7 +19,7 @@
     if (count($catess) > 0) {
         $totalData = count($catess);
         $totalFiltered = $totalData;
-        $cates = $h->getAll("id, name_vi, name_en, active", "products", "cm = 1 and deleted_at is null $w", "id asc limit ".$options['offset'].", ".$options['limit']);
+        $cates = $h->getAll("id, name_vi, name_en, sort, active", "products", "cm = 1 and deleted_at is null $w", "sort asc, id asc limit ".$options['offset'].", ".$options['limit']);
         foreach ($cates as $kc => $cate) {
             $no = $kc + 1;
             if ($cate['active'] == 1) {
@@ -36,8 +36,9 @@
                 "id" => $cate['id'],  
                 "name_vi" => $cate['name_vi'], 
                 "name_en" => $cate['name_en'], 
-                "manage_product" => "<a href='".$def['link_product']."/".$cate['id']."' title='".$lang['manage_product']."'>".$lang['manage']."</a>", 
-                "actions" => "<a data-id='".$cate['id']."' rel='".$cate['active']."' class='btn btn-success btn-sm active' id='ht".$cate['id']."' title='".$tte."'><i id='hs".$cate['id']."' class='fas fa-".$fontawesome."'></i></a> | <a href='javascript:void(0)' rel='".$cate['id']."' class='btn btn-success btn-sm update' title='".$lang['update']."'><i class='fas fa-edit'></i></a> | <a href='javascript:void(0)' rel='".$cate['id']."' class='btn btn-danger btn-sm delete' title='".$lang['delete']."'><i class='fas fa-trash'></i></a>",
+                "manage_product" => "<a href='".$def['link_product']."/".$cate['id']."' title='".$lang['manage_product']."'>".$lang['manage']."</a>",
+                'update_sort' => "<input type='text' name='sort[".$no."]' value='".$cate['sort']."' size='3' class='text-center' /><input type='hidden' name='idd[".$no."]' value='".$cate['id']."' />", 
+                "actions" => "<a data-id='".$cate['id']."' rel='".$cate['active']."' class='btn btn-success btn-sm active mr-1' id='ht".$cate['id']."' title='".$tte."'><i id='hs".$cate['id']."' class='fas fa-".$fontawesome."'></i></a><a href='javascript:void(0)' rel='".$cate['id']."' class='btn btn-success btn-sm update mr-1' title='".$lang['update']."'><i class='fas fa-edit'></i></a><a href='javascript:void(0)' rel='".$cate['id']."' class='btn btn-danger btn-sm delete' title='".$lang['delete']."'><i class='fas fa-trash'></i></a>",
                 "search_value" => $search_value
             );
         }

@@ -153,6 +153,7 @@
         'actions' => 'Hành động',
         'back' => 'Trở về',
         'sort' => 'Sắp xếp',
+        'update_sort' => 'Cập nhật sắp xếp',
         'hs' => 'Hiển thị / Ẩn',
         'active' => 'Hiển thị',
         'hidden' => 'Ẩn',

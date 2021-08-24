@@ -15,7 +15,7 @@
                         echo $lang['manage_product'] . ' &raquo; '.$cate['name_vi']; 
                     ?>
                 </h3>
-                <div class="col-md-2"><a class="float-right btn btn-success" id="sort"><i class="fas fa-sort"></i> <?php echo $lang['sort'] ?></a></div>
+                <div class="col-md-2"><a class="float-right btn btn-success" id="sort"><i class="fas fa-sort"></i> <?php echo $lang['update_sort'] ?></a></div>
                 <div class="col-md-2"><a class="float-right btn btn-success" data-toggle="modal" data-target="#modal-add-product"><i class="fas fa-plus"></i> <?php echo $lang['addnew'] ?></a></div>
                 
             </div>
@@ -268,6 +268,7 @@
     var link_delete = "<?php echo $def['link_process_delete_product'] ?>";
     var link_active_product = "<?php echo $def['link_active_product'] ?>";
     var link_get_product = "<?php echo $def['link_get_product'] ?>";
+    var link_update_sort = "<?php echo $def['link_process_sort_product'] ?>";
     var session_timeout = '<?php echo $lang['session_timeout'] ?>';
     var system_error = '<?php echo $lang['system_error'] ?>';
     var not_name_product_vi = "<?php echo $lang['not_name_product_vi'] ?>";
