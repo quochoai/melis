@@ -26,10 +26,10 @@ jQuery(document).ready(function($) {
             processing: true,
             serverSide: true,
             ajax: {
-                "url": backend_categories_list,
+                "url": backend_list,
                 "dataType": "json",
                 "type": "GET",
-                "data": {},
+                //"data": {},
                 error: function(xhr, error, code) {
                     //alert('error'+parse(xhr));
                     //location.reload();
@@ -91,7 +91,7 @@ jQuery(document).ready(function($) {
             var addC = 'fa-eye-slash';
             var tit = shows;
         }
-        $.post(link_active_category, { id: id, acti: activ }, function(html) {
+        $.post(link_active, { id: id, acti: activ }, function(html) {
             if (html == '1') {
                 $('#ht' + id).attr('rel', activ);
                 $('#ht' + id).attr('title', tit);
@@ -139,15 +139,15 @@ jQuery(document).ready(function($) {
             }
         });
     });
-    // .update
-    $(document).on('click', '.update', function() {
-        let id = $(this).attr('rel');
-        $.post(link_get_category_product, { id: id }, function(html) {
-            $('#cate_update').html(html);
-            $('#modal-update-cate').modal('show');
+
+    // add
+    $(document).on('click', '.add', function() {
+        $.post(link_add, function(html) {
+            $('#add_cate').html(html);
+            $('#modal-add-cate').modal('show');
+            $('title').html(title_add_category_product);
         });
     });
-    // add
     $(document).on('click', '#add', function() {
         let name_vi = $.trim($('#name_vi').val());
         let name_en = $.trim($('#name_en').val());
@@ -188,16 +188,7 @@ jQuery(document).ready(function($) {
                 var text = xhr.responseText;
                 if (text == '1') {
                     toastr.success(add_success);
-                    $('#name_vi').val('');
-                    $('#name_en').val('');
-                    $('#title_vi').val('');
-                    $('#title_en').val('');
-                    $('#desc_vi').val('');
-                    $('#desc_en').val('');
-                    $('#keyw_vi').val('');
-                    $('#keyw_en').val('');
-                    $('#name_vi').removeClass("is-valid");
-                    $('#name_en').removeClass("is-valid");
+                    $('#add_cate').html('');
                     $('#modal-add-cate').modal('hide');
                     $(table_id).DataTable().destroy();
                     fill_datatable();
@@ -216,6 +207,13 @@ jQuery(document).ready(function($) {
         });
     });
     // update
+    $(document).on('click', '.update', function() {
+        let id = $(this).attr('rel');
+        $.post(link_update, { id: id }, function(html) {
+            $('#cate_update').html(html);
+            $('#modal-update-cate').modal('show');
+        });
+    });
     $(document).on('click', '#update', function() {
         let name_vi = $.trim($('#name_vi_e').val());
         let name_en = $.trim($('#name_en_e').val());

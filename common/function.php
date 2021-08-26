@@ -543,16 +543,22 @@ function upload_file($file_rsc,$upload_folder,$allow_type,$allow_size)
 }
 function mahoa($p) {
 	$mk = "#*@".$p."#@*";
-	$pass = md5($mk);
-	$p1 = substr($pass,2,17);
-	$pass1 = md5($p1);
-	$p2 = substr($pass1,4,13);
-	$pass2 = md5($p2);
-	$p3 = substr($pass2,8,19)."!@#$";
-	$pass3 = md5($p3);
-	$p4 = substr($pass3,5,16);
-	$pass4 = md5($p4);
-	$password = $pass4.":".substr($pass3,3,20)."#$*@!";
+	$pass = md5($mk.substr(md5($mk), 2, 4));
+	$p1 = md5(substr(md5($pass),2,17));
+	$pass1 = md5(md5(md5($p1).substr(md5($p1), 1, 15)));
+	$p2 = md5(md5(substr(md5($pass1),4,13)));
+	$pass2 = md5(md5(md5($p2).substr(md5($p2), 5, 14)));
+	$p3 = md5(md5(md5($pass2).substr($pass2,8,10)."!@#$"));
+	$pass3 = md5(md5(md5($p3).substr($p3, 1, 9).'%^$#'));
+	$p4 = md5(md5(md5($pass3).substr(md5($pass3),5,16))).'$#%^';
+	$pass4 = md5(md5(md5($p4).substr(md5($p2), 3, 14).'!@$#%'));
+	$p5 = md5(md5(md5($pass4).substr(md5($pass4),2,17))).'$#%^';
+	$pass5 = md5(md5(md5($p5).substr(md5($p3), 3, 14).'!@$#%'));
+	$p6 = md5(md5(md5($pass5).substr(md5($pass5),4,18))).'$#%^';
+	$pass6 = md5(md5(md5($p6).substr(md5($p6), 1, 21).'!@$#%'));
+	$p7 = md5(md5(md5($pass6).substr(md5($pass6),6,18))).'$#%^';
+	$pass7 = md5(md5(md5($p7).substr(md5($p7), 2, 12).'!@$#%'));
+	$password = substr(md5($pass6),5,9).':::'.md5(md5($pass7))."::".substr(md5($pass7),2,18).":#$*@!";
 	return $password;
 }
 function taotrang($sql,$link,$nitem,$itemcurrent)
@@ -595,7 +601,7 @@ function upload_image_no_thumb($path){
 	$max_height = $h;
 	$ext = getExt($fileupload);
     $path_image = $path.'/'.$fileupload;
-	move_uploaded_file($_FILES[$name_field]['tmp_name'], $path_image);
+	move_uploaded_file($name_field, $path_image);
 	list($width, $height) = getimagesize($path_image);
 	// kiem tra neu file upload nho hon kich thuoc quy dinh thi lay kich thuoc cu
 	if ($width < $max_width && $height < $max_height) {
@@ -640,8 +646,10 @@ function upload_image_no_thumb($path){
 }
 // uploadfile
 function uploadfile($name_field, $path) {
-    $path_img = $path.$_FILES[$name_field]['name'];
+	$name_save = time().'_'.$_FILES[$name_field]['name'];
+    $path_img = $path.$name_save;
     move_uploaded_file($_FILES[$name_field]['tmp_name'], $path_img);
+	return $name_save;
 }
 function curPageURL() {
  $pageURL = 'http';
@@ -675,4 +683,3 @@ function killInjection($str){
 	$good = str_replace($bad,"", $str);
 	return $good;
 }
-?>

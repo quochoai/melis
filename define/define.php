@@ -1,6 +1,8 @@
 <?php
     define("URL", "http://localhost/melisbeaute/");
     define('_process', 'process/');
+    define('_upload', URL.'upload/');
+    
 
     $def = array(
         'link_login' => URL.'admin/login',
@@ -9,6 +11,39 @@
         
         'theme' => URL.'themes/',
         'views' => 'views/',
+        
+        // upload product
+        'upload_product_avatar' => _upload.'product/avatar/',
+        'upload_product_detail' => _upload.'product/detail/',
+        'upload_product_thumbfb' => _upload.'product/thumbfb/',
+        
+        // upload service
+        'upload_service_avatar' => _upload.'service/avatar/',
+        'upload_service_detail' => _upload.'service/detail/',
+        'upload_service_thumbfb' => _upload.'service/thumbfb/',
+
+        // upload news
+        'upload_news' => _upload.'news/',
+        'upload_knowledge' => _upload.'knowledge/',
+        'upload_promotion' => _upload.'promotion/',
+
+        // upload partner
+        'upload_partner' => _upload.'partner/',
+
+        // upload landing
+        'upload_landing_about' => _upload.'landing/about/',
+        'upload_landing_branch' => _upload.'landing/branch/',
+
+        // upload review
+        'upload_review_customer' => _upload.'review/customer/',
+        'upload_review_star' => _upload.'review/star/',
+
+        // upload slider
+        'upload_slider_about' => _upload.'slider/about/',
+        'upload_slider_branch' => _upload.'slider/branch',
+        'upload_slider_home' => _upload.'slider/home',
+
+
         //login
         'id_profile_code' => 'profile_code',
         'id_password' => 'password',
@@ -93,16 +128,20 @@
         // products
         'link_category_product' => 'quan-ly-danh-muc-san-pham',
         'link_product' => 'quan-ly-san-pham',
+        'file_category_product' => 'views/products/list_category.php',
         'link_process_add_category_product' => _process.'products/category_add.php',
         'link_process_update_category_product' => _process.'products/category_update.php',
         'link_process_delete_category_product' => _process.'products/category_delete.php',
         'link_active_category_product' => _process.'products/category_active.php',
+        'link_add_category_product' => 'views/products/add_cate.php',
         'link_get_category_product' => 'views/products/get_info_category.php',
         'link_process_sort_category_product' => _process.'products/category_sort.php',
+        'file_product' => 'views/products/list.php',
         'link_process_add_product' => _process.'products/add.php',
         'link_process_update_product' => _process.'products/update.php',
         'link_process_delete_product' => _process.'products/delete.php',
-        'link_get_product' => 'views/products/get_info.php',
+        'link_add_product' => 'views/products/add.php',
+        'link_update_product' => 'views/products/update.php',
         'link_process_sort_product' => _process.'products/sort.php',
         
         // services

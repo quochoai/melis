@@ -1,3 +1,6 @@
+<?php
+    include("../../../require_inc.php");
+?>
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
@@ -9,7 +12,7 @@
                 <h3 class="col-md-8 card-title">
                     <?php _e($lang['manage_category_product']) ?>
                 </h3>
-                <div class="col-md-4"><a class="float-right btn btn-success" data-toggle="modal" data-target="#modal-add-cate"><i class="fas fa-plus"></i> <?php _e($lang['addnew']) ?></a><a class="float-right btn btn-success mr-2" id="sort"><i class="fas fa-sort"></i> <?php _e($lang['update_sort']) ?></a></div>
+                <div class="col-md-4"><a class="float-right btn btn-success add"><i class="fas fa-plus"></i> <?php _e($lang['addnew']) ?></a><a class="float-right btn btn-success mr-2" id="sort"><i class="fas fa-sort"></i> <?php _e($lang['update_sort']) ?></a></div>
                 <!--<div class="col-md-2"></div>-->
             </div>
           </div>
@@ -50,58 +53,7 @@
                 </button>
             </div>
             <form method="post" action="<?php _e($def['link_process_add_category_product']) ?>" id="form_add" enctype="multipart/form-data">
-                <div class="modal-body container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="col-form-label" for="name"><?php _e($lang['name_category'].' (Vie)') ?></label>
-                                <input type="text" class="form-control" name="data[name_vi]" id="name_vi" />
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="col-form-label" for="name"><?php _e($lang['name_category'].' (Eng)') ?></label>
-                                <input type="text" class="form-control" name="data[name_en]" id="name_en" />
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="col-form-label" for="name"><?php _e($lang['title_website'].' (Vie)') ?></label>
-                                <input type="text" class="form-control" name="data[title_vi]" id="title_vi" />
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="col-form-label" for="name"><?php _e($lang['title_website'].' (Eng)') ?></label>
-                                <input type="text" class="form-control" name="data[title_en]" id="title_en" />
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="col-form-label" for="name"><?php _e($lang['description'].' (Vie)') ?></label>
-                                <textarea class="form-control" name="data[desc_vi]" id="desc_vi" rows="4"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="col-form-label" for="name"><?php _e($lang['description'].' (Eng)') ?></label>
-                                <textarea class="form-control" name="data[desc_en]" id="desc_en" rows="4"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="col-form-label" for="name"><?php _e($lang['keyword'].' (Vie)') ?></label>
-                                <textarea class="form-control" name="data[keyw_vi]" id="keyw_vi" rows="4"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="col-form-label" for="name"><?php _e($lang['keyword'].' (Eng)') ?></label>
-                                <textarea class="form-control" name="data[keyw_en]" id="keyw_en" rows="4"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="modal-body container-fluid" id="add_cate"></div>
                 <div class="modal-footer">
                     <button type="submit" id="add" class="btn btn-success"><?php _e($lang['save']) ?> <i class="fas fa-save"></i></button><button type="reset" class="btn btn-info"><?php _e($lang['reset']) ?> <i class="fas fa-undo"></i></button>
                 </div>
@@ -135,12 +87,13 @@
 <script type="text/javascript">
     var lang_url = "<?php _e($def['theme'].'plugins/datatables/vn.json') ?>";
     var column_not_sort = "3, 4, 5";
-    var backend_categories_list = "views/products/data_cate.php";
+    var backend_list = "views/products/data_cate.php";
     var table_id = "#categories";
     var all_page = "<?php _e($lang['all']) ?>";
     var link_delete = "<?php _e($def['link_process_delete_category_product']) ?>";
-    var link_active_category = "<?php _e($def['link_active_category_product']) ?>";
-    var link_get_category_product = "<?php _e($def['link_get_category_product']) ?>";
+    var link_active = "<?php _e($def['link_active_category_product']) ?>";
+    var link_add = "<?php _e($def['link_add_category_product']) ?>";
+    var link_update = "<?php _e($def['link_get_category_product']) ?>";
     var link_update_sort = "<?php _e($def['link_process_sort_product']) ?>";
     var session_timeout = '<?php _e($lang['session_timeout']) ?>';
     var system_error = '<?php _e($lang['system_error']) ?>';
@@ -154,5 +107,7 @@
     var conf = "<?php _e($lang['confirm_delete']) ?>";
     var hidden = "<?php _e($lang['hidden']) ?>";
     var shows = "<?php _e($lang['active']) ?>";
+    var title_add_category_product = "<?php _e($lang['add_category_product']) ?>";
+    var title_update_category_product = "<?php _e($lang['update_category_product']) ?>";
 </script>
 <script src="views/products/data_cate.js"></script>

@@ -57,7 +57,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label class="col-form-label" for="name"><?php echo $lang['sort'] ?></label>
-                <input type="number" class="form-control" name="data[sort]" id="sort" value="<?php _e($cate['sort']) ?>" step="1" min="1" />
+                <input type="number" class="form-control" name="data[sort]" id="sorts" value="<?php _e($cate['sort']) ?>" step="1" min="1" />
             </div>
         </div>
         <div class="col-md-6">

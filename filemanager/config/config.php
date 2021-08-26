@@ -1,7 +1,7 @@
 <?php
 session_start();
 mb_internal_encoding('UTF-8');
-date_default_timezone_set('Europe/Rome');
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +66,7 @@ $config = array(
 	| with start and final /
 	|
 	*/
-	'upload_dir' => '/upload/',
+	'upload_dir' => '/melisbeaute/upload/',
 
 	/*
 	|--------------------------------------------------------------------------

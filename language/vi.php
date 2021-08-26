@@ -126,8 +126,12 @@
         'khachhangtrainghiem' => 'Khách hàng trải nghiệm',
         'uudiemkhimuataimelis' => 'Ưu điểm khi mua tại Melis Spa',
         'dangkytuvanchuyensau' => 'Đăng ký tư vấn chuyên sâu',
+        'not_name_product_vi' => 'Bạn chưa điền tên sản phẩm tiếng Việt',
+        'not_name_product_en' => 'Bạn chưa điền tên sản phẩm tiếng Anh',
         'tag' => 'Tags',
         'show_home' => 'Hiển thị ở trang chủ',
+        'size_product' => 'Kích thước 526px x 562px',
+        'size_thumbfb' => 'Kích thước 450px x 235px',
         
         // services
         'category_service' => 'Danh mục dịch vụ',
@@ -147,6 +151,7 @@
         'addnew' => 'Thêm mới',
         'update' => 'Cập nhật',
         'reset' => 'Làm lại',
+        'reload' => 'Tải lại',
         'cancel' => 'Hủy',
         'delete' => 'Xóa',
         'change' => 'Thay đổi',
@@ -158,6 +163,7 @@
         'active' => 'Hiển thị',
         'hidden' => 'Ẩn',
         'all' => 'Tất cả',
+        'if_not_replace_blank' => '(Nếu không thay hình khác hãy để trống)',
         
         'manage' => 'Quản lý',
         'update_success' => 'Cập nhật thành công',

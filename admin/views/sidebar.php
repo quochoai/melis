@@ -17,13 +17,13 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item<?php if ($pqh[0] == $def['link_category_product'] || $pqh[0] == $def['link_product']) echo ' menu-open' ?>">
-            <a href="<?php echo $def['link_category_product'] ?>" class="nav-link">
+            <a class="nav-link category_product" href="javascript:void(0)"> <!-- href="<?php echo $def['link_category_product'] ?>" -->
               <i class="nav-icon fas fa-cubes"></i>
               <p><?php echo $lang['category_product']; ?></p>
             </a>
           </li>
           <li class="nav-item<?php if ($pqh[0] == $def['link_category_service'] || $pqh[0] == $def['link_service']) echo ' menu-open' ?>">
-            <a href="<?php echo $def['link_category_service'] ?>" class="nav-link">
+            <a href="<?php echo $def['admin_url'].$def['link_category_service'] ?>" class="nav-link">
               <i class="nav-icon fas fa-cubes"></i>
               <p><?php echo $lang['category_service']; ?></p>
             </a>
@@ -158,3 +158,10 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+  <div class="modal fade" id="loading">
+    <div class="text-center">
+      <div class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
