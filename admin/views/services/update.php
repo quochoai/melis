@@ -1,30 +1,30 @@
 <?php
     include("../../../require_inc.php");
     $id = $_POST['id'];
-    $product = $h->getById("name_vi, name_en, image, image_detail, thumbfb, uudiem_vi, uudiem_en, thanhphan_vi, thanhphan_en, congdung_vi, congdung_en, hdsd_vi, hdsd_en, khtn_vi, khtn_en, udmuahang_vi, udmuahang_en, show_home, tag_vi, tag_en, title_vi, title_en, desc_vi, desc_en, keyw_vi, keyw_en, sort, active", "products", $id);
+    $service = $h->getById("name_vi, name_en, image, image_detail, thumbfb, hieuqua_vi, hieuqua_en, nguyenly_vi, nguyenly_en, uudiem_vi, uudiem_en, khtn_vi, khtn_en, show_home, tag_vi, tag_en, title_vi, title_en, desc_vi, desc_en, keyw_vi, keyw_en, sort, active", "services", $id);
 ?>
 <input type="hidden" name="id" id="id" value="<?php _e($id) ?>" />
 <div class="col-md-6">
     <div class="form-group">
-        <label class="col-form-label" for="name"><?php _e($lang['name_product'].' (Vie)') ?></label>
-        <input type="text" class="form-control" name="data[name_vi]" id="name_vi_product" value="<?php _e($product['name_vi']) ?>" />
+        <label class="col-form-label" for="name"><?php _e($lang['name_service'].' (Vie)') ?></label>
+        <input type="text" class="form-control" name="data[name_vi]" id="name_vi" value="<?php _e($service['name_vi']) ?>" />
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group">
-        <label class="col-form-label" for="name"><?php _e($lang['name_product'].' (Eng)') ?></label>
-        <input type="text" class="form-control" name="data[name_en]" id="name_en_product" value="<?php _e($product['name_en']) ?>" />
+        <label class="col-form-label" for="name"><?php _e($lang['name_service'].' (Eng)') ?></label>
+        <input type="text" class="form-control" name="data[name_en]" id="name_en" value="<?php _e($service['name_en']) ?>" />
     </div>
 </div>
 <div class="col-md-4">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['avatar']) ?></label>
         <input type="file" class="form-control" name="image" id="image" />
-        <small class="text-danger"><?php _e($lang['size_product'].' '.$lang['if_not_replace_blank']) ?></small>
+        <small class="text-danger"><?php _e($lang['size_service'].' '.$lang['if_not_replace_blank']) ?></small>
         <div id="show_image">
         <?php
-            if ($product['image'] != '') {
-                _e('<img src="'.$def['upload_product_avatar'].$product['image'].'" width="100" />');
+            if ($service['image'] != '') {
+                _e('<img src="'.$def['upload_service_avatar'].$service['image'].'" width="200" class="mt-2" />');
             }
         ?>
         </div>
@@ -37,8 +37,8 @@
         <small class="text-danger"><?php _e($lang['size_detail'].' '.$lang['if_not_replace_blank']) ?></small>
         <div id="show_image_detail">
         <?php
-            if ($product['image_detail'] != '') {
-                _e('<img src="'.$def['upload_product_detail'].$product['image_detail'].'" width="100" />');
+            if ($service['image_detail'] != '') {
+                _e('<img src="'.$def['upload_service_detail'].$service['image_detail'].'" width="200" class="mt-2" />');
             }
         ?>
         </div>
@@ -51,95 +51,72 @@
         <small class="text-danger"><?php _e($lang['size_thumbfb'].' '.$lang['if_not_replace_blank']) ?></small>
         <div id="show_thumbfb">
         <?php
-            if ($product['thumbfb'] != '') {
-                _e('<img src="'.$def['upload_product_thumbfb'].$product['thumbfb'].'" width="100" />');
+            if ($service['thumbfb'] != '') {
+                _e('<img src="'.$def['upload_service_thumbfb'].$service['thumbfb'].'" width="200" class="mt-2" />');
             }
         ?>
         </div>
     </div>
 </div>
+
 <div class="col-md-12">
     <div class="form-group">
-        <label class="col-form-label" for="name"><?php _e($lang['uudiem'].' (Vie)') ?></label>
-        <textarea name="data[uudiem_vi]" id="uudiem_vi" class="form-control"><?php _e($product['uudiem_vi']) ?></textarea>
+        <label class="col-form-label" for="name"><?php _e($lang['hieuqua'].' (Vie)') ?></label>
+        <textarea name="data[hieuqua_vi]" id="hieuqua_vi" class="form-control"><?php _e($service['hieuqua_vi'])?></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
-        <label class="col-form-label" for="name"><?php _e($lang['uudiem'].' (Eng)') ?></label>
-        <textarea name="data[uudiem_en]" id="uudiem_en" class="form-control"><?php _e($product['uudiem_en']) ?></textarea>
+        <label class="col-form-label" for="name"><?php _e($lang['hieuqua'].' (Eng)') ?></label>
+        <textarea name="data[hieuqua_en]" id="hieuqua_en" class="form-control"><?php _e($service['hieuqua_en']) ?></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
-        <label class="col-form-label" for="name"><?php _e($lang['thanhphan'].' (Vie)') ?></label>
-        <textarea name="data[thanhphan_vi]" id="thanhphan_vi" class="form-control"><?php _e($product['thanhphan_vi'])?></textarea>
+        <label class="col-form-label" for="name"><?php _e($lang['nguyenly'].' (Vie)') ?></label>
+        <textarea name="data[nguyenly_vi]" id="nguyenly_vi" class="form-control"><?php _e($service['nguyenly_vi']) ?></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
-        <label class="col-form-label" for="name"><?php _e($lang['thanhphan'].' (Eng)') ?></label>
-        <textarea name="data[thanhphan_en]" id="thanhphan_en" class="form-control"><?php _e($product['thanhphan_en']) ?></textarea>
-    </div>
-</div>
-<div class="col-md-12">
-    <div class="form-group">
-        <label class="col-form-label" for="name"><?php _e($lang['congdung'].' (Vie)') ?></label>
-        <textarea name="data[congdung_vi]" id="congdung_vi" class="form-control"><?php _e($product['congdung_vi']) ?></textarea>
-    </div>
-</div>
-<div class="col-md-12">
-    <div class="form-group">
-        <label class="col-form-label" for="name"><?php _e($lang['congdung'].' (Eng)') ?></label>
-        <textarea name="data[congdung_en]" id="congdung_en" class="form-control"><?php _e($product['congdung_en']) ?></textarea>
-    </div>
-</div>
-<div class="col-md-12">
-    <div class="form-group">
-        <label class="col-form-label" for="name"><?php _e($lang['huongdansudung'].' (Vie)') ?></label>
-        <textarea name="data[hdsd_vi]" id="hdsd_vi" class="form-control"><?php _e($product['hdsd_vi']) ?></textarea>
-    </div>
-</div>
-<div class="col-md-12">
-    <div class="form-group">
-        <label class="col-form-label" for="name"><?php _e($lang['huongdansudung'].' (Eng)') ?></label>
-        <textarea name="data[hdsd_en]" id="hdsd_en" class="form-control"><?php _e($product['hdsd_en']) ?></textarea>
+        <label class="col-form-label" for="name"><?php _e($lang['nguyenly'].' (Eng)') ?></label>
+        <textarea name="data[nguyenly_en]" id="nguyenly_en" class="form-control"><?php _e($service['nguyenly_en']) ?></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['khachhangtrainghiem'].' (Vie)') ?></label>
-        <textarea name="data[khtn_vi]" id="khtn_vi" class="form-control"><?php _e($product['khtn_vi']) ?></textarea>
+        <textarea name="data[khtn_vi]" id="khtn_vi" class="form-control"><?php _e($service['khtn_vi']) ?></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['khachhangtrainghiem'].' (Eng)') ?></label>
-        <textarea name="data[khtn_en]" id="khtn_en" class="form-control"><?php _e($product['khtn_en']) ?></textarea>
+        <textarea name="data[khtn_en]" id="khtn_en" class="form-control"><?php _e($service['khtn_en']) ?></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['uudiemkhimuataimelis'].' (Vie)') ?></label>
-        <textarea name="data[udmuahang_vi]" id="udmuahang_vi" class="form-control"><?php _e($product['udmuahang_vi']) ?></textarea>
+        <textarea name="data[uudiem_vi]" id="uudiem_vi" class="form-control"><?php _e($service['uudiem_vi']) ?></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['uudiemkhimuataimelis'].' (Eng)') ?></label>
-        <textarea name="data[udmuahang_en]" id="udmuahang_en" class="form-control"><?php _e($product['udmuahang_en']) ?></textarea>
+        <textarea name="data[uudiem_en]" id="uudiem_en" class="form-control"><?php _e($service['uudiem_en']) ?></textarea>
     </div>
 </div>
 <div class="col-md-4">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['tag'].' (Vie)') ?></label>
-        <textarea class="form-control" name="data[tag_vi]" id="tag_vi" rows="3"><?php _e($product['tag_vi']) ?></textarea>
+        <textarea class="form-control" name="data[tag_vi]" id="tag_vi" rows="3"><?php _e($service['tag_vi']) ?></textarea>
     </div>
 </div>
 <div class="col-md-4">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['tag'].' (Eng)') ?></label>
-        <textarea class="form-control" name="data[tag_en]" id="tag_en" rows="3"><?php _e($product['tag_en']) ?></textarea>
+        <textarea class="form-control" name="data[tag_en]" id="tag_en" rows="3"><?php _e($service['tag_en']) ?></textarea>
     </div>
 </div>
 <div class="col-md-4">
@@ -147,11 +124,11 @@
         <label class="col-form-label" for="name"><?php _e($lang['show_home']) ?></label>
         <div class="form-group clearfix">
         <div class="icheck-success d-inline">
-            <input type="radio" id="show_home1" name="data[show_home]" value="1"<?php if ($product['show_home'] == 1) _e(' checked') ?> />
+            <input type="radio" id="show_home1" name="data[show_home]" value="1"<?php if ($service['show_home'] == 1) _e(' checked') ?> />
             <label for="show_home1"><?php _e($lang['active']) ?></label>
         </div>
         <div class="icheck-success d-inline">
-            <input type="radio" id="show_home2" name="data[show_home]" <?php if ($product['show_home'] == 0) _e(' checked') ?> />
+            <input type="radio" id="show_home2" name="data[show_home]" <?php if ($service['show_home'] == 0) _e(' checked') ?> />
             <label for="show_home2"><?php _e($lang['hidden']) ?></label>
         </div>
         </div>
@@ -160,43 +137,43 @@
 <div class="col-md-6">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['title_website'].' (Vie)') ?></label>
-        <input type="text" class="form-control" name="data[title_vi]" id="title_vi" value="<?php _e($product['title_vi']) ?>"/>
+        <input type="text" class="form-control" name="data[title_vi]" id="title_vi" value="<?php _e($service['title_vi']) ?>"/>
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['title_website'].' (Eng)') ?></label>
-        <input type="text" class="form-control" name="data[title_en]" id="title_en" value="<?php _e($product['title_en']) ?>"/>
+        <input type="text" class="form-control" name="data[title_en]" id="title_en" value="<?php _e($service['title_en']) ?>"/>
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['description'].' (Vie)') ?></label>
-        <textarea class="form-control" name="data[desc_vi]" id="desc_vi" rows="4"><?php _e($product['desc_vi']) ?></textarea>
+        <textarea class="form-control" name="data[desc_vi]" id="desc_vi" rows="4"><?php _e($service['desc_vi']) ?></textarea>
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['description'].' (Eng)') ?></label>
-        <textarea class="form-control" name="data[desc_en]" id="desc_en" rows="4"><?php _e($product['desc_en']) ?></textarea>
+        <textarea class="form-control" name="data[desc_en]" id="desc_en" rows="4"><?php _e($service['desc_en']) ?></textarea>
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['keyword'].' (Vie)') ?></label>
-        <textarea class="form-control" name="data[keyw_vi]" id="keyw_vi" rows="4"><?php _e($product['keyw_vi']) ?></textarea>
+        <textarea class="form-control" name="data[keyw_vi]" id="keyw_vi" rows="4"><?php _e($service['keyw_vi']) ?></textarea>
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['keyword'].' (Eng)') ?></label>
-        <textarea class="form-control" name="data[keyw_en]" id="keyw_en" rows="4"><?php _e($product['keyw_en']) ?></textarea>
+        <textarea class="form-control" name="data[keyw_en]" id="keyw_en" rows="4"><?php _e($service['keyw_en']) ?></textarea>
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php echo $lang['sort'] ?></label>
-        <input type="number" class="form-control" name="data[sort]" id="sorts" value="<?php _e($product['sort']) ?>" step="1" min="1" />
+        <input type="number" class="form-control" name="data[sort]" id="sorts" value="<?php _e($service['sort']) ?>" step="1" min="1" />
     </div>
 </div>
 <div class="col-md-6">
@@ -204,11 +181,11 @@
         <label class="col-form-label" for="name"><?php _e($lang['hs']) ?></label>
         <div class="form-group clearfix">
             <div class="icheck-success d-inline">
-            <input type="radio" id="active1" name="data[active]" value="1"<?php if ($product['active'] == 1) _e(' checked') ?> />
+            <input type="radio" id="active1" name="data[active]" value="1"<?php if ($service['active'] == 1) _e(' checked') ?> />
             <label for="active1"><?php _e($lang['active']) ?></label>
             </div>
             <div class="icheck-success d-inline">
-            <input type="radio" id="active2" name="data[active]" value="0"<?php if ($product['active'] == 0) _e(' checked') ?> />
+            <input type="radio" id="active2" name="data[active]" value="0"<?php if ($service['active'] == 0) _e(' checked') ?> />
             <label for="active2"><?php _e($lang['hidden']) ?></label>
             </div>
         </div>
@@ -217,7 +194,7 @@
 <script type="text/javascript" src="<?php _e(URL) ?>tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
     tinymce.init({
-        selector: "textarea#uudiem_vi, textarea#uudiem_en, textarea#thanhphan_vi, textarea#thanhphan_en, textarea#congdung_vi, textarea#congdung_en, textarea#hdsd_vi, textarea#hdsd_en, textarea#khtn_vi, textarea#khtn_en, textarea#udmuahang_vi, textarea#udmuahang_en",
+        selector: "textarea#uudiem_vi, textarea#uudiem_en, textarea#nguyenly_vi, textarea#nguyenly_en, textarea#hieuqua_vi, textarea#hieuqua_en, textarea#khtn_vi, textarea#khtn_en",
         theme: "modern",
         width: 750,
         height: 300,

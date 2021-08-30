@@ -11,6 +11,7 @@ jQuery(document).ready(function($) {
             "info": true,
             "autoWidth": false,
             "responsive": true,
+            //stateSave: true,
             "lengthMenu": [
                 [20, 25, 30, 50, 100, -1],
                 [20, 25, 30, 50, 100, all_page]
@@ -110,9 +111,15 @@ jQuery(document).ready(function($) {
             }
         });
     });
+    // reload
+    $(document).on('click', '.reload', function() {
+        $(table_id).DataTable().destroy();
+        //$(table_id).DataTable().state.clear();
+        fill_datatable();
+    });
 
     // update_sort
-    $(document).on('click', '#sort', function() {
+    $(document).on('click', '.sort', function() {
         var sapxep = [];
         $('input[name^=sort]').each(function() {
             sapxep.push($(this).val());

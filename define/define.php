@@ -145,16 +145,25 @@
         'link_process_sort_product' => _process.'products/sort.php',
         
         // services
-        'link_category_service' => 'quan-ly-danh-muc-dich-vu',
-        'link_service' => 'quan-ly-dich-vu',
+        // category
+        'link_category_service' => 'views/services/list_category.php',
+        'link_category_service_add' => 'views/services/add_cate.php',
+        'link_category_service_update' => 'views/services/category_update.php',
         'link_process_add_category_service' => _process.'services/category_add.php',
         'link_process_update_category_service' => _process.'services/category_update.php',
         'link_process_delete_category_service' => _process.'services/category_delete.php',
-        'link_get_category_service' => 'views/services/get_info_category.php',
+        'link_active_service' => _process.'services/active.php',
+        
+        // service
+        'link_service' => 'views/services/list.php',
+        'link_service_add' => 'views/services/add.php',
+        'link_service_update' => 'views/services/update.php',
         'link_process_add_service' => _process.'services/add.php',
         'link_process_update_service' => _process.'services/update.php',
         'link_process_delete_service' => _process.'services/delete.php',
-        'link_get_service' => 'views/services/get_info.php',
+
+        'link_process_sort_service' => _process.'services/sort.php',
+        
         
         // information
         'link_information' => 'quan-ly-thong-tin',

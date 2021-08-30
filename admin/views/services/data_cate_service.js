@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
     fill_datatable();
 
     function fill_datatable() {
-        $(table_id).DataTable({
+        $(table_id_cate_services).DataTable({
             "aoColumnDefs": [{ "bSortable": false, "aTargets": [3, 4] }],
             "paging": true,
             "lengthChange": true,
@@ -11,6 +11,7 @@ jQuery(document).ready(function($) {
             "info": true,
             "autoWidth": false,
             "responsive": true,
+            //stateSave: true,
             "lengthMenu": [
                 [20, 25, 30, 50, 100, -1],
                 [20, 25, 30, 50, 100, all_page]
@@ -26,7 +27,7 @@ jQuery(document).ready(function($) {
             processing: true,
             serverSide: true,
             ajax: {
-                "url": backend_categories_list,
+                "url": backend_categories_services_list,
                 "dataType": "json",
                 "type": "GET",
                 "data": {},
@@ -47,20 +48,28 @@ jQuery(document).ready(function($) {
                 { data: 'no', name: 'no', className: "text-center text-nowrap small_text" },
                 { data: 'name_vi', name: 'name_vi', className: "text-left small_text" },
                 { data: 'name_en', name: 'name_en', className: "text-left small_text" },
-                { data: 'manage_product', name: 'manage_product', className: "text-center text-nowrap small_text" },
+                { data: 'manage_service', name: 'manage_service', className: "text-center text-nowrap small_text" },
+                { data: 'update_sort', name: 'update_sort', className: "text-center text-nowrap small_text" },
                 { data: 'actions', name: 'actions', className: "text-center text-nowrap small_text" },
             ]
         });
     }
 
+    // reload
+    $(document).on('click', '.reload_cate_service', function() {
+        $(table_id_cate_services).DataTable().destroy();
+        //$(table_id_cate_services).DataTable().state.clear();
+        fill_datatable();
+    });
+
     // delete
-    $(document).on('click', '.delete', function() {
+    $(document).on('click', '.delete_cate_service', function() {
         var id = $(this).attr('rel');
         if (confirm(conf)) {
             $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
-            $.post(link_delete, { id: id }, function(data) {
+            $.post(link_cate_service_delete, { id: id }, function(data) {
                 if (data == '1')
-                    $('tr#cate' + id).hide();
+                    $('tr#cate_service' + id).hide();
                 else {
                     if (data == '5') {
                         toastr.error(session_timeout);
@@ -76,7 +85,7 @@ jQuery(document).ready(function($) {
         }
     });
     // .active
-    $(document).on('click', '.active', function() {
+    $(document).on('click', '.active_cate_service', function() {
         var id = $(this).attr('data-id');
         var acti = $(this).attr('rel');
         if (acti == '0') {
@@ -90,12 +99,12 @@ jQuery(document).ready(function($) {
             var addC = 'fa-eye-slash';
             var tit = shows;
         }
-        $.post(link_active_category, { id: id, acti: activ }, function(html) {
+        $.post(link_cate_service_active, { id: id, acti: activ }, function(html) {
             if (html == '1') {
-                $('#ht' + id).attr('rel', activ);
-                $('#ht' + id).attr('title', tit);
-                $('#hs' + id).removeClass(removeC);
-                $('#hs' + id).addClass(addC);
+                $('#htcateservice' + id).attr('rel', activ);
+                $('#htcateservice' + id).attr('title', tit);
+                $('#hscateservice' + id).removeClass(removeC);
+                $('#hscateservice' + id).addClass(addC);
             } else {
                 if (text == '5') {
                     toastr.error(session_timeout);
@@ -109,16 +118,45 @@ jQuery(document).ready(function($) {
             }
         });
     });
-    // .update
-    $(document).on('click', '.update', function() {
-        let id = $(this).attr('rel');
-        $.post(link_get_category_product, { id: id }, function(html) {
-            $('#cate_update').html(html);
-            $('#modal-update-cate').modal('show');
+
+    // update_sort
+    $(document).on('click', '.sort_cate_service', function() {
+        var sapxep = [];
+        $('input[name^=sort]').each(function() {
+            sapxep.push($(this).val());
+        });
+        var id = [];
+        $('input[name^=idd]').each(function() {
+            id.push($(this).val());
+        });
+
+        $.post(link_update_sort, { id: id, sapxep: sapxep }, function(data) {
+            if (data == '1') {
+                $(table_id_cate_services).DataTable().destroy();
+                fill_datatable();
+            } else {
+                if (data == '5') {
+                    toastr.error(session_timeout);
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    toastr.error(system_error);
+                    return false;
+                }
+            }
         });
     });
+
     // add
-    $(document).on('click', '#add', function() {
+    $(document).on('click', '.add_cate_service', function() {
+        let id = $(this).attr('rel');
+        $.post(link_cate_service_add, function(html) {
+            $('#add_cate_service').html(html);
+            $('#modal-add-cate-service').modal('show');
+        });
+    });
+    $(document).on('click', '.add_cate', function() {
         let name_vi = $.trim($('#name_vi').val());
         let name_en = $.trim($('#name_en').val());
         if (name_vi == '') {
@@ -128,7 +166,7 @@ jQuery(document).ready(function($) {
             return false;
         } else {
             $('#name_vi').removeClass("is-invalid");
-            $('#name_vi_e').addClass("is-valid");
+            $('#name_vi').addClass("is-valid");
         }
         if (name_en == '') {
             toastr.error(not_name_category_product_en);
@@ -139,10 +177,10 @@ jQuery(document).ready(function($) {
             $('#name_en').removeClass("is-invalid");
             $('#name_en').addClass("is-valid");
         }
-        $('#form_add').ajaxForm({
+        $('#form_add_cate_service').ajaxForm({
             beforeSend: function() {
-                $('#add').attr("disabled", true);
-                $('#add').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ' + processing);
+                $('.add_cate').attr("disabled", true);
+                $('.add_cate').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ' + processing);
             },
             uploadProgress: function(event, position, total, percentComplete) {
 
@@ -153,23 +191,14 @@ jQuery(document).ready(function($) {
                 percent.html(percentVal);*/
             },
             complete: function(xhr) {
-                $('#add').html(text_save + ' <i class="fas fa-save">');
-                $('#add').removeAttr('disabled');
+                $('.add_cate').html(text_save + ' <i class="fas fa-save">');
+                $('.add_cate').removeAttr('disabled');
                 var text = xhr.responseText;
                 if (text == '1') {
                     toastr.success(add_success);
-                    $('#name_vi').val('');
-                    $('#name_en').val('');
-                    $('#title_vi').val('');
-                    $('#title_en').val('');
-                    $('#desc_vi').val('');
-                    $('#desc_en').val('');
-                    $('#keyw_vi').val('');
-                    $('#keyw_en').val('');
-                    $('#name_vi').removeClass("is-valid");
-                    $('#name_en').removeClass("is-valid");
-                    $('#modal-add-cate').modal('hide');
-                    $(table_id).DataTable().destroy();
+                    $('#modal-add-cate-service').modal('hide');
+                    $(table_id_cate_services).DataTable().destroy();
+                    //$(table_id_cate_services).DataTable().state.clear();
                     fill_datatable();
                 } else {
                     if (text == '5') {
@@ -185,32 +214,40 @@ jQuery(document).ready(function($) {
             }
         });
     });
+
     // update
-    $(document).on('click', '#update', function() {
-        let name_vi = $.trim($('#name_vi_e').val());
-        let name_en = $.trim($('#name_en_e').val());
+    $(document).on('click', '.update_cate_service', function() {
+        let id = $(this).attr('rel');
+        $.post(link_cate_service_update, { id: id }, function(html) {
+            $('#update_cate_service').html(html);
+            $('#modal-update-cate-service').modal('show');
+        });
+    });
+    $(document).on('click', '.update_cate', function() {
+        let name_vi = $.trim($('#name_vi').val());
+        let name_en = $.trim($('#name_en').val());
         if (name_vi == '') {
-            toastr.error(not_name_category_product_vi);
-            $('#name_vi_e').focus();
-            $('#name_vi_e').addClass("is-invalid");
+            toastr.error(not_name_category_service_vi);
+            $('#name_vi').focus();
+            $('#name_vi').addClass("is-invalid");
             return false;
         } else {
-            $('#name_vi_e').removeClass("is-invalid");
-            $('#name_vi_e').addClass("is-valid");
+            $('#name_vi').removeClass("is-invalid");
+            $('#name_vi').addClass("is-valid");
         }
         if (name_en == '') {
-            toastr.error(not_name_category_product_en);
-            $('#name_en_e').focus();
-            $('#name_en_e').addClass("is-invalid");
+            toastr.error(not_name_category_service_en);
+            $('#name_en').focus();
+            $('#name_en').addClass("is-invalid");
             return false;
         } else {
-            $('#name_en_e').removeClass("is-invalid");
-            $('#name_en_e').addClass("is-valid");
+            $('#name_en').removeClass("is-invalid");
+            $('#name_en').addClass("is-valid");
         }
-        $('#form_update').ajaxForm({
+        $('#form_update_category_service').ajaxForm({
             beforeSend: function() {
-                $('#update').attr("disabled", true);
-                $('#update').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ' + processing);
+                $('.update_cate').attr("disabled", true);
+                $('.update_cate').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ' + processing);
             },
             uploadProgress: function(event, position, total, percentComplete) {
 
@@ -221,17 +258,15 @@ jQuery(document).ready(function($) {
                 percent.html(percentVal);*/
             },
             complete: function(xhr) {
-                $('#update').html(text_update + ' <i class="fas fa-edit">');
-                $('#update').removeAttr('disabled');
+                $('.update_cate').html(text_update + ' <i class="fas fa-edit">');
+                $('.update_cate').removeAttr('disabled');
                 var text = xhr.responseText;
-                console.log(text);
                 if (text == '1') {
                     toastr.success(update_success);
                     setTimeout(function() {
-                        //window.location.reload();
-                        $(table_id).DataTable().destroy();
+                        $('#modal-update-cate-service').modal('hide');
+                        $(table_id_cate_services).DataTable().destroy();
                         fill_datatable();
-                        $('#modal-update-cate').modal('hide');
                     }, 1000);
                 } else {
                     if (text == '5') {

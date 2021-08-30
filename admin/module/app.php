@@ -52,6 +52,7 @@
             font-weight: 400;
         }
         .up-to-top {bottom: 10px; right: 10px; z-index: 999999999;}
+        a {cursor: pointer;}
       </style>
       <!-- DataTables -->
       <link rel="stylesheet" href="<?php _e($def['theme']) ?>plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" />
@@ -196,6 +197,10 @@
             var title_manage_category_product = "<?php _e($lang['manage_category_product']) ?>";
             var link_product = "<?php _e($def['file_product']) ?>";
             var title_manage_product = "<?php _e($lang['manage_product']) ?>";
+            var link_category_service = "<?php _e($def['link_category_service']) ?>";
+            var title_manage_category_service = "<?php _e($lang['manage_category_service']) ?>";
+            var link_service = "<?php _e($def['link_service']) ?>";
+            var title_manage_service = "<?php _e($lang['manage_service']) ?>";
         </script>
         <script src="<?php _e($def['theme']) ?>js/control.js"></script>
     </body>

@@ -132,15 +132,24 @@
         'show_home' => 'Hiển thị ở trang chủ',
         'size_product' => 'Kích thước 526px x 562px',
         'size_thumbfb' => 'Kích thước 450px x 235px',
+        'size_detail' => 'Hình ảnh rộng 1200px, cao bất kì',
         
         // services
         'category_service' => 'Danh mục dịch vụ',
         'manage_category_service' => 'Quản lý danh mục dịch vụ',
         'manage_service' => 'Quản lý dịch vụ',
+        'manage_service_short' => 'Quản lý DV',
         'add_category_service' => 'Thêm danh mục dịch vụ',
         'add_service' => 'Thêm dịch vụ',
         'update_category_service' => 'Cập nhật thông tin danh mục dịch vụ',
         'update_service' => 'Cập nhật thông tin dịch vụ',
+        'not_name_category_service_vi' => 'Bạn chưa điền tên danh mục dịch vụ tiếng Việt',
+        'not_name_category_service_en' => 'Bạn chưa điền tên danh mục dịch vụ tiếng Anh',
+        'name_service' => 'Tên dịch vụ',
+        'hieuqua' => 'Hiệu quả',
+        'nguyenly' => 'Nguyên lý, công nghệ',
+        'banggia' => 'Bảng giá',
+        'size_service' => 'Kích thước 720px x 480px',
         
         // information
         'manage_information' => 'Quản lý thông tin',
