@@ -19,7 +19,7 @@
                         ?>
                     </h3>
                     <div class="col-md-6">
-                        <a class="float-right btn btn-success add_product" rel="<?php _e($product_id)?>"><i class="fas fa-plus"></i> <?php _e($lang['addnew']) ?></a><a class="float-right btn btn-success mr-2 sort_product"><i class="fas fa-sort"></i> <?php _e($lang['update_sort']) ?></a><a class="float-right btn btn-success mr-2 reload_product"><i class="fas fa-sync"></i> <?php _e($lang['reload']) ?></a><a class="float-right btn btn-success mr-2 category_product"><i class="fas fa-undo"></i> <?php _e($lang['back']) ?></a>
+                        <a class="float-right btn btn-success add_product" rel="<?php _e($product_id)?>"><i class="fas fa-plus"></i> <?php _e($lang['addnew']) ?></a><a class="float-right btn btn-success mr-2 reload_product"><i class="fas fa-sync"></i> <?php _e($lang['reload']) ?></a><a class="float-right btn btn-success mr-2 category_product"><i class="fas fa-undo"></i> <?php _e($lang['back']) ?></a>
                     </div>
                 </div>
             </div>
@@ -119,6 +119,8 @@
         var conf = "<?php _e($lang['confirm_delete']) ?>";
         var hidden = "<?php _e($lang['hidden']) ?>";
         var shows = "<?php _e($lang['active']) ?>";
+        var text_delete = "<?php _e($lang['delete']) ?>";
+        var sort_success = "<?php _e($lang['sort_success']) ?>";
     </script>
     <script src="views/products/data.js"></script>
 </div>

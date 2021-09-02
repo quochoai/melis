@@ -33,11 +33,11 @@
                 "DT_RowId" => 'product'.$product['id'],
                 //"DT_RowClass" => "category",
                 "no" => $no,
+                "active" => $product['active'],
                 "id" => $product['id'],  
                 "name_vi" => $product['name_vi'], 
                 "name_en" => $product['name_en'], 
-                'sort' => "<input type='text' name='sort[".$no."]' value='".$product['sort']."' size='3' class='text-center' /><input type='hidden' name='idd[".$no."]' value='".$product['id']."' />", 
-                "actions" => "<a data-id='".$product['id']."' rel='".$product['active']."' class='btn btn-success btn-sm active_product' id='ht".$product['id']."' title='".$tte."'><i id='hs".$product['id']."' class='fas fa-".$fontawesome."'></i></a> | <a href='javascript:void(0)' rel='".$product['id']."' class='btn btn-success btn-sm update_product' title='".$lang['update']."'><i class='fas fa-edit'></i></a> | <a href='javascript:void(0)' rel='".$product['id']."' class='btn btn-danger btn-sm delete_product' title='".$lang['delete']."'><i class='fas fa-trash'></i></a>"
+                'sort' => "<input type='number' name='sort[".$no."]' value='".$product['sort']."' class='text-center sort_product' id='".$product['id']."' style='width: 60px' min='1' step='1'/>"
             );
         }
     } else {

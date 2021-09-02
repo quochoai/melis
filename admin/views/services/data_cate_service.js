@@ -48,9 +48,34 @@ jQuery(document).ready(function($) {
                 { data: 'no', name: 'no', className: "text-center text-nowrap small_text" },
                 { data: 'name_vi', name: 'name_vi', className: "text-left small_text" },
                 { data: 'name_en', name: 'name_en', className: "text-left small_text" },
-                { data: 'manage_service', name: 'manage_service', className: "text-center text-nowrap small_text" },
+                {
+                    data: null,
+                    className: "text-center",
+                    "bSortable": false,
+                    render: function(data, type, row) {
+                        let html = '<a rel="' + data.id + '" class="small_text manage_service" title="' + manage_service + '"><i class="fas fa-tasks"></i> ' + manage + '</a>';
+                        return html;
+                    }
+                },
                 { data: 'update_sort', name: 'update_sort', className: "text-center text-nowrap small_text" },
-                { data: 'actions', name: 'actions', className: "text-center text-nowrap small_text" },
+                {
+                    data: null,
+                    className: "text-center",
+                    "bSortable": false,
+                    render: function(data, type, row) {
+                        if (data.active == 1) {
+                            var fontaw = 'eye';
+                            var tte = hidden;
+                        } else {
+                            var fontaw = 'eye-slash';
+                            var tte = shows;
+                        }
+                        var html = '<a data-id="' + data.id + '" rel="' + data.active + '" class="btn btn-success btn-sm active_cate_service mr-1" id="htcateservice' + data.id + '" title="' + tte + '"><i id="hscateservice' + data.id + '" class="fas fa-' + fontaw + '"></i></a>';
+                        html += '<a rel="' + data.id + '" class="btn btn-success btn-sm update_cate_service mr-1" title="' + text_update + '"><i class="fas fa-edit"></i></a>';
+                        html += '<a class="btn btn-danger btn-sm delete_cate_service" rel="' + data.id + '" title="' + text_delete + '"><i class="fas fa-trash"></i></a>';
+                        return html;
+                    }
+                },
             ]
         });
     }
@@ -147,6 +172,27 @@ jQuery(document).ready(function($) {
             }
         });
     });
+    // sort
+    $(document).on('change', '.sort_cs', function() {
+        var id = $(this).attr('id');
+        var sapxep = $(this).val();
+        $.post(link_update_sort_single, { id: id, sapxep: sapxep }, function(data) {
+            if (data == '5') {
+                toastr.error(session_timeout);
+                setTimeout(function() {
+                    window.location.reload();
+                }, 1000);
+            } else {
+                if (data == '2') {
+                    toastr.error(system_error);
+                    return false;
+                } else {
+                    toastr.success(sort_success);
+                    return false;
+                }
+            }
+        });
+    }).change();
 
     // add
     $(document).on('click', '.add_cate_service', function() {

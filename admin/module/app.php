@@ -201,6 +201,9 @@
             var title_manage_category_service = "<?php _e($lang['manage_category_service']) ?>";
             var link_service = "<?php _e($def['link_service']) ?>";
             var title_manage_service = "<?php _e($lang['manage_service']) ?>";
+            var link_gallery = "<?php _e($def['link_gallery']) ?>";
+            var title_manage_gallery_photo = "<?php _e($lang['manage'].' '.$lang['gimage']) ?>";
+            var title_manage_gallery_video = "<?php _e($lang['manage'].' '.$lang['gvideo']) ?>";
         </script>
         <script src="<?php _e($def['theme']) ?>js/control.js"></script>
     </body>

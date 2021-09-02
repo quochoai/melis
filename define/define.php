@@ -40,8 +40,13 @@
 
         // upload slider
         'upload_slider_about' => _upload.'slider/about/',
-        'upload_slider_branch' => _upload.'slider/branch',
-        'upload_slider_home' => _upload.'slider/home',
+        'upload_slider_branch' => _upload.'slider/branch/',
+        'upload_slider_home' => _upload.'slider/home/',
+
+        // upload gallery
+        'upload_gallery_image_avatar' => _upload.'gallery/images/avatar/',
+        'upload_gallery_image_gallery' => _upload.'gallery/images/gallery/',
+        'upload_gallery_video_avatar' => _upload.'gallery/videos/',
 
 
         //login
@@ -80,13 +85,14 @@
         'link_get_partner' => 'views/partner/get_info.php',
         
         // gallery
-        'link_gallery' => 'quan-ly-gallery',
-        'gimage' => 'hinh-anh',
-        'gvideo' => 'video',
+        'link_gallery' => 'views/gallery/list.php',
         'link_process_add_gallery' => _process.'gallery/add.php',
         'link_process_update_gallery' => _process.'gallery/update.php',
         'link_process_delete_gallery' => _process.'gallery/delete.php',
-        'link_get_gallery' => 'views/gallery/get_info.php',
+        'link_process_active_gallery' => _process.'gallery/active.php',
+        'link_process_sort_gallery' => _process.'gallery/sort.php',
+        'link_add_gallery' => 'views/gallery/add.php',
+        'link_update_gallery' => 'views/gallery/update.php',
         
         // slider
         'link_slider' => 'quan-ly-slider',
@@ -163,6 +169,7 @@
         'link_process_delete_service' => _process.'services/delete.php',
 
         'link_process_sort_service' => _process.'services/sort.php',
+        'link_process_sort_service_single' => _process.'services/single_sort.php',
         
         
         // information

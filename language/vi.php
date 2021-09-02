@@ -63,6 +63,13 @@
         'add_gallery_video' => 'Thêm gallery video',
         'update_gallery_image' => 'Cập nhật gallery hình ảnh',
         'update_gallery_video' => 'Cập nhật gallery video',
+        'name_gallery' => 'Tên gallery',
+        'size_gallery' => 'Kích thước 480px x 296px',
+        'size_image_gallery' => 'Hình cùng 1 kích thước, dung lượng nhỏ là được. Chọn 1 hoặc nhiều lần',
+        'gallery_image' => 'Gallery hình',
+        'link_youtube' => 'Link youtube',
+        'not_name_gallery_vi' => 'Bạn chưa điền tên gallery tiếng Việt',
+        'not_name_gallery_en' => 'Bạn chưa điền tên gallery tiếng Anh',
         
         // slider
         'manage_slider' => 'Quản lý Slider',
@@ -149,6 +156,7 @@
         'hieuqua' => 'Hiệu quả',
         'nguyenly' => 'Nguyên lý, công nghệ',
         'banggia' => 'Bảng giá',
+        'manage_price' => 'Quản lý bảng giá của ',
         'size_service' => 'Kích thước 720px x 480px',
         
         // information
@@ -167,6 +175,7 @@
         'actions' => 'Hành động',
         'back' => 'Trở về',
         'sort' => 'Sắp xếp',
+        'sort_success' => 'Sắp xếp thành công',
         'update_sort' => 'Cập nhật sắp xếp',
         'hs' => 'Hiển thị / Ẩn',
         'active' => 'Hiển thị',

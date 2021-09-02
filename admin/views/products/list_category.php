@@ -13,7 +13,7 @@
                   <h3 class="col-md-7 card-title">
                       <?php _e($lang['manage_category_product']) ?>
                   </h3>
-                  <div class="col-md-5"><a class="float-right btn btn-success add"><i class="fas fa-plus"></i> <?php _e($lang['addnew']) ?></a><a class="float-right btn btn-success mr-2 sort"><i class="fas fa-sort"></i> <?php _e($lang['update_sort']) ?></a><a class="float-right btn btn-success mr-2 reload"><i class="fas fa-sync"></i> <?php _e($lang['reload']) ?></a></div>
+                  <div class="col-md-5"><a class="float-right btn btn-success add"><i class="fas fa-plus"></i> <?php _e($lang['addnew']) ?></a></a><a class="float-right btn btn-success mr-2 reload"><i class="fas fa-sync"></i> <?php _e($lang['reload']) ?></a></div>
                   <!--<div class="col-md-2"></div>-->
               </div>
             </div>
@@ -110,6 +110,10 @@
       var shows = "<?php _e($lang['active']) ?>";
       var title_add_category_product = "<?php _e($lang['add_category_product']) ?>";
       var title_update_category_product = "<?php _e($lang['update_category_product']) ?>";
+      var text_delete = "<?php _e($lang['delete']) ?>";
+      var sort_success = "<?php _e($lang['sort_success']) ?>";
+      var manage_product = "<?php _e($lang['manage_product']) ?>";
+      var manage = "<?php _e($lang['manage']) ?>";
   </script>
   <script src="views/products/data_cate.js"></script>
 </div>

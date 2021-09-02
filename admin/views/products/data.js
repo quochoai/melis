@@ -49,7 +49,25 @@ jQuery(document).ready(function($) {
                 { data: 'name_vi', name: 'name_vi', className: "text-left small_text" },
                 { data: 'name_en', name: 'name_en', className: "text-left small_text" },
                 { data: 'sort', name: 'sort', className: "text-center text-nowrap small_text" },
-                { data: 'actions', name: 'actions', className: "text-center text-nowrap small_text" },
+                //{ data: 'actions', name: 'actions', className: "text-center text-nowrap small_text" },
+                {
+                    data: null,
+                    className: "text-center",
+                    "bSortable": false,
+                    render: function(data, type, row) {
+                        if (data.active == 1) {
+                            var fontaw = 'eye';
+                            var tte = hidden;
+                        } else {
+                            var fontaw = 'eye-slash';
+                            var tte = shows;
+                        }
+                        let html = '<a data-id="' + data.id + '" rel="' + data.active + '" class="btn btn-success btn-sm active_product mr-1" id="ht' + data.id + '" title="' + tte + '"><i id="hs' + data.id + '" class="fas fa-' + fontaw + '"></i></a>';
+                        html += '<a rel="' + data.id + '" class="btn btn-success btn-sm update_product mr-1" title="' + text_update + '"><i class="fas fa-edit"></i></a>';
+                        html += '<a class="btn btn-danger btn-sm delete_product" rel="' + data.id + '" title="' + text_delete + '"><i class="fas fa-trash"></i></a>';
+                        return html;
+                    }
+                }
             ]
         });
     }
@@ -92,7 +110,7 @@ jQuery(document).ready(function($) {
             var addC = 'fa-eye-slash';
             var tit = shows;
         }
-        $.post(link_active_category, { id: id, acti: activ }, function(html) {
+        $.post(link_active_product, { id: id, acti: activ }, function(html) {
             if (html == '1') {
                 $('#ht' + id).attr('rel', activ);
                 $('#ht' + id).attr('title', tit);
@@ -114,27 +132,20 @@ jQuery(document).ready(function($) {
 
     // update_sort
     $(document).on('click', '.sort_product', function() {
-        var sapxep = [];
-        $('input[name^=sort]').each(function() {
-            sapxep.push($(this).val());
-        });
-        var id = [];
-        $('input[name^=idd]').each(function() {
-            id.push($(this).val());
-        });
-
+        var id = $(this).attr('id');
+        var sapxep = $(this).val();
         $.post(link_update_sort, { id: id, sapxep: sapxep }, function(data) {
-            if (data == '1') {
-                $(table_id).DataTable().destroy();
-                fill_datatable();
+            if (data == '5') {
+                toastr.error(session_timeout);
+                setTimeout(function() {
+                    window.location.reload();
+                }, 1000);
             } else {
-                if (data == '5') {
-                    toastr.error(session_timeout);
-                    setTimeout(function() {
-                        window.location.reload();
-                    }, 1000);
-                } else {
+                if (data == '2') {
                     toastr.error(system_error);
+                    return false;
+                } else {
+                    toastr.success(sort_success);
                     return false;
                 }
             }

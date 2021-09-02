@@ -651,6 +651,25 @@ function uploadfile($name_field, $path) {
     move_uploaded_file($_FILES[$name_field]['tmp_name'], $path_img);
 	return $name_save;
 }
+// upload multiple images
+function uploadMultipleImages($name_field, $path, $length) {
+	$name_save = "";
+	$array_name = array();
+	$array_ext_image = array(".png", ".jpg", "jpeg", ".gif", ".bmp", ".PNG", ".JPG", ".JPEG", ".GIF", ".BMP");
+	for ($i = 0; $i < $length; $i++) {
+		$ext = substr($_FILES[$name_field]['name'][$i], -4);
+		if (in_array($ext, $array_ext_image)) {
+			$name_save_draft = time().'_'.$_FILES[$name_field]['name'][$i];
+			$path_img = $path.$name_save_draft;
+			move_uploaded_file($_FILES[$name_field]['tmp_name'][$i], $path_img);
+			array_push($array_name, $name_save_draft);
+		}
+	}
+	if (count($array_name) > 0) {
+		$name_save = implode(";", $array_name);
+	}
+	return $name_save;
+}
 function curPageURL() {
  $pageURL = 'http';
  if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}

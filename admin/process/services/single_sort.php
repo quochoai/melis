@@ -7,10 +7,11 @@
             $user_id = $_COOKIE['islogined'];
         $id = $_POST['id'];
         $data['sort'] = $_POST['sapxep'];
-        $s = $h->updateDataBy($data,"products"," where id = $id", $user_id);
+        $table = "services";
+        $s = $h->updateDataBy($data, $table, "where id = $id", $user_id);
         if ($s)
-            echo '1';
+            _e('1');
         else
-            echo '2';
+            _e('2');
     } else
-        echo '5';
+        _e('5');

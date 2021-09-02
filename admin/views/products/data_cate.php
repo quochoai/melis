@@ -33,13 +33,11 @@
                 "DT_RowId" => 'cate'.$cate['id'],
                 //"DT_RowClass" => "category",
                 "no" => $no,
+                'active' => $cate['active'],
                 "id" => $cate['id'],  
                 "name_vi" => $cate['name_vi'], 
                 "name_en" => $cate['name_en'], 
-                "manage_product" => "<a class='manage_product' rel='".$cate['id']."' title='".$lang['manage_product']."'>".$lang['manage']."</a>",
-                'update_sort' => "<input type='text' name='sort[".$no."]' value='".$cate['sort']."' size='3' class='text-center' /><input type='hidden' name='idd[".$no."]' value='".$cate['id']."' />", 
-                "actions" => "<a data-id='".$cate['id']."' rel='".$cate['active']."' class='btn btn-success btn-sm active mr-1' id='ht".$cate['id']."' title='".$tte."'><i id='hs".$cate['id']."' class='fas fa-".$fontawesome."'></i></a><a rel='".$cate['id']."' class='btn btn-success btn-sm update mr-1' title='".$lang['update']."'><i class='fas fa-edit'></i></a><a rel='".$cate['id']."' class='btn btn-danger btn-sm delete' title='".$lang['delete']."'><i class='fas fa-trash'></i></a>",
-                "search_value" => $search_value
+                'update_sort' => "<input type='number' name='sort[".$no."]' value='".$cate['sort']."' size='3' class='text-center sort' id='".$cate['id']."' style='width: 60px' min='1' step='1'/>"
             );
         }
     } else {
@@ -53,4 +51,4 @@
         "recordsFiltered" => $totalFiltered,
         "data"            => $a
     );
-    echo json_encode($json_data);
+    _e(json_encode($json_data));

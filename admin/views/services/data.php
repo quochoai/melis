@@ -33,13 +33,12 @@
             $a[] = array(
                 "DT_RowId" => 'service'.$service['id'],
                 //"DT_RowClass" => "category",
+                "active" => $service['active'],
                 "no" => $no,
                 "id" => $service['id'],  
                 "name_vi" => $service['name_vi'], 
                 "name_en" => $service['name_en'], 
-                'banggia' => '<a class="banggia" rel="'.$service['id'].'" title="'.$lang['manage_price'].'">'.$lang['manage'].'</a>',
-                'sort' => "<input type='text' name='sort[".$no."]' value='".$service['sort']."' size='3' class='text-center' /><input type='hidden' name='idd[".$no."]' value='".$service['id']."' />", 
-                "actions" => "<a data-id='".$service['id']."' rel='".$service['active']."' class='btn btn-success btn-sm active_service mr-1' id='htservice".$service['id']."' title='".$tte."'><i id='hsservice".$service['id']."' class='fas fa-".$fontawesome."'></i></a> <a rel='".$service['id']."' class='btn btn-success btn-sm update_service mr-1' title='".$lang['update']."'><i class='fas fa-edit'></i></a> <a rel='".$service['id']."' class='btn btn-danger btn-sm delete_service' title='".$lang['delete']."'><i class='fas fa-trash'></i></a>"
+                'sort' => "<input type='number' value='".$service['sort']."' class='text-center sort_service' id='".$service['id']."' style='width: 60px' min='1' step='1' />"
             );
         }
     } else {
@@ -53,5 +52,5 @@
         "recordsFiltered" => $totalFiltered,
         "data"            => $a
     );
-    echo json_encode($json_data);
+    _e(json_encode($json_data));
     

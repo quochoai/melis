@@ -28,20 +28,20 @@
               <p><?php echo $lang['category_service']; ?></p>
             </a>
           </li>
-          <li class="nav-item has-treeview<?php if ($pqh[0] == $def['link_gallery']) echo ' menu-open'; ?>">
+          <li class="nav-item">
             <a href="javascript:void(0);" class="nav-link">
                 <i class="nav-icon fas fa-photo-video"></i>
               <p><?php echo $lang['manage_gallery'] ?><i class="fas fa-angle-left right"></i></p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo $def['link_gallery'].'/'.$def['gimage'] ?>" class="nav-link<?php if ($pqh[1] == $def['gimage']) echo ' active' ?>">
+                <a class="nav-link gallery_photo">
                   <i class="fas fa-images nav-icon"></i>
                   <p><?php echo $lang['gimage'] ?></p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo $def['link_gallery'].'/'.$def['gvideo'] ?>" class="nav-link<?php if ($pqh[1] == $def['gvideo']) echo ' active' ?>">
+                <a class="nav-link gallery_video">
                   <i class="fas fa-video nav-icon"></i>
                   <p><?php echo $lang['gvideo'] ?></p>
                 </a>
