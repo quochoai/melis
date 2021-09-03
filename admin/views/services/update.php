@@ -19,9 +19,9 @@
 <div class="col-md-4">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['avatar']) ?></label>
-        <input type="file" class="form-control" name="image" id="image" />
+        <input type="file" class="form-control" name="image" id="image_se" />
         <small class="text-danger"><?php _e($lang['size_service'].' '.$lang['if_not_replace_blank']) ?></small>
-        <div id="show_image">
+        <div id="show_image_se">
         <?php
             if ($service['image'] != '') {
                 _e('<img src="'.$def['upload_service_avatar'].$service['image'].'" width="200" class="mt-2" />');
@@ -33,9 +33,9 @@
 <div class="col-md-4">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['image_detail']) ?></label>
-        <input type="file" class="form-control" name="image_detail" id="image_detail" />
+        <input type="file" class="form-control" name="image_detail" id="image_detail_se" />
         <small class="text-danger"><?php _e($lang['size_detail'].' '.$lang['if_not_replace_blank']) ?></small>
-        <div id="show_image_detail">
+        <div id="show_image_detail_se">
         <?php
             if ($service['image_detail'] != '') {
                 _e('<img src="'.$def['upload_service_detail'].$service['image_detail'].'" width="200" class="mt-2" />');
@@ -47,9 +47,9 @@
 <div class="col-md-4">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['thumbfb']) ?></label>
-        <input type="file" class="form-control" name="thumbfb" id="thumbfb" />
+        <input type="file" class="form-control" name="thumbfb" id="thumbfb_se" />
         <small class="text-danger"><?php _e($lang['size_thumbfb'].' '.$lang['if_not_replace_blank']) ?></small>
-        <div id="show_thumbfb">
+        <div id="show_thumbfb_se">
         <?php
             if ($service['thumbfb'] != '') {
                 _e('<img src="'.$def['upload_service_thumbfb'].$service['thumbfb'].'" width="200" class="mt-2" />');
@@ -218,5 +218,17 @@
             {title: 'Table styles'},
             {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
         ]
+    });
+</script>
+<script type="text/javascript" src="<?php _e($def['theme']) ?>js/common.js"></script>
+<script type="text/javascript">
+    $("#image_se").change(function() {
+        readSingleImage(this, '#show_image_se');
+    });
+    $("#image_detail_se").change(function() {
+        readSingleImage(this, '#show_image_detail_se');
+    });
+    $("#thumbfb_se").change(function() {
+        readSingleImage(this, '#show_thumbfb_se');
     });
 </script>

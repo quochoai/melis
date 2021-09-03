@@ -18,25 +18,25 @@
 <div class="col-md-4">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['avatar']) ?></label>
-        <input type="file" class="form-control" name="image" id="image" />
+        <input type="file" class="form-control" name="image" id="image_s" />
         <small class="text-danger"><?php _e($lang['size_service']) ?></small>
-        <div id="show_image" class="d-none"></div>
+        <div id="show_image_s" class="d-none"></div>
     </div>
 </div>
 <div class="col-md-4">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['image_detail']) ?></label>
-        <input type="file" class="form-control" name="image_detail" id="image_detail" />
+        <input type="file" class="form-control" name="image_detail" id="image_detail_s" />
         <small class="text-danger"><?php _e($lang['size_detail']) ?></small>
-        <div id="show_image_detail" class="d-none"></div>
+        <div id="show_image_detail_s" class="d-none"></div>
     </div>
 </div>
 <div class="col-md-4">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['thumbfb']) ?></label>
-        <input type="file" class="form-control" name="thumbfb" id="thumbfb" />
+        <input type="file" class="form-control" name="thumbfb" id="thumbfb_s" />
         <small class="text-danger"><?php _e($lang['size_thumbfb']) ?></small>
-        <div id="show_thumbfb" class="d-none"></div>
+        <div id="show_thumbfb_s" class="d-none"></div>
     </div>
 </div>
 <div class="col-md-12">
@@ -177,5 +177,17 @@
             {title: 'Table styles'},
             {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
         ]
+    });
+</script>
+<script type="text/javascript" src="<?php _e($def['theme']) ?>js/common.js"></script>
+<script type="text/javascript">
+    $("#image_s").change(function() {
+        readSingleImage(this, '#show_image_s');
+    });
+    $("#image_detail_s").change(function() {
+        readSingleImage(this, '#show_image_detail_s');
+    });
+    $("#thumbfb_s").change(function() {
+        readSingleImage(this, '#show_thumbfb_s');
     });
 </script>

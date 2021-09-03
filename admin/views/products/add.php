@@ -203,3 +203,15 @@
         ]
     });
 </script>
+<script type="text/javascript" src="<?php _e($def['theme']) ?>js/common.js"></script>
+<script type="text/javascript">
+    $("#image").change(function() {
+        readSingleImage(this, '#show_image');
+    });
+    $("#image_detail").change(function() {
+        readSingleImage(this, '#show_image_detail');
+    });
+    $("#thumbfb").change(function() {
+        readSingleImage(this, '#show_thumbfb');
+    });
+</script>

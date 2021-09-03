@@ -19,12 +19,12 @@
 <div class="col-md-4">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['avatar']) ?></label>
-        <input type="file" class="form-control" name="image" id="image" />
+        <input type="file" class="form-control" name="image" id="image_e" />
         <small class="text-danger"><?php _e($lang['size_product'].' '.$lang['if_not_replace_blank']) ?></small>
-        <div id="show_image">
+        <div id="show_image_e">
         <?php
             if ($product['image'] != '') {
-                _e('<img src="'.$def['upload_product_avatar'].$product['image'].'" width="100" />');
+                _e('<img src="'.$def['upload_product_avatar'].$product['image'].'" width="200" />');
             }
         ?>
         </div>
@@ -33,12 +33,12 @@
 <div class="col-md-4">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['image_detail']) ?></label>
-        <input type="file" class="form-control" name="image_detail" id="image_detail" />
+        <input type="file" class="form-control" name="image_detail" id="image_detail_e" />
         <small class="text-danger"><?php _e($lang['size_detail'].' '.$lang['if_not_replace_blank']) ?></small>
-        <div id="show_image_detail">
+        <div id="show_image_detail_e">
         <?php
             if ($product['image_detail'] != '') {
-                _e('<img src="'.$def['upload_product_detail'].$product['image_detail'].'" width="100" />');
+                _e('<img src="'.$def['upload_product_detail'].$product['image_detail'].'" width="200" />');
             }
         ?>
         </div>
@@ -47,12 +47,12 @@
 <div class="col-md-4">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['thumbfb']) ?></label>
-        <input type="file" class="form-control" name="thumbfb" id="thumbfb" />
+        <input type="file" class="form-control" name="thumbfb" id="thumbfb_e" />
         <small class="text-danger"><?php _e($lang['size_thumbfb'].' '.$lang['if_not_replace_blank']) ?></small>
-        <div id="show_thumbfb">
+        <div id="show_thumbfb_e">
         <?php
             if ($product['thumbfb'] != '') {
-                _e('<img src="'.$def['upload_product_thumbfb'].$product['thumbfb'].'" width="100" />');
+                _e('<img src="'.$def['upload_product_thumbfb'].$product['thumbfb'].'" width="200" />');
             }
         ?>
         </div>
@@ -241,5 +241,17 @@
             {title: 'Table styles'},
             {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
         ]
+    });
+</script>
+<script type="text/javascript" src="<?php _e($def['theme']) ?>js/common.js"></script>
+<script type="text/javascript">
+    $("#image_e").change(function() {
+        readSingleImage(this, '#show_image_e');
+    });
+    $("#image_detail_e").change(function() {
+        readSingleImage(this, '#show_image_detail_e');
+    });
+    $("#thumbfb_e").change(function() {
+        readSingleImage(this, '#show_thumbfb_e');
     });
 </script>

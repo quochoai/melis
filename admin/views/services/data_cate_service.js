@@ -193,7 +193,15 @@ jQuery(document).ready(function($) {
             }
         });
     }).change();
+    // hide modal add
+    $('#modal-add-cate-service').on('hidden.bs.modal', function(e) {
+        $('#add_cate_service').empty();
+    });
+    // hide modal update
 
+    $('#modal-update-cate-service').on('hidden.bs.modal', function(e) {
+        $('#update_cate_service').empty();
+    });
     // add
     $(document).on('click', '.add_cate_service', function() {
         let id = $(this).attr('rel');
