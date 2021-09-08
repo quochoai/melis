@@ -7,7 +7,7 @@
             $user_id = $_COOKIE['islogined'];
         $id = $_POST['id'];
         $data['sort'] = $_POST['sapxep'];
-        $table = "products";
+        $table = "sliders";
         $s = $h->updateDataBy($data,$table, " where id = $id", $user_id);
         if ($s)
             echo '1';

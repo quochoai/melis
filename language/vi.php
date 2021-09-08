@@ -82,6 +82,11 @@
         'update_slider_home' => 'Cập nhật slider trang chủ',
         'update_slider_slpabout' => 'Cập nhật slider landing page giới thiệu',
         'update_slider_slpnhuongquyen' => 'Cập nhật slider landing page nhượng quyền',
+        'size_slider' => 'Kích thước 1920px x 450px',
+        'link_to_page' => 'Link tới trang',
+        'image_slider' => 'Hình slider',
+        'alt' => 'Alt (tốt cho SEO)',
+        'not_choose_image_slider' => 'Bạn chưa chọn hình slider',
         
         // reviews
         'manage_review' => 'Quản lý phản hồi',

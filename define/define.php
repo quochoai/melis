@@ -95,14 +95,14 @@
         'link_update_gallery' => 'views/gallery/update.php',
         
         // slider
-        'link_slider' => 'quan-ly-slider',
-        'shome' => 'slider-home',
-        'slpabout' => 'slider-landing-page-gioi-thieu',
-        'slpnhuongquyen' => 'slider-landing-page-nhuong-quyen',
+        'link_slider' => 'views/slider/list.php',
         'link_process_add_slider' => _process.'slider/add.php',
         'link_process_update_slider' => _process.'slider/update.php',
         'link_process_delete_slider' => _process.'slider/delete.php',
-        'link_get_slider' => 'views/slider/get_info.php',
+        'link_process_active_slider' => _process.'slider/active.php',
+        'link_process_sort_slider' => _process.'slider/sort.php',
+        'link_add_slider' => 'views/slider/add.php',
+        'link_update_slider' => 'views/slider/update.php',
         
         // review
         'link_review' => 'quan-ly-phan-hoi-khach-hang',
@@ -180,8 +180,6 @@
         'link_get_information' => 'views/information/get_info.php',
         
         
-        'link_logout' => 'logout',
-        'link_get_logout' => 'logout'
-                
+        'link_logout' => _process.'logout.php',              
         
     );

@@ -6,10 +6,9 @@
         else
             $user_id = $_COOKIE['islogined'];
         $id = $_POST['id'];
-        $data['sort'] = $_POST['sapxep'];
-        $table = "products";
-        $s = $h->updateDataBy($data,$table, " where id = $id", $user_id);
-        if ($s)
+        $table = "galleries";
+        $sc = $h->softDeleteBy($table, " where id = $id", $user_id);
+        if ($sc)
             echo '1';
         else
             echo '2';

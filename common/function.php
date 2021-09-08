@@ -638,7 +638,10 @@ function upload_image_no_thumb($path){
 	imagecopyresampled($image_thub, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 	
     // luu anh
-	imagejpeg($image_thub, $path.'/'.$name_save, 100);
+	if ($ext != 'png')
+		imagejpeg($image_thub, $path.'/'.$name_save, 80);
+	else
+		imagepng($image_thub, $path.'/'.$name_save, 80);
     // xoa anh
     unlink($path_image);
     return $name_save;

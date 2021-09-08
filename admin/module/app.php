@@ -204,6 +204,12 @@
             var link_gallery = "<?php _e($def['link_gallery']) ?>";
             var title_manage_gallery_photo = "<?php _e($lang['manage'].' '.$lang['gimage']) ?>";
             var title_manage_gallery_video = "<?php _e($lang['manage'].' '.$lang['gvideo']) ?>";
+            var link_slider = "<?php _e($def['link_slider']) ?>";
+            var title_manage_slider_home = "<?php _e($lang['manage'].' '.$lang['shome']) ?>";
+            var title_manage_slider_about = "<?php _e($lang['manage'].' '.$lang['slpabout']) ?>";
+            var title_manage_slider_branch = "<?php _e($lang['manage'].' '.$lang['slpnhuongquyen']) ?>";
+
+            var link_logout = "<?php _e($def['link_logout']) ?>";
         </script>
         <script src="<?php _e($def['theme']) ?>js/control.js"></script>
     </body>

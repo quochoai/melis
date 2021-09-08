@@ -61,7 +61,7 @@
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['link_youtube']) ?></label>
-        <input type="text" class="form-control" name="data[link_youtube]" id="link_youtube" />
+        <input type="text" class="form-control" name="data[link_youtube]" id="link_youtube" value="<?php _e($gallery['link_youtube']) ?>" />
     </div>
 </div>
 <?php
