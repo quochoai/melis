@@ -77,7 +77,7 @@ jQuery(document).ready(function($) {
         var id = $(this).attr('rel');
         if (confirm(conf)) {
             $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
-            $.post(link_delete, { id: id }, function(data) {
+            $.post(link_delete, { id: id, table: tables }, function(data) {
                 if (data == '1')
                     $('tr#product' + id).hide();
                 else {
@@ -110,7 +110,7 @@ jQuery(document).ready(function($) {
             var addC = 'fa-eye-slash';
             var tit = shows;
         }
-        $.post(link_active_product, { id: id, acti: activ }, function(html) {
+        $.post(link_active_product, { id: id, acti: activ, table: tables }, function(html) {
             if (html == '1') {
                 $('#ht' + id).attr('rel', activ);
                 $('#ht' + id).attr('title', tit);
@@ -134,7 +134,7 @@ jQuery(document).ready(function($) {
     $(document).on('click', '.sort_product', function() {
         var id = $(this).attr('id');
         var sapxep = $(this).val();
-        $.post(link_update_sort, { id: id, sapxep: sapxep }, function(data) {
+        $.post(link_update_sort, { id: id, sapxep: sapxep, table: tables }, function(data) {
             if (data == '5') {
                 toastr.error(session_timeout);
                 setTimeout(function() {

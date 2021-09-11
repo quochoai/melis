@@ -6,9 +6,10 @@
         else
             $user_id = $_COOKIE['islogined'];
         $id = $_POST['id'];
-        $table = "news";
-        $sc = $h->softDeleteBy($table, " where id = $id", $user_id);
-        if ($sc)
+        $data['active'] = $_POST['acti'];
+        $table = $_POST['table'];
+        $res = $h->updateDataBy($data, $table, " where id = $id", $user_id);
+        if ($res)
             echo '1';
         else
             echo '2';

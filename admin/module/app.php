@@ -209,6 +209,11 @@
             var title_manage_news = "<?php _e($lang['manage'].' '.$lang['n_news'])?>";
             var title_manage_knowledge = "<?php _e($lang['manage'].' '.$lang['n_knowledge'])?>";
             var title_manage_promotion = "<?php _e($lang['manage'].' '.$lang['n_promotion'])?>";
+            var link_landing = "<?php _e($def['link_landing']) ?>";
+            var title_manage_landing_about = "<?php _e($lang['manage_landing'].' '.$lang['landing_about']) ?>";
+            var title_manage_landing_branch = "<?php _e($lang['manage_landing'].' '.$lang['landing_branch']) ?>";
+            var link_partner = "<?php _e($def['link_partner']) ?>";
+            var title_manage_partner = "<?php _e($lang['manage_partner']) ?>";
 
             var link_logout = "<?php _e($def['link_logout']) ?>";
         </script>

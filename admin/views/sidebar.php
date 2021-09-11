@@ -135,7 +135,7 @@
               <li class="nav-item">
                 <a class="nav-link landing_branch">
                   <i class="fas fa-peace nav-icon"></i>
-                  <p><?php echo $lang['landing_nhuongquyen'] ?></p>
+                  <p><?php echo $lang['landing_branch'] ?></p>
                 </a>
               </li>
             </ul>

@@ -115,10 +115,10 @@
         var backend_list = "views/news/data.php";
         var table_id = "#newss";
         var all_page = "<?php _e($lang['all']) ?>";
-        var link_delete = "<?php _e($def['link_process_delete_news']) ?>";
-        var link_active = "<?php _e($def['link_process_active_news']) ?>";
+        var link_delete = "<?php _e($def['link_process_delete']) ?>";
+        var link_active = "<?php _e($def['link_process_active']) ?>";
         var link_update = "<?php _e($def['link_update_news']) ?>";
-        var link_update_sort = "<?php _e($def['link_process_sort_news']) ?>";
+        var link_update_sort = "<?php _e($def['link_process_sort']) ?>";
         var link_add = "<?php _e($def['link_add_news']) ?>";
         var session_timeout = '<?php _e($lang['session_timeout']) ?>';
         var system_error = '<?php _e($lang['system_error']) ?>';
@@ -134,6 +134,7 @@
         var shows = "<?php _e($lang['active']) ?>";
         var text_delete = "<?php _e($lang['delete']) ?>";
         var sort_success = "<?php _e($lang['sort_success']) ?>";
+        var tables = "news";
     </script>
     <script src="views/news/data.js"></script>
 </div>

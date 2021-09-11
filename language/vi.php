@@ -54,6 +54,13 @@
         'manage_partner' => 'Quản lý đối tác',
         'add_partner' => 'Thêm đối tác',
         'update_partner' => 'Cập nhật đối tác',
+        'name_partner' => 'Tên đối tác',
+        'image_partner' => 'Logo đối tác',
+        'website_partner' => 'Website đối tác',
+        'size_partner' => 'Kích thước tỷ lệ với 250px x 150px',
+        'not_enter_name_partner_vi' => 'Bạn chưa điền tên đối tác tiếng Việt',
+        'not_enter_name_partner_en' => 'Bạn chưa điền tên đối tác tiếng Anh',
+        'not_choose_image_partner' => 'Bạn chưa chọn hình đối tác',
         
         // gallery
         'manage_gallery' => 'Quản lý Gallery',
@@ -123,13 +130,18 @@
         'content_news' => 'Nội dung tin tức',
         
         // landing
-        'manage_landing' => 'Giới thiệu - Nhượng quyền',
+        'manage_landing' => 'Quản lý landing page',
         'landing_about' => 'Giới thiệu',
-        'landing_nhuongquyen' => 'Nhượng quyền',
-        'add_about' => 'Thêm thông tin giới thiệu',
-        'add_nhuongquyen' => 'Thêm thông tin nhượng quyền',
-        'update_about' => 'Cập nhật thông tin giới thiệu',
-        'update_nhuongquyen' => 'Cập nhật thông tin nhượng quyền',
+        'landing_branch' => 'Nhượng quyền',
+        'add_about' => 'Thêm thông tin landing pagegiới thiệu',
+        'add_branch' => 'Thêm thông tin landing page nhượng quyền',
+        'update_about' => 'Cập nhật thông tin landing page giới thiệu',
+        'update_branch' => 'Cập nhật thông tin landing page nhượng quyền',
+        'size_landing' => 'Kích thước tỷ lệ với 1920px x 1920px',
+        'image_landing' => 'Hình ảnh (hình nền)',
+        'not_enter_landing_name_vi' => 'Bạn chưa điền tiêu đề landing tiếng Việt',
+        'not_enter_landing_name_en' => 'Bạn chưa điền tiêu đề landing tiếng Anh',
+        'content_landing' => 'Nội dung',
         
         // products
         'category_product' => 'Danh mục sản phẩm',

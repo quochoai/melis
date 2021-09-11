@@ -624,27 +624,33 @@ function upload_image_no_thumb($path){
 		case 'jpg':
 		case 'jpeg':
 			$image = imagecreatefromjpeg($path_image);
+			header('Content-Type: image/jpeg');
 		    break;	
 		case 'png':
 			$image = imagecreatefrompng($path_image);
+			header('Content-Type: image/png');
 		    break;
 		case 'gif':
 			$image = imagecreatefromgif($path_image);
+			header('Content-Type: image/gif');
 		    break;
 		default:
 			$image = imagecreatefromjpeg($path_image);
+			header('Content-Type: image/jpeg');
 		    break;
 	}
 	imagecopyresampled($image_thub, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 	
-    // luu anh
-	if ($ext != 'png')
-		imagejpeg($image_thub, $path.'/'.$name_save, 80);
-	else
-		imagepng($image_thub, $path.'/'.$name_save, 80);
-    // xoa anh
-    unlink($path_image);
-    return $name_save;
+    if ($ext != 'png') {
+		// luu anh
+        imagejpeg($image_thub, $path.'/'.$name_save, 80);
+    } else {
+		// luu anh
+        imagepng($image, $path.'/'.$name_save, 8);
+	}
+	// xoa anh
+	unlink($path_image);
+	return $name_save;
 	
 }
 // uploadfile

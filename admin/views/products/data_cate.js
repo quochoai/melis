@@ -117,7 +117,7 @@ jQuery(document).ready(function($) {
             var addC = 'fa-eye-slash';
             var tit = shows;
         }
-        $.post(link_active, { id: id, acti: activ }, function(html) {
+        $.post(link_active, { id: id, acti: activ, table: tables }, function(html) {
             if (html == '1') {
                 $('#ht' + id).attr('rel', activ);
                 $('#ht' + id).attr('title', tit);
@@ -147,7 +147,7 @@ jQuery(document).ready(function($) {
     $(document).on('change', '.sort', function() {
         var id = $(this).attr('id');
         var sapxep = $(this).val();
-        $.post(link_update_sort, { id: id, sapxep: sapxep }, function(data) {
+        $.post(link_update_sort, { id: id, sapxep: sapxep, table: tables }, function(data) {
             if (data == '5') {
                 toastr.error(session_timeout);
                 setTimeout(function() {

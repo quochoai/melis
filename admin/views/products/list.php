@@ -102,10 +102,10 @@
         var backend_products_list = "views/products/data.php";
         var table_id = "#products";
         var all_page = "<?php _e($lang['all']) ?>";
-        var link_delete = "<?php _e($def['link_process_delete_product']) ?>";
-        var link_active_product = "<?php _e($def['link_active_category_product']) ?>";
+        var link_delete = "<?php _e($def['link_process_delete']) ?>";
+        var link_active_product = "<?php _e($def['link_process_active']) ?>";
         var link_update = "<?php _e($def['link_update_product']) ?>";
-        var link_update_sort = "<?php _e($def['link_process_sort_product']) ?>";
+        var link_update_sort = "<?php _e($def['link_process_sort']) ?>";
         var link_add = "<?php _e($def['link_add_product']) ?>";
         var session_timeout = '<?php _e($lang['session_timeout']) ?>';
         var system_error = '<?php _e($lang['system_error']) ?>';
@@ -121,6 +121,7 @@
         var shows = "<?php _e($lang['active']) ?>";
         var text_delete = "<?php _e($lang['delete']) ?>";
         var sort_success = "<?php _e($lang['sort_success']) ?>";
+        var tables = "products";
     </script>
     <script src="views/products/data.js"></script>
 </div>

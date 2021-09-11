@@ -92,10 +92,10 @@
       var table_id = "#categories";
       var all_page = "<?php _e($lang['all']) ?>";
       var link_delete = "<?php _e($def['link_process_delete_category_product']) ?>";
-      var link_active = "<?php _e($def['link_active_category_product']) ?>";
+      var link_active = "<?php _e($def['link_process_active']) ?>";
       var link_add = "<?php _e($def['link_add_category_product']) ?>";
       var link_update = "<?php _e($def['link_get_category_product']) ?>";
-      var link_update_sort = "<?php _e($def['link_process_sort_product']) ?>";
+      var link_update_sort = "<?php _e($def['link_process_sort']) ?>";
       var session_timeout = '<?php _e($lang['session_timeout']) ?>';
       var system_error = '<?php _e($lang['system_error']) ?>';
       var not_name_category_product_vi = "<?php _e($lang['not_name_category_product_vi']) ?>";
@@ -114,6 +114,7 @@
       var sort_success = "<?php _e($lang['sort_success']) ?>";
       var manage_product = "<?php _e($lang['manage_product']) ?>";
       var manage = "<?php _e($lang['manage']) ?>";
+      var tables = "products";
   </script>
   <script src="views/products/data_cate.js"></script>
 </div>

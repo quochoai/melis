@@ -124,7 +124,7 @@ jQuery(document).ready(function($) {
             var addC = 'fa-eye-slash';
             var tit = shows;
         }
-        $.post(link_cate_service_active, { id: id, acti: activ }, function(html) {
+        $.post(link_cate_service_active, { id: id, acti: activ, table: tables }, function(html) {
             if (html == '1') {
                 $('#htcateservice' + id).attr('rel', activ);
                 $('#htcateservice' + id).attr('title', tit);
@@ -143,40 +143,11 @@ jQuery(document).ready(function($) {
             }
         });
     });
-
-    // update_sort
-    $(document).on('click', '.sort_cate_service', function() {
-        var sapxep = [];
-        $('input[name^=sort]').each(function() {
-            sapxep.push($(this).val());
-        });
-        var id = [];
-        $('input[name^=idd]').each(function() {
-            id.push($(this).val());
-        });
-
-        $.post(link_update_sort, { id: id, sapxep: sapxep }, function(data) {
-            if (data == '1') {
-                $(table_id_cate_services).DataTable().destroy();
-                fill_datatable();
-            } else {
-                if (data == '5') {
-                    toastr.error(session_timeout);
-                    setTimeout(function() {
-                        window.location.reload();
-                    }, 1000);
-                } else {
-                    toastr.error(system_error);
-                    return false;
-                }
-            }
-        });
-    });
     // sort
     $(document).on('change', '.sort_cs', function() {
         var id = $(this).attr('id');
         var sapxep = $(this).val();
-        $.post(link_update_sort_single, { id: id, sapxep: sapxep }, function(data) {
+        $.post(link_update_sort, { id: id, sapxep: sapxep, table: tables }, function(data) {
             if (data == '5') {
                 toastr.error(session_timeout);
                 setTimeout(function() {

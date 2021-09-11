@@ -78,19 +78,16 @@
         'link_process_change_password' => _process.'profile/change_password.php',
         
         // partner
-        'link_partner' => 'quan-ly-doi-tac',
+        'link_partner' => 'views/partner/list.php',
         'link_process_add_partner' => _process.'partner/add.php',
         'link_process_update_partner' => _process.'partner/update.php',
-        'link_process_delete_partner' => _process.'partner/delete.php',
-        'link_get_partner' => 'views/partner/get_info.php',
+        'link_add_partner' => 'views/partner/add.php',
+        'link_update_partner' => 'views/partner/update.php',
         
         // gallery
         'link_gallery' => 'views/gallery/list.php',
         'link_process_add_gallery' => _process.'gallery/add.php',
         'link_process_update_gallery' => _process.'gallery/update.php',
-        'link_process_delete_gallery' => _process.'gallery/delete.php',
-        'link_process_active_gallery' => _process.'gallery/active.php',
-        'link_process_sort_gallery' => _process.'gallery/sort.php',
         'link_add_gallery' => 'views/gallery/add.php',
         'link_update_gallery' => 'views/gallery/update.php',
         
@@ -98,9 +95,6 @@
         'link_slider' => 'views/slider/list.php',
         'link_process_add_slider' => _process.'slider/add.php',
         'link_process_update_slider' => _process.'slider/update.php',
-        'link_process_delete_slider' => _process.'slider/delete.php',
-        'link_process_active_slider' => _process.'slider/active.php',
-        'link_process_sort_slider' => _process.'slider/sort.php',
         'link_add_slider' => 'views/slider/add.php',
         'link_update_slider' => 'views/slider/update.php',
         
@@ -108,9 +102,6 @@
         'link_review' => 'views/review/list.php',
         'link_process_add_review' => _process.'review/add.php',
         'link_process_update_review' => _process.'review/update.php',
-        'link_process_delete_review' => _process.'review/delete.php',
-        'link_process_active_review' => _process.'review/active.php',
-        'link_process_sort_review' => _process.'review/sort.php',
         'link_add_review' => 'views/review/add.php',
         'link_update_review' => 'views/review/update.php',
         
@@ -118,24 +109,17 @@
         'link_news' => 'views/news/list.php',
         'link_process_add_news' => _process.'news/add.php',
         'link_process_update_news' => _process.'news/update.php',
-        'link_process_delete_news' => _process.'news/delete.php',
-        'link_process_active_news' => _process.'news/active.php',
-        'link_process_sort_news' => _process.'news/sort.php',
         'link_add_news' => 'views/news/add.php',
         'link_update_news' => 'views/news/update.php',
         
         // landing page
-        'link_landing' => 'quan-ly-landing-page',
-        'landing_about' => 'landing-page-gioi-thieu',
-        'landing_nhuong_quyen' => 'landing-page-nhuong-quyen',
+        'link_landing' => 'views/landing/list.php',
         'link_process_add_landing' => _process.'landing/add.php',
         'link_process_update_landing' => _process.'landing/update.php',
-        'link_process_delete_landing' => _process.'landing/delete.php',
-        'link_get_landing' => 'views/landing/get_info.php',
+        'link_add_landing' => 'views/landing/add.php',
+        'link_update_landing' => 'views/landing/update.php',
         
         // products
-        'link_category_product' => 'quan-ly-danh-muc-san-pham',
-        'link_product' => 'quan-ly-san-pham',
         'file_category_product' => 'views/products/list_category.php',
         'link_process_add_category_product' => _process.'products/category_add.php',
         'link_process_update_category_product' => _process.'products/category_update.php',
@@ -160,7 +144,6 @@
         'link_process_add_category_service' => _process.'services/category_add.php',
         'link_process_update_category_service' => _process.'services/category_update.php',
         'link_process_delete_category_service' => _process.'services/category_delete.php',
-        'link_active_service' => _process.'services/active.php',
         
         // service
         'link_service' => 'views/services/list.php',
@@ -168,11 +151,7 @@
         'link_service_update' => 'views/services/update.php',
         'link_process_add_service' => _process.'services/add.php',
         'link_process_update_service' => _process.'services/update.php',
-        'link_process_delete_service' => _process.'services/delete.php',
 
-        'link_process_sort_service' => _process.'services/sort.php',
-        'link_process_sort_service_single' => _process.'services/single_sort.php',
-        
         
         // information
         'link_information' => 'quan-ly-thong-tin',
@@ -180,6 +159,11 @@
         'link_process_update_information' => _process.'information/update.php',
         'link_process_delete_information' => _process.'information/delete.php',
         'link_get_information' => 'views/information/get_info.php',
+
+        // link sort, active, delete for all
+        'link_process_sort' => _process.'general/sort.php',
+        'link_process_active' => _process.'general/active.php',
+        'link_process_delete' => _process.'general/delete.php',
         
         
         'link_logout' => _process.'logout.php',              

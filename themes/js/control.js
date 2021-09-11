@@ -194,6 +194,50 @@ jQuery(document).ready(function($) {
             $('title').html(title_manage_promotion);
         });
     });
+
+    // landing page
+    // about
+    $(document).on('click', '.landing_about', function() {
+        $('#content_admin').empty();
+        $('.main-sidebar .sidebar .nav-item').removeClass('menu-open');
+        $(this).parent().parent().parent().addClass('menu-open');
+        $('.nav .nav-item .nav-link').removeClass('active');
+        $(this).addClass('active');
+        $('.nav .nav-treeview').css('display', 'none');
+        $(this).parent().parent().css('display', 'block');
+        $.post(link_landing, { ld_id: 1 }, function(data) {
+            $('#content_admin').html(data);
+            $('title').html(title_manage_landing_about);
+        });
+    });
+    // branch
+    $(document).on('click', '.landing_branch', function() {
+        $('#content_admin').empty();
+        $('.main-sidebar .sidebar .nav-item').removeClass('menu-open');
+        $(this).parent().parent().parent().addClass('menu-open');
+        $('.nav .nav-item .nav-link').removeClass('active');
+        $(this).addClass('active');
+        $('.nav .nav-treeview').css('display', 'none');
+        $(this).parent().parent().css('display', 'block');
+        $.post(link_landing, { ld_id: 2 }, function(data) {
+            $('#content_admin').html(data);
+            $('title').html(title_manage_landing_branch);
+        });
+    });
+
+    // manage partner
+    $(document).on('click', '.partner', function() {
+        $('#content_admin').empty();
+        $('.main-sidebar .sidebar .nav-item').removeClass('menu-open');
+        $('.nav .nav-item .nav-link').removeClass('active');
+        $('.nav .nav-treeview').css('display', 'none');
+        $(this).parent().addClass('menu-open');
+        $.post(link_partner, function(data) {
+            $('#content_admin').html(data);
+            $('title').html(title_manage_partner);
+        });
+    });
+
     // logout
     $(document).on('click', '.logout', function() {
         $.post(link_logout, function(data) {

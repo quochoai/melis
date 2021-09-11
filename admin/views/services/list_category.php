@@ -91,9 +91,8 @@
     var table_id_cate_services = "#categories_services";
     var all_page = "<?php _e($lang['all']) ?>";
     var link_cate_service_delete = "<?php _e($def['link_process_delete_category_service']) ?>";
-    var link_cate_service_active = "<?php _e($def['link_active_service']) ?>";
-    var link_update_sort = "<?php _e($def['link_process_sort_service']) ?>";
-    var link_update_sort_single = "<?php _e($def['link_process_sort_service_single']) ?>";
+    var link_cate_service_active = "<?php _e($def['link_process_active']) ?>";
+    var link_update_sort = "<?php _e($def['link_process_sort']) ?>";
     var link_cate_service_add = "<?php _e($def['link_category_service_add']) ?>";
     var link_cate_service_update = "<?php _e($def['link_category_service_update']) ?>";
     var session_timeout = '<?php _e($lang['session_timeout']) ?>';
@@ -112,5 +111,6 @@
     var sort_success = "<?php _e($lang['sort_success']) ?>";
     var manage_service = "<?php _e($lang['manage_service']) ?>";
     var manage = "<?php _e($lang['manage']) ?>";
+    var tables = "services";
 </script>
 <script src="views/services/data_cate_service.js"></script>
