@@ -180,18 +180,12 @@
                 return /^-?[\d.]+(?:e-?\d+)?$/.test(n); 
             } 
             $(function(){
-                //Datemask dd/mm/yyyy
-                $('#birthday, #ngaykiemtra, #ngaytuchoihs, #ngaylenlaihs, #ngaydauhs, #ngaylenmoihs, #birthday_s, #ngaykiemtra_s, #ngaytuchoihs_s, #ngaylenlaihs_s, #ngaydauhs_s, #ngaylenmoihs_s, #birthday_e, #ngaykiemtra_e, #ngaytuchoihs_e, #ngaylenlaihs_e, #ngaydauhs_e, #ngaylenmoihs_e, #ngaycap_cmnd_e, #tgketthuc_duno1_e, #tgketthuc_duno2_e, #duno_tctd_end1, #duno_tctd_end2, #duno_tctd_end3, #duno_tctd_end4, #duno_tctd_end5, #duno_tctd_end6, #duno_tctd_end7, #duno_tctd_end8, #duno_tctd_end9, #duno_tctd_end10, #fromdate, #todate, #filter_ngaylamlai, #ngay_hieu_luc').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
                 //$('#time_finish').inputmask('h:i:s', {'placeholder': 'h:i:s'});
                 $('.select2').select2();
                 $("input[data-bootstrap-switch]").each(function(){
                   $(this).bootstrapSwitch('state', $(this).prop('checked'));
                 });
                 $('[data-toggle="tooltip"]').tooltip();
-                $('#reservationdate, #datecheck, #datereject, #dateup, #datepos, #datefresh, #reservationdate_s, #datecheck_s, #datereject_s, #dateup_s, #datepos_s, #datefresh_s, #reservationdate_e, #datecheck_e, #datereject_e, #dateup_e, #datepos_e, #datefresh_e, #date_cmnd_e, #date_end_1, #date_end_2, #date_end_tctd1, #date_end_tctd2, #date_end_tctd3, #date_end_tctd4, #date_end_tctd5, #date_end_tctd6, #date_end_tctd7, #date_end_tctd8, #date_end_tctd9, #date_end_tctd10, #from_date, #to_date, #filterngaylamlai, #ngay_hieu_luc').datetimepicker({
-                    timePicker: false,
-                    format: 'DD/MM/YYYY'
-                });
             });
             var link_category_product = "<?php _e($def['file_category_product']) ?>";
             var title_manage_category_product = "<?php _e($lang['manage_category_product']) ?>";
@@ -208,6 +202,13 @@
             var title_manage_slider_home = "<?php _e($lang['manage'].' '.$lang['shome']) ?>";
             var title_manage_slider_about = "<?php _e($lang['manage'].' '.$lang['slpabout']) ?>";
             var title_manage_slider_branch = "<?php _e($lang['manage'].' '.$lang['slpnhuongquyen']) ?>";
+            var link_review = "<?php _e($def['link_review']) ?>";
+            var title_manage_review_customer = "<?php _e($lang['manage_review'].' '.$lang['customer_review']) ?>";
+            var title_manage_review_star = "<?php _e($lang['manage_review'].' '.$lang['star_review']) ?>";
+            var link_news = "<?php _e($def['link_news']) ?>";
+            var title_manage_news = "<?php _e($lang['manage'].' '.$lang['n_news'])?>";
+            var title_manage_knowledge = "<?php _e($lang['manage'].' '.$lang['n_knowledge'])?>";
+            var title_manage_promotion = "<?php _e($lang['manage'].' '.$lang['n_promotion'])?>";
 
             var link_logout = "<?php _e($def['link_logout']) ?>";
         </script>

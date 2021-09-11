@@ -105,22 +105,24 @@
         'link_update_slider' => 'views/slider/update.php',
         
         // review
-        'link_review' => 'quan-ly-phan-hoi-khach-hang',
-        'rcustomer' => 'khach-hang',
-        'rstar' => 'nguoi-noi-tieng',
+        'link_review' => 'views/review/list.php',
         'link_process_add_review' => _process.'review/add.php',
         'link_process_update_review' => _process.'review/update.php',
         'link_process_delete_review' => _process.'review/delete.php',
-        'link_get_review' => 'views/review/get_info.php',
+        'link_process_active_review' => _process.'review/active.php',
+        'link_process_sort_review' => _process.'review/sort.php',
+        'link_add_review' => 'views/review/add.php',
+        'link_update_review' => 'views/review/update.php',
         
         // news
-        'link_news' => 'quan-ly-tin-tuc',
-        'n_news' => 'tin-tuc',
-        'n_knowledge' => 'kien-thuc',
+        'link_news' => 'views/news/list.php',
         'link_process_add_news' => _process.'news/add.php',
         'link_process_update_news' => _process.'news/update.php',
         'link_process_delete_news' => _process.'news/delete.php',
-        'link_get_news' => 'views/news/get_info.php',
+        'link_process_active_news' => _process.'news/active.php',
+        'link_process_sort_news' => _process.'news/sort.php',
+        'link_add_news' => 'views/news/add.php',
+        'link_update_news' => 'views/news/update.php',
         
         // landing page
         'link_landing' => 'quan-ly-landing-page',

@@ -121,6 +121,79 @@ jQuery(document).ready(function($) {
         });
     });
 
+    // reviews
+    // review customer
+    $(document).on('click', '.review_customer', function() {
+        $('#content_admin').empty();
+        $('.main-sidebar .sidebar .nav-item').removeClass('menu-open');
+        $(this).parent().parent().parent().addClass('menu-open');
+        $('.nav .nav-item .nav-link').removeClass('active');
+        $(this).addClass('active');
+        $('.nav .nav-treeview').css('display', 'none');
+        $(this).parent().parent().css('display', 'block');
+        $.post(link_review, { rv_id: 1 }, function(data) {
+            $('#content_admin').html(data);
+            $('title').html(title_manage_review_customer);
+        });
+    });
+    // review star
+    $(document).on('click', '.review_star', function() {
+        $('#content_admin').empty();
+        $('.main-sidebar .sidebar .nav-item').removeClass('menu-open');
+        $(this).parent().parent().parent().addClass('menu-open');
+        $('.nav .nav-item .nav-link').removeClass('active');
+        $(this).addClass('active');
+        $('.nav .nav-treeview').css('display', 'none');
+        $(this).parent().parent().css('display', 'block');
+        $.post(link_review, { rv_id: 2 }, function(data) {
+            $('#content_admin').html(data);
+            $('title').html(title_manage_review_star);
+        });
+    });
+
+    // manage news
+    // news
+    $(document).on('click', '.n_news', function() {
+        $('#content_admin').empty();
+        $('.main-sidebar .sidebar .nav-item').removeClass('menu-open');
+        $(this).parent().parent().parent().addClass('menu-open');
+        $('.nav .nav-item .nav-link').removeClass('active');
+        $(this).addClass('active');
+        $('.nav .nav-treeview').css('display', 'none');
+        $(this).parent().parent().css('display', 'block');
+        $.post(link_news, { news_id: 1 }, function(data) {
+            $('#content_admin').html(data);
+            $('title').html(title_manage_news);
+        });
+    });
+    // knowledge
+    $(document).on('click', '.n_knowledge', function() {
+        $('#content_admin').empty();
+        $('.main-sidebar .sidebar .nav-item').removeClass('menu-open');
+        $(this).parent().parent().parent().addClass('menu-open');
+        $('.nav .nav-item .nav-link').removeClass('active');
+        $(this).addClass('active');
+        $('.nav .nav-treeview').css('display', 'none');
+        $(this).parent().parent().css('display', 'block');
+        $.post(link_news, { news_id: 2 }, function(data) {
+            $('#content_admin').html(data);
+            $('title').html(title_manage_knowledge);
+        });
+    });
+    // promotion
+    $(document).on('click', '.n_promotion', function() {
+        $('#content_admin').empty();
+        $('.main-sidebar .sidebar .nav-item').removeClass('menu-open');
+        $(this).parent().parent().parent().addClass('menu-open');
+        $('.nav .nav-item .nav-link').removeClass('active');
+        $(this).addClass('active');
+        $('.nav .nav-treeview').css('display', 'none');
+        $(this).parent().parent().css('display', 'block');
+        $.post(link_news, { news_id: 3 }, function(data) {
+            $('#content_admin').html(data);
+            $('title').html(title_manage_promotion);
+        });
+    });
     // logout
     $(document).on('click', '.logout', function() {
         $.post(link_logout, function(data) {
