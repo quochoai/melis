@@ -187,6 +187,13 @@
                 });
                 $('[data-toggle="tooltip"]').tooltip();
             });
+            var link_config_website = "<?php _e($def['views']."config/edit.php") ?>";
+            var title_config_website = "<?php _e($lang['config_website']) ?>";
+            var link_manage_html = "<?php _e($def['views']."html/list.php") ?>";
+            var title_manage_html = "<?php _e($lang['manage_html']) ?>";
+            var link_change_password = "<?php _e($def['views']."profile/change_password.php") ?>";
+            var title_change_password = "<?php _e($lang['change_password']) ?>";
+
             var link_category_product = "<?php _e($def['file_category_product']) ?>";
             var title_manage_category_product = "<?php _e($lang['manage_category_product']) ?>";
             var link_product = "<?php _e($def['file_product']) ?>";
@@ -214,6 +221,7 @@
             var title_manage_landing_branch = "<?php _e($lang['manage_landing'].' '.$lang['landing_branch']) ?>";
             var link_partner = "<?php _e($def['link_partner']) ?>";
             var title_manage_partner = "<?php _e($lang['manage_partner']) ?>";
+            
 
             var link_logout = "<?php _e($def['link_logout']) ?>";
         </script>

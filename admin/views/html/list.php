@@ -1,4 +1,7 @@
 <!-- Main content -->
+<?php
+    include("../../../require_inc.php");
+?>
 <section class="content">
   <div class="container-fluid">
     <div class="row">

@@ -1,4 +1,28 @@
 jQuery(document).ready(function($) {
+    // config_website
+    $(document).on('click', '.config_website', function() {
+        $('#content_admin').empty();
+        $.post(link_config_website, function(data) {
+            $('#content_admin').html(data);
+            $('title').html(title_config_website);
+        });
+    });
+    // manage_html
+    $(document).on('click', '.manage_html', function() {
+        $('#content_admin').empty();
+        $.post(link_manage_html, function(data) {
+            $('#content_admin').html(data);
+            $('title').html(title_manage_html);
+        });
+    });
+    // change_password
+    $(document).on('click', '.change_password', function() {
+        $('#content_admin').empty();
+        $.post(link_change_password, function(data) {
+            $('#content_admin').html(data);
+            $('title').html(title_change_password);
+        });
+    });
     // products
     // manage category product
     $(document).on('click', '.category_product', function() {

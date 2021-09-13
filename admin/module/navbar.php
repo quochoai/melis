@@ -8,7 +8,7 @@
     </ul>
     <!-- SEARCH FORM -->
     <!--
-    <form class="form-inline ml-3">
+    <form class="form-inline ml-3" method="post" action="<?php _e($def['theme']) ?>">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
@@ -23,23 +23,23 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#" title="Click here">
-            <i class="fas fa-user-cog"></i> <?php echo $profile['hoten'] ?>
+            <i class="fas fa-user-cog"></i> <?php _e($profile['hoten']) ?>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        <a href="<?php echo $def['link_config'] ?>" class="dropdown-item"><i class="fas fa-user-cog"></i> <?php echo $lang['config_website'] ?></a>
+        <a class="dropdown-item config_website"><i class="fas fa-user-cog"></i> <?php _e($lang['config_website']) ?></a>
         <div class="dropdown-divider"></div>
-        <a href="<?php echo $def['link_html'] ?>" class="dropdown-item">
-            <i class="fas fa-code"></i> <?php echo $lang['manage_html'] ?>
+        <a class="dropdown-item manage_html">
+            <i class="fas fa-code"></i> <?php _e($lang['manage_html']) ?>
         </a>
         <div class="dropdown-divider"></div>
-        <a href="<?php echo $def['link_change_password'] ?>/<?php echo $id_profile ?>" class="dropdown-item">
-            <i class="fas fa-user-cog"></i> <?php echo $lang['change_password'] ?>
+        <a class="dropdown-item change_password" rel="<?php _e($id_profile) ?>">
+            <i class="fas fa-user-cog"></i> <?php _e($lang['change_password']) ?>
         </a>
             
         </div>
     </li>   
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo $def['link_get_logout'] ?>" title="<?php echo $lang['logout']; ?>">
+        <a class="nav-link logout" title="<?php _e($lang['logout']) ?>">
           <i class="fas fa-sign-out-alt"></i>
         </a>
       </li>

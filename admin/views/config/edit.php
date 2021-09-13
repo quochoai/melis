@@ -1,5 +1,6 @@
 <!-- Main content -->
 <?php
+    include("../../../require_inc.php");
     $config = $h->getById("*", "configs", 1);
 ?>
 <section class="content">
@@ -104,7 +105,7 @@
             $('#form_jquery').ajaxForm({
                 beforeSend: function() {
                     $('#update').attr("disabled",true);
-                    $('#update').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Ðang x? lý'); 
+                    $('#update').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ï¿½ang x? lï¿½'); 
                 },
                 uploadProgress: function(event, position, total, percentComplete) {
                                     
@@ -121,9 +122,7 @@
                    console.log(text);
                    if(text == '1'){
                        toastr.success('<?php echo $lang['update_success'] ?>');
-                       setTimeout(function(){
-                           window.location.reload();
-                       }, 1000);
+                       return false;
                    } else {           
                        toastr.error('<?php echo $lang['system_error'] ?>');
                        return false;

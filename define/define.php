@@ -6,7 +6,7 @@
 
     $def = array(
         'link_login' => URL.'admin/login',
-        'link_process_login' => URL.'admin/process/login.php',
+        'link_process_login' => URL.'admin/login/login.php',
         "admin_url" => URL.'admin/',
         
         'theme' => URL.'themes/',

@@ -1,3 +1,6 @@
+<?php
+    include("../../../require_inc.php");
+?>
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
