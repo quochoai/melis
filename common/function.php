@@ -623,16 +623,20 @@ function upload_image_no_thumb($path){
 	switch($ext){
 		case 'jpg':
 		case 'jpeg':
+		case 'JPG':
+		case 'JPEG':
 			$image = imagecreatefromjpeg($path_image);
 			header('Content-Type: image/jpeg');
 		    break;	
 		case 'png':
+		case 'PNG':
 			$image = imagecreatefrompng($path_image);
+			imagealphablending($image_thub, false);
 			header('Content-Type: image/png');
 		    break;
 		case 'gif':
+		case 'GIF':
 			$image = imagecreatefromgif($path_image);
-			header('Content-Type: image/gif');
 		    break;
 		default:
 			$image = imagecreatefromjpeg($path_image);
@@ -641,12 +645,16 @@ function upload_image_no_thumb($path){
 	}
 	imagecopyresampled($image_thub, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 	
-    if ($ext != 'png') {
-		// luu anh
-        imagejpeg($image_thub, $path.'/'.$name_save, 80);
-    } else {
-		// luu anh
-        imagepng($image, $path.'/'.$name_save, 8);
+	// luu anh
+	$aet = array("png", "PNG", "gif", "GIF");
+    if (! in_array($ext, $aet))
+		imagejpeg($image_thub, $path.'/'.$name_save, 80);
+    elseif ($ext == 'png' || $ext == 'PNG') {
+		imagesavealpha($image_thub, true);
+        imagepng($image_thub, $path.'/'.$name_save, 8);
+	} else {
+		header('Content-Type: image/gif');
+		imagegif($image_thub, $path.'/'.$name_save);
 	}
 	// xoa anh
 	unlink($path_image);
