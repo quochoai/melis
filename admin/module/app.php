@@ -202,6 +202,8 @@
             var title_manage_category_service = "<?php _e($lang['manage_category_service']) ?>";
             var link_service = "<?php _e($def['link_service']) ?>";
             var title_manage_service = "<?php _e($lang['manage_service']) ?>";
+            var link_table_price = "<?php _e($def['link_price_service']) ?>";
+            var title_manage_table_price = "<?php _e($lang['manage_price']) ?>";
             var link_gallery = "<?php _e($def['link_gallery']) ?>";
             var title_manage_gallery_photo = "<?php _e($lang['manage'].' '.$lang['gimage']) ?>";
             var title_manage_gallery_video = "<?php _e($lang['manage'].' '.$lang['gvideo']) ?>";

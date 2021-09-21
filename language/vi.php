@@ -191,6 +191,12 @@
         'banggia' => 'Bảng giá',
         'manage_price' => 'Quản lý bảng giá của ',
         'size_service' => 'Kích thước 720px x 480px',
+        'add_price' => 'Thêm giá dịch vụ',
+        'update_price' => 'Cập nhật giá dịch vụ',
+        'period' => 'Số buổi',
+        'time_period' => 'Thời gian/buổi (Phút)',
+        'price_service' => 'Giá dịch vụ (VNĐ)',
+        'gift' => 'Quà tặng',
         
         // information
         'manage_information' => 'Quản lý thông tin',

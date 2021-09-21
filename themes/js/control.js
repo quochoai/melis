@@ -71,6 +71,16 @@ jQuery(document).ready(function($) {
         });
     });
 
+    // table_price
+    $(document).on('click', '.table_price', function() {
+        let service_id = $(this).attr('rel');
+        let name_service = $(this).attr('data-name');
+        $('#content_admin').empty();
+        $.post(link_table_price, { service_id: service_id }, function(html) {
+            $('#content_admin').html(html);
+            $('title').html(title_manage_table_price + name_service);
+        });
+    });
     // Gallery
     // gallery_photo
     $(document).on('click', '.gallery_photo', function() {

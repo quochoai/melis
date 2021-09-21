@@ -151,6 +151,11 @@
         'link_service_update' => 'views/services/update.php',
         'link_process_add_service' => _process.'services/add.php',
         'link_process_update_service' => _process.'services/update.php',
+        'link_price_service' => 'views/services/list_price.php',
+        'link_price_service_add' => 'views/services/add_price.php',
+        'link_price_service_update' => 'views/services/update_price.php',
+        'link_process_add_price_service' => _process.'services/add_price.php',
+        'link_process_update_price_service' => _process.'services/update_price.php',
 
         
         // information
