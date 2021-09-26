@@ -8,13 +8,10 @@ jQuery(document).ready(function() {
             container.slideUp();
         }
     });
-    $('.help-services').hover(function() {
-        $(this).find('.' + this.id).removeClass('d-none').delay(200);
-        $(this).find('.' + this.id).addClass('transition');
-    }, function() {
-        $(this).find('.' + this.id).addClass('d-none').delay(200);
-        $(this).find('.' + this.id).addClass('transition');
-    });
+    NProgress.set(0.5);
+    setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
+    $("html").niceScroll({styler:"fb",cursorcolor:"#4d3424"});
+    
     $(window).scroll(function() {
         if ($(this).scrollTop() > 100) {
             $('#scroll-top').fadeIn();

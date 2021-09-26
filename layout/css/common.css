@@ -13,6 +13,17 @@ a{transition: all 0.25s ease-in-out !important;-webkit-transition: all 0.25s eas
 .navbar-light .navbar-nav .nav-link {
     color: #573313 !important;
 }
+input, button, a, button:focus, a:focus {outline: none !important;}
+button, a {cursor: pointer;}
+.d-flexprocess {padding-left: 1.1em !important; display: block; position: relative; cursor: pointer; margin-right: 5px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
+.d-flexprocess input {position: absolute; opacity: 0; cursor: pointer; top: 15px; left: 0;}
+.checkmark { position: absolute; top: 15px; left: 0; height: 13px; width: 13px; background-color: #ccc; border-radius: 50%; }
+.d-flexprocess:hover input ~ .checkmark, .d-flexprocess input:checked ~ .checkmark { background-color: #4f3724; }
+.checkmark:after { content: ""; position: absolute; display: none; }
+.d-flexprocess input:checked ~ .checkmark:after { display: block; }
+.d-flexprocess .checkmark:after { top: 2px; left: 2px; width: 0; height: 0; border-radius: 50%; background: white;}
+.content_main {background: #c8ab89;}
+.content_m {width: 86%; margin: 0 auto; background: #e3d1b1;}
 @media all and (min-width: 992px) {
 	/*.navbar .navbar-item .dropdown-menu{ display: none; }
 	.navbar .navbar-item:hover .dropdown-menu{ display: block; }*/
