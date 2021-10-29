@@ -260,13 +260,13 @@ class mysql
 		$query = $this->query($sql);
 		return $query;
 	}
-    function softDelete($table, $where){
+  function softDelete($table, $where){
         $values = " deleted_at = '".date("Y-m-d H:i:s")."'";
         $sql = "update " . $table . " set " . $values.$where;
 		$query = $this->query($sql);
 		return $query;
 	}
-    function softDeleteBy($table, $where, $user_id){
+  function softDeleteBy($table, $where, $user_id){
         $values = " deleted_by = '".$user_id."' ";
         $values .= ", deleted_at = '".date("Y-m-d H:i:s")."' ";
         $sql = "update " . $table . " set " . $values.$where;

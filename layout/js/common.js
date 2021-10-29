@@ -25,4 +25,8 @@ jQuery(document).ready(function() {
         }, 600);
         return false;
     });
+
+    $('.book-calendar-demand').click(function(){
+        $('#modal-book-calendar-demand').modal('show');
+    });
 });

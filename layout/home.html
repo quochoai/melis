@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="plugins/timeline_slider/timeline_slider.css" />
     <link rel="stylesheet" href="plugins/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="plugins/owlcarousel/assets/owl.theme.default.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="../themes/plugins/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="../themes/plugins/toastr/toastr.min.css" />
     <!-- end home -->
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/index.css" />
@@ -191,40 +194,44 @@
                     </svg>
                 </div>
             </div>
+            <!--form tu van-->
             <div class="book-calendar text-center position-absolute p-4" id="book-calendar-top">
-                <form action="">
+                <form action="" method="post">
                     <label for="" class="text-uppercase">Đặt lich trực truyến</label>
                     <div class="d-flex">
                         <label class="p-2 d-flexprocess"> Bác sĩ tư vấn<input type="radio" name="process" value="1" id="bstv"><span class="checkmark"></span></label>
                         <label class="p-2 d-flexprocess">Thực hiện liệu trình<input type="radio" name="process" value="2" id="thlt"><span class="checkmark"></span></label>
                     </div>
                     <div>
-                        <input type="text" class="form-control mb-2 input-book" placeholder="Họ và tên quý khách">
+                        <input type="text" id="bookfullname" name="book[fullname]" class="form-control mb-2 input-book" placeholder="Họ và tên quý khách">
                     </div>
                     <div>
-                        <input type="text" class="form-control mb-2 input-book" placeholder="Số điện thoại">
+                        <input type="text" id="bookphone" name="book[phone]" class="form-control mb-2 input-book" placeholder="Số điện thoại">
                     </div>
                     <div>
-                        <input type="text" class="form-control mb-2 input-book" placeholder="Email (nếu có)">
+                        <input type="text" id="bookemail" name="book[email]" class="form-control mb-2 input-book" placeholder="Email (nếu có)">
                     </div>
                     <div>
-                        <input type="text" class="form-control mb-2 input-book" placeholder="Nhu cầu">
+                        <input type="text" id="demand" name="book[demand]" class="form-control mb-2 input-book" placeholder="Nhu cầu">
                     </div>
                     <div class="d-flex">
                         <div class="row col-12 p-0 m-0 justify-content-between">
                             <div class="col-6 p-0 pr-1">
-                                <input type="datetime-local" class="form-control mb-2 input-book" placeholder="Lịch">
+                                <input type="datetime-local" id="booktime" name="book[time]" class="form-control mb-2 input-book" placeholder="Lịch">
                             </div>
                             <div class="col-6 p-0 pl-1">
-                                <select name="" id="branch" class="form-control mb-2 input-book">
+                                <select name="book[branch]" id="branch" class="form-control mb-2 input-book">
                                     <option value="0">Chi nhánh</option>
+                                    <option value="">SPA TẠI HÀ NỘI - 121 An Dương Vương - Tây Hồ</option>
+                                    <option value="">SPA TẠI TP. HỒ CHÍ MINH - 272 Nguyễn Thiện Thuật - P3 - Q3</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-book text-uppercase">Đặt hẹn</button>
+                    <button type="button" class="btn btn-book text-uppercase" id="bookmeet">Đặt hẹn</button>
                 </form>
             </div>
+            <!-- end form tu van -->
         </div>
         <section class="content_main">
             <div class="content_m">
@@ -762,6 +769,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- 
                                     <div class="position-absolute prev">
                                         <div class="action-slideshow text-center">
                                             <i class="fas fa-chevron-left"></i>
@@ -772,6 +780,7 @@
                                             <i class="fas fa-chevron-right"></i>
                                         </div>
                                     </div>
+                                    -->
                                 </div>
                             </div>
                         </div>
@@ -1102,7 +1111,7 @@
                     Hiệu quả của dịch vụ phụ thuộc vào cơ địa của mỗi người. Gửi thông tin để được tư vấn miễn phí TẠI ĐÂY!
                   </span>
                                         <span>
-                    <a style="color: rgb(196, 182, 158);" class="nav-link" href="#book-calendar-top"><i class="far fa-calendar-alt"></i>&nbsp;ĐẶT LỊCH TƯ VẤN</a>
+                    <a style="color: rgb(196, 182, 158);" class="nav-link book-calendar-demand"><i class="far fa-calendar-alt"></i>&nbsp;ĐẶT LỊCH TƯ VẤN</a>
                   </span>
                                     </div>
                                 </div>
@@ -1277,6 +1286,54 @@
                 </div>
             </div>
         </div>
+        <!-- form dat lich tu van-->
+        <div class="modal fade" id="modal-book-calendar-demand">
+            <div class="modal-dialog modal-small">
+                <div class="modal-content">
+                    <div class="modal-header brown_bg">
+                        <h5 class="modal-title text-uppercase text-white">Đặt lịch tư vấn</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="text-white">&times;</span>
+                        </button>
+                    </div>
+                    <form action="" method="post" class=" p-4">
+                        <div class="d-flex">
+                            <label class="p-2 d-flexprocess"> Bác sĩ tư vấn<input type="radio" name="process" value="1" id="bstvm"><span class="checkmark"></span></label>
+                            <label class="p-2 d-flexprocess">Thực hiện liệu trình<input type="radio" name="process" value="2" id="thltm"><span class="checkmark"></span></label>
+                        </div>
+                        <div>
+                            <input type="text" id="bookfullnamem" name="book[fullname]" class="form-control mb-2 input-book" placeholder="Họ và tên quý khách">
+                        </div>
+                        <div>
+                            <input type="text" id="bookphonem" name="book[phone]" class="form-control mb-2 input-book" placeholder="Số điện thoại">
+                        </div>
+                        <div>
+                            <input type="text" id="bookemailm" name="book[email]" class="form-control mb-2 input-book" placeholder="Email (nếu có)">
+                        </div>
+                        <div>
+                            <input type="text" id="demandm" name="book[demand]" class="form-control mb-2 input-book" placeholder="Nhu cầu">
+                        </div>
+                        <div class="d-flex">
+                            <div class="row col-12 p-0 m-0 justify-content-between">
+                                <div class="col-6 p-0 pr-1">
+                                    <input type="datetime-local" id="booktimem" name="book[time]" class="form-control mb-2 input-book" placeholder="Lịch">
+                                </div>
+                                <div class="col-6 p-0 pl-1">
+                                    <select name="book[branch]" id="branchm" class="form-control mb-2 input-book">
+                                        <option value="0">Chi nhánh</option>
+                                        <option value="SPA TẠI HÀ NỘI - 121 An Dương Vương - Tây Hồ">SPA TẠI HÀ NỘI - 121 An Dương Vương - Tây Hồ</option>
+                                        <option value="SPA TẠI TP. HỒ CHÍ MINH - 272 Nguyễn Thiện Thuật - P3 - Q3">SPA TẠI TP. HỒ CHÍ MINH - 272 Nguyễn Thiện Thuật - P3 - Q3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-book text-uppercase" id="bookmeetm">Đặt hẹn</button>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
     </main>
     <script type="text/javascript" src="fonts/fontawesome-5.15.1/js/all.min.js"></script>
     <script type="text/javascript" src="jQuery/jquery-3.5.1.min.js"></script>
@@ -1290,6 +1347,8 @@
     <script type="text/javascript" src="plugins/jssor_slider/jssor.script.js"></script>
     <script type="text/javascript" src="plugins/timeline_slider/timeline_slider.js"></script>
     <script type="text/javascript" src="plugins/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../themes/plugins/toastr/toastr.min.js"></script>
+    <script src="../themes/plugins/jquery.form/jquery.form.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <!-- end home -->
     <script type="text/javascript" src="js/common.js"></script>

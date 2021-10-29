@@ -1,8 +1,9 @@
 $(document).ready(function(){
   $("#owl-carousel").owlCarousel({
-    loop:true,
-    margin:16,
-    nav:true,
+    loop: true,
+    margin: 16,
+    nav: true,
+    dots: false,
     responsive:{
         0:{
             items:1
@@ -16,9 +17,9 @@ $(document).ready(function(){
     }
   });
   $("#owl-carousel-2").owlCarousel({
-    loop:true,
-    margin:16,
-    nav:false,
+    loop: true,
+    margin: 16,
+    nav: false,
     dots: true,
     responsive:{
         0:{
@@ -31,5 +32,11 @@ $(document).ready(function(){
             items:2
         }
     }
+  });
+
+  // #bookmeet click
+  $('#bookmeet').click(function(){
+    var booktime = $('#booktime').val();
+    // 2021-10-28T11:00
   });
 });

@@ -24,6 +24,8 @@ button, a {cursor: pointer;}
 .d-flexprocess .checkmark:after { top: 2px; left: 2px; width: 0; height: 0; border-radius: 50%; background: white;}
 .content_main {background: #c8ab89;}
 .content_m {width: 86%; margin: 0 auto; background: #e3d1b1;}
+.brown_bg {background: #4f3724;}
+.color_white {color: white}
 @media all and (min-width: 992px) {
 	/*.navbar .navbar-item .dropdown-menu{ display: none; }
 	.navbar .navbar-item:hover .dropdown-menu{ display: block; }*/
