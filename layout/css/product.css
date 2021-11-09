@@ -1,0 +1,72 @@
+.bread {list-style-type: none; padding-right: 10px;}
+.bread li {font-size: 0.8em; font-weight: 500; color: #4f3724; padding-right: 5px; display: inline-block;}
+.bread li a {color: #4f3724}
+.sidebar {list-style-type: none;}
+.sidebar li {background: #4f3724; color: #caad8c; font-size: 0.95em; display: block; padding: 0 0; border-bottom: 1px solid rgba(227, 209, 177, 0.2); text-transform: capitalize; cursor: pointer; line-height: 2.6em; font-weight: 500;}
+.sidebar li p {padding: 0 9px; margin-bottom: 0;}
+.sidebar li ul {display: none; list-style-type: none;}
+.sidebar li ul.block {display: block; list-style-type: none;}
+.sidebar li ul li {padding: 7px 17px 7px 7px; color: #4f3724; font-size: 0.9em; display: block; padding: 7px 9px 7px 20px; border-bottom: 1px solid rgba(87, 51, 19, 0.1); background: #e3d1b1; line-height: 1.3em;}
+.sidebar li ul li a {color:#4f3724;}
+.sidebar li ul li a:hover, .sidebar li ul li a.active {color:#10542b;}
+.icon_sidebar {width: 20%; margin-left: 10%; text-align: center;}
+.icon_sidebar img {width: 80%;}
+.eachsidebar {padding: 0 8px 0 9px; margin: 15px 9px 0 57px; text-transform: uppercase; border-left: 1px solid #4f3724; font-size: 1em; font-weight: 500; line-height: 1.3em;}
+.eachsidebar a {color: #4f3724;}
+.eachsidebar a:hover {color: #10542b}
+.eachsidebar::before {position: absolute; left: 25px}
+.eachsidebar.cskh::before {content: url(../img/sidebar/camnhankhachhang.jpg);}
+.eachsidebar.rvnnt::before {content: url(../img/sidebar/reviewnguoinoitieng.jpg);}
+.eachsidebar.km {height: 33px}
+.eachsidebar.km::before {content: url(../img/sidebar/khuyenmai.jpg);}
+.eachsidebar.tvsm {height: 40px}
+.eachsidebar.tvsm::before {content: url(../img/sidebar/tuvansuame.jpg);}
+.eachsidebar.tvad {height: 40px}
+.eachsidebar.tvad::before {content: url(../img/sidebar/tuvanandam.jpg);}
+.eachsidebar.tvcsb {height: 83px;}
+.eachsidebar.tvcsb::before {content: url(../img/sidebar/tuvanchamsocbau.jpg);}
+.eachsidebar.tvcsss {height: 48px}
+.eachsidebar.tvcsss::before {content: url(../img/sidebar/tuvanchamsocsausinh.jpg);}
+.eachsidebar.tvgbss::before {content: url(../img/sidebar/tuvangiambeosausinh.jpg);}
+.eachsidebar.tvdd::before {content: url(../img/sidebar/tuvandinhduong.jpg);}
+.eachsidebar.vtmbb {height: 68px}
+.eachsidebar.vtmbb::before {content: url(../img/sidebar/vitaminbabau.jpg);}
+.eachsidebar.tvcsdm::before {content: url(../img/sidebar/tuvanchamsocdamat.jpg);}
+.eachsidebar.tvcsdtt::before {content: url(../img/sidebar/tuvanchamsocdatoanthan.jpg);}
+
+.diverEachsidebar {margin: 15px 9px 0 9px; height: 1px; border-bottom: 1px solid #4f3724;}
+.title {text-transform: uppercase; padding-bottom: 10px; font-size: 1.3em; color: #4f3724; font-weight: 600;}
+.img_detail {width: 98%;}
+#accordion .card {background: #e3d1b1; border: none}
+#accordion .card-header {background: #c8ab89; padding: 0 1em 0 0; margin-bottom: 2px; border-radius: 5px;}
+#accordion .card-header .btn-link {color: #000; text-decoration: none; line-height: 2.2em; font-size: 0.85em; font-weight: 450;}
+#accordion .card-header .btn {padding: 0; border-bottom: 0;}
+#accordion .card-header .arrow-btn {background: #4f3724; color: #c8ab89; width: 2.2em; line-height: 2.2em; display: inline-block; font-size: 1.1em; margin-right: 10px; border-top-left-radius: 5px; border-bottom-left-radius: 5px;}
+#accordion .collapse {background: #e3d1b1;}
+[aria-expanded="true"] .fa-chevron-right, 
+[aria-expanded="false"] .fa-chevron-down {
+    display:none;
+}
+#collapseSeven .card-body, #collapseTablePrice .card-body {padding: 0}
+.form-send-question {width: 100%; border: 1px solid #4f3724; border-radius: 7px; margin: 10px 0 5px 0;}
+.header-form-send-question {background: #4f3724; color: #c8ab89; font-size: 1em; text-transform: uppercase; font-weight: 500;}
+.ifsq {background: transparent;border: 1px solid #4f3724; outline: none;}
+.ifsq:focus {border: 1px solid #4f3724; outline: none; font-size: 0.9em}
+.send-question {background: #4f3724; border: none; padding: 10px; color: #c8ab89; font-size: 1em; text-transform: uppercase; outline: none; border-radius: 5px;}
+.send-question:hover, .send-question:focus {background: #10542b; border: none; padding: 10px; color: #c8ab89; font-size: 1em; text-transform: uppercase; border-radius: 5px;}
+.diverFormSendQuestion {margin: 20px 0 20px 0; border-bottom: 1px dotted #4f3724;}
+.tags {padding:10px 0; color:#4f3724; font-size: 0.8em;}
+.relate_news_title {text-decoration: underline; color: #4f3724; font-size: 1.5em; font-weight: 500; margin: 10px 0 20px 0;}
+.eachnewsrelate {padding: 4px 0;}
+.eachnewsrelate a{color: #4f3724; font-size: 0.85em; font-weight: 500;}
+.eachnewsrelate a:hover, .eachnewsrelate a:focus{color: #10542b; font-size: 0.85em;}
+.page-item {background: transparent; border-color: #4f3724;}
+.page-item.disabled .page-link, .page-item.disabled:hover .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: auto;
+  background-color: transparent;
+  border-color: #4f3724;
+}
+.page-link {color: #4f3724; background: transparent; border-color: #4f3724;}
+.page-item:hover .page-link, .page-item.active .page-link {background: #10542b; color: #c8ab89; outline: none; border-color: #10542b;}

@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300&subset=latin,vietnamese);*/
-*{margin:0; padding:0;}
+*{margin:0; padding:0; transition: all .1s ease;}
 ol, ul, li {list-style:none;}
 blockquote, q {	quotes: none;}
 table, table td {padding:0;border:none;border-collapse:collapse;}
@@ -24,8 +24,33 @@ button, a {cursor: pointer;}
 .d-flexprocess .checkmark:after { top: 2px; left: 2px; width: 0; height: 0; border-radius: 50%; background: white;}
 .content_main {background: #c8ab89;}
 .content_m {width: 86%; margin: 0 auto; background: #e3d1b1;}
+.subcontent {margin-left: 12%; margin-right: 12%;}
+.bglime {background: #e3d1b1;}
 .brown_bg {background: #4f3724;}
 .color_white {color: white}
+.color_light_yellow {color: #d4b284}
+.color_light_white {color: #eeddaf}
+.color_brown {color: #4f3724}
+.nav-bg-custorm{background-color:#c8ab89!important;}
+nav .navbar-item:hover, nav .navbar-item.active{background:#977c60!important;}
+nav li a:hover{border:0.1px solid #583f2d!important;}
+.bg-transparent{background:transparent!important;}
+.infomation{padding:0 7%;background-color:#4d3424!important;background-image:url(../img/flower-left.png),url(../img/flower-right.png);background-position:top left,bottom right;background-repeat:no-repeat,no-repeat;margin:auto;}
+.search::-webkit-input-placeholder{font-style:italic;color:#ccb08d;}
+.search::-moz-placeholder{font-style:italic;color:#ccb08d;}
+.search:-ms-input-placeholder{font-style:italic;color:#ccb08d;}
+.search:-moz-placeholder{font-style:italic;color:#ccb08d;}
+input.search,input.search:focus{padding-left:30px!important;border:1px solid #ccb08d;font-size:13px;}
+.image-left{top:0;left:0;}
+.image-right{bottom:0;right:0;}
+.icon-phone{transform:rotate(-45deg);width:30px;height:30px;padding:0;border-radius:50%;border:1px solid #ccb08d;}
+.icon-search{left:5px;top:50%;transform:translate(0,-50%);font-size:1em;}
+.border-radius-50{border-radius:50%!important;}
+.text-brown{color:#ccb08d!important;}
+.bg-brown{background:#ccb08d!important;}
+.w-70 {width: 70% !important}
+.w-50 {width: 50% !important}
+.fixed_navbar {position: fixed !important; top: 0; left: 0; z-index: 99999; width: 100%; transition: all 0.25s ease-in-out !important;-webkit-transition: all 0.25s ease-in-out !important;-moz-transition: all 0.25s ease-in-out !important;}
 @media all and (min-width: 992px) {
 	/*.navbar .navbar-item .dropdown-menu{ display: none; }
 	.navbar .navbar-item:hover .dropdown-menu{ display: block; }*/

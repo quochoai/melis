@@ -1,21 +1,4 @@
 /* Index.html */
-.nav-bg-custorm{background-color:#c8ab89!important;}
-nav .navbar-item:hover{background:#977c60!important;}
-nav li a:hover{border:0.1px solid #583f2d!important;}
-.bg-transparent{background:transparent!important;}
-.infomation{padding:0 7%;background-color:#4d3424!important;background-image:url(../img/flower-left.png),url(../img/flower-right.png);background-position:top left,bottom right;background-repeat:no-repeat,no-repeat;margin:auto;}
-.search::-webkit-input-placeholder{font-style:italic;color:#ccb08d;}
-.search::-moz-placeholder{font-style:italic;color:#ccb08d;}
-.search:-ms-input-placeholder{font-style:italic;color:#ccb08d;}
-.search:-moz-placeholder{font-style:italic;color:#ccb08d;}
-input.search,input.search:focus{padding-left:30px!important;border:1px solid #ccb08d;font-size:13px;}
-.image-left{top:0;left:0;}
-.image-right{bottom:0;right:0;}
-.icon-phone{transform:rotate(-45deg);width:30px;height:30px;padding:0;border-radius:50%;border:1px solid #ccb08d;}
-.icon-search{left:5px;top:50%;transform:translate(0,-50%);font-size:1em;}
-.border-radius-50{border-radius:50%!important;}
-.text-brown{color:#ccb08d!important;}
-.bg-brown{background:#ccb08d!important;}
 .submenu-queen-nature p{line-height:1.5em;color:#ccb08d;}
 .submenu-queen-nature .title p{font-weight:500;margin-bottom:0.5rem;}
 .submenu-queen-nature .sub-nav-link{padding:4px 0;color:#ccb08d;font-size:0.7em;font-weight:400;display:block;margin:0 5px 3px 0;overflow:hidden;}

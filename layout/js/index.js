@@ -33,10 +33,37 @@ $(document).ready(function(){
         }
     }
   });
-
+  $("#owl-carousel-3").owlCarousel({
+    loop: true,
+    margin: 16,
+    nav: false,
+    dots: true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:1
+        },
+        1000:{
+            items:1
+        }
+    }
+  });
   // #bookmeet click
   $('#bookmeet').click(function(){
     var booktime = $('#booktime').val();
     // 2021-10-28T11:00
   });
 });
+
+flag = false;
+$(window).scroll(function () {
+  if ($(this).scrollTop() > 300) {
+      $('.control_navbar').addClass("fixed_navbar");
+  } else {
+      $('.control_navbar').removeClass("fixed_navbar");
+      flag = false;
+  }
+});
+flag = false;
