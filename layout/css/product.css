@@ -35,7 +35,7 @@
 .eachsidebar.tvcsdtt::before {content: url(../img/sidebar/tuvanchamsocdatoanthan.jpg);}
 
 .diverEachsidebar {margin: 15px 9px 0 9px; height: 1px; border-bottom: 1px solid #4f3724;}
-.title {text-transform: uppercase; padding-bottom: 10px; font-size: 1.3em; color: #4f3724; font-weight: 600;}
+.title_head {text-transform: uppercase; padding-bottom: 10px; font-size: 1.3em; color: #4f3724; font-weight: 600; line-height: 1.5;}
 .img_detail {width: 98%;}
 #accordion .card {background: #e3d1b1; border: none}
 #accordion .card-header {background: #c8ab89; padding: 0 1em 0 0; margin-bottom: 2px; border-radius: 5px;}
@@ -70,3 +70,7 @@
 }
 .page-link {color: #4f3724; background: transparent; border-color: #4f3724;}
 .page-item:hover .page-link, .page-item.active .page-link {background: #10542b; color: #c8ab89; outline: none; border-color: #10542b;}
+.title_news {font-size: 1.2em; font-weight: 600;}
+.title_news2 {font-size: 1.05em; line-height: 1.4; font-weight: 500;}
+.title_news3 {font-size: 1em; line-height: 1.4; font-weight: 500;}
+.imgnews {height: 150px; object-fit: cover;}

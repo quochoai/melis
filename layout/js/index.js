@@ -61,8 +61,12 @@ flag = false;
 $(window).scroll(function () {
   if ($(this).scrollTop() > 300) {
       $('.control_navbar').addClass("fixed_navbar");
+      $('li.lg img.mom').attr('src', 'img/melismom_m.png');
+      $('li.lg img.beaute').attr('src', 'img/melisbeaute_m.png');
   } else {
       $('.control_navbar').removeClass("fixed_navbar");
+      $('li.lg img.mom').attr('src', 'img/melismom.png');
+      $('li.lg img.beaute').attr('src', 'img/melisbeaute.png');
       flag = false;
   }
 });

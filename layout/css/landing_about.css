@@ -22,8 +22,8 @@ ul.li li {list-style-type: disc;margin-left: 1em;font-size: 1em;}
 .title_popup {top: 25px; position: absolute;text-transform: uppercase;}
 
 .navigantion_menu{background:#503824;}
-.navigantion_menu .svg{font-size:1.5em;width:40px;height:40px;text-align:center;}
-.navigantion_menu .navi{height:40px;right:-98px;z-index:9999999999;-moz-transition:all 0.3s linear;-webkit-transition:all 0.5s linear;transition:all 0.3s linear;}
+.navigantion_menu .svg{font-size:1.5em;width:40px;height:40px;text-align:center; line-height: 40px;}
+.navigantion_menu .navi{height:40px;right: -98px;z-index:9999999999;-moz-transition:all 0.3s linear;-webkit-transition:all 0.5s linear;transition:all 0.3s linear;} /* right:-98px; */
 .navigantion_menu .navi:hover{height:40px;right:0;-moz-transition:all 0.3s linear;-webkit-transition:all 0.5s linear;transition:all 0.3s linear;}
 .text-navi{width:95px;}
 .navigantion_menu div{height:40px;background:#765c46;cursor:pointer;}

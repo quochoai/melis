@@ -54,22 +54,23 @@ $(document).ready(function(){
     $('html, body').animate({scrollTop: $("#viewallvideos").offset().top}, 2000);
   });
 });
-
+// tooltip
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+})
 // scroll menu
 $(document).ready(function(){
   //$('a[href*=#]').bind('click', function(e) {
     $('.navbar-item.page_link a').bind('click', function(e){
       e.preventDefault(); // prevent hard jump, the default behavior
-
-    var target = $(this).attr("href"); // Set the target as variable
-    // perform animated scrolling by getting top-position of target-element and set it as scroll target
-    //var desiredHeight = ($(window).height() - 116);
-    $('html, body').stop().animate({
-        scrollTop: $(target).offset().top// - ($(window).height() - 116)
-    }, 600, function() {
-        location.hash = target; //attach the hash (#jumptarget) to the pageurl
-    });
-    return false;
+      var target = $(this).attr("href"); // Set the target as variable
+      // perform animated scrolling by getting top-position of target-element and set it as scroll target
+      $('html, body').stop().animate({
+          scrollTop: $(target).offset().top// - ($(window).height() - 116)
+      }, 600, function() {
+          location.hash = target; //attach the hash (#jumptarget) to the pageurl
+      });
+      return false;
   });
 });
 
