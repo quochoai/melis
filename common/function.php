@@ -48,212 +48,44 @@ function checkemail_exist($email)
 	else 
 		return false;
 }
-/*function sendmail($from,$to,$subject,$body)
-{
-	//return mail_smtp($from,$to,$subject,$body,1);
-	
-		$mailheaders = "MIME-Version: 1.0\r\n";
-		$mailheaders .= "Content-type: text/html; charset=utf-8\r\n";
-		$mailheaders .= "From: <".$from."> \n";
-		$mailheaders .= "Reply-To: ".$from;
-		return mail($to, $subject, $body, $mailheaders);
-	
-}*/
-
-function mail_smtp($from,$to,$subject,$body,$html=0)
-{
-	require_once("smtp.php");
-
-	/* Uncomment when using SASL authentication mechanisms */
-	/*
-	require("sasl.php");
-	*/
-
-	//$from=""; /* Change this to your address like "me@mydomain.com"; */
-	//$to="";                        /* Change this to your test recipient address */
-
-	$smtp=new smtp_class;
-
-	$smtp->host_name="webhosting-vn.com";       /* Change this variable to the address of the SMTP server to relay, like "smtp.myisp.com" */
-	$smtp->localhost="localhost";       /* Your computer address */
-	$smtp->direct_delivery=0;           /* Set to 1 to deliver directly to the recepient SMTP server */
-	$smtp->timeout=10;                  /* Set to the number of seconds wait for a successful connection to the SMTP server */
-	$smtp->data_timeout=0;              /* Set to the number seconds wait for sending or retrieving data from the SMTP server.
-	                                       Set to 0 to use the same defined in the timeout variable */
-	$smtp->debug=1;                     /* Set to 1 to output the communication with the SMTP server */
-	$smtp->html_debug=1;                /* Set to 1 to format the debug output as HTML */
-	$smtp->pop3_auth_host="webhosting-vn.com";           /* Set to the POP3 authentication host if your SMTP server requires prior POP3 authentication */
-	$smtp->user="client@webhosting-vn.com";                     /* Set to the user name if the server requires authetication */
-	$smtp->realm="";                    /* Set to the authetication realm, usually the authentication user e-mail domain */
-	$smtp->password="degoimail";                 /* Set to the authetication password */
-	$smtp->workstation="";              /* Workstation name for NTLM authentication */
-	$smtp->authentication_mechanism=""; /* Specify a SASL authentication method like LOGIN, PLAIN, CRAM-MD5, NTLM, etc..
-	                                       Leave it empty to make the class negotiate if necessary */
-
-	/*
-	 * If you need to use the direct delivery mode and this is running under
-	 * Windows or any other platform that does not have enabled the MX
-	 * resolution function GetMXRR() , you need to include code that emulates
-	 * that function so the class knows which SMTP server it should connect
-	 * to deliver the message directly to the recipient SMTP server.
-	 */
-	if($smtp->direct_delivery)
-	{
-		if(!function_exists("GetMXRR"))
-		{
-			/*
-			* If possible specify in this array the address of at least on local
-			* DNS that may be queried from your network.
-			*/
-			$_NAMESERVERS=array();
-			include("getmxrr.php");
-		}
-		/*
-		* If GetMXRR function is available but it is not functional, to use
-		* the direct delivery mode, you may use a replacement function.
-		*/
-		/*
-		else
-		{
-			$_NAMESERVERS=array();
-			if(count($_NAMESERVERS)==0)
-				Unset($_NAMESERVERS);
-			include("rrcompat.php");
-			$smtp->getmxrr="_getmxrr";
-		}
-		*/
-	}
-
-	$header="";
-	if ($html==0)
-		$header=array(
-			"From: $from",
-			"To: $to",
-			"Subject: $subject",
-			"Date: ".strftime("%a, %d %b %Y %H:%M:%S %Z"));
-	else
-		$header=array(
-			"MIME-Version: 1.0",
-			"Content-type: text/html; charset=iso-8859-1",
-			"From: $from",
-			"To: $to",
-			"Subject: $subject",
-			"Date: ".strftime("%a, %d %b %Y %H:%M:%S %Z"));
-	$ret=$smtp->SendMessage($from,array($to),$header,$body);
-	return $ret;
-}
-
-function insert($table,$fields_arr) {
-  global $con;
-  if (!$con) { return false; }
-  $strfields="";
-  $strvalues="";
-  list($key, $val) = each($fields_arr);
-  if(is_string($key))
-	{
-	$strfields = " ($key";
-	$strvalues= $val;
-	while(list($key, $val) = each($fields_arr))
-		{
-		$strfields.= ", $key";
-		$strvalues.= ",". $val;
-		}
-	$strfields.=")";
-	}
-  else
-	{
-	$strvalues=$fields_arr[0];
-    for($i=1;$i<count($fields_arr);$i++)
-		{
-	      $strvalues .= ", $fields_arr[$i]";
-		}
-  	}
-
-  $query = "INSERT INTO $table $strfields VALUES ($strvalues)";
-  //echo $query;exit(0);
-  return mysql_query($query, $con);
-}
-
-function update($table,$fields_arr,$where=" 1=1 ",$ischangepassword = 0) {
-  global $con;
-  if (!$con) { return false; }
-  list($key, $val) = each($fields_arr);
-  $strset=" $key = $val";
-  while(list($key, $val) = each($fields_arr)){
-    $strset .= ", $key = $val";
-  }
-	//	echo $table."<br>";
-	//	echo $strset."<br>";
-	//	echo $where."<br>";exit();
-  $query = "UPDATE $table SET
-            $strset
-           WHERE $where"; 
-  //echo $query."<br>";exit();
-  $result = mysql_query($query, $con);
-  if (!$result) { return false; }
-  else 
-  	if($ischangepassword ==1 && mysql_affected_rows() == 0) return false;
-	 else return true;
-}
-
-function delete_rows($table,$fields_arr,$where_ext="") {
-  global $con;
-  if (!$con) { return false; }
-  if(count($fields_arr)>0){
-     list($key, $val) = each($fields_arr);
-     $strwhere=" $key = $val";
-     while(list($key, $val) = each($fields_arr)){
-       $strwhere .= "OR $key = $val";
-     }
-  }
-
-  $query = "DELETE FROM $table
-            WHERE $strwhere $where_ext";      
-	#echo $query;#exit;
-  $result = mysql_query($query, $con);
-  if (!$result) {
-    return false;
-  }
-  return true;
-}
 
 function query_get($query) {
   global $con;
-  if (!$con) { return false; }
-  $result = mysql_query($query, $con);
-  if ($result) {
-    while ($rows = mysql_fetch_array($result)) {
-      $return[] = $rows;
-    }
-    return $return;
-  } else {
-    return false;
+	if (!$con)
+		return false;
+	else {
+		$result = mysqli_query($query, $con);
+		if ($result) {
+				while ($rows = mysqli_fetch_array($result)) {
+						$return[] = $rows;
+				}
+				return $return;
+		} else {
+				return false;
+		}
   }
 }
 
-function query_get_list($query, $begin, $limit,$where_ext="",$orderby="") {
+function query_get_list($query, $begin, $limit, $where_ext="", $orderby="") {
   global $con;
-  if (!$con) { return false; }
-  $return=array();
+  if (!$con)
+		return false;
+  $return = array();
   $query1 = $query;
-  if($where_ext<>"")
-	$query1 .= " WHERE " .$where_ext;
-  
-  $query1.= $orderby;
-
+  if($where_ext != "")
+		$query1 .= " WHERE " .$where_ext;
+  $query1 .= $orderby;
   if($begin >=0 && $limit > 0)
 	 $query1 .=" LIMIT $begin, $limit ";
-echo $quety1;
-  $result = mysql_query($query1, $con);
+
+  $result = mysqli_query($query1, $con);
   if ($result) {
-    while ($rows = mysql_fetch_array($result)) {
+    while ($rows = mysqli_fetch_array($result)) {
       $return[] = $rows;
     }
-
     return $return;
-  } else {
+  } else
     return false;
-  }
 }
 
 // chuyen chuoi ki tu co dau sang chuoi ki tu khong dau
@@ -275,35 +107,35 @@ function change($text) {
     $uni[11] = array("Đ");
     $uni[12] = array("ý","ỳ","ỵ","ỷ","ỹ");
     $uni[13] = array("Ý","Ỳ","Ỵ","Ỷ","Ỹ");
-	$uni[14] = array("%");
-	$uni[15] = array("+");
-	$uni[16] = array(",");
-	$uni[17] = array(";");
-	$uni[18] = array("'");
+		$uni[14] = array("%");
+		$uni[15] = array("+");
+		$uni[16] = array(",");
+		$uni[17] = array(";");
+		$uni[18] = array("'");
    	$uni[19] = array('"');
-	$uni[20] = array("!");
-	$uni[21] = array("@");
-	$uni[22] = array("#");
-	$uni[23] = array("$");
-	$uni[24] = array("^");
-	$uni[25] = array("&");
-	$uni[26] = array("*");
-	$uni[27] = array("(");
-	$uni[28] = array(")");
-	$uni[29] = array("_");
-	$uni[30] = array("-");
-	$uni[31] = array("=");
-	$uni[32] = array("|");
-	$uni[33] = array("[");
-	$uni[34] = array("]");
-	$uni[35] = array("{");
-	$uni[36] = array("}");
-	$uni[37] = array(":");
-	$uni[38] = array("<");
-	$uni[39] = array(">");
-	$uni[40] = array(".");
-	$uni[41] = array("?");
-	$uni[42] = array("  ");
+		$uni[20] = array("!");
+		$uni[21] = array("@");
+		$uni[22] = array("#");
+		$uni[23] = array("$");
+		$uni[24] = array("^");
+		$uni[25] = array("&");
+		$uni[26] = array("*");
+		$uni[27] = array("(");
+		$uni[28] = array(")");
+		$uni[29] = array("_");
+		$uni[30] = array("-");
+		$uni[31] = array("=");
+		$uni[32] = array("|");
+		$uni[33] = array("[");
+		$uni[34] = array("]");
+		$uni[35] = array("{");
+		$uni[36] = array("}");
+		$uni[37] = array(":");
+		$uni[38] = array("<");
+		$uni[39] = array(">");
+		$uni[40] = array(".");
+		$uni[41] = array("?");
+		$uni[42] = array("  ");
     for($i=0; $i<=43; $i++) {
         $text = str_replace($uni[$i],$chars[$i],$text);
     }
@@ -374,32 +206,32 @@ function change2($text) {
     $uni[11] = array("Đ");
     $uni[12] = array("ý","ỳ","ỵ","ỷ","ỹ");
     $uni[13] = array("Ý","Ỳ","Ỵ","Ỷ","Ỹ");
-	$uni[14] = array("%");
-	$uni[15] = array("+");
-	$uni[16] = array(",");
-	$uni[17] = array(";");
-	$uni[18] = array("'");
+		$uni[14] = array("%");
+		$uni[15] = array("+");
+		$uni[16] = array(",");
+		$uni[17] = array(";");
+		$uni[18] = array("'");
    	$uni[19] = array('"');
-	$uni[20] = array("!");
-	$uni[21] = array("@");
-	$uni[22] = array("#");
-	$uni[23] = array("$");
-	$uni[24] = array("^");
-	$uni[25] = array("&");
-	$uni[26] = array("*");
-	$uni[27] = array("(");
-	$uni[28] = array(")");
-	$uni[29] = array("=");
-	$uni[30] = array("|");
-	$uni[31] = array("[");
-	$uni[32] = array("]");
-	$uni[33] = array("{");
-	$uni[34] = array("}");
-	$uni[35] = array(":");
-	$uni[36] = array("<");
-	$uni[37] = array(">");
-	$uni[38] = array("?");
-	$uni[39] = array("  ");
+		$uni[20] = array("!");
+		$uni[21] = array("@");
+		$uni[22] = array("#");
+		$uni[23] = array("$");
+		$uni[24] = array("^");
+		$uni[25] = array("&");
+		$uni[26] = array("*");
+		$uni[27] = array("(");
+		$uni[28] = array(")");
+		$uni[29] = array("=");
+		$uni[30] = array("|");
+		$uni[31] = array("[");
+		$uni[32] = array("]");
+		$uni[33] = array("{");
+		$uni[34] = array("}");
+		$uni[35] = array(":");
+		$uni[36] = array("<");
+		$uni[37] = array(">");
+		$uni[38] = array("?");
+		$uni[39] = array("  ");
     for($i=0; $i<=40; $i++) {
         $text = str_replace($uni[$i],$chars[$i],$text);
     }

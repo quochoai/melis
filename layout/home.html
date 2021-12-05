@@ -76,7 +76,7 @@
             </div>
         </div>
         <!-- navbar -->
-        <div class="control_navbar">
+        <div class="control_navbar fixed_navbar">
             <div class="navbar p-0">
                 <nav class="navbar navbar-light navbar-expand-lg nav-bg-custorm w-100">
                     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -106,12 +106,12 @@
                                                     <div class="title">
                                                         <p>CHO MẸ BẦU</p>
                                                     </div>
-                                                    <div class="menu">
-                                                        <a class="sub-nav-link active" href="#1"><i class="fas fa-chevron-right small"></i> Trắng Hồng Da Mặt, Ngừa & Trị Mụn Nám nams nasm</a>
-                                                        <a class="sub-nav-link" href="#2"><i class="fas fa-chevron-right small"></i> Ngũ Cốc Bầu và Vitamin Bà Bầu</a>
-                                                        <a class="sub-nav-link" href="#3"><i class="fas fa-chevron-right small"></i> Hạt Siêu Dinh Dưỡng</a>
-                                                        <a class="sub-nav-link" href="#4"><i class="fas fa-chevron-right small"></i> Ngừa và Trị Thâm Rạn Mẹ Bầu</a>
-                                                    </div>
+                                                    <ul class="menu">
+                                                        <li><a class="sub-nav-link active" href="#1"><i class="fas fa-chevron-right small"></i> Trắng Hồng Da Mặt, Ngừa & Trị Mụn Nám nams nasm</a></li>
+                                                        <li><a class="sub-nav-link" href="#2"><i class="fas fa-chevron-right small"></i> Ngũ Cốc Bầu và Vitamin Bà Bầu</a></li>
+                                                        <li><a class="sub-nav-link" href="#3"><i class="fas fa-chevron-right small"></i> Hạt Siêu Dinh Dưỡng</a></li>
+                                                        <li><a class="sub-nav-link" href="#4"><i class="fas fa-chevron-right small"></i> Ngừa và Trị Thâm Rạn Mẹ Bầu</a></li>
+                                                    </ul>
                                                 </div>
                                                 <div class="postpartum-mother col-lg-6 col-xl-3 pr-0">
                                                     <div class="title">
@@ -1379,7 +1379,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-book text-uppercase" id="bookmeetm">Đặt hẹn</button>
+                        <button type="button" class="btn btn-book text-uppercase" id="bookmeetm">Đặt hẹn</button>
                     </form>
                 </div>
                 <!-- /.modal-content -->
@@ -1403,5 +1403,9 @@
     <script src="../themes/plugins/jquery.form/jquery.form.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <!-- end home -->
+    <script type="text/javascript">
+        var fullname_error = "Quý khách chưa điền họ tên. Vui lòng điền vào";
+        var phone_error = "Quý khách chưa điền số điện thoại. Vui lòng điền vào.";
+    </script>
     <script type="text/javascript" src="js/common.js"></script>
 </body>

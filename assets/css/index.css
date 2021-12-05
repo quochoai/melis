@@ -1,0 +1,100 @@
+/* Index.html */
+.submenu-queen-nature p{line-height:1.5em;color:#ccb08d;}
+.submenu-queen-nature .title p{font-weight:500;margin-bottom:0.5rem;}
+.submenu-queen-nature .sub-nav-link{padding:4px 0;color:#ccb08d;font-size:0.7em;font-weight:400;display:block;margin:0 5px 3px 0;overflow:hidden;}
+.submenu-queen-nature .sub-nav-link:hover,.submenu-queen-nature .sub-nav-link.active{border:0 !important;color:#ded8d2 !important;}
+.bg-brown-opacity-50{background:rgba(87,51,19,0.7);}
+.submenu.dropdown-menu{background:none;}
+.submenu .menu a{cursor:pointer;}
+.navbar-expand-lg .navbar-nav .dropdown-menu{width:76%;top:107%;left:12%;}
+.dropdown-toggle::after{content:none;}
+.navbar-light .navbar-nav .nav-link:focus,.navbar-light .navbar-nav .nav-link:hover{border:none!important;}
+.menu a{color:#c6aa89!important;}
+#content{background:url( '../img/bg-web.png ') no-repeat center;background-size:cover;min-height:100vh;}
+.book-calendar{max-width:370px;background:rgba(240,238,237,0.24);border:4px solid #4d3424;left:60%;top:30%;transform:translate(0%,-30%);}
+.input-book{background-color:rgba(211,194,176,0.6);}
+.btn-book{background:#10542b;color:#c4b69e;}
+.process{align-items:center;}
+.form-control{border:none;}
+.form-control:focus{background:rgba(190,173,152,0.44);outline:none;box-shadow:none;border:rgba(190,173,152,0.44);border-color:rgba(190,173,152,0.44);}
+select#branch,input [type= "datetime-local " ]{height:36px;}
+.position-fixed.help{z-index:1000;top:50%;right:0;transform:translateY(-50%);}
+.help-services{background:#503824;}
+.help-services .svg{font-size:2em;width:50px;height:50px;text-align:center;}
+.help-services .service{height:50px;right:-145px;z-index:9999999999;-moz-transition:all 0.3s linear;-webkit-transition:all 0.5s linear;transition:all 0.3s linear;}
+.help-services .service:hover{height:50px;right:0;-moz-transition:all 0.3s linear;-webkit-transition:all 0.5s linear;transition:all 0.3s linear;}
+.text-service{width:142px;}
+.help-services div{height:50px;background:#503824;cursor:pointer;}
+.bg-wrapper{background:#c8ab89;}
+.pregnancy,.event-news,.customer-feel{background:#e3d1b1;}
+.discount-product{background:#e2c275;}
+.pregnancy-wrapper,.discount-product-wrapper,.event-news-wrapper,.wrapper{padding-left:7%;padding-right:7%;}
+.pregnancy-service{background:#10542b;color:#e3d1b1;}
+.pregnancy-service a{color: #e3d1b1}
+.pregnancy-service a:hover{color: #876342}
+span.pregnancy-week-by-week{font-size:2.3em; color: #503824; font-weight: 450;}
+textarea{resize:none;}
+.text-box textarea{height:280px;width:100%;background:none;}
+.text-box textarea:focus{box-shadow:none;border:none;outline:none;border:1px solid #503824;}
+.readmore-textarea{bottom:5%;right:1%;border-radius:0;background:#10542b;color:#e3d1b1;}
+a.readmore-textarea{color:#e3d1b1;}
+a.readmore-textarea:hover { color: #876342; background: transparent; border: 1px solid #876342}
+
+textarea::-webkit-scrollbar{width:10px;}
+textarea::-webkit-scrollbar-track{background:#c4b69e;}
+textarea::-webkit-scrollbar-thumb{background:#503824;}
+textarea::-webkit-scrollbar-thumb:hover{background:#503824;}
+.carousel .list-item{overflow:hidden;}
+.prev{top:50%;left:0;transform:translate(0%,-50%);}
+.next{top:50%;right:0;transform:translate(0%,-50%);}
+.action-slideshow{width:50px;height:50px;border:1px solid #503824;color:#503824;display:flex;align-items:center;justify-content:center;border-radius:50px;cursor:pointer;}
+.bg-brow{background:#6b5134;}
+.text-area-news-event{width:100%;height:100%;background:none;border:1px solid #503824;color:#4d3424;}
+.news.event .content{overflow:hidden;}
+.min-wh{min-height:300px;}
+.bg-img-event-news{background-position:center;background-size:cover;background-repeat:no-repeat;}
+.news.event .title span{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.news.event .content span{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;}
+.readmore-div-span{border-radius:0;background:#10542b;color:#e3d1b1;bottom:0;right:0;transform:translate(-30px,-40px); padding: 4px 8px !important;}
+.readmore-div-span:hover{border-radius:0;background:#10542b;color:#eee;bottom:0;right:0;transform:translate(-30px,-40px); padding: 4px 8px !important;}
+#scroll-top{position:fixed;right:10px;bottom:10px;cursor:pointer;width:50px;height:50px;background-color:#e3d1b1;text-indent:-9999px;display:none;-webkit-border-radius:60px;-moz-border-radius:60px;border-radius:60px;z-index:1000;}
+#scroll-top .icon-scroll-up{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#4d3424;}
+.bg-frame{background-repeat:no-repeat;background-position:center;background-size:contain;}
+.bg-frame .description{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;}
+.infomation-customer .position-absolute{bottom:-1%;left:25%;}
+.img-avt-customer{max-width:73px;max-height:73px;}
+.product-queen-nature{bottom:0;left:50%;transform:translate(-50%,30%);background:#d5bfa3;border:1px solid #755d49;}
+.text-box {border: 1px solid #6b513b; padding: 1em}
+@media only screen and (max-width:992px){.book-calendar{max-width:370px;background:rgba(240,238,237,0.24);border:4px solid #4d3424;left:50%;top:50%;transform:translate(-50%,-50%);}
+.item {padding-bottom: 10px; border: 1px solid transparent}
+.item:hover {border: 1px solid #755d49; padding-bottom: 10px;}
+/* .dropdown-menu .title p { text-decoration: underline; } */
+.pregnancy-wrapper,.discount-product-wrapper,.event-news-wrapper{padding-left:0;padding-right:0;}
+.welcome-img,.logo-img{text-align:center;}
+.welcome-img{position:relative;width:100%;min-height:1px;padding-right:15px;padding-left:15px;}}
+.btn.btn-read-more{border:1px solid #503824;color:#503824;border-radius:0;}
+.btn.btn-read-more:hover {border-color: #10542b; color: #10542b}
+.bg-xlad{background:#10542b;font-size:2em;color:#d3b594;}
+.text-color-211-181-148{color:#d3b594;}
+@media only screen and (max-width:991px){.column-xl{display:none;}
+.bg-xlad{font-size:1em;}}
+@media only screen and (min-width:991px){.column-lg{display:none;}}
+@media only screen and (max-width:768px){.book-calendar{min-width:90%;}
+.bg-frame{background-image:none!important;}
+.description{padding:0!important;}
+.infomation-customer .position-absolute{position:static!important;}}
+.owl-dots {text-align: center;}
+.owl-carousel button.owl-dot {
+  background: none repeat scroll 0 0 transparent;
+  border-radius: 50%;
+  display: inline-block;
+  height: 20px;
+  margin: 5px 7px;
+  opacity: 0.7;
+  width: 20px;
+  border: 1px solid #503824;
+}
+.owl-carousel button.owl-dot.active {
+  background-color: #503824;
+  opacity: 1;
+}

@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500&family=Fleur+De+Leah&family=Great+Vibes&family=Italianno&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Roboto:ital@1&family=Taviraj:ital@1&display=swap');
+.section_melisspa {width: 100%;background-position: left center; background-repeat: no-repeat; background-size: 100% 100%; margin: 0 auto}
+.section_register {width: 100%;background-position: left center; background-repeat: no-repeat; background-size: 100% 100%; margin: 0 auto; background-color: rgba(79, 55, 36, 0.85);}
+.section_request {width: 100%; background: #4f3724; margin: 0 auto;}
+.section_procedure {width: 96%; background: transparent; margin: 1em auto 0 auto;}
+.c_melis {width: 100%; background: rgba(79, 56, 33, 0.85); padding: 0}
+.c_register {width: 100%; padding: 0}
+.subc_melis {margin: 20px; border: 1px solid #eeddaf}
+.subc_cost {margin: 10px; border: 1px solid #eac255}
+.ctcost {margin: 35px; background: #eac255; padding: 5px;}
+.startup {font-family: 'Italianno', cursive; font-size: 3.7em; font-weight: 700; padding: 20px 20px 0 20px; line-height: 1em;}
+.melisbeaute_melismom {background:rgba(77, 52, 36, 1); padding: 0 20px; font-family: 'Open Sans', sans-serif; font-weight: 500; font-size: 1.9em;}
+.costbranch {padding: 0 20px; font-family: 'Open Sans', sans-serif; font-weight: 500; font-size: 1.5em;}
+.content_melis {font-family: 'Taviraj', serif; font-size: 1.15em; font-weight: 300; padding: 20px; font-style: italic;}
+.content_branch {font-size: 1em; font-weight: 450; padding: 20px;}
+.content_branch p{margin-bottom: 0.45rem;}
+.font_taviraj {font-family: 'Taviraj', serif;}
+.c_vision {width: 100%;background: rgba(79, 56, 33, 0.85); padding: 0;}
+.sub_vision {margin:15px; border: 1px solid #eeddaf}
+.content_vision {font-size: 1em; font-weight: 300; padding: 10px;}
+.title_landing {font-size: 1.2em; font-weight: 450;}
+.c_team {width: 100%; background: rgba(79, 56, 33, 0.85); padding: 0}
+ul.li li {list-style-type: disc;margin-left: 1em;font-size: 1em; font-weight: 400;}
+
+.title_gallery {margin: auto; background: #11552d; font-size: 1.5em}
+.viewall {position: absolute; top: 2em; right: 0;}
+.gal_text {font-size: 0.65em !important; color: #4f3724;}
+.gal_text:hover {color: #11552d}
+#gallery_image figure, #gallery_video figure {margin-bottom: 0;}
+#gallery_image figure img, #gallery_video figure img {height: 11em; object-fit: cover;}
+.title_popup {top: 25px; position: absolute;text-transform: uppercase;}
+
+.navigantion_menu{background:#503824;}
+.navigantion_menu .svg{font-size:1.5em;width:40px;height:40px;text-align:center;}
+.navigantion_menu .navi{height:40px;right:-98px;z-index:9999999999;-moz-transition:all 0.3s linear;-webkit-transition:all 0.5s linear;transition:all 0.3s linear;}
+.navigantion_menu .navi:hover{height:40px;right:0;-moz-transition:all 0.3s linear;-webkit-transition:all 0.5s linear;transition:all 0.3s linear;}
+.text-navi{width:95px;}
+.navigantion_menu div{height:40px;background:#765c46;cursor:pointer;}
+.navigantion_menu .active{height:40px;background:#503824;cursor:pointer;}
+.navigantion_menu a {color: #fff} 
+.ads_left {position: fixed; right: 88.5%; top: 50%; transform: translateY(-50%); text-align: right;}
+.ads_right { position: fixed; left: 88.5%; top: 50%; transform: translateY(-50%);}
+.ads_left figure img, .ads_right figure img {width: 75%}
+
+.register_consult {max-width: 520px; background: rgba(200, 171, 137, 0.85); border: 4px solid #4d3424; left: 12%; top: 30%; transform: translate(0%,-30%);}
+.register_form {width: 100%;background: rgba(200, 171, 137, 0.85); border: 4px solid #4d3424;}
+.register_consult div label, .register_form div label {font-size: 0.8em; color:rgba(77, 52, 36, 1); margin-bottom: 0.2em;}
+.title_form {font-size: 1.5em !important; font-weight: 500;}
+.input-regis, .input-regis:hover, .input-regis:focus {border: 1px solid rgba(77, 52, 36, 1); outline: none; background: transparent;}
+.btn-regis {background: #4f3724; width: 100%; color: #eeddaf; outline: none;}
+.btn-regis:hover, .btn-regis:focus {background: #11552d; width: 100%; color: #eeddaf; outline: none;}
+.information_benefit {max-width: 520px; right: 12%; top: 30%; transform: translate(0, -30%);}
+.c_info {width: 100%; background: rgba(79, 56, 33, 0.85); padding: 10px 0}
+.subc_info {margin: 0 10px; border: 1px solid #eac255; color: #eac255;}
+.content_info {margin:35px; background: #eac255; padding: 100px 10px}
+.info_1 {font-size: 1.6em; font-weight: 500; color:rgba(77, 52, 36, 1); padding: 7px 15px}
+.info_2 {font-size: 2.4em; font-weight: 600; color: rgba(77, 52, 36, 1); padding: 7px 15px}
+.hr {width: 40%; height: 1px; border-bottom: 1px solid #4f3724; margin: -5px auto 0 auto;}
+.whytext {font-size: 2em; padding: 0.6em 0 0 0; text-align: center;}
+.hrw {width: 20%; height: 1px; border-bottom: 1px solid #4f3724; margin: -5px auto 0 auto;}
+.hrwr {width: 20%; height: 1px; border-bottom: 1px solid #eeddaf; margin: -5px auto 0 auto;}
+.hrp {width: 10%; height: 3px; border-bottom: 3px solid #4f3724; margin: -5px 0 0 0;}
+.wm figure {margin-bottom: 7px}
+.wm h4{font-size: 1.35em;}
+.wm-icon {font-size: 5em}
+.eachprocedure {margin-left: 35px;}
+.eachprocedure h4 {font-size: 1em; font-weight: 500; color: #4f3724;}
+.eachprocedure p {font-size: 0.85em; font-weight: 400; color: #4f3724;}
+.eachprocedure::before {position: absolute; left: 0;}
+.eachprocedure.contact::before {content: url(../img/bg_landing/icon_contact.jpg);}
+.eachprocedure.info::before {content: url(../img/bg_landing/icon_info.jpg);}
+.eachprocedure.consult::before {content: url(../img/bg_landing/icon_consult.jpg);}
+.eachprocedure.survey::before {content: url(../img/bg_landing/icon_survey.jpg);}
+.eachprocedure.contract::before {content: url(../img/bg_landing/icon_signcontract.jpg);}
+.eachprocedure.setup::before {content: url(../img/bg_landing/icon_setup.jpg);}
+.eachprocedure.operate::before {content: url(../img/bg_landing/icon_operate.jpg);}
+.title_register {width: 100%; background: #4f3724; padding: 15px 0; font-size: 1.4em; margin-bottom: 0; border-radius: 8px; -moz-border-radius: 8px; -webkit-border-radius: 8px; -ms-border-radius: 8px;}
+.tip_register {background: rgba(79, 55, 36, 0.85); color: #fff; font-weight: 450; padding: 15px;}
+

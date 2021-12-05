@@ -273,47 +273,56 @@ class mysql
 		$query = $this->query($sql);
 		return $query;
 	}
-    // count number record
-    function number_record($table, $where = '1')
-    {
-        $s = $this->query("select count(id) as number_record from $table where $where");
-        $r = $this->fetch_array($s);
-        return $r['number_record'];
-    }
+	// count number record
+	function number_record($table, $where = '1')
+	{
+			$s = $this->query("select count(id) as number_record from $table where $where");
+			$r = $this->fetch_array($s);
+			return $r['number_record'];
+	}
+
+	// check exist
+	function checkExist($table, $where)
+	{
+		$s = $this->query("select id from $table where $where");
+		$n = $this->num_rows($s);
+		return $n;
+	}
     
 	// get data all record
-    function getAll($select = '*', $table, $where = '1=1', $order = "id desc")
-    {
-        $data = array();
-        $s = $s = $this->query("select $select from $table where $where order by $order");
-        while($r = $this->fetch_array($s)) {
-            array_push($data, $r);
-        }
-        return $data;
+	function getAll($select = '*', $table, $where = '1=1', $order = "id desc", $limit = "")
+	{
+			$data = array();
+			$s = $s = $this->query("select $select from $table where $where order by $order $limit");
+			while($r = $this->fetch_array($s)) {
+					array_push($data, $r);
+			}
+			return $data;
 	}
-    // get data 1 record (include max, min, average)
-    function getOne($select = "*", $table, $where = '1', $order = "id desc")
-    {
-        $s = $s = $this->query("select $select from $table where $where order by $order");
-        $r = $this->fetch_array($s);  
-        return $r;
+
+	// get data 1 record (include max, min, average)
+	function getOne($select = "*", $table, $where = '1', $order = "id desc")
+	{
+			$s = $s = $this->query("select $select from $table where $where order by $order");
+			$r = $this->fetch_array($s);  
+			return $r;
 	}
 	
-    // get data by id
-    function getById($select = "*", $table, $id, $where = "") 
-    {
-        $s = $this->query("select $select from $table where id = $id $where");
-        $r = $this->fetch_array($s);
-        return $r;
-    }
-    // get max
-    function getMax($select = "id", $table, $where = "") {
-        if ($where != "")
-            $w = "where $where";
-        else
-            $w = "";
-        $s = $this->query("select max($select) as maxs from $table $w");
-        $r = $this->fetch_array($s);
-        return $r;
-    }
+	// get data by id
+	function getById($select = "*", $table, $id, $where = "") 
+	{
+			$s = $this->query("select $select from $table where id = $id $where");
+			$r = $this->fetch_array($s);
+			return $r;
+	}
+	// get max
+	function getMax($select = "id", $table, $where = "") {
+			if ($where != "")
+					$w = "where $where";
+			else
+					$w = "";
+			$s = $this->query("select max($select) as maxs from $table $w");
+			$r = $this->fetch_array($s);
+			return $r;
+	}
 }

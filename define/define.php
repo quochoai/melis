@@ -171,6 +171,21 @@
         'link_process_delete' => _process.'general/delete.php',
         
         
-        'link_logout' => _process.'logout.php',              
+        'link_logout' => _process.'logout.php', 
+        
+        // link front end
+        'link_fabout' => 'gioi-thieu.html',
+        'link_franchise' => 'nhuong-quyen.html',
+        'link_fservice' => 'dich-vu',
+        'link_queennature' => 'queen-nature',
+        'link_freview' => 'cam-nhan-khach-hang',
+        'link_celes_feel' => 'cam-nhan-cua-nguoi-noi-tieng',
+        'link_fknowledge' => 'kien-thuc',
+        'link_fnews' => 'tin-tuc',
+        'link_fpromotion' => 'khuyen-mai',
+        'link_search' => 'tim-kiem',
+        'link_process_book_an_appointment' => 'module/process_book_an_appointment.php',
+        'link_captcha' => 'module/captcha.php',
+
         
     );

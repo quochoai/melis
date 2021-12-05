@@ -1,0 +1,4 @@
+#collapseTablePrice .table-responsive {margin: 10px 0 5px 0; width: 100%;}
+#collapseTablePrice .table-responsive .table-bordered th, #collapseTablePrice .table-responsive .table-bordered td {border: 1px solid #4f3724; color: #4f3724}
+#collapseTablePrice .table-responsive .table-bordered th {font-weight: 500; font-size: 1em;}
+#collapseTablePrice .table-responsive .table-bordered td {font-weight: 450; font-size: 0.85em;}

@@ -1,0 +1,221 @@
+<?php
+    include("require_inc.php");
+    if(isset($_REQUEST['pqh'])) {
+		$pqh = $_REQUEST['pqh'];
+		$pqh = explode("/",$pqh);
+        $mod = $pqh[0];
+        $mod1 = $pqh[1];
+        $mod2 = $pqh[2];
+        $mod3 = $pqh[3];
+        $typesite = 'article';
+        $url = URL.$_REQUEST['pqh'];
+	} else {
+	    $typesite = 'website';
+        $url = URL;   
+	}
+    $tableHtml = "htmls";
+    $tableProduct = "products";
+    $tableService = "services";
+    $tableNews = "news";
+    $tableReview = "reviews";
+    $opentime = $h->getById("noidung_vi", $tableHtml, 3);
+    $hotline = $h->getById("noidung_vi", $tableHtml, 2);
+
+    $array_not = array($def['link_fabout'], $def['link_franchise']);
+    if (!isset($_REQUEST['pqh']) || !in_array($mod1, $array_not))
+        $classFixed = ' fixed_navbar';
+    else
+        $classFixed = '';
+?>
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <base href="<?php _e(URL) ?>" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><?php include("module/title.php") ?></title>
+    <link rel="stylesheet" href="assets/fonts/fontawesome-5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/plugins/nprogress/nprogress.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <?php
+        if (!isset($_REQUEST['pqh'])) {
+            _e('<link rel="stylesheet" href="assets/plugins/jssor_slider/jssor_script.css" />    
+            <link rel="stylesheet" href="assets/plugins/timeline_slider/timeline_slider.css" />
+            <link rel="stylesheet" href="assets/plugins/owlcarousel/assets/owl.carousel.min.css">
+            <link rel="stylesheet" href="assets/plugins/owlcarousel/assets/owl.theme.default.min.css">
+            <link rel="stylesheet" href="themes/plugins/daterangepicker/daterangepicker.css" />');
+        }
+    ?>    
+    <link rel="stylesheet" href="themes/plugins/toastr/toastr.min.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <?php 
+        if (isset($_REQUEST['pqh']) && ($mod == $def['link_fservice'] || $mod == $def['link_queennature'])) {
+            _e('<link rel="stylesheet" href="css/product.css" />
+            <link rel="stylesheet" href="css/service.css" />');
+        }
+    ?>
+    
+</head>
+
+<body>
+    <main>
+        <a id="scroll-top" style="display: none;"><i class="fas fa-arrow-up icon-scroll-up"></i></a>
+        <!-- top -->
+        <div class="infomation text-brown position-relative pt-3 m-0">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="phone">
+                        <div class="text d-flex align-items-center">
+                            <div>
+                                <button class="btn bg-transparent border-none text-brown icon-phone"><i class="fas fa-phone-volume"></i></button>&nbsp;
+                            </div>
+                            <div class="pt-2">
+                                <span><?php _e($hotline['noidung_vi']) ?></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="col-12">
+                        <div class="row align-items-end">
+                            <div class="time col-lg-4 pb-2 text-center text-uppercase"><?php _e($lang['open_time'].' '.$opentime['noidung_vi']) ?></div>
+                            <div class="search col-lg-4">
+                                <form method="post" class="form-group mb-2 position-relative">
+                                    <i class="fas fa-search position-absolute icon-search" id="searchKey"></i>
+                                    <input type="text" id="txtSearch" class="form-control bg-transparent text-brown search" placeholder="<?php _e($lang['placeholder_search']) ?>">
+                                </form>
+                            </div>
+                            <div class="col-lg-4 pl-4">
+                                <div class="row float-right">
+                                    <div class="money mx-3 mb-2 position-relative">
+                                        <span class="number font-weight-bold">0</span> <span>VNĐ</span>
+                                        <span class="h3"><i class="fas fa-shopping-bag"></i></span>
+                                        <span class="badge badge-light position-absolute border-radius-50 bg-brown">0</span>
+                                    </div>
+                                    <div class="mx-3 mb-2">
+                                        <div class="btn-group">
+                                            <a class="bg-transparent border-none text-brown font-weight-bold p-0 language"><img src="img/vi.png" alt="<?php _e($lang['lang_vi']) ?>" /></a>
+                                            <div class="dropdown-menu dropdown-menu-right" id="menu_language" style="right: 0; left: auto;">
+                                                <a class="dropdown-item language_current language_choose" rel="vi"><img src="img/vi.png" alt="<?php _e($lang['lang_vi']) ?>" /> <?php _e($lang['lang_vi']) ?></a>
+                                                <a class="dropdown-item language_choose" rel="en"><img src="img/en.png" alt="<?php _e($lang['lang_en']) ?>" /> <?php _e($lang['lang_en']) ?></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- navbar -->
+        <div class="control_navbar<?php _e($classFixed) ?>">
+            <div class="navbar p-0">
+                <nav class="navbar navbar-light navbar-expand-lg nav-bg-custorm w-100">
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center position-relative" id="navbarCollapse">
+                        <ul class="navbar-nav nav font-weight-bold align-items-center py-1 position-static">
+                            <li class="lg">
+                                <img class="mom" src="img/melismom.png" alt="">
+                            </li>
+                            <?php 
+                                if (!isset($_REQUEST['pqh']) || !in_array($mod1, $array_not)) {
+                            ?>
+                            <li class="navbar-item<?php if (!isset($_REQUEST['pqh'])) {
+                                        _e(' active');
+                                    } ?>">
+                                <a href="<?php _e(URL) ?>" class="nav-link text-uppercase"><?php _e($lang['home']) ?></a>
+                            </li>
+                            <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && $mod1 == $def['link_fabout']) {
+                                        _e(' active');
+                                    } ?>">
+                                <a href="<?php _e($def['link_fabout']) ?>" class="nav-link text-uppercase"><?php _e($lang['landing_about']) ?></a>
+                            </li>
+                            <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && $mod1 == $def['link_fservice']) {
+                                        _e(' active');
+                                    } ?>">
+                                <a href="<?php _e($def['link_fservice']) ?>" class="nav-link text-uppercase"><?php _e($lang['service']) ?>/a>
+                            </li>
+                            <li class="navbar-item m-1 text-nowrap queen-nature dropdown position-static text-center<?php if (isset($_REQUEST['pqh']) && $mod1 == $def['link_queennature']) {
+                                        _e(' active');
+                                    } ?>">
+                                <a href="#" class="dropdown-toggle queen-nature nav-link" id="navbarDropdownMenuQueenNature" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">QUEEN NATURE</a>
+                                <?php
+                                    $existCateProducts = $h->checkExist($tableProduct, "cm = 1 and deleted_at is null and active = 1");
+                                    if ($existCateProducts) {
+                                        ?>
+                                <ul class="submenu m-auto dropdown-menu p-0" aria-labelledby="navbarDropdownMenuQueenNature">
+                                    <div id="queen-nature" class="row p-0 m-0 submenu-queen-nature">
+                                        <div class="col-12 m-0 p-0 py-2 bg-brown-opacity-50">
+                                            <div class="m-auto d-flex row p-0 m-0">
+                                            <?php
+                                                $procates = $h->getAll("id, name_vi, name_en", $tableProduct, "cm = 1 and deleted_at is null and active = 1", "sort asc, id asc", "limit 0, 4");
+                                        $cateMenu = "";
+                                        foreach ($procates as $cate) {
+                                            $cateName = $cate["name_$lng"];
+                                            $product_id = $cate['id'];
+                                            $cateMenu .= '<div class="pregnant-mother col-lg-6 col-xl-3 pr-0">';
+                                            $cateMenu .= '<div class="title"><p>'.$cateName.'</p></div>';
+                                            $menuProducts = $h->getAll("name_vi, name_en", $tableProduct, "cm = 0 and product_id = $product_id and deleted_at is null and active = 1", "sort desc, id desc", "limit 0, 7");
+                                            $cateMenu .= '<ul class="menu">';
+                                            $linkCateMenu = $def['link_queennature'].'/'.chuoilink($cate['name_vi']);
+                                            foreach ($menuProducts as $menuProduct) {
+                                                $productMenuName = $menuProduct["name_$lng"];
+                                                $linkProductMenu = $linkCateMenu.'/'.chuoilink($menuProduct['name_vi']).'.html';
+                                                if (isset($mod3) && $mod3 == chuoilink($menuProduct['name_vi']).'.html') {
+                                                    $activeClassProduct = ' active';
+                                                } else {
+                                                    $activeClassProduct = '';
+                                                }
+                                                $cateMenu .= '<li><a class="sub-nav-link'.$activeClassProduct.'" href="'.$linkProductMenu.'" title="'.$productMenuName.'">'.$productMenuName.'</a></li>';
+                                            }
+                                            $cateMenu .= '</ul>';
+                                            $cateMenu .= '</div>';
+                                        }
+                                        _e($cateMenu); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ul>
+                                <?php
+                                    } ?>
+                            </li>
+                            <li class="navbar-item m-1 text-nowrap">
+                                <a href="<?php _e($def['link_franchise']) ?>" class="nav-link text-uppercase"><?php _e($lang['franchise']) ?></a>
+                            </li>
+                            <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && ($mod1 == $def['link_freview'] || $mod == $def['link_celes_feel'])) {
+                                        _e(' active');
+                                    } ?>">
+                                <a href="<?php _e($def['link_freview']) ?>" class="nav-link text-uppercase"><?php _e($lang['review']) ?></a>
+                            </li>
+                            <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && $mod1 == $def['link_fknowledge']) {
+                                        _e(' active');
+                                    } ?>">
+                                <a href="<?php _e($def['link_fknowledge']) ?>" class="nav-link text-uppercase"><?php _e($lang['n_knowledge']) ?></a>
+                            </li>
+                            <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && $mod1 == $def['link_fnews']) {
+                                        _e(' active');
+                                    } ?>">
+                                <a href="<?php _e($def['link_fnews']) ?>" class="nav-link text-uppercase"><?php _e($lang['n_news']) ?></a>
+                            </li>
+                            <?php
+                                } 
+                                if (isset($mod1) && $mod1 == $def['link_fabout'])
+                                    _e('<li class="navbar-item"><a href="'.URL.'" class="nav-link text-uppercase">'.$lang['home'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center mt-4"><a href="#startup" class="nav-link">'.$lang['fabout_melisspa'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center mt-4"><a href="#vision" class="nav-link">'.$lang['fabout_vision'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center mt-4"><a href="#team" class="nav-link">'.$lang['fabout_team'].'</a></li><li class="navbar-item page_link m-1 text-nowrap"><a href="#community" class="nav-link">'.$lang['fabout_community'].'</a></li><li class="navbar-item page_link m-1 text-nowrap"><a href="#gallery_image" class="nav-link">'.$lang['fabout_images'].'</a></li><li class="navbar-item page_link m-1 text-nowrap"><a href="#gallery_video" class="nav-link">VIDEO</a></li>');
+                                if (isset($mod1) && $mod1 == $def['link_franchise'])
+                                    _e('<li class="navbar-item"><a href="'.URL.'" class="nav-link text-uppercase">'.$lang['home'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#whychoose" class="nav-link">'.$lang['ff_melisspa'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#advantage" class="nav-link">'.$lang['ff_advantage'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#benefit" class="nav-link">'.$lang['ff_benefit'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#cost" class="nav-link">'.$lang['ff_cost'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#request" class="nav-link">'.$lang['ff_request'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#procedure" class="nav-link">'.$lang['ff_procedure'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#register" class="nav-link">'.$lang['ff_register'].'</a></li>');
+                            ?>
+                            <li class="lg">
+                                <img class="beaute" src="img/melisbeaute.png" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
