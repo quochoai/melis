@@ -20,5 +20,5 @@
     } else {
       $image = '[{ "src": "'.$def['upload_gallery_image_avatar'].$avatar.'", "title": "'.$title.'"}]';
     }
-    echo $title.'vs;vs'.$image;
+    _e($title.'vs;vs'.$image);
   }

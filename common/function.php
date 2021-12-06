@@ -4,7 +4,7 @@ function _e($str) {
 }
 function GetFileExtention($filename) 
 {  
-    return strrchr($filename, ".");
+		return strrchr($filename, ".");
 }  
 
 function CheckUpload($f,$ext="",$maxsize=0,$req=0)
@@ -29,8 +29,8 @@ function CheckUpload($f,$ext="",$maxsize=0,$req=0)
 
 function MakeUpload($f,$newfile)
 {
-  if (move_uploaded_file($f["tmp_name"], $newfile))	return $newfile;
-  return false;
+	if (move_uploaded_file($f["tmp_name"], $newfile))	return $newfile;
+	return false;
 }
 
 function checkemail($email)
@@ -50,7 +50,7 @@ function checkemail_exist($email)
 }
 
 function query_get($query) {
-  global $con;
+	global $con;
 	if (!$con)
 		return false;
 	else {
@@ -63,56 +63,56 @@ function query_get($query) {
 		} else {
 				return false;
 		}
-  }
+	}
 }
 
 function query_get_list($query, $begin, $limit, $where_ext="", $orderby="") {
-  global $con;
-  if (!$con)
+	global $con;
+	if (!$con)
 		return false;
-  $return = array();
-  $query1 = $query;
-  if($where_ext != "")
+	$return = array();
+	$query1 = $query;
+	if($where_ext != "")
 		$query1 .= " WHERE " .$where_ext;
-  $query1 .= $orderby;
-  if($begin >=0 && $limit > 0)
+	$query1 .= $orderby;
+	if($begin >=0 && $limit > 0)
 	 $query1 .=" LIMIT $begin, $limit ";
 
-  $result = mysqli_query($query1, $con);
-  if ($result) {
-    while ($rows = mysqli_fetch_array($result)) {
-      $return[] = $rows;
-    }
-    return $return;
-  } else
-    return false;
+	$result = mysqli_query($query1, $con);
+	if ($result) {
+		while ($rows = mysqli_fetch_array($result)) {
+			$return[] = $rows;
+		}
+		return $return;
+	} else
+		return false;
 }
 
 // chuyen chuoi ki tu co dau sang chuoi ki tu khong dau
 function change($text) {
-   
-    $chars = array("a","a","e","e","o","o","u","u","i","i","d","d","y","y","","-","-","","","","","","","","","","","","","","","","","","","","","-","","-",""," "," ");
-   
-    $uni[0] = array("á","à","ạ","ả","ã","â","ấ","ầ", "ậ","ẩ","ẫ","ă","ắ","ằ","ặ","ẳ","ẵ");
-    $uni[1] = array("Á","À","Ạ","Ả","Ã","Â","Ấ","Ầ", "Ậ","Ẩ","Ẫ","Ă","Ắ","Ằ","Ặ","Ẳ","Ẵ");
-    $uni[2] = array("é","è","ẹ","ẻ","ẽ","ê","ế","ề" ,"ệ","ể","ễ");
-    $uni[3] = array("É","È","Ẹ","Ẻ","Ẽ","Ê","Ế","Ề" ,"Ệ","Ể","Ễ");
-    $uni[4] = array("ó","ò","ọ","ỏ","õ","ô","ố","ồ", "ộ","ổ","ỗ","ơ","ớ","ờ","ợ","ở","ỡ");
-    $uni[5] = array("Ó","Ò","Ọ","Ỏ","Õ","Ô","Ố","Ồ", "Ộ","Ổ","Ỗ","Ơ","Ớ","Ờ","Ợ","Ở","Ỡ");
-    $uni[6] = array("ú","ù","ụ","ủ","ũ","ư","ứ","ừ", "ự","ử","ữ");
-    $uni[7] = array("Ú","Ù","Ụ","Ủ","Ũ","Ư","Ứ","Ừ", "Ự","Ử","Ữ");
-    $uni[8] = array("í","ì","ị","ỉ","ĩ");
-    $uni[9] = array("Í","Ì","Ị","Ỉ","Ĩ");
-    $uni[10] = array("đ");
-    $uni[11] = array("Đ");
-    $uni[12] = array("ý","ỳ","ỵ","ỷ","ỹ");
-    $uni[13] = array("Ý","Ỳ","Ỵ","Ỷ","Ỹ");
+	 
+		$chars = array("a","a","e","e","o","o","u","u","i","i","d","d","y","y","","-","-","","","","","","","","","","","","","","","","","","","","","-","","-",""," "," ");
+	 
+		$uni[0] = array("á","à","ạ","ả","ã","â","ấ","ầ", "ậ","ẩ","ẫ","ă","ắ","ằ","ặ","ẳ","ẵ");
+		$uni[1] = array("Á","À","Ạ","Ả","Ã","Â","Ấ","Ầ", "Ậ","Ẩ","Ẫ","Ă","Ắ","Ằ","Ặ","Ẳ","Ẵ");
+		$uni[2] = array("é","è","ẹ","ẻ","ẽ","ê","ế","ề" ,"ệ","ể","ễ");
+		$uni[3] = array("É","È","Ẹ","Ẻ","Ẽ","Ê","Ế","Ề" ,"Ệ","Ể","Ễ");
+		$uni[4] = array("ó","ò","ọ","ỏ","õ","ô","ố","ồ", "ộ","ổ","ỗ","ơ","ớ","ờ","ợ","ở","ỡ");
+		$uni[5] = array("Ó","Ò","Ọ","Ỏ","Õ","Ô","Ố","Ồ", "Ộ","Ổ","Ỗ","Ơ","Ớ","Ờ","Ợ","Ở","Ỡ");
+		$uni[6] = array("ú","ù","ụ","ủ","ũ","ư","ứ","ừ", "ự","ử","ữ");
+		$uni[7] = array("Ú","Ù","Ụ","Ủ","Ũ","Ư","Ứ","Ừ", "Ự","Ử","Ữ");
+		$uni[8] = array("í","ì","ị","ỉ","ĩ");
+		$uni[9] = array("Í","Ì","Ị","Ỉ","Ĩ");
+		$uni[10] = array("đ");
+		$uni[11] = array("Đ");
+		$uni[12] = array("ý","ỳ","ỵ","ỷ","ỹ");
+		$uni[13] = array("Ý","Ỳ","Ỵ","Ỷ","Ỹ");
 		$uni[14] = array("%");
 		$uni[15] = array("+");
 		$uni[16] = array(",");
 		$uni[17] = array(";");
 		$uni[18] = array("'");
-   	$uni[19] = array('"');
+	 	$uni[19] = array('"');
 		$uni[20] = array("!");
 		$uni[21] = array("@");
 		$uni[22] = array("#");
@@ -136,11 +136,11 @@ function change($text) {
 		$uni[40] = array(".");
 		$uni[41] = array("?");
 		$uni[42] = array("  ");
-    for($i=0; $i<=43; $i++) {
-        $text = str_replace($uni[$i],$chars[$i],$text);
-    }
+		for($i=0; $i<=43; $i++) {
+				$text = str_replace($uni[$i],$chars[$i],$text);
+		}
 
-    return $text;
+		return $text;
 }
 function thaykitu($tu,$kituthay)
 {
@@ -189,29 +189,29 @@ function chuoilink($text)
 }
 // chuyen chuoi ki tu co dau sang chuoi ki tu khong dau
 function change2($text) {
-   
-    $chars = array("a","a","e","e","o","o","u","u","i","i","d","d","y","y","","-","-","","","","","","","","","","","","","","","","","","","-","","-"," "," ");
-   
-    $uni[0] = array("á","à","ạ","ả","ã","â","ấ","ầ", "ậ","ẩ","ẫ","ă","ắ","ằ","ặ","ẳ","ẵ");
-    $uni[1] = array("Á","À","Ạ","Ả","Ã","Â","Ấ","Ầ", "Ậ","Ẩ","Ẫ","Ă","Ắ","Ằ","Ặ","Ẳ","Ẵ");
-    $uni[2] = array("é","è","ẹ","ẻ","ẽ","ê","ế","ề" ,"ệ","ể","ễ");
-    $uni[3] = array("É","È","Ẹ","Ẻ","Ẽ","Ê","Ế","Ề" ,"Ệ","Ể","Ễ");
-    $uni[4] = array("ó","ò","ọ","ỏ","õ","ô","ố","ồ", "ộ","ổ","ỗ","ơ","ớ","ờ","ợ","ở","ỡ");
-    $uni[5] = array("Ó","Ò","Ọ","Ỏ","Õ","Ô","Ố","Ồ", "Ộ","Ổ","Ỗ","Ơ","Ớ","Ờ","Ợ","Ở","Ỡ");
-    $uni[6] = array("ú","ù","ụ","ủ","ũ","ư","ứ","ừ", "ự","ử","ữ");
-    $uni[7] = array("Ú","Ù","Ụ","Ủ","Ũ","Ư","Ứ","Ừ", "Ự","Ử","Ữ");
-    $uni[8] = array("í","ì","ị","ỉ","ĩ");
-    $uni[9] = array("Í","Ì","Ị","Ỉ","Ĩ");
-    $uni[10] = array("đ");
-    $uni[11] = array("Đ");
-    $uni[12] = array("ý","ỳ","ỵ","ỷ","ỹ");
-    $uni[13] = array("Ý","Ỳ","Ỵ","Ỷ","Ỹ");
+	 
+		$chars = array("a","a","e","e","o","o","u","u","i","i","d","d","y","y","","-","-","","","","","","","","","","","","","","","","","","","-","","-"," "," ");
+	 
+		$uni[0] = array("á","à","ạ","ả","ã","â","ấ","ầ", "ậ","ẩ","ẫ","ă","ắ","ằ","ặ","ẳ","ẵ");
+		$uni[1] = array("Á","À","Ạ","Ả","Ã","Â","Ấ","Ầ", "Ậ","Ẩ","Ẫ","Ă","Ắ","Ằ","Ặ","Ẳ","Ẵ");
+		$uni[2] = array("é","è","ẹ","ẻ","ẽ","ê","ế","ề" ,"ệ","ể","ễ");
+		$uni[3] = array("É","È","Ẹ","Ẻ","Ẽ","Ê","Ế","Ề" ,"Ệ","Ể","Ễ");
+		$uni[4] = array("ó","ò","ọ","ỏ","õ","ô","ố","ồ", "ộ","ổ","ỗ","ơ","ớ","ờ","ợ","ở","ỡ");
+		$uni[5] = array("Ó","Ò","Ọ","Ỏ","Õ","Ô","Ố","Ồ", "Ộ","Ổ","Ỗ","Ơ","Ớ","Ờ","Ợ","Ở","Ỡ");
+		$uni[6] = array("ú","ù","ụ","ủ","ũ","ư","ứ","ừ", "ự","ử","ữ");
+		$uni[7] = array("Ú","Ù","Ụ","Ủ","Ũ","Ư","Ứ","Ừ", "Ự","Ử","Ữ");
+		$uni[8] = array("í","ì","ị","ỉ","ĩ");
+		$uni[9] = array("Í","Ì","Ị","Ỉ","Ĩ");
+		$uni[10] = array("đ");
+		$uni[11] = array("Đ");
+		$uni[12] = array("ý","ỳ","ỵ","ỷ","ỹ");
+		$uni[13] = array("Ý","Ỳ","Ỵ","Ỷ","Ỹ");
 		$uni[14] = array("%");
 		$uni[15] = array("+");
 		$uni[16] = array(",");
 		$uni[17] = array(";");
 		$uni[18] = array("'");
-   	$uni[19] = array('"');
+	 	$uni[19] = array('"');
 		$uni[20] = array("!");
 		$uni[21] = array("@");
 		$uni[22] = array("#");
@@ -232,11 +232,11 @@ function change2($text) {
 		$uni[37] = array(">");
 		$uni[38] = array("?");
 		$uni[39] = array("  ");
-    for($i=0; $i<=40; $i++) {
-        $text = str_replace($uni[$i],$chars[$i],$text);
-    }
+		for($i=0; $i<=40; $i++) {
+				$text = str_replace($uni[$i],$chars[$i],$text);
+		}
 
-    return $text;
+		return $text;
 }
 // chuoi anh
 function chuoianh($text) 
@@ -266,8 +266,8 @@ function chuoianh($text)
 }
 // cat chuoi ki tu
 function catchuoi($chuoi,$gioihan){
-    // nếu độ dài chuỗi nhỏ hơn hay bằng vị trí cắt
-    // thì không thay đổi chuỗi ban đầu
+		// nếu độ dài chuỗi nhỏ hơn hay bằng vị trí cắt
+		// thì không thay đổi chuỗi ban đầu
 		if(strlen($chuoi)<=$gioihan)
 		{
 			return $chuoi;
@@ -282,26 +282,26 @@ function catchuoi($chuoi,$gioihan){
 			if(strpos($chuoi," ",$gioihan) > $gioihan){
 				$new_gioihan=strpos($chuoi," ",$gioihan);
 				//$new_chuoi = substr($chuoi,0,$new_gioihan)." ...";
-                $new_chuoi = mb_substr($chuoi, 0, $new_gioihan, 'UTF-8');
+								$new_chuoi = mb_substr($chuoi, 0, $new_gioihan, 'UTF-8');
 				return $new_chuoi;
 			}
 			// trường hợp còn lại không ảnh hưởng tới kết quả
 			//$new_chuoi = substr($chuoi,0,$gioihan)."...";
-            $new_chuoi = mb_substr($chuoi, 0, $gioihan, 'UTF-8');
+						$new_chuoi = mb_substr($chuoi, 0, $gioihan, 'UTF-8');
 			return strip_tags($new_chuoi);
 		}
 	}
 //removes string from the end of other
 function removeFromEnd($string, $stringToRemove) 
 {
-    $stringToRemoveLen = strlen($stringToRemove);
-    $stringLen = strlen($string);
-    
-    $pos = $stringLen - $stringToRemoveLen;
+		$stringToRemoveLen = strlen($stringToRemove);
+		$stringLen = strlen($string);
+		
+		$pos = $stringLen - $stringToRemoveLen;
 
-    $out = substr($string, 0, $pos);
+		$out = substr($string, 0, $pos);
 
-    return $out;
+		return $out;
 }
 function redirect($url,$second)
 {
@@ -432,7 +432,7 @@ function upload_image_no_thumb($path){
 	$max_width = $w;
 	$max_height = $h;
 	$ext = getExt($fileupload);
-    $path_image = $path.'/'.$fileupload;
+		$path_image = $path.'/'.$fileupload;
 	move_uploaded_file($name_field, $path_image);
 	list($width, $height) = getimagesize($path_image);
 	// kiem tra neu file upload nho hon kich thuoc quy dinh thi lay kich thuoc cu
@@ -459,31 +459,31 @@ function upload_image_no_thumb($path){
 		case 'JPEG':
 			$image = imagecreatefromjpeg($path_image);
 			header('Content-Type: image/jpeg');
-		    break;	
+				break;	
 		case 'png':
 		case 'PNG':
 			$image = imagecreatefrompng($path_image);
 			imagealphablending($image_thub, false);
 			header('Content-Type: image/png');
-		    break;
+				break;
 		case 'gif':
 		case 'GIF':
 			$image = imagecreatefromgif($path_image);
-		    break;
+				break;
 		default:
 			$image = imagecreatefromjpeg($path_image);
 			header('Content-Type: image/jpeg');
-		    break;
+				break;
 	}
 	imagecopyresampled($image_thub, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 	
 	// luu anh
 	$aet = array("png", "PNG", "gif", "GIF");
-    if (! in_array($ext, $aet))
+		if (! in_array($ext, $aet))
 		imagejpeg($image_thub, $path.'/'.$name_save, 80);
-    elseif ($ext == 'png' || $ext == 'PNG') {
+		elseif ($ext == 'png' || $ext == 'PNG') {
 		imagesavealpha($image_thub, true);
-        imagepng($image_thub, $path.'/'.$name_save, 8);
+				imagepng($image_thub, $path.'/'.$name_save, 8);
 	} else {
 		header('Content-Type: image/gif');
 		imagegif($image_thub, $path.'/'.$name_save);
@@ -496,8 +496,8 @@ function upload_image_no_thumb($path){
 // uploadfile
 function uploadfile($name_field, $path) {
 	$name_save = time().'_'.$_FILES[$name_field]['name'];
-    $path_img = $path.$name_save;
-    move_uploaded_file($_FILES[$name_field]['tmp_name'], $path_img);
+		$path_img = $path.$name_save;
+		move_uploaded_file($_FILES[$name_field]['tmp_name'], $path_img);
 	return $name_save;
 }
 // upload multiple images
@@ -524,26 +524,24 @@ function curPageURL() {
  if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
  $pageURL .= "://";
  if ($_SERVER["SERVER_PORT"] != "80") {
-  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+	$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
  } else {
-  $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+	$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
  }
  return $pageURL;
 }
 // getToken
-function getToken($length)
-{
-    $token = "";
-    $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
-    $codeAlphabet.= "0123456789";
-    $max = strlen($codeAlphabet); // edited
+function getToken($length) {
+	$token = "";
+	$codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	$codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
+	$codeAlphabet.= "0123456789";
+	$max = strlen($codeAlphabet); // edited
 
-    for ($i=0; $i < $length; $i++) {
-        $token .= $codeAlphabet[random_int(0, $max-1)];
-    }
-
-    return $token;
+	for ($i=0; $i < $length; $i++) {
+			$token .= $codeAlphabet[random_int(0, $max-1)];
+	}
+	return $token;
 }
 //HAM NAY LOAI BO CAC LENH INJECTION
 function killInjection($str){

@@ -54,21 +54,15 @@ $(document).ready(function(){
     $('html, body').animate({scrollTop: $("#viewallvideos").offset().top}, 2000);
   });
 });
-// tooltip
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip();
-})
 // scroll menu
 $(document).ready(function(){
-  //$('a[href*=#]').bind('click', function(e) {
     $('.navbar-item.page_link a').bind('click', function(e){
-      e.preventDefault(); // prevent hard jump, the default behavior
-      var target = $(this).attr("href"); // Set the target as variable
-      // perform animated scrolling by getting top-position of target-element and set it as scroll target
+      e.preventDefault();
+      var target = $(this).attr("href");
       $('html, body').stop().animate({
-          scrollTop: $(target).offset().top// - ($(window).height() - 116)
+        scrollTop: $(target).offset().top
       }, 600, function() {
-          location.hash = target; //attach the hash (#jumptarget) to the pageurl
+        location.hash = target;
       });
       return false;
   });
@@ -78,13 +72,13 @@ $(window).scroll(function() {
   var scrollDistance = $(window).scrollTop();
   // Assign active class to nav links while scolling
   $('.page-section').each(function(i) {
-      if ($(this).position().top <= scrollDistance) {
-          $('.navbar-item.page_link.active').removeClass('active');
-          $('.navbar-item.page_link').eq(i).addClass('active');
-          $('.svg.navbar-item.page_link.active').removeClass('active');
-          $('.svg.navbar-item.page_link').eq(i).addClass('active');
-          $('.text-navi.navbar-item.page_link.active').removeClass('active');
-          $('.text-navi.navbar-item.page_link').eq(i).addClass('active');
-      }
+    if ($(this).position().top <= scrollDistance) {
+      $('.navbar-item.page_link.active').removeClass('active');
+      $('.navbar-item.page_link').eq(i).addClass('active');
+      $('.svg.navbar-item.page_link.active').removeClass('active');
+      $('.svg.navbar-item.page_link').eq(i).addClass('active');
+      $('.text-navi.navbar-item.page_link.active').removeClass('active');
+      $('.text-navi.navbar-item.page_link').eq(i).addClass('active');
+    }
   });
 }).scroll();

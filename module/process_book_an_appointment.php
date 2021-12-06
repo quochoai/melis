@@ -23,6 +23,6 @@
 
   include("../mail/mail.php");
   if (send_gmail("quochoai.2202@gmail.com","melisbeaute", $titlemail, $body, "melisbeaute"))
-        _e('1');
-    else
-        _e('2');
+    _e('1');
+  else
+    _e('2');

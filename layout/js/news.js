@@ -19,14 +19,14 @@ jQuery(document).ready(function(){
 flag = false;
 $(window).scroll(function () {
   if ($(this).scrollTop() > 200) {
-      $('.control_navbar').addClass("fixed_navbar");
-      $('li.lg img.mom').attr('src', 'img/melismom_m.png');
-      $('li.lg img.beaute').attr('src', 'img/melisbeaute_m.png');
+    $('.control_navbar').addClass("fixed_navbar");
+    $('li.lg img.mom').attr('src', 'img/melismom_m.png');
+    $('li.lg img.beaute').attr('src', 'img/melisbeaute_m.png');
   } else {
-      $('.control_navbar').removeClass("fixed_navbar");
-      $('li.lg img.mom').attr('src', 'img/melismom.png');
-      $('li.lg img.beaute').attr('src', 'img/melisbeaute.png');
-      flag = false;
+    $('.control_navbar').removeClass("fixed_navbar");
+    $('li.lg img.mom').attr('src', 'img/melismom.png');
+    $('li.lg img.beaute').attr('src', 'img/melisbeaute.png');
+    flag = false;
   }
 });
 flag = false;
