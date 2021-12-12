@@ -6,10 +6,23 @@
 			<img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/svg/spin.svg" />
 		</div>
 		<div data-u="slides" class="jsso_1">
-			<p class="bghl"></p>
-					<div><img data-u="image" alt="" src="img/slider_test/1.png" /></div>
-					<div><img data-u="image" alt="" src="img/slider_test/2.jpg" /></div>
-			
+			<?php
+				$tableSlider = "sliders";
+				$checkSlider = $h->checkExist($tableSlider, "deleted_at is null and active = 1 and hc_id = 1");
+				if ($checkSlider) {
+						$sliders = $h->getAll("alt_vi, alt_en, url, image", $tableSlider, "deleted_at is null and active = 1 and hc_id = 1", "sort asc, id desc");
+						$imgSlider = "";
+						foreach ($sliders as $slider) {
+							if ($slider['url'] != '' && $slider['url'] != '#')
+								$linkSlider = '<a href="'.$slider['url'].'"><img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" /></a>';
+							else
+								$linkSlider = '<img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" />';
+							$imgSlider .= '<div>'.$linkSlider.'</div>';
+						}
+						_e($imgSlider);
+				} else 
+					_e('<div><img data-u="image" alt="" src="assets/img/slider_test/1.png" /></div>');
+			?>
 		</div>
 		<!-- Arrow Navigator -->
 		<div data-u="arrowleft" class="jssora051" style="width:65px;height:65px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
@@ -26,22 +39,22 @@
 	<!--form tu van-->
 	<div class="book-calendar text-center position-absolute p-4" id="book-calendar-top">
 		<form action="" method="post">
-			<label for="" class="text-uppercase color_brown font-weight-bold">Đặt lich trực truyến</label>
+			<h5 for="" class="text-uppercase color_brown font-weight-bold"><?php _e($lang['online_booking']) ?></h5>
 			<div class="d-flex">
-				<label class="p-2 d-flexprocess"> Bác sĩ tư vấn<input type="radio" name="process_home" value="1" id="bstv" checked><span class="checkmark"></span></label>
-				<label class="p-2 d-flexprocess">Thực hiện liệu trình<input type="radio" name="process_home" value="2" id="thlt"><span class="checkmark"></span></label>
+				<label class="p-2 d-flexprocess"> <?php _e($lang['consulting_doctor']) ?><input type="radio" name="process_home" value="1" id="bstv" checked><span class="checkmark"></span></label>
+				<label class="p-2 d-flexprocess"><?php _e($lang['carry_out_the_treatment']) ?><input type="radio" name="process_home" value="2" id="thlt"><span class="checkmark"></span></label>
 			</div>
 			<div>
-				<input type="text" id="bookfullname" name="book[fullname]" class="form-control mb-2 input-book" placeholder="Họ và tên quý khách">
+				<input type="text" id="bookfullname" name="book[fullname]" class="form-control mb-2 input-book" placeholder="<?php _e($lang['fullname']) ?>">
 			</div>
 			<div>
-				<input type="text" id="bookphone" name="book[phone]" class="form-control mb-2 input-book" placeholder="Số điện thoại">
+				<input type="text" id="bookphone" name="book[phone]" class="form-control mb-2 input-book" placeholder="<?php _e($lang['mobilephone']) ?>">
 			</div>
 			<div>
-				<input type="text" id="bookemail" name="book[email]" class="form-control mb-2 input-book" placeholder="Email (nếu có)">
+				<input type="text" id="bookemail" name="book[email]" class="form-control mb-2 input-book" placeholder="<?php _e($lang['email_if']) ?>">
 			</div>
 			<div>
-				<input type="text" id="demand" name="book[demand]" class="form-control mb-2 input-book" placeholder="Nhu cầu">
+				<input type="text" id="demand" name="book[demand]" class="form-control mb-2 input-book" placeholder="<?php _e($lang['demand']) ?>">
 			</div>
 			<div class="d-flex">
 				<div class="row col-12 p-0 m-0 justify-content-between">
@@ -50,14 +63,14 @@
 					</div>
 					<div class="col-6 p-0 pl-1">
 						<select name="book[branch]" id="branch" class="form-control mb-2 input-book">
-							<option value="0">Chi nhánh</option>
-							<option value="">SPA TẠI HÀ NỘI - 121 An Dương Vương - Tây Hồ</option>
-							<option value="">SPA TẠI TP. HỒ CHÍ MINH - 272 Nguyễn Thiện Thuật - P3 - Q3</option>
+							<option value="0"><?php _e($lang['branch']) ?></option>
+							<option value="SPA TẠI HÀ NỘI - 121 An Dương Vương - Tây Hồ"><?php _e($lang['branch_hn_tay_ho']) ?></option>
+							<option value="SPA TẠI TP. HỒ CHÍ MINH - 272 Nguyễn Thiện Thuật - P3 - Q3"><?php _e($lang['branch_hcm_q3']) ?></option>
 						</select>
 					</div>
 				</div>
 			</div>
-			<button type="button" class="btn btn-book text-uppercase" id="bookappointment">Đặt hẹn</button>
+			<button type="button" class="btn btn-book text-uppercase" id="bookappointment"><?php _e($lang['make_an_appointment']) ?></button>
 		</form>
 	</div>
 	<!-- end form tu van -->
@@ -101,7 +114,7 @@
 		<!-- pregnance week -->
 		<div class="col-12 text-center pb-4">
 			<div class="title">
-				<span class="pregnancy-week-by-week">Your pregnancy week by week</span>
+				<span class="pregnancy-week-by-week"><?php _e($lang['your_pregnance_week_by_week']) ?></span>
 			</div>
 		</div>
 		<section class="cd-horizontal-timeline">
@@ -109,45 +122,45 @@
 				<div class="events-wrapper">
 					<div class="events">
 						<ol>
-							<li><a href="#0" data-date="01/01/2001" class="selected"><img src="img/pregnance_week/2.png" alt="2" /><span>2</span></a></li>
-							<li><a href="#0" data-date="01/01/2002"><img src="img/pregnance_week/3.png" /><span>3</span></a></li>
-							<li><a href="#0" data-date="01/01/2003"><img src="img/pregnance_week/4.png" /><span>4</span></a></li>
-							<li><a href="#0" data-date="01/01/2004"><img src="img/pregnance_week/5.png" /><span>5</span></a></li>
-							<li><a href="#0" data-date="01/01/2005"><img src="img/pregnance_week/6.png" /><span>6</span></a></li>
-							<li><a href="#0" data-date="01/01/2006"><img src="img/pregnance_week/7.png" /><span>7</span></a></li>
-							<li><a href="#0" data-date="01/01/2007"><img src="img/pregnance_week/8.png" /><span>8</span></a></li>
-							<li><a href="#0" data-date="01/01/2008"><img src="img/pregnance_week/9.png" /><span>9</span></a></li>
-							<li><a href="#0" data-date="01/01/2009"><img src="img/pregnance_week/10.png" /><span>10</span></a></li>
-							<li><a href="#0" data-date="01/01/2010"><img src="img/pregnance_week/11.png" /><span>11</span></a></li>
-							<li><a href="#0" data-date="01/01/2011"><img src="img/pregnance_week/12.png" /><span>12</span></a></li>
-							<li><a href="#0" data-date="01/01/2012"><img src="img/pregnance_week/13.png" /><span>13</span></a></li>
-							<li><a href="#0" data-date="01/01/2013"><img src="img/pregnance_week/14.png" /><span>14</span></a></li>
-							<li><a href="#0" data-date="01/01/2014"><img src="img/pregnance_week/15.png" /><span>15</span></a></li>
-							<li><a href="#0" data-date="01/01/2015"><img src="img/pregnance_week/16.png" /><span>16</span></a></li>
-							<li><a href="#0" data-date="01/01/2016"><img src="img/pregnance_week/17.png" /><span>17</span></a></li>
-							<li><a href="#0" data-date="01/01/2017"><img src="img/pregnance_week/18.png" /><span>18</span></a></li>
-							<li><a href="#0" data-date="01/01/2018"><img src="img/pregnance_week/19.png" /><span>19</span></a></li>
-							<li><a href="#0" data-date="01/01/2019"><img src="img/pregnance_week/20.png" /><span>20</span></a></li>
-							<li><a href="#0" data-date="01/01/2020"><img src="img/pregnance_week/21.png" /><span>21</span></a></li>
-							<li><a href="#0" data-date="01/01/2021"><img src="img/pregnance_week/22.png" /><span>22</span></a></li>
-							<li><a href="#0" data-date="01/01/2022"><img src="img/pregnance_week/23.png" /><span>23</span></a></li>
-							<li><a href="#0" data-date="01/01/2023"><img src="img/pregnance_week/24.png" /><span>24</span></a></li>
-							<li><a href="#0" data-date="01/01/2024"><img src="img/pregnance_week/25.png" /><span>25</span></a></li>
-							<li><a href="#0" data-date="01/01/2025"><img src="img/pregnance_week/26.png" /><span>26</span></a></li>
-							<li><a href="#0" data-date="01/01/2026"><img src="img/pregnance_week/27.png" /><span>27</span></a></li>
-							<li><a href="#0" data-date="01/01/2027"><img src="img/pregnance_week/28.png" /><span>28</span></a></li>
-							<li><a href="#0" data-date="01/01/2028"><img src="img/pregnance_week/29.png" /><span>29</span></a></li>
-							<li><a href="#0" data-date="01/01/2029"><img src="img/pregnance_week/30.png" /><span>30</span></a></li>
-							<li><a href="#0" data-date="01/01/2030"><img src="img/pregnance_week/31.png" /><span>31</span></a></li>
-							<li><a href="#0" data-date="01/01/2031"><img src="img/pregnance_week/32.png" /><span>32</span></a></li>
-							<li><a href="#0" data-date="01/01/2032"><img src="img/pregnance_week/33.png" /><span>33</span></a></li>
-							<li><a href="#0" data-date="01/01/2033"><img src="img/pregnance_week/34.png" /><span>34</span></a></li>
-							<li><a href="#0" data-date="01/01/2034"><img src="img/pregnance_week/35.png" /><span>35</span></a></li>
-							<li><a href="#0" data-date="01/01/2035"><img src="img/pregnance_week/36.png" /><span>36</span></a></li>
-							<li><a href="#0" data-date="01/01/2036"><img src="img/pregnance_week/37.png" /><span>37</span></a></li>
-							<li><a href="#0" data-date="01/01/2037"><img src="img/pregnance_week/38.png" /><span>38</span></a></li>
-							<li><a href="#0" data-date="01/01/2038"><img src="img/pregnance_week/39.png" /><span>39</span></a></li>
-							<li><a href="#0" data-date="01/01/2039"><img src="img/pregnance_week/40.png" /><span>40</span></a></li>
+							<li><a href="#0" data-date="01/01/2001" class="selected"><img src="assets/img/pregnance_week/2.png" alt="2" /><span>2</span></a></li>
+							<li><a href="#0" data-date="01/01/2002"><img src="assets/img/pregnance_week/3.png" /><span>3</span></a></li>
+							<li><a href="#0" data-date="01/01/2003"><img src="assets/img/pregnance_week/4.png" /><span>4</span></a></li>
+							<li><a href="#0" data-date="01/01/2004"><img src="assets/img/pregnance_week/5.png" /><span>5</span></a></li>
+							<li><a href="#0" data-date="01/01/2005"><img src="assets/img/pregnance_week/6.png" /><span>6</span></a></li>
+							<li><a href="#0" data-date="01/01/2006"><img src="assets/img/pregnance_week/7.png" /><span>7</span></a></li>
+							<li><a href="#0" data-date="01/01/2007"><img src="assets/img/pregnance_week/8.png" /><span>8</span></a></li>
+							<li><a href="#0" data-date="01/01/2008"><img src="assets/img/pregnance_week/9.png" /><span>9</span></a></li>
+							<li><a href="#0" data-date="01/01/2009"><img src="assets/img/pregnance_week/10.png" /><span>10</span></a></li>
+							<li><a href="#0" data-date="01/01/2010"><img src="assets/img/pregnance_week/11.png" /><span>11</span></a></li>
+							<li><a href="#0" data-date="01/01/2011"><img src="assets/img/pregnance_week/12.png" /><span>12</span></a></li>
+							<li><a href="#0" data-date="01/01/2012"><img src="assets/img/pregnance_week/13.png" /><span>13</span></a></li>
+							<li><a href="#0" data-date="01/01/2013"><img src="assets/img/pregnance_week/14.png" /><span>14</span></a></li>
+							<li><a href="#0" data-date="01/01/2014"><img src="assets/img/pregnance_week/15.png" /><span>15</span></a></li>
+							<li><a href="#0" data-date="01/01/2015"><img src="assets/img/pregnance_week/16.png" /><span>16</span></a></li>
+							<li><a href="#0" data-date="01/01/2016"><img src="assets/img/pregnance_week/17.png" /><span>17</span></a></li>
+							<li><a href="#0" data-date="01/01/2017"><img src="assets/img/pregnance_week/18.png" /><span>18</span></a></li>
+							<li><a href="#0" data-date="01/01/2018"><img src="assets/img/pregnance_week/19.png" /><span>19</span></a></li>
+							<li><a href="#0" data-date="01/01/2019"><img src="assets/img/pregnance_week/20.png" /><span>20</span></a></li>
+							<li><a href="#0" data-date="01/01/2020"><img src="assets/img/pregnance_week/21.png" /><span>21</span></a></li>
+							<li><a href="#0" data-date="01/01/2021"><img src="assets/img/pregnance_week/22.png" /><span>22</span></a></li>
+							<li><a href="#0" data-date="01/01/2022"><img src="assets/img/pregnance_week/23.png" /><span>23</span></a></li>
+							<li><a href="#0" data-date="01/01/2023"><img src="assets/img/pregnance_week/24.png" /><span>24</span></a></li>
+							<li><a href="#0" data-date="01/01/2024"><img src="assets/img/pregnance_week/25.png" /><span>25</span></a></li>
+							<li><a href="#0" data-date="01/01/2025"><img src="assets/img/pregnance_week/26.png" /><span>26</span></a></li>
+							<li><a href="#0" data-date="01/01/2026"><img src="assets/img/pregnance_week/27.png" /><span>27</span></a></li>
+							<li><a href="#0" data-date="01/01/2027"><img src="assets/img/pregnance_week/28.png" /><span>28</span></a></li>
+							<li><a href="#0" data-date="01/01/2028"><img src="assets/img/pregnance_week/29.png" /><span>29</span></a></li>
+							<li><a href="#0" data-date="01/01/2029"><img src="assets/img/pregnance_week/30.png" /><span>30</span></a></li>
+							<li><a href="#0" data-date="01/01/2030"><img src="assets/img/pregnance_week/31.png" /><span>31</span></a></li>
+							<li><a href="#0" data-date="01/01/2031"><img src="assets/img/pregnance_week/32.png" /><span>32</span></a></li>
+							<li><a href="#0" data-date="01/01/2032"><img src="assets/img/pregnance_week/33.png" /><span>33</span></a></li>
+							<li><a href="#0" data-date="01/01/2033"><img src="assets/img/pregnance_week/34.png" /><span>34</span></a></li>
+							<li><a href="#0" data-date="01/01/2034"><img src="assets/img/pregnance_week/35.png" /><span>35</span></a></li>
+							<li><a href="#0" data-date="01/01/2035"><img src="assets/img/pregnance_week/36.png" /><span>36</span></a></li>
+							<li><a href="#0" data-date="01/01/2036"><img src="assets/img/pregnance_week/37.png" /><span>37</span></a></li>
+							<li><a href="#0" data-date="01/01/2037"><img src="assets/img/pregnance_week/38.png" /><span>38</span></a></li>
+							<li><a href="#0" data-date="01/01/2038"><img src="assets/img/pregnance_week/39.png" /><span>39</span></a></li>
+							<li><a href="#0" data-date="01/01/2039"><img src="assets/img/pregnance_week/40.png" /><span>40</span></a></li>
 						</ol>
 		
 						<span class="filling-line" aria-hidden="true"></span>
@@ -184,7 +197,12 @@
 				</div>
 			</div>
 		</div>
-		<!-- DỊCH VỤ MELIS SPA -->
+		<?php
+			// Dịch vụ melis spa
+			$tableService = "services";
+			$checkService = $h->checkExist($tableService, "active = 1 and show_home = 1 and cm = 0 and deleted_at is null");
+			if ($checkService) {
+		?>
 		<div class="bg-wrapper service-spa">
 			<div class="container-fluid pregnancy">
 				<div class="col-12 position-relative">
@@ -192,131 +210,39 @@
 						<div class="px-2 my-1 text-center">
 							<div class="text-uppercase px-3 py-2 shop-now pregnancy-service">
 								<div>
-									<span class="" style="font-size: 2em;">DỊCH VỤ MELIS SPA</span>
+									<span class="text-uppercase" style="font-size: 2em;"><?php _e($lang['melis_spa_service']) ?></span>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="position-absolute" style="top: 0; right: 0;">
-						<a href="#" class="btn btn-read-more">
-							<i class="fas fa-plus"></i>&nbsp;XEM TẤT CẢ
+						<a href="<?php _e($lang['link_fservice']) ?>" class="btn btn-read-more text-uppercase">
+							<i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?>
 						</a>
 					</div>
 				</div>
 				<div class="row py-4">
-					<div class="col-xl-9 col-lg-12 col-md-12 col-12 m-auto pb-4">
-							Đến spa thư giãn & làm đẹp là một trong những cách tốt nhất để giải tỏa stress. Đặt hẹn tại Melis Mom - Melis Beate’ ngay hôm nay để trải nghiệm các liệu pháp thư giãn & làm đẹp tốt nhất.
-					</div>
+					<div class="col-xl-9 col-lg-12 col-md-12 col-12 m-auto pb-4"><?php _e($lang['intro_melis_spa_service']) ?></div>
 					<div class="col-12 pb-4">
 						<div class="container-fluid">
 							<div class="owl-carousel" id="owl-carousel">
-									<div class="item active">
-										<img src="img/slide/slide-1.png" alt="" class="img w-100">
-										<div class="text text-center pt-4">
-											<div class="title">
-												<span>CHĂM SÓC MẸ BẦU</span>
-											</div>
-											<div class="content">
-					fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads
-											</div>
-										</div>
-										<div class="m-auto text-center pt-4">
-											<div class="m-auto">
-												<a href="#" class="btn readmore-textarea text-uppercase p-2">Xem chi tiết</a>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<img src="img/slide/slide-2.png" alt="" class="img w-100">
-										<div class="text text-center pt-4">
-											<div class="title">
-												<span>CHĂM SÓC SAU SINH</span>
-											</div>
-											<div class="content">
-												<span>
-					fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads
-					</span>
-											</div>
-										</div>
-										<div class="m-auto text-center pt-4">
-											<div class="m-auto" style="max-width: 200px;">
-												<a href="#" class="btn readmore-textarea text-uppercase p-2">Xem chi tiết</a>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<img src="img/slide/slide-3.png" alt="" class="img w-100">
-										<div class="text text-center pt-4">
-											<div class="title">
-												<span>TẮM MASSAGE CHO BÉ</span>
-											</div>
-											<div class="content">
-												<span>
-					fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads
-					</span>
-											</div>
-										</div>
-										<div class="m-auto text-center pt-4">
-											<div class="m-auto" style="max-width: 200px;">
-												<a href="#" class="btn readmore-textarea text-uppercase p-2">Xem chi tiết</a>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<img src="img/slide/slide-4.png" alt="" class="img w-100">
-										<div class="text text-center pt-4">
-											<div class="title">
-												<span>CHĂM SÓC MẸ BẦU</span>
-											</div>
-											<div class="content">
-												<span>
-					fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads
-					</span>
-											</div>
-										</div>
-										<div class="m-auto text-center pt-4">
-											<div class="m-auto" style="max-width: 200px;">
-												<a href="#" class="btn readmore-textarea text-uppercase p-2">Xem chi tiết</a>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<img src="img/slide/slide-5.png" alt="" class="img w-100">
-										<div class="text text-center pt-4">
-											<div class="title">
-												<span>CHĂM SÓC SAU SINH</span>
-											</div>
-											<div class="content">
-												<span>
-					fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads
-					</span>
-											</div>
-										</div>
-										<div class="m-auto text-center pt-4">
-											<div class="m-auto" style="max-width: 200px;">
-												<a href="#" class="btn readmore-textarea text-uppercase p-2">Xem chi tiết</a>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<img src="img/slide/slide-6.png" alt="" class="img w-100">
-										<div class="text text-center pt-4">
-											<div class="title">
-												<span>TẮM MASSAGE CHO BÉ</span>
-											</div>
-											<div class="content">
-												<span>
-					fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads
-					</span>
-											</div>
-										</div>
-										<div class="m-auto text-center pt-4">
-											<div class="m-auto" style="max-width: 200px;">
-												<a href="#" class="btn readmore-textarea text-uppercase p-2">Xem chi tiết</a>
-											</div>
-										</div>
-									</div>
-								
+							<?php
+								$services = $h->getAll("service_id, name_vi, name_en, image", $tableService, "active = 1 and show_home = 1 and cm = 0 and deleted_at is null", "sort desc, id desc");
+								$msgService = "";
+								foreach ($services as $ks => $service) {
+									$acti = ($ks == 1) ? ' active' : '';
+									$cateService = $h->getById("name_vi", $tableService, $service['service_id']);
+									$linkService = $def['link_fservice'].'/'.chuoilink($cateService['name_vi']).'/'.chuoilink($service['name_vi']).'.html';
+									$imgService = (!is_null($service['image']) && $service['image'] != '') ? $def['upload_service_avatar'].$service['image'] : $def['no_image_available'];
+									$titleService = $service["name_$lng"];
+									$msgService .= '<div class="item'.$acti.'">';
+									$msgService .= '	<a href="'.$linkService.'" title="'.$titleService.'"><figure><img src="'.$imgService.'" alt="'.$titleService.'" class="img w-100" /></figure></a>';
+									$msgService .= '	<div class="text text-center pt-4"><div class="title"><a href="'.$linkService.'">CHĂM SÓC MẸ BẦU</a></div></div>';
+									$msgService .= '	<div class="m-auto text-center pt-4"><div class="m-auto"><a href="'.$linkService.'" class="btn readmore-textarea text-uppercase p-2">'.$lang['view_detail'].'</a></div></div>';
+									$msgService .= '</div>';
+								}
+								_e($msgService);
+							?>
 							</div>
 						</div>
 						
@@ -324,7 +250,13 @@
 				</div>
 			</div>
 		</div>
-		<!-- SẢN PHẨM ƯU ĐÃI -->
+		<?php
+			} // end Dịch vụ melis spa
+			// SẢN PHẨM ƯU ĐÃI
+			$tableProduct = "products";
+			$checkOfferProducts = $h->checkExist($tableProduct, "offer_product = 1 and show_home = 1 and cm = 0 and active = 1 and deleted_at is null");
+			if ($checkOfferProducts) {
+		?>
 		<div class="bg-wrapper discount">
 				<div class="container-fluid discount-product">
 					<div class="row py-4">
@@ -335,116 +267,41 @@
 										<div class="px-2 my-1 text-center">
 											<div class="text-uppercase px-3 py-2 shop-now pregnancy-service">
 												<div>
-													<span class="" style="font-size: 2em;">SẢN PHẨM ƯU ĐÃI</span>
+													<span class="" style="font-size: 2em;"><?php _e($lang['offer_products']) ?></span>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-lg-4">
-										<div class="py-3">
-											<div class="py-4 bg-brow">
-												<div class="img-prod w-50 m-auto">
-													<div class="img w-100 m-auto">
-														<img src="img/discount-product-1.png" alt="" class="w-100">
-													</div>
-												</div>
-												<div class="m-auto text-center pt-4">
-													<div class="m-auto">
-														<a href="#" class="btn readmore-textarea text-uppercase p-2">Xem chi tiết</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4">
-										<div class="py-3">
-											<div class="py-4 bg-brow">
-												<div class="img-prod w-50 m-auto">
-													<div class="img w-100 m-auto">
-														<img src="img/discount-product-2.png" alt="" class="w-100">
-													</div>
-												</div>
-												<div class="m-auto text-center pt-4">
-													<div class="m-auto">
-														<a href="#" class="btn readmore-textarea text-uppercase p-2">Xem chi tiết</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4">
-										<div class="py-3">
-											<div class="py-4 bg-brow">
-												<div class="img-prod w-50 m-auto">
-													<div class="img w-100 m-auto">
-														<img src="img/discount-product-3.png" alt="" class="w-100">
-													</div>
-												</div>
-												<div class="m-auto text-center pt-4">
-													<div class="m-auto">
-														<a href="#" class="btn readmore-textarea text-uppercase p-2">Xem chi tiết</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4">
-										<div class="py-3">
-											<div class="py-4 bg-brow">
-												<div class="img-prod w-50 m-auto">
-													<div class="img w-100 m-auto">
-														<img src="img/discount-product-4.png" alt="" class="w-100">
-													</div>
-												</div>
-												<div class="m-auto text-center pt-4">
-													<div class="m-auto">
-														<a href="#" class="btn readmore-textarea text-uppercase p-2">Xem chi tiết</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4">
-										<div class="py-3">
-											<div class="py-4 bg-brow">
-												<div class="img-prod w-50 m-auto">
-													<div class="img w-100 m-auto">
-														<img src="img/discount-product-5.png" alt="" class="w-100">
-													</div>
-												</div>
-												<div class="m-auto text-center pt-4">
-													<div class="m-auto">
-														<a href="#" class="btn readmore-textarea text-uppercase p-2">Xem chi tiết</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4">
-										<div class="py-3">
-											<div class="py-4 bg-brow">
-												<div class="img-prod w-50 m-auto">
-													<div class="img w-100 m-auto">
-														<img src="img/discount-product-6.png" alt="" class="w-100">
-													</div>
-												</div>
-												<div class="m-auto text-center pt-4">
-													<div class="m-auto">
-														<a href="#" class="btn readmore-textarea text-uppercase p-2">Xem chi tiết</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+								<?php
+									$offerProducts = $h->getAll("product_id, name_vi, name_en, image", $tableProduct, "offer_product = 1 and show_home = 1 and cm = 0 and active = 1 and deleted_at is null", "sort desc, id desc", "limit 0,6");
+									$msgOfferProduct = "";
+									foreach ($offerProducts as $offerProduct) {
+										$cateOfferProduct = $h->getById("name_vi", $tableProduct, $offerProduct['product_id']);
+										$linkOfferProduct = $def['link_queennature'].'/'.chuoilink($cateOfferProduct['name_vi']).'/'.chuoilink($offerProduct['name_vi']).'.html';
+										$imgOfferProduct = (!is_null($offerProduct['image']) && $offerProduct['image'] != '') ? $def['upload_product_avatar'].$offerProduct['image'] : $def['no_image_available'];
+										$titleOfferProduct = $offerProduct["name_$lng"];
+										$msgOfferProduct .= '<div class="col-lg-4"><div class="py-3"><div class="py-4 bg-brow">';
+										$msgOfferProduct .= '	<div class="img-prod w-50 m-auto"><div class="img w-100 m-auto"><a href="'.$linkOfferProduct.'" title="'.$titleOfferProduct.'"><figure><img src="'.$imgOfferProduct.'" alt="'.$titleOfferProduct.'" class="w-100" /></figure></a></div></div>';
+										$msgOfferProduct .= '	<div class="m-auto text-center pt-4"><div class="m-auto"><a href="'.$linkOfferProduct.'" class="btn readmore-textarea text-uppercase p-2">'.$lang['view_detail'].'</a></div></div>';
+										$msgOfferProduct .= '</div></div></div>';
+									}
+									_e($msgOfferProduct);
+								?>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 		</div>
-		<!-- TIN TỨC - SỰ KIỆN -->
+		<?php
+      } // end san pham uu dai
+			// TIN TỨC - SỰ KIỆN
+			$tableNews = "news";
+			$checkNews = $h->checkExist($tableNews, "news_id IN (1, 3) and deleted_at is null and active = 1");
+			if ($checkNews) {
+		?>
 		<div class="bg-wrapper event news column-xl">
 			
 				<div class="container-fluid event-news">
@@ -456,90 +313,41 @@
 										<div class="px-2 my-1 text-center">
 											<div class="text-uppercase px-3 py-2 shop-now pregnancy-service">
 												<div>
-													<span class="" style="font-size: 2em;">TIN TỨC - SỰ KIỆN</span>
+													<span class="" style="font-size: 2em;"><?php _e($lang['news_events']) ?></span>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="position-absolute" style="top: 0; right: 0;">
-									<a href="#" class="btn btn-read-more">
-										<i class="fas fa-plus"></i>&nbsp;XEM TẤT CẢ
-									</a>
+									<a href="<?php _e($def['link_fnews']) ?>" class="btn btn-read-more text-uppercase"><i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?></a>
 								</div>
 								<div class="row">
-									<div class="col-lg-4 p-0">
-										<div class="row p-0 m-0">
-											<div class="col-12 px-2 pb-4 min-wh">
-												<div class="w-100 h-100 bg-img-event-news" style="background-image: url(img/event-1.png);"></div>
-											</div>
-											<div class="col-12 px-2 pb-4 min-wh">
-												<div class="text-area-news-event">
-													<div class="title">
-														<div class="col-12 text-center font-weight-bold">
-															<span>
-							Tieu de 1 tieu de 1 tieu de 1 tieu de 1 tieu de 1 tieu de 1 tieu de 1 tieu de 1 tieu de 1 tieu de 1 tieu de 1 tieu de 1 tieu de 1
-							</span>
-														</div>
-													</div>
-													<div class="content">
-														<div class="col-12 px-1">
-															<span>&nbsp;&nbsp;&nbsp;&nbsp;Nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết....</span>
-														</div>
-													</div>
-													<a href="#" class="btn readmore-div-span py-0 px-1 text-uppercase position-absolute nav-link">Xem thêm</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4 p-0">
-										<div class="row p-0 m-0">
-											<div class="col-12 px-2 pb-4 min-wh">
-												<div class="text-area-news-event">
-													<div class="title">
-														<div class="col-12 text-center font-weight-bold">
-															<span>
-							Tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de 2 tieu de
-							</span>
-														</div>
-													</div>
-													<div class="content">
-														<div class="col-12 px-1">
-															<span>&nbsp;&nbsp;&nbsp;&nbsp;Nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết....</span>
-														</div>
-													</div>
-													<a href="#" class="btn readmore-div-span py-0 px-1 text-uppercase position-absolute nav-link">Xem thêm</a>
-												</div>
-											</div>
-											<div class="col-12 px-2 pb-4 min-wh">
-												<div class="w-100 h-100 bg-img-event-news" style="background-image: url(img/event-2.png);"></div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4 p-0">
-										<div class="row p-0 m-0">
-											<div class="col-12 px-2 pb-4 min-wh">
-												<div class="w-100 h-100 bg-img-event-news" style="background-image: url(img/event-3.png);"></div>
-											</div>
-											<div class="col-12 px-2 pb-4 min-wh">
-												<div class="text-area-news-event">
-													<div class="title">
-														<div class="col-12 text-center font-weight-bold">
-															<span>
-							Tieu de 3 tieu de 3 tieu de 3 tieu de 3 tieu de 3 tieu de 3 tieu de 3 tieu de 3 tieu de 3 tieu de 3 tieu de 3 tieu de 3 tieu de 3 tieu de 3 tieu de 3
-							</span>
-														</div>
-													</div>
-													<div class="content">
-														<div class="col-12 px-1">
-															<span>&nbsp;&nbsp;&nbsp;&nbsp;Nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết nội dung bài viết Nội dung bài viết....</span>
-														</div>
-													</div>
-													<a href="#" class="btn readmore-div-span py-0 px-1 text-uppercase position-absolute nav-link">Xem thêm</a>
-												</div>
-											</div>
-										</div>
-									</div>
+								<?php
+									$newss = $h->getAll("news_id, name_vi, name_en, image, scontent_vi, scontent_en", $tableNews, "news_id IN (1, 3) and deleted_at is null and active = 1", "sort desc, id desc", "limit 0, 3");
+									$msgNews = "";
+									foreach ($newss as $kn => $news) {
+										if ($news['news_id'] == 1) {
+											$nOP = $def['link_fnews'];
+											$folderNews = $def['upload_news'];
+										} else {
+											$nOP = $def['link_fpromotion'];
+											$folderNews = $def['upload_promotion'];
+										}
+										$titleNews = $news["name_$lng"];
+										$imgNews = (!is_null($news['image']) && $news['image'] != '') ? $folderNews.$news['image'] : $def['no_image_available'];
+										$linkNews = $nOP.chuoilink($news['name_vi']).'.html';
+										$shortContentNews = $news["scontent_$lng"];
+										$overNews = ($kn %2 == 0) ? '<div class="col-12 px-2 pb-4 min-wh"><a href="'.$linkNews.'" title="'.$titleNews.'"><div class="w-100 h-100 bg-img-event-news" style="background-image: url('.$imgNews.');"></div></a></div>' : '';
+										$belowNews = ($kn %2 != 0) ? '<div class="col-12 px-2 pb-4 min-wh"><a href="'.$linkNews.'" title="'.$titleNews.'"><div class="w-100 h-100 bg-img-event-news" style="background-image: url('.$imgNews.');"></div></a></div>' : '';
+										$msgNews .= '<div class="col-lg-4 p-0"><div class="row p-0 m-0">';
+										$msgNews .= $overNews;
+										$msgNews .= '<div class="col-12 px-2 pb-4 min-wh"><div class="text-area-news-event"><div class="title"><div class="col-12 text-center font-weight-bold"><a href="'.$linkNews.'" title="'.$titleNews.'">'.$titleNews.'</a></div></div><div class="content"><div class="col-12 px-1">'.$shortContentNews.'</div></div><a href="'.$linkNews.'" class="btn readmore-div-span py-0 px-1 text-uppercase position-absolute nav-link">'.$lang['view_more'].'</a></div></div>';
+										$msgNews .= $belowNews;
+										$msgNews .= '</div></div>';
+ 									}
+									 _e($msgNews);
+								?>
 								</div>
 							</div>
 						</div>
@@ -547,7 +355,12 @@
 				</div>
 
 		</div>
-		<!-- SẢN PHẨM QUEEN NATURE -->
+		<?php 
+			} // end tin tức - sự kiện
+			// SẢN PHẨM QUEEN NATURE
+			$checkQueenProduct = $h->checkExist($tableProduct, "(offer_product = 0 || offer_product is null) and show_home = 1 and active = 1 and deleted_at is null");
+			if ($checkQueenProduct) {
+		?>
 		<div class="bg-wrapper discount">
 			<div class="container-fluid discount-product pb-4 position-relative">
 				<div class="row py-5 position-static">
@@ -558,15 +371,13 @@
 									<div class="px-2 my-1 text-center">
 										<div class="text-uppercase px-3 py-2 shop-now pregnancy-service">
 											<div>
-												<span class="" style="font-size: 2em;">SẢN PHẨM QUEEN NATURE</span>
+												<span class="" style="font-size: 2em;"><?php _e($lang['queen_nature_products']) ?></span>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="position-absolute" style="top: 0; right: 0;">
-									<a href="#" class="btn btn-read-more">
-										<i class="fas fa-plus"></i>&nbsp;XEM TẤT CẢ
-									</a>
+									<a href="<?php _e($def['link_queennature']) ?>" class="btn btn-read-more text-uppercase"><i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?></a>
 								</div>
 							</div>
 						</div>
@@ -576,72 +387,43 @@
 							<div class="container-fluid carousel-inner" style="overflow: visible;">
 								<div class="carousel">
 									<div class="list-item row" style="overflow: visible;">
-										<div class="col-12 pb-4">
-											<img src="img/product_melis_spa_top_1.png" class="img w-100" alt="">
-										</div>
-										<div class="item active col-xl-4 col-lg-4 col-md-12 col-12 position-relative">
-											<img src="img/mebausausinh.png" alt="" class="img w-100">
-											<div class="text text-center py-4 w-75 product-queen-nature position-absolute">
-												<div class="title">
-													<span class="font-weight-bold">CHO MẸ BẦU - SAU SINH</span>
-												</div>
-												<div class="m-auto text-center pt-4">
-													<div class="m-auto" style="max-width: 200px;">
-														<a href="#" class="btn readmore-textarea text-uppercase py-2 px-1 nav-link">Xem chi tiết</a>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="item col-xl-4 col-lg-4 col-md-12 col-12 position-relative">
-											<img src="img/chotresosinh_baby.png" alt="" class="img w-100">
-											<div class="text text-center py-4 w-75 product-queen-nature position-absolute">
-												<div class="title">
-													<span class="font-weight-bold">CHO TRẺ SƠ SINH - BABY</span>
-												</div>
-												<div class="m-auto text-center pt-4">
-													<div class="m-auto" style="max-width: 200px;">
-														<a href="#" class="btn readmore-textarea text-uppercase py-2 px-1 nav-link">Xem chi tiết</a>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="item col-xl-4 col-lg-4 col-md-12 col-12 position-relative">
-											<img src="img/boquatang.png" alt="" class="img w-100">
-											<div class="text text-center py-4 w-75 product-queen-nature position-absolute">
-												<div class="title">
-													<span class="font-weight-bold">BỘ QUÀ TẶNG</span>
-												</div>
-												<div class="m-auto text-center pt-4">
-													<div class="m-auto" style="max-width: 200px;">
-														<a href="#" class="btn readmore-textarea text-uppercase py-2 px-1 nav-link">Xem chi tiết</a>
-													</div>
-												</div>
-											</div>
-										</div>
+										<div class="col-12 pb-4"><figure><img src="<?php _e($def['img_queen_nature_home']) ?>" class="img w-100" alt=""></figure></div>
+									<?php
+										$queenProducts = $h->getAll("product_id, name_vi, name_en, image", $tableProduct, "(offer_product = 0 || offer_product is null) and show_home = 1 and active = 1 and deleted_at is null", "sort desc, id desc", "limit 0, 3");
+										$msgQueenProduct = "";
+										foreach ($queenProducts as $queenProduct) {
+											$cateQueenProduct = $h->getById("name_vi", $tableProduct, $queenProduct['product_id']);
+											$linkQueenProduct = $def['link_queennature'].'/'.chuoilink($cateQueenProduct['name_vi']).'/'.chuoilink($queenProduct['name_vi']).'.html';
+											$titleQueenProduct = $queenProduct["name_$lng"];
+											$imgQueenProduct = (!is_null($queenProduct['image']) && $queenProduct['image'] != '') ? $def['upload_product_avatar'].$queenProduct['image'] : $def['no_image_available'];
+											$msgQueenProduct .= '<div class="item col-xl-4 col-lg-4 col-md-12 col-12 position-relative">';
+											$msgQueenProduct .= '	<a href="'.$linkQueenProduct.'" title="'.$titleQueenProduct.'"><figure><img src="'.$imgQueenProduct.'" alt="'.$titleQueenProduct.'" class="img w-100"></figure></a>';
+											$msgQueenProduct .= '	<div class="text text-center py-4 w-75 product-queen-nature position-absolute">';
+											$msgQueenProduct .= '		<div class="title"><a href="'.$linkQueenProduct.'" class="font-weight-bold text-uppercase">'.$titleQueenProduct.'</a></div>';
+											$msgQueenProduct .= '		<div class="m-auto text-center pt-4"><div class="m-auto" style="max-width: 200px;"><a href="'.$linkQueenProduct.'" class="btn readmore-textarea text-uppercase py-2 px-1 nav-link">'.$lang['view_detail'].'</a></div></div>';
+											$msgQueenProduct .= '</div></div>';
+										}
+										_e($msgQueenProduct);
+									?>
 									</div>
 								</div>
 							</div>
-							<!-- 
-							<div class="position-absolute prev">
-								<div class="action-slideshow text-center">
-									<i class="fas fa-chevron-left"></i>
-								</div>
-							</div>
-							<div class="position-absolute next">
-								<div class="action-slideshow text-center">
-									<i class="fas fa-chevron-right"></i>
-								</div>
-							</div>
-							-->
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+		<?php 
+			}
+		?>
 	</div>
 </section>
-<!-- KHÁCH HÀNG CẢM NHẬN -->
+<?php
+	// KHÁCH HÀNG CẢM NHẬN
+	$tableReview = "reviews";
+	$checkCustomerReview = $h->checkExist($tableReview, "rv_id = 1 and deleted_at is null");
+    if ($checkCustomerReview) {
+        ?>
 <div class="bg-wrapper position-relative">
 	<div class="wrapper">
 		<div class="container-fluid customer-feel">
@@ -655,16 +437,12 @@
 							<div class="row d-flex justify-content-center">
 								<div class="px-2 my-1 text-center">
 									<div class="text-uppercase px-3 py-2 shop-now pregnancy-service">
-										<div>
-											<span class="" style="font-size: 2em;">KHÁCH HÀNG CẢM NHẬN</span>
-										</div>
+										<div><span class="" style="font-size: 2em;"><?php _e($lang['customer_review']) ?></span></div>
 									</div>
 								</div>
 							</div>
 							<div class="position-absolute" style="top: 0; right: 0;">
-								<a href="#" class="btn btn-read-more">
-									<i class="fas fa-plus"></i>&nbsp;XEM TẤT CẢ
-								</a>
+								<a href="<?php _e($lang['link_freview']) ?>" class="btn btn-read-more"><i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?></a>
 							</div>
 						</div>
 					</div>
@@ -672,102 +450,105 @@
 				<div class="col-12" style="z-index: 2;">
 					<div class="container">
 						<div class="row owl-carousel" id="owl-carousel-2">
-							<div class="py-4 my-3">
-								<div class="p-3 bg-frame position-relative w-100 h-100" style="min-height: 201px; background-image: url(img/frames-comments.png);">
-									<div class="description px-5">
-										Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng
-									</div>
-									<div class="infomation-customer">
-										<div class="position-absolute w-75 d-flex align-items-center">
-											<div class="row p-0 m-0 w-100 align-items-center">
-												<div class="avt col-4">
-													<img src="img/avatar-customer/xinchaocacban202003120451526569.png" alt="" class="img-avt-customer">
-												</div>
-												<div class="name">TÊN KHÁCH HÀNG</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="p-3 bg-frame position-relative w-100 h-100 mt-5" style="min-height: 201px; background-image: url(img/frames-comments.png);">
-									<div class="description px-5">
-										Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng
-									</div>
-									<div class="infomation-customer">
-										<div class="position-absolute w-75 d-flex align-items-center">
-											<div class="row p-0 m-0 w-100 align-items-center">
-												<div class="avt col-4">
-													<img src="img/avatar-customer/xinchaocacban202003120451526569.png" alt="" class="img-avt-customer">
-												</div>
-												<div class="name">TÊN KHÁCH HÀNG</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="py-4 my-3">
-								<div class="p-3 bg-frame position-relative w-100 h-100" style="min-height: 201px; background-image: url(img/frames-comments.png);">
-									<div class="description px-5">
-										Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng
-									</div>
-									<div class="infomation-customer">
-										<div class="position-absolute w-75 d-flex align-items-center">
-											<div class="row p-0 m-0 w-100 align-items-center">
-												<div class="avt col-4">
-													<img src="img/avatar-customer/xinchaocacban202003120451526569.png" alt="" class="img-avt-customer">
-												</div>
-												<div class="name">TÊN KHÁCH HÀNG</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="p-3 bg-frame position-relative w-100 h-100 mt-5" style="min-height: 201px; background-image: url(img/frames-comments.png);">
-									<div class="description px-5">
-										Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng
-									</div>
-									<div class="infomation-customer">
-										<div class="position-absolute w-75 d-flex align-items-center">
-											<div class="row p-0 m-0 w-100 align-items-center">
-												<div class="avt col-4">
-													<img src="img/avatar-customer/xinchaocacban202003120451526569.png" alt="" class="img-avt-customer">
-												</div>
-												<div class="name">TÊN KHÁCH HÀNG</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="py-4 my-3">
-								<div class="p-3 bg-frame position-relative w-100 h-100" style="min-height: 201px; background-image: url(img/frames-comments.png);">
-									<div class="description px-5">
-										Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng
-									</div>
-									<div class="infomation-customer">
-										<div class="position-absolute w-75 d-flex align-items-center">
-											<div class="row p-0 m-0 w-100 align-items-center">
-												<div class="avt col-4">
-													<img src="img/avatar-customer/xinchaocacban202003120451526569.png" alt="" class="img-avt-customer">
-												</div>
-												<div class="name">TÊN KHÁCH HÀNG</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="p-3 bg-frame position-relative w-100 h-100 mt-5" style="min-height: 201px; background-image: url(img/frames-comments.png);">
-									<div class="description px-5">
-										Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng Mô tả khách hàng
-									</div>
-									<div class="infomation-customer">
-										<div class="position-absolute w-75 d-flex align-items-center">
-											<div class="row p-0 m-0 w-100 align-items-center">
-												<div class="avt col-4">
-													<img src="img/avatar-customer/xinchaocacban202003120451526569.png" alt="" class="img-avt-customer">
-												</div>
-												<div class="name">TÊN KHÁCH HÀNG</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+						<?php
+							$customerReviews = $h->getAll("customer_vi, customer_en, image, content_vi, content_en", $tableReview, "rv_id = 1 and deleted_at is null", "sort desc, id desc", "limit 0, 16");
+							$countCustomerReview = count($customerReviews);
+							$msgCustomerReview = "";
+							foreach ($customerReviews as $kv => $customerReview) {
+								if ($customerReview['image'] == '')
+									$imgCustomerReview = $def['no_image_available'];
+								else
+									$imgCustomerReview = $def['upload_review_customer'].$customerReview['image'];
+								$customerName = $customerReview["customer_$lng"];
+								$shortCustomerReview = catchuoi($customerReview["content_$lng"], 200);
+								$eachCustomerReview = '<div class="p-3 bg-frame position-relative w-100 h-100" style="min-height: 201px; background-image: url(img/frames-comments.png);"><div class="description px-5">'.$shortCustomerReview.'</div><div class="infomation-customer"><div class="position-absolute w-75 d-flex align-items-center"><div class="row p-0 m-0 w-100 align-items-center"><div class="avt col-4"><figure><img src="'.$imgCustomerReview.'" alt="'.$customerName.'" class="img-avt-customer"></figure></div><div class="name">'.$customerName.'</div></div></div></div></div>';
+
+								if ($countCustomerReview >= 4 && $countCustomerReview % 4 == 0) {
+									if ($kv % 2 == 0)
+										$msgCustomerReview .= '<div class="py-4 my-3">';
+									$msgCustomerReview .= $eachCustomerReview;
+									if ($kv % 2 != 0)
+										$msgCustomerReview .= '</div>';
+								}
+								if ($countCustomerReview > 4 && $countCustomerReview % 4 != 0) {
+									if ($countCustomerReview > 12) {
+										if ($kv >= 0 && $kv < 12) {
+											if ($kv % 2 == 0)
+												$msgCustomerReview .= '<div class="py-4 my-3">';
+											$msgCustomerReview .= $eachCustomerReview;
+											if ($kv % 2 != 0)
+												$msgCustomerReview .= '</div>';
+										} else {
+											if ($countCustomerReview == 13 || $countCustomerReview == 14) {
+												$msgCustomerReview .= '<div class="py-4 my-3">';
+												$msgCustomerReview .= $eachCustomerReview;
+												$msgCustomerReview .= '</div>';
+											} else {
+												if ($kv == 12 || $kv == 14)
+													$msgCustomerReview .= '<div class="py-4 my-3">';
+												$msgCustomerReview .= $eachCustomerReview;
+												if ($kv == 13 || $kv == 14)
+												$msgCustomerReview .= '</div>';
+											}
+										}
+									} elseif ($countCustomerReview > 8) {
+										if ($kv >= 0 && $kv < 8) {
+											if ($kv % 2 == 0)
+												$msgCustomerReview .= '<div class="py-4 my-3">';
+											$msgCustomerReview .= $eachCustomerReview;
+											if ($kv % 2 != 0)
+												$msgCustomerReview .= '</div>';
+										} else {
+											if ($countCustomerReview == 8 || $countCustomerReview == 9) {
+												$msgCustomerReview .= '<div class="py-4 my-3">';
+												$msgCustomerReview .= $eachCustomerReview;
+												$msgCustomerReview .= '</div>';
+											} else {
+												if ($kv == 8 || $kv == 10)
+													$msgCustomerReview .= '<div class="py-4 my-3">';
+												$msgCustomerReview .= $eachCustomerReview;
+												if ($kv == 9 || $kv == 10)
+												$msgCustomerReview .= '</div>';
+											}
+										}
+									} else {
+										if ($kv >= 0 && $kv < 4) {
+											if ($kv % 2 == 0)
+												$msgCustomerReview .= '<div class="py-4 my-3">';
+											$msgCustomerReview .= $eachCustomerReview;
+											if ($kv % 2 != 0)
+												$msgCustomerReview .= '</div>';
+										} else {
+											if ($countCustomerReview == 5 || $countCustomerReview == 6) {
+												$msgCustomerReview .= '<div class="py-4 my-3">';
+												$msgCustomerReview .= $eachCustomerReview;
+												$msgCustomerReview .= '</div>';
+											} else {
+												if ($kv == 4 || $kv == 6)
+													$msgCustomerReview .= '<div class="py-4 my-3">';
+												$msgCustomerReview .= $eachCustomerReview;
+												if ($kv == 5 || $kv == 6)
+												$msgCustomerReview .= '</div>';
+											}
+										}
+									}
+								}
+								if ($countCustomerReview < 4) {
+									if ($countCustomerReview == 1 || $countCustomerReview == 2) {
+										$msgCustomerReview .= '<div class="py-4 my-3">';
+										$msgCustomerReview .= $eachCustomerReview;
+										$msgCustomerReview .= '</div>';
+									} else {
+										if ($kv == 0 || $kv == 1)
+											$msgCustomerReview .= '<div class="py-4 my-3">';
+										$msgCustomerReview .= $eachCustomerReview;
+										if ($kv == 1 || $kv == 2)
+										$msgCustomerReview .= '</div>';
+									}
+								}
+							}
+							_e($msgCustomerReview);
+						?>
 						</div>
 					</div>
 				</div>
@@ -780,6 +561,9 @@
 		</div>
 	</div>
 </div>
+<?php
+	} // end khách hàng cảm nhận
+?>
 <section class="content_main">
 	<div class="content_m">
 		<!-- KIẾN THỨC THƯ VIỆN VIDEO -->

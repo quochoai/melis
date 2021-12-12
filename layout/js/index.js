@@ -1,9 +1,10 @@
 $(document).ready(function(){
   $("#owl-carousel").owlCarousel({
-    loop: true,
+    loop: false,
     margin: 16,
     nav: true,
     dots: false,
+    rewind: true,
     responsive:{
         0:{
             items:1
@@ -17,10 +18,11 @@ $(document).ready(function(){
     }
   });
   $("#owl-carousel-2").owlCarousel({
-    loop: true,
+    loop: false,
     margin: 16,
     nav: false,
     dots: true,
+    rewind: true,
     responsive:{
         0:{
             items:1
@@ -34,10 +36,11 @@ $(document).ready(function(){
     }
   });
   $("#owl-carousel-3").owlCarousel({
-    loop: true,
+    loop: false,
     margin: 16,
     nav: false,
     dots: true,
+    rewind: true,
     responsive:{
         0:{
             items:1

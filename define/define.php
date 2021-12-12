@@ -9,6 +9,9 @@
 		'theme' => URL.'themes/',
 		'views' => 'views/',
 
+		'no_image_available' => 'assets/img/no_image_available.jpg',
+		'img_queen_nature_home' => 'assets/img/product_melis_spa_top_1.png',
+
 		// upload product
 		'upload_product_avatar' => _upload.'product/avatar/',
 		'upload_product_detail' => _upload.'product/detail/',

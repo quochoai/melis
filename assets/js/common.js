@@ -27,7 +27,15 @@ jQuery(document).ready(function() {
   $('.book-calendar-demand').click(function(){
     $('#modal-book-calendar-demand').modal('show');
   });
-  
+  function loading(button, text, isLoading) {
+    if (isLoading) {
+      $(button).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ' + processing);
+      $(button).attr('disabled', true);
+    } else {
+      $(button).html(text);
+      $(button).removeAttr('disabled');
+    }
+  }
   function bookMeet() {
     var title_form = $.trim($('#title_form').text());
     var processm = $("input[name='process']:checked").val();
@@ -101,11 +109,15 @@ jQuery(document).ready(function() {
       $('#branchm').removeClass('is-invalid');
       $('#branchm').addClass('is-valid');
     }
+    /*
     $('#bookmeetm').attr('disabled', true);
     $('#bookmeetm').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ' + processing);
+    */
+    loading('#bookmeetm', make_an_appointment, true);
     $.post(link_process_book_an_appointment, { title_form: title_form, processm: processm, fullname: fullname, phone: phone, email: email, demand: demand, booktime: booktime, branch: branch }, function(response){
-      $('#bookmeetm').html(make_an_appointment);
-      $('#bookmeetm').removeAttr('disabled');
+      /*$('#bookmeetm').html(make_an_appointment);
+      $('#bookmeetm').removeAttr('disabled');*/
+      loading('#bookmeetm', make_an_appointment, false);
       if (response == '1') {
         toastr.success(book_an_appointment_success);
         $('#bookfullnamem').val('');
