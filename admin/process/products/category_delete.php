@@ -7,7 +7,8 @@
             $user_id = $_COOKIE['islogined'];
         $id = $_POST['id'];
         $table = "products";
-        $sc = $h->softDeleteBy($table, " where id = $id", $user_id);
+        $tableCate = "categories";
+        $sc = $h->softDeleteBy($tableCate, " where id = $id", $user_id);
         $sp = $h->softDeleteBy($table, " where product_id = $id", $user_id);
         if ($sc)
             echo '1';

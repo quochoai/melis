@@ -31,7 +31,7 @@ jQuery(document).ready(function($) {
         $('.nav .nav-item .nav-link').removeClass('active');
         $('.nav .nav-treeview').css('display', 'none');
         $(this).parent().addClass('menu-open');
-        $.post(link_category_product, function(data) {
+        $.post(link_category_product, {cate_id: 1}, function(data) {
             $('#content_admin').html(data);
             $('title').html(title_manage_category_product);
         });
@@ -55,7 +55,7 @@ jQuery(document).ready(function($) {
         $('.nav .nav-item .nav-link').removeClass('active');
         $('.nav .nav-treeview').css('display', 'none');
         $(this).parent().addClass('menu-open');
-        $.post(link_category_service, function(data) {
+        $.post(link_category_service, {cate_id: 2}, function(data) {
             $('#content_admin').html(data);
             $('title').html(title_manage_category_service);
         });

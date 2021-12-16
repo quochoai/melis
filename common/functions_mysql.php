@@ -288,8 +288,8 @@ class mysql
 	}
 
 	// check exist
-	function checkExist($table, $where) {
-		$s = $this->query("select id from $table where $where");
+	function checkExist($table, $where, $id = "id") {
+		$s = $this->query("select $id from $table where $where");
 		$n = $this->num_rows($s);
 		return $n;
 	}

@@ -184,6 +184,7 @@
 		'link_fnews' => 'tin-tuc',
 		'link_fpromotion' => 'khuyen-mai',
 		'link_search' => 'tim-kiem',
+		'link_video_gallery' => 'thu-vien-video',
 		'link_process_book_an_appointment' => 'module/process_book_an_appointment.php',
 		'link_captcha' => 'module/captcha.php',
 		'link_process_regis_consultation' => 'module/process_regis_consultation.php',			

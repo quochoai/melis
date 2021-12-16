@@ -1,7 +1,7 @@
 <?php
     include("../../../require_inc.php");
     $id = $_POST['id'];
-    $table = "services";
+    $table = "categories";
     $cate = $h->getById("name_vi, name_en, title_vi, title_en, desc_vi, desc_en, keyw_vi, keyw_en, sort, active", $table, $id);
 ?>
 <input type="hidden" name="id" value="<?php _e($id) ?>" />  

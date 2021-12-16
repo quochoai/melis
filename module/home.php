@@ -13,10 +13,13 @@
 						$sliders = $h->getAll("alt_vi, alt_en, url, image", $tableSlider, "deleted_at is null and active = 1 and hc_id = 1", "sort asc, id desc");
 						$imgSlider = "";
 						foreach ($sliders as $slider) {
+							/*
 							if ($slider['url'] != '' && $slider['url'] != '#')
 								$linkSlider = '<a href="'.$slider['url'].'"><img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" /></a>';
 							else
 								$linkSlider = '<img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" />';
+							*/
+							$linkSlider = ($slider['url'] != '' && $slider['url'] != '#') ? '<a href="'.$slider['url'].'"><img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" /></a>' : '<img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" />';
 							$imgSlider .= '<div>'.$linkSlider.'</div>';
 						}
 						_e($imgSlider);
@@ -200,7 +203,8 @@
 		<?php
 			// Dịch vụ melis spa
 			$tableService = "services";
-			$checkService = $h->checkExist($tableService, "active = 1 and show_home = 1 and cm = 0 and deleted_at is null");
+			$tableCateService = "categories as c, services as s";
+			$checkService = $h->checkExist($tableCateService, "c.active = 1 and show_home = 1 and c.deleted_at is null and s.active = 1 and s.deleted_at is null and c.id = s.service_id and c.cate_id = 2", "s.id");
 			if ($checkService) {
 		?>
 		<div class="bg-wrapper service-spa">
@@ -227,14 +231,14 @@
 						<div class="container-fluid">
 							<div class="owl-carousel" id="owl-carousel">
 							<?php
-								$services = $h->getAll("service_id, name_vi, name_en, image", $tableService, "active = 1 and show_home = 1 and cm = 0 and deleted_at is null", "sort desc, id desc");
+								$services = $h->getAll("service_id, s.name_vi as sname_vi, s.name_en as sname_en, c.name_vi as cname_vi, image", $tableCateService, "c.active = 1 and s.active = 1 and show_home = 1 and c.deleted_at is null and s.deleted_at is null and c.id = s.service_id and c.cate_id = 2", "s.sort desc, s.id desc");
 								$msgService = "";
 								foreach ($services as $ks => $service) {
 									$acti = ($ks == 1) ? ' active' : '';
-									$cateService = $h->getById("name_vi", $tableService, $service['service_id']);
-									$linkService = $def['link_fservice'].'/'.chuoilink($cateService['name_vi']).'/'.chuoilink($service['name_vi']).'.html';
+									//$cateService = $h->getById("name_vi", $tableService, $service['service_id']);
+									$linkService = $def['link_fservice'].'/'.chuoilink($service['cname_vi']).'/'.chuoilink($service['sname_vi']).'.html';
 									$imgService = (!is_null($service['image']) && $service['image'] != '') ? $def['upload_service_avatar'].$service['image'] : $def['no_image_available'];
-									$titleService = $service["name_$lng"];
+									$titleService = $service["sname_$lng"];
 									$msgService .= '<div class="item'.$acti.'">';
 									$msgService .= '	<a href="'.$linkService.'" title="'.$titleService.'"><figure><img src="'.$imgService.'" alt="'.$titleService.'" class="img w-100" /></figure></a>';
 									$msgService .= '	<div class="text text-center pt-4"><div class="title"><a href="'.$linkService.'">CHĂM SÓC MẸ BẦU</a></div></div>';
@@ -254,7 +258,8 @@
 			} // end Dịch vụ melis spa
 			// SẢN PHẨM ƯU ĐÃI
 			$tableProduct = "products";
-			$checkOfferProducts = $h->checkExist($tableProduct, "offer_product = 1 and show_home = 1 and cm = 0 and active = 1 and deleted_at is null");
+			$tableCateProduct = "categories as c, products as p";
+			$checkOfferProducts = $h->checkExist($tableCateProduct, "offer_product = 1 and show_home = 1 and c.active = 1 and c.deleted_at is null and p.active = 1 and p.deleted_at is null and c.id = p.product_id and cate_id = 1", "p.id");
 			if ($checkOfferProducts) {
 		?>
 		<div class="bg-wrapper discount">
@@ -275,13 +280,13 @@
 								</div>
 								<div class="row">
 								<?php
-									$offerProducts = $h->getAll("product_id, name_vi, name_en, image", $tableProduct, "offer_product = 1 and show_home = 1 and cm = 0 and active = 1 and deleted_at is null", "sort desc, id desc", "limit 0,6");
+									$offerProducts = $h->getAll("product_id, p.name_vi as pname_vi, p.name_en as pname_en, c.name_vi as cname_vi, image", $tableCateProduct, "offer_product = 1 and show_home = 1 and c.active = 1 and c.deleted_at is null and p.active = 1 and p.deleted_at is null and c.id = p.product_id and cate_id = 1", "p.sort desc, p.id desc", "limit 0,6");
 									$msgOfferProduct = "";
 									foreach ($offerProducts as $offerProduct) {
-										$cateOfferProduct = $h->getById("name_vi", $tableProduct, $offerProduct['product_id']);
-										$linkOfferProduct = $def['link_queennature'].'/'.chuoilink($cateOfferProduct['name_vi']).'/'.chuoilink($offerProduct['name_vi']).'.html';
+										//$cateOfferProduct = $h->getById("name_vi", $tableProduct, $offerProduct['product_id']);
+										$linkOfferProduct = $def['link_queennature'].'/'.chuoilink($offerProduct['cname_vi']).'/'.chuoilink($offerProduct['pname_vi']).'.html';
 										$imgOfferProduct = (!is_null($offerProduct['image']) && $offerProduct['image'] != '') ? $def['upload_product_avatar'].$offerProduct['image'] : $def['no_image_available'];
-										$titleOfferProduct = $offerProduct["name_$lng"];
+										$titleOfferProduct = $offerProduct["pname_$lng"];
 										$msgOfferProduct .= '<div class="col-lg-4"><div class="py-3"><div class="py-4 bg-brow">';
 										$msgOfferProduct .= '	<div class="img-prod w-50 m-auto"><div class="img w-100 m-auto"><a href="'.$linkOfferProduct.'" title="'.$titleOfferProduct.'"><figure><img src="'.$imgOfferProduct.'" alt="'.$titleOfferProduct.'" class="w-100" /></figure></a></div></div>';
 										$msgOfferProduct .= '	<div class="m-auto text-center pt-4"><div class="m-auto"><a href="'.$linkOfferProduct.'" class="btn readmore-textarea text-uppercase p-2">'.$lang['view_detail'].'</a></div></div>';
@@ -358,7 +363,7 @@
 		<?php 
 			} // end tin tức - sự kiện
 			// SẢN PHẨM QUEEN NATURE
-			$checkQueenProduct = $h->checkExist($tableProduct, "(offer_product = 0 || offer_product is null) and show_home = 1 and active = 1 and deleted_at is null");
+			$checkQueenProduct = $h->checkExist($tableCateProduct, "(offer_product = 0 || offer_product is null) and show_home = 1 and c.active = 1 and c.deleted_at is null and p.active = 1 and p.deleted_at is null and c.id = p.product_id and cate_id = 1", "p.id");
 			if ($checkQueenProduct) {
 		?>
 		<div class="bg-wrapper discount">
@@ -389,12 +394,12 @@
 									<div class="list-item row" style="overflow: visible;">
 										<div class="col-12 pb-4"><figure><img src="<?php _e($def['img_queen_nature_home']) ?>" class="img w-100" alt=""></figure></div>
 									<?php
-										$queenProducts = $h->getAll("product_id, name_vi, name_en, image", $tableProduct, "(offer_product = 0 || offer_product is null) and show_home = 1 and active = 1 and deleted_at is null", "sort desc, id desc", "limit 0, 3");
+										$queenProducts = $h->getAll("product_id, p.name_vi as pname_vi, p.name_en as pname_en, c.name_vi as cname_vi, image", $tableProduct, "(offer_product = 0 || offer_product is null) and show_home = 1 and c.active = 1 and c.deleted_at is null and p.active = 1 and p.deleted_at is null and c.id = p.product_id and cate_id = 1", "p.sort desc, p.id desc", "limit 0, 3");
 										$msgQueenProduct = "";
 										foreach ($queenProducts as $queenProduct) {
-											$cateQueenProduct = $h->getById("name_vi", $tableProduct, $queenProduct['product_id']);
-											$linkQueenProduct = $def['link_queennature'].'/'.chuoilink($cateQueenProduct['name_vi']).'/'.chuoilink($queenProduct['name_vi']).'.html';
-											$titleQueenProduct = $queenProduct["name_$lng"];
+											//$cateQueenProduct = $h->getById("name_vi", $tableProduct, $queenProduct['product_id']);
+											$linkQueenProduct = $def['link_queennature'].'/'.chuoilink($queenProduct['cname_vi']).'/'.chuoilink($queenProduct['pname_vi']).'.html';
+											$titleQueenProduct = $queenProduct["pname_$lng"];
 											$imgQueenProduct = (!is_null($queenProduct['image']) && $queenProduct['image'] != '') ? $def['upload_product_avatar'].$queenProduct['image'] : $def['no_image_available'];
 											$msgQueenProduct .= '<div class="item col-xl-4 col-lg-4 col-md-12 col-12 position-relative">';
 											$msgQueenProduct .= '	<a href="'.$linkQueenProduct.'" title="'.$titleQueenProduct.'"><figure><img src="'.$imgQueenProduct.'" alt="'.$titleQueenProduct.'" class="img w-100"></figure></a>';
@@ -422,8 +427,8 @@
 	// KHÁCH HÀNG CẢM NHẬN
 	$tableReview = "reviews";
 	$checkCustomerReview = $h->checkExist($tableReview, "rv_id = 1 and deleted_at is null");
-    if ($checkCustomerReview) {
-        ?>
+  if ($checkCustomerReview) {
+?>
 <div class="bg-wrapper position-relative">
 	<div class="wrapper">
 		<div class="container-fluid customer-feel">
@@ -455,13 +460,10 @@
 							$countCustomerReview = count($customerReviews);
 							$msgCustomerReview = "";
 							foreach ($customerReviews as $kv => $customerReview) {
-								if ($customerReview['image'] == '')
-									$imgCustomerReview = $def['no_image_available'];
-								else
-									$imgCustomerReview = $def['upload_review_customer'].$customerReview['image'];
+								$imgCustomerReview = ($customerReview['image'] == '') ? $def['no_image_available'] : $def['upload_review_customer'].$customerReview['image'];
 								$customerName = $customerReview["customer_$lng"];
 								$shortCustomerReview = catchuoi($customerReview["content_$lng"], 200);
-								$eachCustomerReview = '<div class="p-3 bg-frame position-relative w-100 h-100" style="min-height: 201px; background-image: url(img/frames-comments.png);"><div class="description px-5">'.$shortCustomerReview.'</div><div class="infomation-customer"><div class="position-absolute w-75 d-flex align-items-center"><div class="row p-0 m-0 w-100 align-items-center"><div class="avt col-4"><figure><img src="'.$imgCustomerReview.'" alt="'.$customerName.'" class="img-avt-customer"></figure></div><div class="name">'.$customerName.'</div></div></div></div></div>';
+								$eachCustomerReview = '<div class="p-3 bg-frame position-relative w-100 h-100" style="min-height: 201px; background-image: url(assets/img/frames-comments.png);"><div class="description px-5">'.$shortCustomerReview.'</div><div class="infomation-customer"><div class="position-absolute w-75 d-flex align-items-center"><div class="row p-0 m-0 w-100 align-items-center"><div class="avt col-4"><figure><img src="'.$imgCustomerReview.'" alt="'.$customerName.'" class="img-avt-customer"></figure></div><div class="name">'.$customerName.'</div></div></div></div></div>';
 
 								if ($countCustomerReview >= 4 && $countCustomerReview % 4 == 0) {
 									if ($kv % 2 == 0)
@@ -574,185 +576,113 @@
 						<div class="col-12" style="z-index: 2;">
 							<div class="container">
 								<div class="row">
+								<?php
+									$checkKnowledge = $h->checkExist($tableNews, "news_id = 2 and deleted_at is null");
+									if ($checkKnowledge) {
+								?>
 									<div class="col-lg-6">
 										<div class="row">
 											<div class="col-12 py-3">
-												<div class="py-3">
-													<span class="text-center py-2 px-4 bg-xlad">
-						KIẾN THỨC
-						</span>
-												</div>
+												<div class="py-3"><span class="text-center py-2 px-4 bg-xlad text-uppercase"><?php _e($lang['n_knowledge']) ?></span></div>
 											</div>
-											<div class="col-12">
-												<small>(28/04/2019)</small>
-												<p class="font-weight-bold">
-													Tân Hoa hậu Mis Golden World 2018... làm đẹp tại Melis Spa
-												</p>
-											</div>
-											<div class="col-12">
-												<small>(28/04/2019)</small>
-												<p class="font-weight-bold">
-													Tân Hoa hậu Mis Golden World 2018... làm đẹp tại Melis Spa
-												</p>
-											</div>
-											<div class="col-12">
-												<small>(28/04/2019)</small>
-												<p class="font-weight-bold">
-													Tân Hoa hậu Mis Golden World 2018... làm đẹp tại Melis Spa
-												</p>
-											</div>
-											<div class="col-12">
-												<small>(28/04/2019)</small>
-												<p class="font-weight-bold">
-													Tân Hoa hậu Mis Golden World 2018... làm đẹp tại Melis Spa
-												</p>
-											</div>
-											<div class="col-12">
-												<a href="#" class="btn btn-read-more">
-													<i class="fas fa-plus"></i>&nbsp;XEM TẤT CẢ
-												</a>
-											</div>
+											<?php
+												$knowledges = $h->getAll("name_vi, name_en, post_date", $tableNews, "news_id = 2 and deleted_at is null", "sort desc, id desc", "limit 0, 4");
+												$msgKnowledge = "";
+												foreach ($knowledges as $knowledge) {
+													$titleKnowledge = $knowledge["name_$lng"];
+													$postDate = $knowledge['post_date'];
+													$linkKnowledge = $def['link_fpromotion'].'/'.chuoilink($knowledge['name_vi']).'.html';
+													$msgKnowledge .= '<div class="col-12">';
+													$msgKnowledge .= '	<small>('.$postDate.')</small>';
+													$msgKnowledge .= '	<p class="font-weight-bold"><a href="'.$linkKnowledge.'" title="'.$titleKnowledge.'">'.$titleKnowledge.'</a></p>';
+													$msgKnowledge .= '</div>';
+												}
+												$msgKnowledge .= '<div class="col-12"><a href="'.$def['link_fpromotion'].'" class="btn btn-read-more"><i class="fas fa-plus"></i> '.$lang['view_all'].'</a></div>';
+												_e($msgKnowledge);
+											?>
+											
 										</div>
 									</div>
+									<?php 
+										} 
+										$tableGallery = "galleries";
+										$checkVideo = $h->checkExist($tableGallery, "gal_id = 2 and deleted_at is null and show_home = 1");
+										if ($checkVideo) {
+											$video = $h->getOne("link_youtube", $tableGallery, "gal_id = 2 and deleted_at is null and show_home = 1");
+											$videoGet = substr($video['link_youtube'], -11, 11);
+									?>
 									<div class="col-lg-6">
 										<div class="row">
 											<div class="col-12 py-3">
 												<div class="row position-relative">
 													<div class="col-12">
 														<div class="row">
-															<div class="py-3">
-																<span class="text-center py-2 px-4 bg-xlad">
-								THƯ VIỆN VIDEO
-							</span>
-															</div>
+															<div class="py-3"><span class="text-center py-2 px-4 bg-xlad text-uppercase"><?php _e($lang['video_library']) ?></span></div>
 															<div class="position-absolute" style="top: 0; right: 0;">
-																<a href="#" class="btn btn-read-more">
-																	<i class="fas fa-plus"></i>&nbsp;XEM TẤT CẢ
-																</a>
+																<a href="<?php _e($def['link_video_gallery']) ?>" class="btn btn-read-more text-uppercase"><i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?></a>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
 											<div class="col-12">
-												<iframe style="width: 100%; min-height: 300px;" src="https://www.youtube.com/embed/cql7dnnCCp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+												<iframe style="width: 100%; min-height: 300px;" src="https://www.youtube.com/embed/<?php _e($videoGet) ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 											</div>
 										</div>
 									</div>
-									<!-- NGƯỜI NỔI TIẾNG NÓI VỀ CHÚNG TÔI  -->
+									<?php 
+										} 
+										// NGƯỜI NỔI TIẾNG NÓI VỀ CHÚNG TÔI
+										$checkClebs = $h->checkExist($tableReview, "rv_id = 2 and deleted_at is null and show_home = 1");
+										if ($checkClebs) {
+									?>
 									<div class="col-12">
 										<div class="row">
 											<div class="col-12 py-3">
-												<div class="py-3">
-													<span class="text-center py-2 px-4 bg-xlad">NGƯỜI NỔI TIẾNG NÓI VỀ CHÚNG TÔI</span>
-												</div>
+												<div class="py-3"><span class="text-center py-2 px-4 bg-xlad text-uppercase"><?php _e($lang['celebs_talk_about_us']) ?></span></div>
 											</div>
 											<div class="owl-carousel" id="owl-carousel-3">
-												<div class="row">
-													<div class="col-lg-5">
-														<div style="height: 100%;" class="w-100 position-relative">
-															<div style="border: 1px solid rgb(151, 124, 96);background: rgb(211, 181, 148); width: 90% !important;height: 90%;" class="w-100">
-																<img src="img/customer_cmt/jennie_pham_cmt.png" alt="" style="bottom: 0;right: 0; position: absolute;width: 94% !important;" class="w-100">
-															</div>
-														</div>
-													</div>
-													<div class="col-lg-7 p-5" style="border: 1px solid rgb(151, 124, 96);background: rgb(211, 181, 148);">
-														<div>
-															<div>
-																<span class="font-weight-bold">MC - DIỄN VIÊN - HOA HẬU JENNIFER PHẠM</span>
-															</div>
-														</div>
-														<div>
-															<div>
-																Mẹ diễn viên Jerrifer Phạm Mẹ diễn viên Jerrifer Phạm Mẹ diễn viên Mẹ diễn viên
-															</div>
-														</div>
-														<div>
-															<div class="comment">
-																Queen Nature được sáng lập và phát triển bởi chị Vũ Kiều Vi - chuyên gia bầu sau sinh - chuyên gia sữa mẹ, người có 10 năm trong lĩnh vực chăm sóc sức khỏe cho phụ nữ mang thai và sau khi sinh. Là người mẹ, chị cũng từng stress, áp lực vì không có sữa
-																sau sinh mổ, từng ôm con khóc vì những lời nói vô tâm của người xung quanh đổ lỗi cho chị rằng vì ngực nhỏ nên ít sữa, sữa không tốt, sữa nóng con chậm tăng cân,.
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-lg-5">
-														<div style="height: 100%;" class="w-100 position-relative">
-															<div style="border: 1px solid rgb(151, 124, 96);background: rgb(211, 181, 148); width: 90% !important;height: 90%;" class="w-100">
-																<img src="img/customer_cmt/jennie_pham_cmt.png" alt="" style="bottom: 0;right: 0; position: absolute;width: 94% !important;" class="w-100">
-															</div>
-														</div>
-													</div>
-													<div class="col-lg-7 p-5" style="border: 1px solid rgb(151, 124, 96);background: rgb(211, 181, 148);">
-														<div>
-															<div>
-																<span class="font-weight-bold">MC - DIỄN VIÊN - HOA HẬU JENNIFER PHẠM</span>
-															</div>
-														</div>
-														<div>
-															<div>
-																Mẹ diễn viên Jerrifer Phạm Mẹ diễn viên Jerrifer Phạm Mẹ diễn viên Mẹ diễn viên
-															</div>
-														</div>
-														<div>
-															<div class="comment">
-																Queen Nature được sáng lập và phát triển bởi chị Vũ Kiều Vi - chuyên gia bầu sau sinh - chuyên gia sữa mẹ, người có 10 năm trong lĩnh vực chăm sóc sức khỏe cho phụ nữ mang thai và sau khi sinh. Là người mẹ, chị cũng từng stress, áp lực vì không có sữa
-																sau sinh mổ, từng ôm con khóc vì những lời nói vô tâm của người xung quanh đổ lỗi cho chị rằng vì ngực nhỏ nên ít sữa, sữa không tốt, sữa nóng con chậm tăng cân,.
-															</div>
-														</div>
-													</div>
-												</div>
+											<?php
+												$celebsReviews = $h->getAll("customer_vi, customer_en, image, content_vi, content_en", $tableReview, "rv_id = 2 and deleted_at is null and show_home = 1", "sort desc, id desc");
+												$msgCelebs = "";
+												foreach ($celebsReviews as $celebsReview) {
+													$imgCelebReview = ($celebsReview['image'] != '') ? $def['upload_review_star'].$celebsReview['image'] : $def['no_image_available'];
+													$celebName = $celebsReview["customer_$lng"];
+													$contentCeleb = $celebsReview["content_$lng"];
+													$msgCelebs .= '<div class="row">';
+													$msgCelebs .= '	<div class="col-lg-5"><div style="height: 100%;" class="w-100 position-relative"><div style="border: 1px solid rgb(151, 124, 96);background: rgb(211, 181, 148); width: 90% !important;height: 90%;" class="w-100"><img src="'.$imgCelebReview.'" alt="" style="bottom: 0;right: 0; position: absolute;width: 94% !important;" class="w-100"></div></div></div>';
+													$msgCelebs .= '	<div class="col-lg-7 p-5" style="border: 1px solid rgb(151, 124, 96);background: rgb(211, 181, 148);"><div><span class="font-weight-bold text-uppercase">'.$celebName.'</span></div><div class="comment">'.$contentCeleb.'</div></div>';
+													$msgCelebs .= '</div>';
+												}
+												_e($msgCelebs);
+											?>
 											</div>
 										</div>
 									</div>
-									<!-- ĐỐI TÁC CỦA CHÚNG TÔI -->
-									<div class="col-12">
-										<div class="row">
-											<div class="col-12 py-3">
-												<div class="py-3">
-													<span class="text-center py-2 px-4 bg-xlad">
-						ĐỐI TÁC CỦA CHÚNG TÔI
-						</span>
-												</div>
-											</div>
-											<div class="col-12">
-												<div class="row mb-4">
-													<div class="col align-items-center text-center">
-														<img src="img/partner/logo_hanhphuchospital.png" alt="" class="w-70">
-													</div>
-													<div class="col align-items-center text-center">
-														<img src="img/partner/logo_ducgiang.png" alt="" class="w-70">
-													</div>
-													<div class="col align-items-center text-center">
-														<img src="img/partner/logo_hongngoc.png" alt="" class="w-70">
-													</div>
-													<div class="col align-items-center text-center">
-														<img src="img/partner/logo_nhog.png" alt="" class="w-70">
-													</div>
-													<div class="col align-items-center text-center">
-														<img src="img/partner/logo_vinmec.png" alt="" class="w-70">
-													</div>
-												</div>
-												<div class="row">
-													<div class="col align-items-center text-center">
-														<img src="img/partner/logo_lazada.png" alt="" class="w-70">
-													</div>
-													<div class="col align-items-center text-center">
-														<img src="img/partner/logo_sendo.png" alt="" class="w-70">
-													</div>
-													<div class="col align-items-center text-center">
-														<img src="img/partner/logo_tiki.png" alt="" class="w-70">
-													</div>
-													<div class="col align-items-center text-center">
-														<img src="img/partner/logo_shopee.png" alt="" class="w-70">
-													</div>
-													<div class="col align-items-center text-center">
-														<img src="img/partner/logo_kidsplaza.png" alt="" class="w-70">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+									<?php
+										}
+										// ĐỐI TÁC CỦA CHÚNG TÔI
+										$tablePartner = "partners";
+										$checkPartner = $h->checkExist($tablePartner, "deleted_at is null and active = 1 and image != ''");
+										if ($checkPartner) {
+											$lastPartner = $checkPartner - 1;
+											$msgPartner = '<div class="col-12"><div class="row">';
+											$msgPartner .= '	<div class="col-12 py-3"><div class="py-3"><span class="text-center py-2 px-4 bg-xlad text-uppercase">'.$lang['our_partner'].'</span></div></div>';
+											$msgPartner .= '	<div class="col-12">';
+											$partners = $h->getAll("name_vi, name_en, image, url", $tablePartner, "deleted_at is null and active = 1 and image != ''", "sort asc, id asc");
+											foreach ($partners as $kp => $partner) {
+												$imgPartner = $def['upload_partner'].$partner['image'];
+												$linkPartner = (!is_null($partner['url']) && $partner['url'] != '#') ? '<a href="'.$partner['url'].'" title="'.$partner["name_$lng"].'"><img src="'.$imgPartner.'" alt="'.$partner["name_$lng"].'" class="w-70" /></a> ' : '<img src="'.$imgPartner.'" alt="'.$partner["name_$lng"].'" class="w-70" />';
+												$msgPartner .= ($kp % 5 == 0) ? '<div class="row mb-4">' : '';
+												$msgPartner .= '<div class="col align-items-center text-center">'.$linkPartner.'</div>';
+												$msgPartner .= (($kp + 1) % 5 == 0 || $kp == $lastPartner) ? '</div>' : '';
+											}
+											$msgPartner .= '	</div>';
+											$msgPartner .= '</div></div>';
+											_e($msgPartner);
+										}											
+                  ?>
+									
 								</div>
 							</div>
 						</div>

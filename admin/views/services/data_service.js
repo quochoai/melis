@@ -173,6 +173,7 @@ jQuery(document).ready(function($) {
         $.post(link_add, { service_id: service_id }, function(data) {
             $('#service_add').html(data);
             $('#modal-add-service').modal('show');
+            $('title').html(text_add_service);
         });
     });
 
@@ -242,6 +243,7 @@ jQuery(document).ready(function($) {
         $.post(link_update, { id: id }, function(html) {
             $('#service_update').html(html);
             $('#modal-update-service').modal('show');
+            $('title').html(text_update_service);
         });
     });
     $(document).on('click', '#update_service', function() {
@@ -303,5 +305,8 @@ jQuery(document).ready(function($) {
                 }
             }
         });
+    });
+    $('#modal-add-service, #modal-update-service').on('hidden.bs.modal', function (e) {
+        $('title').html(text_manage_service);
     });
 });

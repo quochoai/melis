@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
                 "url": backend_list,
                 "dataType": "json",
                 "type": "GET",
-                //"data": {},
+                "data": {cate_id: cate_id},
                 error: function(xhr, error, code) {
                     //alert('error'+parse(xhr));
                     //location.reload();
@@ -173,6 +173,7 @@ jQuery(document).ready(function($) {
             $('title').html(title_add_category_product);
         });
     });
+    
     $(document).on('click', '#add', function() {
         let name_vi = $.trim($('#name_vi').val());
         let name_en = $.trim($('#name_en').val());
@@ -237,6 +238,7 @@ jQuery(document).ready(function($) {
         $.post(link_update, { id: id }, function(html) {
             $('#cate_update').html(html);
             $('#modal-update-cate').modal('show');
+            $('title').html(title_update_category_product);
         });
     });
     $(document).on('click', '#update', function() {
@@ -299,5 +301,8 @@ jQuery(document).ready(function($) {
                 }
             }
         });
+    });
+    $('#modal-add-cate, #modal-update-cate').on('hidden.bs.modal', function (e) {
+        $('title').html(title_manage_category_product);
     });
 });

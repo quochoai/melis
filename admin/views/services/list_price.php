@@ -15,7 +15,7 @@
                     <h3 class="col-md-6 card-title">
                         <?php 
                             $cate = $h->getById("service_id, name_vi, name_en", $table, $service_id, "and deleted_at is null");
-                            _e($lang['manage_price'] .$cate['name_vi']); 
+                            _e($lang['manage_price'].' &raquo; '.$cate['name_vi']); 
                         ?>
                     </h3>
                     <div class="col-md-6">
@@ -109,6 +109,9 @@
         var link_add = "<?php _e($def['link_price_service_add']) ?>";
         var session_timeout = '<?php _e($lang['session_timeout']) ?>';
         var system_error = '<?php _e($lang['system_error']) ?>';
+        var text_manage_price_table = "<?php _e($lang['manage_price'].' &raquo; '.$cate['name_vi']); ?>";
+        var text_add_price_table = "<?php _e($lang['add_price'].' &raquo; '.$cate['name_vi']) ?>";
+        var text_update_price_table = "<?php _e($lang['update_price']) ?>";
         var not_name_service_vi = "<?php _e($lang['not_name_service_vi']) ?>";
         var not_name_service_en = "<?php _e($lang['not_name_service_en']) ?>";
         var processing = "<?php _e($lang['processing']) ?>";

@@ -8,7 +8,7 @@
         $id = $_POST['id'];
         $data = $_POST['data'];
 
-        $table = "products";
+        $table = "categories";
         $res = $h->updateDataBy($data, $table, "where id = $id", $user_id);
         if ($res)
             echo '1';

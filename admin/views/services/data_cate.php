@@ -15,11 +15,12 @@
         $w = "and (name_vi like '%".$search['value']."%' or name_en like '%".$search['value']."%')";
     else
         $w = "";
-    $catess = $h->getAll("id, name_vi, name_en, active", "services", "cm = 1 and deleted_at is null $w", "id asc");
+    $table = "categories";
+    $catess = $h->getAll("id, name_vi, name_en, active", $table, "cate_id = 2 and deleted_at is null $w", "id asc");
     if (count($catess) > 0) {
         $totalData = count($catess);
         $totalFiltered = $totalData;
-        $cates = $h->getAll("id, name_vi, name_en, sort, active", "services", "cm = 1 and deleted_at is null $w", "id asc limit ".$options['offset'].", ".$options['limit']);
+        $cates = $h->getAll("id, name_vi, name_en, sort, active", $table, "cate_id = 2 and deleted_at is null $w", "id asc limit ".$options['offset'].", ".$options['limit']);
         foreach ($cates as $kc => $cate) {
             $no = $kc + 1;
             if ($cate['active'] == 1) {

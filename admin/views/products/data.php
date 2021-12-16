@@ -15,11 +15,12 @@
         $w = "and (name_vi like '%".$search['value']."%' or name_en like '%".$search['value']."%')";
     else
         $w = "";
-    $productss = $h->getAll("id, name_vi, name_en, active", "products", "cm = 0 and product_id = $pid and deleted_at is null $w", "id asc");
+    $table = "products";
+    $productss = $h->getAll("id, name_vi, name_en, active", $table, "product_id = $pid and deleted_at is null $w", "id asc");
     if (count($productss) > 0) {
         $totalData = count($productss);
         $totalFiltered = $totalData;
-        $products = $h->getAll("id, name_vi, name_en, sort, active", "products", "cm = 0 and product_id = $pid and deleted_at is null $w", "sort desc, id desc limit ".$options['offset'].", ".$options['limit']);
+        $products = $h->getAll("id, name_vi, name_en, sort, active", $table, "product_id = $pid and deleted_at is null $w", "sort desc, id desc limit ".$options['offset'].", ".$options['limit']);
         foreach ($products as $kc => $product) {
             $no = $kc + 1;
             if ($product['active'] == 1) {

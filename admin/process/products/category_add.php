@@ -6,9 +6,9 @@
         else
             $user_id = $_COOKIE['islogined'];
         $data = $_POST['data'];
-        $data['cm'] = 1;
-        $table = "products";
-        $max = $h->getMax("id", $table, "deleted_at is null and cm=1");
+        $cate_id = $data['cate_id'];
+        $table = "categories";
+        $max = $h->getMax("sort", $table, "deleted_at is null and cate_id = $cate_id and active = 1");
         $data['sort'] = $max['maxs'] + 1;
         $data['active'] = 1; 
         $res = $h->insertDataBy($data, $table, $user_id);

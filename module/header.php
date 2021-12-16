@@ -1,31 +1,35 @@
 <?php
   include("require_inc.php");
   if(isset($_REQUEST['pqh'])) {
-  $pqh = $_REQUEST['pqh'];
-  $pqh = explode("/",$pqh);
-    $mod = $pqh[0];
-    $mod1 = $pqh[1];
-    $mod2 = $pqh[2];
-    $mod3 = $pqh[3];
-    $typesite = 'article';
-    $url = URL.$_REQUEST['pqh'];
-} else {
-  $typesite = 'website';
-  $url = URL;   
-}
-$tableHtml = "htmls";
-$tableProduct = "products";
-$tableService = "services";
-$tableNews = "news";
-$tableReview = "reviews";
-$opentime = $h->getById("noidung_vi", $tableHtml, 3);
-$hotline = $h->getById("noidung_vi", $tableHtml, 2);
+    $pqh = $_REQUEST['pqh'];
+    $pqh = explode("/",$pqh);
+      $mod = $pqh[0];
+      $mod1 = $pqh[1];
+      $mod2 = $pqh[2];
+      $mod3 = $pqh[3];
+      $typesite = 'article';
+      $url = URL.$_REQUEST['pqh'];
+  } else {
+    $typesite = 'website';
+    $url = URL;   
+  }
+  $tableConfig = "configs";
+  $tableHtml = "htmls";
+  $tableCate = "categories";
+  $tableProduct = "products";
+  $tableService = "services";
+  $tableNews = "news";
+  $tableReview = "reviews";
+  $config = $h->getById("*", $tableConfig, 1);
+  $opentime = $h->getById("noidung_vi", $tableHtml, 3);
+  $hotline = $h->getById("noidung_vi", $tableHtml, 2);
+  $fav = $h->getById("noidung_vi", $tableHtml, 8);
 
-$array_not = array($def['link_fabout'], $def['link_franchise']);
-if (!isset($_REQUEST['pqh']) || !in_array($mod1, $array_not))
-  $classFixed = ' fixed_navbar';
-else
-  $classFixed = '';
+  $array_not = array($def['link_fabout'], $def['link_franchise']);
+  if (!isset($_REQUEST['pqh']) || !in_array($mod1, $array_not))
+    $classFixed = ' fixed_navbar';
+  else
+    $classFixed = '';
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -33,8 +37,28 @@ else
 <head>
   <base href="<?php _e(URL) ?>" />
   <meta charset="UTF-8">
+  <link rel="icon" href="<?php _e(_upload.$fav['noidung_vi']) ?>" type="image/x-icon" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name='revisit-after' content='1 days' />
+		<link rel="canonical" href="<?php _e($url) ?>" />
   <title><?php include("module/title.php") ?></title>
+  <meta name="description" content="<?php include("module/desc.php") ?>" />
+	<meta name="keywords" content="<?php include("module/keyw.php") ?>" />
+  <!-- for facebook -->
+  <meta property="og:type" content="<?php _e($typesite) ?>" />
+  <meta property="og:title" content="<?php include("module/title.php") ?>" />
+  <meta property="og:image" content="<?php include("module/image.php") ?>" />	
+  <meta property="og:description" content="<?php include("module/desc.php") ?>" />
+  <meta property="og:url" content="<?php _e($url) ?>" />
+  <meta property="og:site_name" content="<?php _e($config["tieude_$lng"]) ?>" />
+  <meta property="fb:app_id" content="" />
+  <!-- twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:description" content="<?php include("module/desc.php"); ?>" />
+  <meta name="twitter:title" content="<?php include ("module/title.php"); ?>" />
+  <meta name="twitter:image" content="<?php include("module/image.php"); ?>" />
+
   <link rel="stylesheet" href="assets/fonts/fontawesome-5.15.1/css/all.min.css" />
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="assets/plugins/nprogress/nprogress.css" />
@@ -93,10 +117,10 @@ else
                     </div>
                     <div class="mx-3 mb-2">
                       <div class="btn-group">
-                        <a class="bg-transparent border-none text-brown font-weight-bold p-0 language"><img src="img/vi.png" alt="<?php _e($lang['lang_vi']) ?>" /></a>
+                        <a class="bg-transparent border-none text-brown font-weight-bold p-0 language"><img src="assets/img/vi.png" alt="<?php _e($lang['lang_vi']) ?>" /></a>
                         <div class="dropdown-menu dropdown-menu-right" id="menu_language" style="right: 0; left: auto;">
-                            <a class="dropdown-item language_current language_choose" rel="vi"><img src="img/vi.png" alt="<?php _e($lang['lang_vi']) ?>" /> <?php _e($lang['lang_vi']) ?></a>
-                            <a class="dropdown-item language_choose" rel="en"><img src="img/en.png" alt="<?php _e($lang['lang_en']) ?>" /> <?php _e($lang['lang_en']) ?></a>
+                            <a class="dropdown-item language_current language_choose" rel="vi"><img src="assets/img/vi.png" alt="<?php _e($lang['lang_vi']) ?>" /> <?php _e($lang['lang_vi']) ?></a>
+                            <a class="dropdown-item language_choose" rel="en"><img src="assets/img/en.png" alt="<?php _e($lang['lang_en']) ?>" /> <?php _e($lang['lang_en']) ?></a>
                         </div>
                       </div>
                     </div>
@@ -126,12 +150,12 @@ else
                   <a href="<?php _e($def['link_fabout']) ?>" class="nav-link text-uppercase"><?php _e($lang['landing_about']) ?></a>
                 </li>
                 <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && $mod1 == $def['link_fservice']) _e(' active') ?>">
-                  <a href="<?php _e($def['link_fservice']) ?>" class="nav-link text-uppercase"><?php _e($lang['service']) ?>/a>
+                  <a href="<?php _e($def['link_fservice']) ?>" class="nav-link text-uppercase"><?php _e($lang['service']) ?></a>
                 </li>
                 <li class="navbar-item m-1 text-nowrap queen-nature dropdown position-static text-center<?php if (isset($_REQUEST['pqh']) && $mod1 == $def['link_queennature']) _e(' active') ?>">
                   <a href="#" class="dropdown-toggle queen-nature nav-link" id="navbarDropdownMenuQueenNature" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">QUEEN NATURE</a>
                   <?php
-                    $existCateProducts = $h->checkExist($tableProduct, "cm = 1 and deleted_at is null and active = 1");
+                    $existCateProducts = $h->checkExist($tableCate, "cate_id = 1 and deleted_at is null and active = 1");
                     if ($existCateProducts) {
                   ?>
                   <ul class="submenu m-auto dropdown-menu p-0" aria-labelledby="navbarDropdownMenuQueenNature">
@@ -139,14 +163,14 @@ else
                       <div class="col-12 m-0 p-0 py-2 bg-brown-opacity-50">
                         <div class="m-auto d-flex row p-0 m-0">
                         <?php
-                          $procates = $h->getAll("id, name_vi, name_en", $tableProduct, "cm = 1 and deleted_at is null and active = 1", "sort asc, id asc", "limit 0, 4");
+                          $procates = $h->getAll("id, name_vi, name_en", $tableCate, "deleted_at is null and active = 1", "sort asc, id asc", "limit 0, 4");
                           $cateMenu = "";
                           foreach ($procates as $cate) {
                             $cateName = $cate["name_$lng"];
                             $product_id = $cate['id'];
                             $cateMenu .= '<div class="pregnant-mother col-lg-6 col-xl-3 pr-0">';
                             $cateMenu .= '<div class="title"><p>'.$cateName.'</p></div>';
-                            $menuProducts = $h->getAll("name_vi, name_en", $tableProduct, "cm = 0 and product_id = $product_id and deleted_at is null and active = 1", "sort desc, id desc", "limit 0, 7");
+                            $menuProducts = $h->getAll("name_vi, name_en", $tableProduct, "product_id = $product_id and deleted_at is null and active = 1", "sort desc, id desc", "limit 0, 7");
                             $cateMenu .= '<ul class="menu">';
                             $linkCateMenu = $def['link_queennature'].'/'.chuoilink($cate['name_vi']);
                             foreach ($menuProducts as $menuProduct) {

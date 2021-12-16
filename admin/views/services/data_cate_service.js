@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
                 "url": backend_categories_services_list,
                 "dataType": "json",
                 "type": "GET",
-                "data": {},
+                "data": {cate_id: cate_id},
                 error: function(xhr, error, code) {
                     //alert('error'+parse(xhr));
                     //location.reload();
@@ -176,9 +176,10 @@ jQuery(document).ready(function($) {
     // add
     $(document).on('click', '.add_cate_service', function() {
         let id = $(this).attr('rel');
-        $.post(link_cate_service_add, function(html) {
+        $.post(link_cate_service_add, {cate_id: cate_id}, function(html) {
             $('#add_cate_service').html(html);
             $('#modal-add-cate-service').modal('show');
+            $('title').html(text_add_cate_service);
         });
     });
     $(document).on('click', '.add_cate', function() {
@@ -246,6 +247,7 @@ jQuery(document).ready(function($) {
         $.post(link_cate_service_update, { id: id }, function(html) {
             $('#update_cate_service').html(html);
             $('#modal-update-cate-service').modal('show');
+            $('title').html(text_update_cate_service);
         });
     });
     $(document).on('click', '.update_cate', function() {
@@ -306,5 +308,8 @@ jQuery(document).ready(function($) {
                 }
             }
         });
+    });
+    $('#modal-add-cate-service, #modal-update-cate-service').on('hidden.bs.modal', function (e) {
+        $('title').html(title_manage_category_service);
     });
 });

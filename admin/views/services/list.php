@@ -2,6 +2,7 @@
     include("../../../require_inc.php");
     $service_id = $_POST['service_id'];
     $table = "services";
+    $tableCate = "categories";
 ?>
 <!-- Main content -->
 <div class="main_content">
@@ -14,8 +15,7 @@
                 <div class="row">
                     <h3 class="col-md-6 card-title">
                         <?php 
-                            $cate = $h->getById("name_vi, name_en", $table, $service_id, "and deleted_at is null");
-                            $allcates = $h->getAll("id, name_vi, name_en", $table, "cm = 1 and deleted_at is null and active = 1", "id asc");
+                            $cate = $h->getById("name_vi, name_en", $tableCate, $service_id, "and deleted_at is null");
                             _e($lang['manage_service'] . ' &raquo; '.$cate['name_vi']); 
                         ?>
                     </h3>
@@ -111,6 +111,9 @@
         var link_add = "<?php _e($def['link_service_add']) ?>";
         var session_timeout = '<?php _e($lang['session_timeout']) ?>';
         var system_error = '<?php _e($lang['system_error']) ?>';
+        var text_manage_service = "<?php _e($lang['manage_service'] . ' &raquo; '.$cate['name_vi']); ?>";
+        var text_add_service = "<?php _e($lang['add_service'].' &raquo; '.$cate['name_vi']) ?>";
+        var text_update_service = "<?php _e($lang['update_service']) ?>";
         var not_name_service_vi = "<?php _e($lang['not_name_service_vi']) ?>";
         var not_name_service_en = "<?php _e($lang['not_name_service_en']) ?>";
         var processing = "<?php _e($lang['processing']) ?>";

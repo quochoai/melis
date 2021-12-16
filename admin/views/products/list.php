@@ -1,6 +1,8 @@
 <?php
     include("../../../require_inc.php");
     $product_id = $_POST['product_id'];
+    $tableCate = 'categories';
+    $table = "products";
 ?>
 <!-- Main content -->
 <div class="main_content">
@@ -12,9 +14,8 @@
             <div class="card-header container-fluid">
                 <div class="row">
                     <h3 class="col-md-6 card-title">
-                        <?php 
-                            $cate = $h->getById("name_vi, name_en", "products", $product_id, "and deleted_at is null");
-                            $allcates = $h->getAll("id, name_vi, name_en", "products", "cm = 1 and deleted_at is null and active = 1", "id asc");
+                        <?php
+                            $cate = $h->getById("name_vi, name_en", $tableCate, $product_id, "and deleted_at is null and active = 1");
                             _e($lang['manage_product'] . ' &raquo; '.$cate['name_vi']); 
                         ?>
                     </h3>
@@ -109,6 +110,9 @@
         var link_add = "<?php _e($def['link_add_product']) ?>";
         var session_timeout = '<?php _e($lang['session_timeout']) ?>';
         var system_error = '<?php _e($lang['system_error']) ?>';
+        var text_manage_product = "<?php _e($lang['manage_product'] . ' &raquo; '.$cate['name_vi']); ?>";
+        var text_add_product = "<?php _e($lang['add_product'].' &raquo; '.$cate['name_vi']) ?>";
+        var text_update_product = "<?php _e($lang['update_product']) ?>";
         var not_name_product_vi = "<?php _e($lang['not_name_product_vi']) ?>";
         var not_name_product_en = "<?php _e($lang['not_name_product_en']) ?>";
         var processing = "<?php _e($lang['processing']) ?>";

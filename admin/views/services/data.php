@@ -16,11 +16,12 @@
         $w = "and (name_vi like '%".$search['value']."%' or name_en like '%".$search['value']."%')";
     else
         $w = "";
-    $servicess = $h->getAll("id, name_vi, name_en, active", $table, "cm = 0 and service_id = $service_id and deleted_at is null $w", "id asc");
+    
+    $servicess = $h->getAll("id, name_vi, name_en, active", $table, "service_id = $service_id and deleted_at is null $w", "id asc");
     if (count($servicess) > 0) {
         $totalData = count($servicess);
         $totalFiltered = $totalData;
-        $services = $h->getAll("id, name_vi, name_en, sort, active", $table, "cm = 0 and service_id = $service_id and deleted_at is null $w", "sort desc, id desc limit ".$options['offset'].", ".$options['limit']);
+        $services = $h->getAll("id, name_vi, name_en, sort, active", $table, "service_id = $service_id and deleted_at is null $w", "sort desc, id desc limit ".$options['offset'].", ".$options['limit']);
         foreach ($services as $kc => $service) {
             $no = $kc + 1;
             if ($service['active'] == 1) {

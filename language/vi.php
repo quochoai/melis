@@ -280,7 +280,7 @@
 		'view_more' => 'Xem thêm',
 		'view_all' => 'Xem tất cả',
 		'melis_spa_service' => 'Dịch vụ Melis Spa',
-		'intro_melis_spa_service' => 'Đến spa thư giãn & làm đẹp là một trong những cách tốt nhất để giải tỏa stress. Đặt hẹn tại Melis Mom - Melis Beate’ ngay hôm nay để trải nghiệm các liệu pháp thư giãn & làm đẹp tốt nhất.',
+		'intro_melis_spa_service' => "Đến spa thư giãn & làm đẹp là một trong những cách tốt nhất để giải tỏa stress. Đặt hẹn tại Melis Mom - Melis Beate’ ngay hôm nay để trải nghiệm các liệu pháp thư giãn & làm đẹp tốt nhất.",
 		'view_detail' => 'Xem chi tiết',
 		'offer_products' => 'Sản phẩm ưu đãi',
 		'queen_nature_products' => 'Sản phẩm Queen Nature',

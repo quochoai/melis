@@ -1,5 +1,6 @@
 <?php
     include("../../../require_inc.php");
+    $cate_id = $_POST['cate_id'];
 ?>
 <!-- Main content -->
 <div class="main_content">
@@ -54,10 +55,11 @@
                   </button>
               </div>
               <form method="post" action="<?php _e($def['link_process_add_category_product']) ?>" id="form_add" enctype="multipart/form-data">
-                  <div class="modal-body container-fluid" id="add_cate"></div>
-                  <div class="modal-footer">
-                      <button type="submit" id="add" class="btn btn-success"><?php _e($lang['save']) ?> <i class="fas fa-save"></i></button><button type="reset" class="btn btn-info"><?php _e($lang['reset']) ?> <i class="fas fa-undo"></i></button>
-                  </div>
+                <input type="hidden" name="data[cate_id]" value="<?php _e($cate_id) ?>" />
+                <div class="modal-body container-fluid" id="add_cate"></div>
+                <div class="modal-footer">
+                    <button type="submit" id="add" class="btn btn-success"><?php _e($lang['save']) ?> <i class="fas fa-save"></i></button><button type="reset" class="btn btn-info"><?php _e($lang['reset']) ?> <i class="fas fa-undo"></i></button>
+                </div>
               </form>
           </div>
           <!-- /.modal-content -->
@@ -114,7 +116,8 @@
       var sort_success = "<?php _e($lang['sort_success']) ?>";
       var manage_product = "<?php _e($lang['manage_product']) ?>";
       var manage = "<?php _e($lang['manage']) ?>";
-      var tables = "products";
+      var cate_id = <?php _e($cate_id) ?>;
+      var tables = "categories";
   </script>
   <script src="views/products/data_cate.js"></script>
 </div>

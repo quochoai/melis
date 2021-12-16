@@ -1,7 +1,9 @@
 <?php
     include("../../../require_inc.php");
+    $cate_id = $_POST['cate_id'];
 ?>
 <div class="row">
+    <input type="hidden" id="cate_id_service" name="data[cate_id]" value="<?php _e($cate_id) ?>" />
     <div class="col-md-6">
         <div class="form-group">
             <label class="col-form-label" for="name"><?php _e($lang['name_category'].' (Vie)') ?></label>

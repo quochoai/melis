@@ -165,6 +165,7 @@ jQuery(document).ready(function($) {
         $.post(link_add, { product_id: product_id }, function(data) {
             $('#product_add').html(data);
             $('#modal-add-product').modal('show');
+            $('title').html(text_add_product);
         });
     });
 
@@ -235,6 +236,7 @@ jQuery(document).ready(function($) {
         $.post(link_update, { id: id }, function(html) {
             $('#product_update').html(html);
             $('#modal-update-product').modal('show');
+            $('title').html(text_update_product);
         });
     });
     $(document).on('click', '#update_product', function() {
@@ -296,5 +298,8 @@ jQuery(document).ready(function($) {
                 }
             }
         });
+    });
+    $('#modal-add-product, #modal-update-product').on('hidden.bs.modal', function (e) {
+        $('title').html(text_manage_product);
     });
 });

@@ -10,9 +10,8 @@
             if (file_exists($link_img))
                 unlink($link_img);
             $path = "../../../upload/";
-            uploadfile("noidung_vi", $path);
+            $data['noidung_vi'] = uploadfile("noidung_vi", $path);
         }
-        $data['noidung_vi'] = $_FILES['noidung_vi']['name'];
     } elseif (in_array($id, $arrayone))
         $data['noidung_vi'] = $_POST['noidung_vi'];
     else {

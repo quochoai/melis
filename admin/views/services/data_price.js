@@ -164,6 +164,7 @@ jQuery(document).ready(function($) {
         $.post(link_add, { service_id: service_id }, function(data) {
             $('#price_service_add').html(data);
             $('#modal-add-price-service').modal('show');
+            $(title).html(texet_add_price_table);
         });
     });
 
@@ -233,6 +234,7 @@ jQuery(document).ready(function($) {
         $.post(link_update, { id: id }, function(html) {
             $('#price_service_update').html(html);
             $('#modal-update-price-service').modal('show');
+            $('title').html(text_update_price_table);
         });
     });
     $(document).on('click', '#update_price_service', function() {
@@ -293,5 +295,8 @@ jQuery(document).ready(function($) {
                 }
             }
         });
+    });
+    $('#modal-add-price-service, #modal-update-price-service').on('hidden.bs.modal', function (e) {
+        $('title').html(text_manage_price_table);
     });
 });

@@ -496,8 +496,8 @@ function upload_image_no_thumb($path){
 // uploadfile
 function uploadfile($name_field, $path) {
 	$name_save = time().'_'.$_FILES[$name_field]['name'];
-		$path_img = $path.$name_save;
-		move_uploaded_file($_FILES[$name_field]['tmp_name'], $path_img);
+	$path_img = $path.$name_save;
+	move_uploaded_file($_FILES[$name_field]['tmp_name'], $path_img);
 	return $name_save;
 }
 // upload multiple images
