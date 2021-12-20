@@ -65,13 +65,13 @@ $(window).scroll(function () {
   if ($(this).scrollTop() > 59) {
 		$('.fixed_navbar .navbar').css('padding-top', '0');
 		$('.fixed_navbar .navbar').css('padding-bottom', '0');
-		$('li.lg img.mom').attr('src', 'img/melismom_m.png');
-		$('li.lg img.beaute').attr('src', 'img/melisbeaute_m.png');
+		$('li.lg img.mom').attr('src', 'assets/img/melismom_m.png');
+		$('li.lg img.beaute').attr('src', 'assets/img/melisbeaute_m.png');
   } else {
 		$('.fixed_navbar .navbar').css('padding-top', '0.5rem');
 		$('.fixed_navbar .navbar').css('padding-bottom', '0.5rem');
-		$('li.lg img.mom').attr('src', 'img/melismom.png');
-		$('li.lg img.beaute').attr('src', 'img/melisbeaute.png');
+		$('li.lg img.mom').attr('src', 'assets/img/melismom.png');
+		$('li.lg img.beaute').attr('src', 'assets/img/melisbeaute.png');
 		flag = false;
   }
 });

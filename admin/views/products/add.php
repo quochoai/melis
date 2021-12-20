@@ -132,7 +132,7 @@
 			<label for="show_home1"><?php _e($lang['active']) ?></label>
 		</div>
 		<div class="icheck-success d-inline">
-			<input type="radio" id="show_home2" name="data[show_home]" checked />
+			<input type="radio" id="show_home2" name="data[show_home]" value="0" checked />
 			<label for="show_home2"><?php _e($lang['hidden']) ?></label>
 		</div>
 		</div>
@@ -145,7 +145,7 @@
 			<label for="offer_product1"><?php _e($lang['active']) ?></label>
 		</div>
 		<div class="icheck-success d-inline">
-			<input type="radio" id="offer_product2" name="data[offer_product]" checked />
+			<input type="radio" id="offer_product2" name="data[offer_product]" value="0" checked />
 			<label for="offer_product2"><?php _e($lang['hidden']) ?></label>
 		</div>
 		</div>

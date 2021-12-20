@@ -265,32 +265,29 @@ function chuoianh($text)
 	return $title;
 }
 // cat chuoi ki tu
-function catchuoi($chuoi,$gioihan){
-		// nếu độ dài chuỗi nhỏ hơn hay bằng vị trí cắt
-		// thì không thay đổi chuỗi ban đầu
-		if(strlen($chuoi)<=$gioihan)
-		{
-			return $chuoi;
+function catchuoi($chuoi, $gioihan){
+	if(strlen($chuoi) <= $gioihan)
+		return $chuoi;
+	else {
+		if(strpos($chuoi," ",$gioihan) > $gioihan){
+			$new_gioihan=strpos($chuoi," ",$gioihan);
+			$new_chuoi = mb_substr($chuoi, 0, $new_gioihan, 'UTF-8');
+			return $new_chuoi;
 		}
-		else{
-			/* 
-			so sánh vị trí cắt 
-			với kí tự khoảng trắng đầu tiên trong chuỗi ban đầu tính từ vị trí cắt
-			nếu vị trí khoảng trắng lớn hơn
-			thì cắt chuỗi tại vị trí khoảng trắng đó
-			*/
-			if(strpos($chuoi," ",$gioihan) > $gioihan){
-				$new_gioihan=strpos($chuoi," ",$gioihan);
-				//$new_chuoi = substr($chuoi,0,$new_gioihan)." ...";
-								$new_chuoi = mb_substr($chuoi, 0, $new_gioihan, 'UTF-8');
-				return $new_chuoi;
-			}
-			// trường hợp còn lại không ảnh hưởng tới kết quả
-			//$new_chuoi = substr($chuoi,0,$gioihan)."...";
-						$new_chuoi = mb_substr($chuoi, 0, $gioihan, 'UTF-8');
-			return strip_tags($new_chuoi);
-		}
+		$new_chuoi = mb_substr($chuoi, 0, $gioihan, 'UTF-8');
+		return $new_chuoi;
 	}
+}
+// cut word from string
+function cutWords ($string, $from, $length) {
+	$arrayString = explode(" ", $string);
+	$lengthString = count($arrayString);
+	if ($lengthString <= $length)
+		$newString = $string;
+	else
+		$newstring = implode(" ", array_slice($arrayString, $from, $length));
+	return $newString;
+}
 //removes string from the end of other
 function removeFromEnd($string, $stringToRemove) 
 {

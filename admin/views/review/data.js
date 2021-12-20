@@ -235,25 +235,25 @@ jQuery(document).ready(function($) {
         });
     });
     $(document).on('click', '#update_review', function() {
-        let customer_vi = $.trim($('#customer_vi').val());
-        let customer_en = $.trim($('#customer_en').val());
+        let customer_vi = $.trim($('#customer_vi_e').val());
+        let customer_en = $.trim($('#customer_en_e').val());
         if (customer_vi == '') {
             toastr.error(not_enter_customer_vi);
-            $('#customer_vi').focus();
-            $('#customer_vi').addClass("is-invalid");
+            $('#customer_vi_e').focus();
+            $('#customer_vi_e').addClass("is-invalid");
             return false;
         } else {
-            $('#customer_vi').removeClass("is-invalid");
-            $('#customer_vi').addClass("is-valid");
+            $('#customer_vi_e').removeClass("is-invalid");
+            $('#customer_vi_e').addClass("is-valid");
         }
         if (customer_en == '') {
             toastr.error(not_enter_customer_en);
-            $('#customer_en').focus();
-            $('#customer_en').addClass("is-invalid");
+            $('#customer_en_e').focus();
+            $('#customer_en_e').addClass("is-invalid");
             return false;
         } else {
-            $('#customer_en').removeClass("is-invalid");
-            $('#customer_en').addClass("is-valid");
+            $('#customer_en_e').removeClass("is-invalid");
+            $('#customer_en_e').addClass("is-valid");
         }
         $('#form_update_review').ajaxForm({
             beforeSend: function() {

@@ -19,7 +19,7 @@
 							else
 								$linkSlider = '<img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" />';
 							*/
-							$linkSlider = ($slider['url'] != '' && $slider['url'] != '#') ? '<a href="'.$slider['url'].'"><img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" /></a>' : '<img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" />';
+							$linkSlider = ($slider['url'] != '' && $slider['url'] != '#') ? '<a href="'.$slider['url'].'"><img data-u="image" alt="" src="'.$def['upload_slider_home'].$slider['image'].'" alt="'.$slider["alt_$lng"].'" /></a>' : '<img data-u="image" alt="" src="'.$def['upload_slider_home'].$slider['image'].'" alt="'.$slider["alt_$lng"].'" />';
 							$imgSlider .= '<div>'.$linkSlider.'</div>';
 						}
 						_e($imgSlider);
@@ -181,20 +181,28 @@
 			<div class="col-12 pb-4">
 				<div class="row">
 					<div class="col-lg-5">
-						<iframe style="width: 100%; min-height: 400px; border: 1px solid #4d3424;" class="h-100" src="https://www.youtube.com/embed/SIXocUV8uuw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<?php
+							$vtc = $h->getById("noidung_vi", $tableHtml, 10);
+							$video_introduce = substr($vtc['noidung_vi'], -11, 11);
+						?>
+						<iframe style="width: 100%; min-height: 400px; border: 1px solid #4d3424;" class="h-100" src="https://www.youtube.com/embed/<?php _e($video_introduce) ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 					<div class="col-lg-7">
 						<div class="header row pb-2">
 							<div class="welcome-img">
-								<img src="img/welcome_tobg-web.png" alt="">
+								<img src="assets/img/bg_welcome.png" alt="">
 							</div>
 							<div class="col logo-img">
-								<img src="img/logo.png" alt="">
+								<img src="assets/img/logo.png" alt="">
 							</div>
 						</div>
 						<div class="text-box position-relative">
-							<p>fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads fassads</p>
-							<a href="#" class="btn readmore-textarea text-uppercase position-absolute py-0 px-1 nav-link">Xem thêm</a>
+							<?php
+								$introAbout = $h->getById("noidung_vi, noidung_en", $tableHtml, 11);
+								$introAboutHome = $introAbout["noidung_$lng"];
+								$msgAboutHome = '<div>'.$introAboutHome.'</div><a href="'.$def['link_fabout'].'" class="btn readmore-textarea text-uppercase position-absolute py-0 px-1 nav-link">'.$lang['view_all'].'</a>';
+								_e($msgAboutHome);
+							?>							
 						</div>
 					</div>
 				</div>
@@ -240,7 +248,7 @@
 									$imgService = (!is_null($service['image']) && $service['image'] != '') ? $def['upload_service_avatar'].$service['image'] : $def['no_image_available'];
 									$titleService = $service["sname_$lng"];
 									$msgService .= '<div class="item'.$acti.'">';
-									$msgService .= '	<a href="'.$linkService.'" title="'.$titleService.'"><figure><img src="'.$imgService.'" alt="'.$titleService.'" class="img w-100" /></figure></a>';
+									$msgService .= '	<a href="'.$linkService.'" title="'.$titleService.'"><figure><img src="'.$imgService.'" alt="'.$titleService.'" class="img w-100 img_service_home" /></figure></a>';
 									$msgService .= '	<div class="text text-center pt-4"><div class="title"><a href="'.$linkService.'">CHĂM SÓC MẸ BẦU</a></div></div>';
 									$msgService .= '	<div class="m-auto text-center pt-4"><div class="m-auto"><a href="'.$linkService.'" class="btn readmore-textarea text-uppercase p-2">'.$lang['view_detail'].'</a></div></div>';
 									$msgService .= '</div>';
@@ -426,7 +434,7 @@
 <?php
 	// KHÁCH HÀNG CẢM NHẬN
 	$tableReview = "reviews";
-	$checkCustomerReview = $h->checkExist($tableReview, "rv_id = 1 and deleted_at is null");
+	$checkCustomerReview = $h->checkExist($tableReview, "rv_id = 1 and deleted_at is null and show_home = 1");
   if ($checkCustomerReview) {
 ?>
 <div class="bg-wrapper position-relative">
@@ -434,7 +442,7 @@
 		<div class="container-fluid customer-feel">
 			<div class="row pt-5 pb-4">
 				<div class="position-absolute image-left" style="z-index: 1;">
-					<img src="img/customer-feel-1.png" alt="">
+					<img src="assets/img/customer-feel-1.png" alt="">
 				</div>
 				<div class="col-12">
 					<div class="container-fluid pb-4">
@@ -456,98 +464,34 @@
 					<div class="container">
 						<div class="row owl-carousel" id="owl-carousel-2">
 						<?php
-							$customerReviews = $h->getAll("customer_vi, customer_en, image, content_vi, content_en", $tableReview, "rv_id = 1 and deleted_at is null", "sort desc, id desc", "limit 0, 16");
+							$customerReviews = $h->getAll("customer_vi, customer_en, image, content_vi, content_en", $tableReview, "rv_id = 1 and deleted_at is null and show_home = 1", "sort desc, id desc", "limit 0, 16");
 							$countCustomerReview = count($customerReviews);
 							$msgCustomerReview = "";
 							foreach ($customerReviews as $kv => $customerReview) {
 								$imgCustomerReview = ($customerReview['image'] == '') ? $def['no_image_available'] : $def['upload_review_customer'].$customerReview['image'];
 								$customerName = $customerReview["customer_$lng"];
-								$shortCustomerReview = catchuoi($customerReview["content_$lng"], 200);
-								$eachCustomerReview = '<div class="p-3 bg-frame position-relative w-100 h-100" style="min-height: 201px; background-image: url(assets/img/frames-comments.png);"><div class="description px-5">'.$shortCustomerReview.'</div><div class="infomation-customer"><div class="position-absolute w-75 d-flex align-items-center"><div class="row p-0 m-0 w-100 align-items-center"><div class="avt col-4"><figure><img src="'.$imgCustomerReview.'" alt="'.$customerName.'" class="img-avt-customer"></figure></div><div class="name">'.$customerName.'</div></div></div></div></div>';
-
-								if ($countCustomerReview >= 4 && $countCustomerReview % 4 == 0) {
+								$shortCustomerReview = catchuoi(strip_tags($customerReview["content_$lng"]), 260);
+								$eachCustomerReview = '<div class="p-3 bg-frame position-relative w-100 h-100 mb-4" style="min-height: 201px; background-image: url(assets/img/frames-comments.png);"><div class="description px-5">'.$shortCustomerReview.'</div><div class="infomation-customer"><div class="position-absolute w-75 d-flex align-items-center"><div class="row p-0 m-0 w-100 align-items-center"><div class="avt col-4"><figure><img src="'.$imgCustomerReview.'" alt="'.$customerName.'" class="img-avt-customer"></figure></div><div class="name text-uppercase">'.$customerName.'</div></div></div></div></div>';
+								if ($countCustomerReview > 4) {									
 									if ($kv % 2 == 0)
 										$msgCustomerReview .= '<div class="py-4 my-3">';
 									$msgCustomerReview .= $eachCustomerReview;
 									if ($kv % 2 != 0)
 										$msgCustomerReview .= '</div>';
-								}
-								if ($countCustomerReview > 4 && $countCustomerReview % 4 != 0) {
-									if ($countCustomerReview > 12) {
-										if ($kv >= 0 && $kv < 12) {
-											if ($kv % 2 == 0)
-												$msgCustomerReview .= '<div class="py-4 my-3">';
-											$msgCustomerReview .= $eachCustomerReview;
-											if ($kv % 2 != 0)
-												$msgCustomerReview .= '</div>';
-										} else {
-											if ($countCustomerReview == 13 || $countCustomerReview == 14) {
-												$msgCustomerReview .= '<div class="py-4 my-3">';
-												$msgCustomerReview .= $eachCustomerReview;
-												$msgCustomerReview .= '</div>';
-											} else {
-												if ($kv == 12 || $kv == 14)
-													$msgCustomerReview .= '<div class="py-4 my-3">';
-												$msgCustomerReview .= $eachCustomerReview;
-												if ($kv == 13 || $kv == 14)
-												$msgCustomerReview .= '</div>';
-											}
-										}
-									} elseif ($countCustomerReview > 8) {
-										if ($kv >= 0 && $kv < 8) {
-											if ($kv % 2 == 0)
-												$msgCustomerReview .= '<div class="py-4 my-3">';
-											$msgCustomerReview .= $eachCustomerReview;
-											if ($kv % 2 != 0)
-												$msgCustomerReview .= '</div>';
-										} else {
-											if ($countCustomerReview == 8 || $countCustomerReview == 9) {
-												$msgCustomerReview .= '<div class="py-4 my-3">';
-												$msgCustomerReview .= $eachCustomerReview;
-												$msgCustomerReview .= '</div>';
-											} else {
-												if ($kv == 8 || $kv == 10)
-													$msgCustomerReview .= '<div class="py-4 my-3">';
-												$msgCustomerReview .= $eachCustomerReview;
-												if ($kv == 9 || $kv == 10)
-												$msgCustomerReview .= '</div>';
-											}
-										}
-									} else {
-										if ($kv >= 0 && $kv < 4) {
-											if ($kv % 2 == 0)
-												$msgCustomerReview .= '<div class="py-4 my-3">';
-											$msgCustomerReview .= $eachCustomerReview;
-											if ($kv % 2 != 0)
-												$msgCustomerReview .= '</div>';
-										} else {
-											if ($countCustomerReview == 5 || $countCustomerReview == 6) {
-												$msgCustomerReview .= '<div class="py-4 my-3">';
-												$msgCustomerReview .= $eachCustomerReview;
-												$msgCustomerReview .= '</div>';
-											} else {
-												if ($kv == 4 || $kv == 6)
-													$msgCustomerReview .= '<div class="py-4 my-3">';
-												$msgCustomerReview .= $eachCustomerReview;
-												if ($kv == 5 || $kv == 6)
-												$msgCustomerReview .= '</div>';
-											}
-										}
-									}
-								}
-								if ($countCustomerReview < 4) {
+								} else {
 									if ($countCustomerReview == 1 || $countCustomerReview == 2) {
 										$msgCustomerReview .= '<div class="py-4 my-3">';
 										$msgCustomerReview .= $eachCustomerReview;
 										$msgCustomerReview .= '</div>';
 									} else {
-										if ($kv == 0 || $kv == 1)
+										if ($kv % 2 == 0)
 											$msgCustomerReview .= '<div class="py-4 my-3">';
 										$msgCustomerReview .= $eachCustomerReview;
 										if ($kv == 1 || $kv == 2)
 										$msgCustomerReview .= '</div>';
 									}
 								}
+								
 							}
 							_e($msgCustomerReview);
 						?>
@@ -556,7 +500,7 @@
 				</div>
 
 				<div class="position-absolute image-right" style="z-index: 1;">
-					<img src="img/customer-feel-2.png" alt="">
+					<img src="assets/img/customer-feel-2.png" alt="">
 				</div>
 
 			</div>
@@ -591,13 +535,13 @@
 												foreach ($knowledges as $knowledge) {
 													$titleKnowledge = $knowledge["name_$lng"];
 													$postDate = $knowledge['post_date'];
-													$linkKnowledge = $def['link_fpromotion'].'/'.chuoilink($knowledge['name_vi']).'.html';
+													$linkKnowledge = $def['link_fknowledge'].'/'.chuoilink($knowledge['name_vi']).'.html';
 													$msgKnowledge .= '<div class="col-12">';
 													$msgKnowledge .= '	<small>('.$postDate.')</small>';
 													$msgKnowledge .= '	<p class="font-weight-bold"><a href="'.$linkKnowledge.'" title="'.$titleKnowledge.'">'.$titleKnowledge.'</a></p>';
 													$msgKnowledge .= '</div>';
 												}
-												$msgKnowledge .= '<div class="col-12"><a href="'.$def['link_fpromotion'].'" class="btn btn-read-more"><i class="fas fa-plus"></i> '.$lang['view_all'].'</a></div>';
+												$msgKnowledge .= '<div class="col-12"><a href="'.$def['link_fknowledge'].'" class="btn btn-read-more"><i class="fas fa-plus"></i> '.$lang['view_all'].'</a></div>';
 												_e($msgKnowledge);
 											?>
 											
@@ -606,9 +550,9 @@
 									<?php 
 										} 
 										$tableGallery = "galleries";
-										$checkVideo = $h->checkExist($tableGallery, "gal_id = 2 and deleted_at is null and show_home = 1");
+										$checkVideo = $h->checkExist($tableGallery, "gal_id = 2 and deleted_at is null");
 										if ($checkVideo) {
-											$video = $h->getOne("link_youtube", $tableGallery, "gal_id = 2 and deleted_at is null and show_home = 1");
+											$video = $h->getOne("link_youtube", $tableGallery, "gal_id = 2 and deleted_at is null", "sort desc, id desc");
 											$videoGet = substr($video['link_youtube'], -11, 11);
 									?>
 									<div class="col-lg-6">
@@ -648,7 +592,7 @@
 												foreach ($celebsReviews as $celebsReview) {
 													$imgCelebReview = ($celebsReview['image'] != '') ? $def['upload_review_star'].$celebsReview['image'] : $def['no_image_available'];
 													$celebName = $celebsReview["customer_$lng"];
-													$contentCeleb = $celebsReview["content_$lng"];
+													$contentCeleb = catchuoi(strip_tags($celebsReview["content_$lng"]), 700);
 													$msgCelebs .= '<div class="row">';
 													$msgCelebs .= '	<div class="col-lg-5"><div style="height: 100%;" class="w-100 position-relative"><div style="border: 1px solid rgb(151, 124, 96);background: rgb(211, 181, 148); width: 90% !important;height: 90%;" class="w-100"><img src="'.$imgCelebReview.'" alt="" style="bottom: 0;right: 0; position: absolute;width: 94% !important;" class="w-100"></div></div></div>';
 													$msgCelebs .= '	<div class="col-lg-7 p-5" style="border: 1px solid rgb(151, 124, 96);background: rgb(211, 181, 148);"><div><span class="font-weight-bold text-uppercase">'.$celebName.'</span></div><div class="comment">'.$contentCeleb.'</div></div>';

@@ -26,28 +26,28 @@
 <div class="bg-wrapper positiom-relative pb-3">
 	<div class="wrapper">
 		<div class="row">
-			<div class="col"><img src="img/melismom.png" alt=""></div>
+			<div class="col"><img src="assets/img/melismom.png" alt=""></div>
 			<div class="col">
 				<div class="title font-weight-bold pb-3 text-uppercase"><?php _e($lang['office']) ?></div>
-				<div class="content"><?php _e(nl2br($office["noidung$lng"])) ?></div>
+				<div class="content"><?php _e(nl2br($office["noidung_$lng"])) ?></div>
 			</div>
 			<div class="col">
-				<div class="title font-weight-bold pb-3"><?php _e($lang['office_hn']) ?></div>
-				<div class="content"><?php _e(nl2br($officehn["noidung$lng"])) ?></div>
+				<div class="title font-weight-bold pb-3 text-uppercase"><?php _e($lang['office_hn']) ?></div>
+				<div class="content"><?php _e(nl2br($officehn["noidung_$lng"])) ?></div>
 			</div>
 			<div class="col">
-				<div class="title font-weight-bold pb-3"><?php _e($lang['office_hcm']) ?></div>
-				<div class="content"><?php _e(nl2br($officehcm["noidung$lng"])) ?></div>
+				<div class="title font-weight-bold pb-3 text-uppercase"><?php _e($lang['office_hcm']) ?></div>
+				<div class="content"><?php _e(nl2br($officehcm["noidung_$lng"])) ?></div>
 			</div>
 			<div class="col">
-				<img src="img/melisbeaute.png" alt="">
+				<img src="assets/img/melisbeaute.png" alt="">
 			</div>
 		</div>
 	</div>
 </div>
 <!-- FOOTER 3 -->
 <div class="bg-wrapper position-relative pb-3" style="background: rgb(77, 52, 36);">
-	<div class="position-absolute" style="left: 0; bottom: 0!important;"><img class="" src="img/flower-left.png" alt=""></div>
+	<div class="position-absolute" style="left: 0; bottom: 0!important;"><img class="" src="assets/img/flower-left.png" alt=""></div>
 	<div class="wrapper">
 		<div class="col-12 p-0">
 			<div class="container" style="color: rgb(196, 182, 158);">
@@ -71,6 +71,9 @@
 								<div class="col-6">
 									@2016 <?php _e($lang['copyright_frontend']) ?>
 								</div>
+								<?php
+									$hotline_tuvan = $h->getById("noidung_vi", $tableHtml, 9);
+								?>
 								<div class="col-6 text-right">
 									<a style="color: rgb(196, 182, 158);" href="tel:<?php _e(str_replace(".", "", $hotline_tuvan['noidung_vi'])) ?>" class="nav-link text-uppercase"><?php _e($lang['hotline_consultation'].' '.$hotline_tuvan['noidung_vi']) ?></a>
 								</div>
@@ -82,7 +85,7 @@
 		</div>
 	</div>
 	<div class="position-absolute" style="right: 0; top: 0!important;">
-		<img class="" src="img/flower-right.png" alt="">
+		<img class="" src="assets/img/flower-right.png" alt="">
 	</div>
 </div>
 <?php

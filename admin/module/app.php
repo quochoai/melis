@@ -223,6 +223,7 @@
             var title_manage_landing_branch = "<?php _e($lang['manage_landing'].' '.$lang['landing_branch']) ?>";
             var link_partner = "<?php _e($def['link_partner']) ?>";
             var title_manage_partner = "<?php _e($lang['manage_partner']) ?>";
+            var show_home = "<?php _e($lang['show_home']) ?>";
             
 
             var link_logout = "<?php _e($def['link_logout']) ?>";

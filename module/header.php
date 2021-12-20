@@ -139,7 +139,7 @@
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse justify-content-center position-relative" id="navbarCollapse">
               <ul class="navbar-nav nav font-weight-bold align-items-center py-1 position-static">
-                <li class="lg"><img class="mom" src="img/melismom.png" alt=""></li>
+                <li class="lg"><img class="mom" src="assets/img/melismom.png" alt=""></li>
                 <?php 
                   if (!isset($_REQUEST['pqh']) || !in_array($mod1, $array_not)) {
                 ?>
@@ -214,7 +214,7 @@
                   if (isset($mod1) && $mod1 == $def['link_franchise'])
                     _e('<li class="navbar-item"><a href="'.URL.'" class="nav-link text-uppercase">'.$lang['home'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#whychoose" class="nav-link">'.$lang['ff_melisspa'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#advantage" class="nav-link">'.$lang['ff_advantage'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#benefit" class="nav-link">'.$lang['ff_benefit'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#cost" class="nav-link">'.$lang['ff_cost'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#request" class="nav-link">'.$lang['ff_request'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#procedure" class="nav-link">'.$lang['ff_procedure'].'</a></li><li class="navbar-item page_link m-1 text-nowrap text-center"><a href="#register" class="nav-link">'.$lang['ff_register'].'</a></li>');
                 ?>
-                <li class="lg"><img class="beaute" src="img/melisbeaute.png" alt=""></li>
+                <li class="lg"><img class="beaute" src="assets/img/melisbeaute.png" alt=""></li>
               </ul>
             </div>
           </nav>
