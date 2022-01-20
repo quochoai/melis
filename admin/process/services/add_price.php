@@ -9,7 +9,7 @@
         $service_id = $data['service_id'];
 
         $table = "price_tables";
-        $max = $h->getMax("id", $table, "deleted_at is null and service_id = $service_id");
+        $max = $h->getMax("sort", $table, "deleted_at is null and service_id = $service_id");
         $data['sort'] = $max['maxs'] + 1;
         $data['active'] = 1; 
         $res = $h->insertDataBy($data, $table, $user_id);

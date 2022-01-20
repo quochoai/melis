@@ -174,4 +174,17 @@ jQuery(document).ready(function() {
     e.preventDefault();
     searchKey();
   });
+  $(document).on('click', '.language_choose', function(){
+    var language = $(this).attr('rel');
+    if (language == 'en') 
+      $('.language').html('<img src="assets/img/en.png" alt="'+langen+'" />');
+    else
+      $('.language').html('<img src="assets/img/vi.png" alt="'+langvi+'" />');
+    $('#menu_language').slideUp();
+    if (currentLanguage != language) {
+      $.post(processLanguage, {set: language}, function(data){
+        window.location.assign(data);
+      });
+    }
+  });
 });

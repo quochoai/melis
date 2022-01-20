@@ -397,7 +397,7 @@
 	var system_error = "<?php _e($lang['system_error']) ?>";
 </script>
 <?php 
-	if (! isset($_REQUEST['pqh'])) {
+	if (! isset($_REQUEST['pqh']) || (isset($_REQUEST['pqh']) && $mod1 == '')) {
 ?>
 <script type="text/javascript" src="assets/plugins/jssor_slider/jssor.slider.min.js"></script>
 <script type="text/javascript" src="assets/plugins/jssor_slider/jssor.script.js"></script>
@@ -407,6 +407,12 @@
 <?php
 	}
 ?>
+<script type="text/javascript">
+	var langvi = "<?php _e($lang['lang_vi']) ?>";
+	var langen = "<?php _e($lang['lang_en']) ?>";
+	var currentLanguage = "<?php _e($_SESSION['lang']) ?>";
+	var processLanguage = "<?php _e(URL.'language.php') ?>";
+</script>
 <script src="themes/plugins/toastr/toastr.min.js"></script>
 <script src="themes/plugins/jquery.form/jquery.form.js"></script>    
 <script type="text/javascript" src="assets/js/common.js"></script>

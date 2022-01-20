@@ -37,7 +37,7 @@
         $pd = explode("/", trim($data['post_date']));
         $data['post_date'] = $pd[2].'/'.$pd[1].'/'.$pd[0].' '.date("H:i:s");
         $table = "news";
-        $max = $h->getMax("id", $table, "deleted_at is null and news_id = $news_id");
+        $max = $h->getMax("sort", $table, "deleted_at is null and news_id = $news_id");
         $data['sort'] = $max['maxs'] + 1;
         $data['active'] = 1; 
         $res = $h->insertDataBy($data, $table, $user_id);

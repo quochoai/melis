@@ -1,11 +1,13 @@
 <?php
-  if (!isset($_REQUEST['pqh']))
+  if (!isset($_REQUEST['pqh']) || (isset($_REQUEST['pqh']) && $mod1 == ''))
     include("module/home.php");
   else {
-    $pqh = killInjection($_REQUEST['pqh']);
-		$pqh = rtrim($pqh,"/");
-		$mang = explode("/",$pqh);
-    switch ($mang[1]) {
-      
+    switch ($mod1) {
+      case $def['link_fabout']:
+        include("module/landing_about.php");
+        break;
+      case $def['link_franchise']:
+        include("module/landing_franchise.php");
+        break;
     }
   }

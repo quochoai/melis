@@ -20,7 +20,7 @@
         }
 
         $table = "partners";
-        $max = $h->getMax("id", $table, "deleted_at is null");
+        $max = $h->getMax("sort", $table, "deleted_at is null");
         $data['sort'] = $max['maxs'] + 1;
         $data['active'] = 1; 
         $res = $h->insertDataBy($data, $table, $user_id);

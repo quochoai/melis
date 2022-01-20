@@ -3,11 +3,11 @@
 	<div id="jssor_1" class="jso_3">
 		<!-- Loading Screen -->
 		<div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-			<img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/svg/spin.svg" />
+			<img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="assets/img/svg/spin.svg" />
 		</div>
 		<div data-u="slides" class="jsso_3">
-			<div><img data-u="image" alt="" src="img/slider_test/1.png" /></div>
-			<div><img data-u="image" alt="" src="img/slider_test/2.jpg" /></div>                 
+			<div><img data-u="image" alt="" src="assets/img/slider_test/1.png" /></div>
+			<div><img data-u="image" alt="" src="assets/img/slider_test/2.jpg" /></div>                 
 		</div>
 		<!-- Arrow Navigator -->
 		<div data-u="arrowleft" class="jssora051" style="width:65px;height:65px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
@@ -97,7 +97,7 @@
 						<input type="text" id="regiscaptcha" name="regis[captcha]" class="form-control mb-2 input-regis">
 					</div>
 					<div class="col-2 p-0 pr-1">
-						<summary class="input-regis form-control" id="img-captcha"><?php include("captcha.php") ?></summary>
+						<summary class="input-regis form-control" id="img-captcha"><?php include("module/captcha.php") ?></summary>
 					</div>
 					<div class="col-6 p-0 pl-1">
 						<button type="button" class="btn btn-regis text-uppercase" id="regisnow">Đăng ký ngay</button>
@@ -134,28 +134,28 @@
 			<div class="w-100"><hr class="hrw" /></div>
 			<div class="col-md-3 mt-4 wm">
 				<figure class="text-center">
-					<img src="img/bg_landing/wm_cash.png" />
+					<img src="assets/img/bg_landing/wm_cash.png" />
 				</figure>
 				<h4 class="text-uppercase color_brown text-center">Chi phí</h4>
 				<p class="text-center color_brown">Tổng chi phí đầu tư chỉ từ 1,2 - 1,5 tỷ</p>
 			</div>
 			<div class="col-md-3 mt-4 wm">
 				<figure class="text-center">
-					<img src="img/bg_landing/wm_cashback.png" />
+					<img src="assets/img/bg_landing/wm_cashback.png" />
 				</figure>
 				<h4 class="text-uppercase color_brown text-center">Hoàn vốn nhanh</h4>
 				<p class="text-center color_brown">Lợi nhuận cao, hoàn vốn từ 3 -6 tháng</p>
 			</div>
 			<div class="col-md-3 mt-4 wm">
 				<figure class="text-center">
-					<img src="img/bg_landing/wm_logo.png" />
+					<img src="assets/img/bg_landing/wm_logo.png" />
 				</figure>
 				<h4 class="text-uppercase color_brown text-center">Thương hiệu mạnh</h4>
 				<p class="text-center color_brown">Thương hiệu vững chắc, đảm bảo thành công bền vững</p>
 			</div>
 			<div class="col-md-3 mt-4 wm">
 				<figure class="text-center">
-					<img src="img/bg_landing/wm_support.png" />
+					<img src="assets/img/bg_landing/wm_support.png" />
 				</figure>
 				<h4 class="text-uppercase color_brown text-center">Hỗ trợ tối đa</h4>
 				<p class="text-center color_brown">Hỗ trợ truyền thông, marketing, nguyên vật liệu, tư vấn cửa hàng, khai trương</p>
@@ -165,7 +165,7 @@
 			</div>
 		</div>
 		<!-- advantage -->
-		<div class="row section_melisspa page-section" id="advantage" style="background-image: url(img/bg_landing/about_3.jpg);">
+		<div class="row section_melisspa page-section" id="advantage" style="background-image: url(assets/img/bg_landing/about_3.jpg);">
 			<div class="col-md-4 offset-md-1 col-xs-offset-0 c_vision mb-5 mt-5">
 				<div class="sub_vision">
 					<div class="content_vision">
@@ -183,7 +183,7 @@
 			</div>
 		</div>
 		<!-- benefit -->
-		<div class="row section_melisspa page-section" id="benefit" style="background-image: url(img/bg_landing/about_2.jpg);">
+		<div class="row section_melisspa page-section" id="benefit" style="background-image: url(assets/img/bg_landing/about_2.jpg);">
 			<div class="col-md-4 offset-md-7 col-xs-offset-0 c_vision mb-5 mt-5">
 				<div class="sub_vision">
 					<div class="content_vision">
@@ -201,7 +201,7 @@
 			</div>
 		</div>
 		<!-- cost -->
-		<div class="row section_melisspa page-section" id="cost" style="background-image: url(img/bg_landing/about_5.jpg);">
+		<div class="row section_melisspa page-section" id="cost" style="background-image: url(assets/img/bg_landing/about_5.jpg);">
 			<div class="col-md-6 c_melis ml-3 mt-4 mb-4">
 				<div class="subc_cost">
 					<div class="ctcost">
@@ -297,7 +297,7 @@
 			</div>
 		</div>
 		<!-- register -->
-		<div class="row section_register page-section" id="register" style="background-image: url(img/bg_landing/bg_branch_register.jpeg);">
+		<div class="row section_register page-section" id="register" style="background-image: url(assets/img/bg_landing/bg_branch_register.jpeg);">
 			<div class="col-md-6 c_register mx-auto mt-4 mb-4">
 				<h2 class="title_register text-uppercase text-center color_light_white">Đăng ký tham gia</h2>
 				<p class="tip_register my-2">Hãy cùng MELIS SPA mang những dịch vụ và sản phẩm chăm sóc và làm đẹp cho mẹ bầu, mẹ sau sinh và phụ nữ hiện đại, an toàn và ngập tràn hạnh phúc tới khách hàng ngay hôm nay !</p>
@@ -377,7 +377,7 @@
 									<input type="text" id="regiscaptcha1" name="regis[captcha]" class="form-control mb-2 input-regis">
 								</div>
 								<div class="col-2 p-0 pr-1">
-									<summary class="input-regis form-control" id="img-captchaa"><?php include("captcha.php") ?></summary>
+									<summary class="input-regis form-control" id="img-captchaa"><?php include("module/captcha2.php") ?></summary>
 								</div>
 								<div class="col-6 p-0 pl-1">
 									<button type="button" class="btn btn-regis text-uppercase" id="regisnow1">Đăng ký ngay</button>

@@ -1,5 +1,5 @@
 <?php
-  include("../../require_inc.php");
+  include("../require_inc.php");
   $id = $_POST['id'];
   $table = "galleries";
   $gal = $h->getById("name_vi, name_en, avatar, gallery", $table, $id, " and gal_id = 1 and deleted_at is null");

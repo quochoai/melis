@@ -64,7 +64,7 @@
   <link rel="stylesheet" href="assets/plugins/nprogress/nprogress.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
   <?php
-    if (!isset($_REQUEST['pqh']))
+    if (!isset($_REQUEST['pqh']) || (isset($_REQUEST['pqh']) && $mod1 == ''))
       _e('<link rel="stylesheet" href="assets/plugins/jssor_slider/jssor_script.css" />    
       <link rel="stylesheet" href="assets/plugins/timeline_slider/timeline_slider.css" />
       <link rel="stylesheet" href="assets/plugins/owlcarousel/assets/owl.carousel.min.css">
@@ -76,8 +76,16 @@
   <link rel="stylesheet" href="assets/css/index.css" />
   <?php 
     if (isset($_REQUEST['pqh']) && ($mod1 == $def['link_fservice'] || $mod1 == $def['link_queennature']))
-      _e('<link rel="stylesheet" href="css/product.css" />
-      <link rel="stylesheet" href="css/service.css" />');
+      _e('<link rel="stylesheet" href="assets/css/product.css" />
+      <link rel="stylesheet" href="assets/css/service.css" />');
+    if (isset($_REQUEST['pqh']) && $mod1 == $def['link_fabout'])
+      _e('<link rel="stylesheet" href="assets/plugins/jssor_slider/jssor_script.css" />
+      <link rel="stylesheet" href="assets/css/landing_about.css" />
+      <link rel="stylesheet" type="text/css" href="assets/plugins/magnific-popup/magnific-popup.css" media="screen" />');
+      if (isset($_REQUEST['pqh']) && $mod1 == $def['link_franchise'])
+      _e('<link rel="stylesheet" href="assets/plugins/jssor_slider/jssor_script.css" />
+      <link rel="stylesheet" href="assets/css/landing_branch.css" />
+      ');
   ?>
 </head>
 <body>
@@ -86,7 +94,7 @@
       <!-- top -->
       <div class="infomation text-brown position-relative pt-3 m-0">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="phone">
               <div class="text d-flex align-items-center">
                 <div>
@@ -98,7 +106,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-8">
+          <div class="col-lg-9">
             <div class="col-12">
               <div class="row align-items-end">
                 <div class="time col-lg-4 pb-2 text-center text-uppercase"><?php _e($lang['open_time'].' '.$opentime['noidung_vi']) ?></div>
@@ -117,7 +125,10 @@
                     </div>
                     <div class="mx-3 mb-2">
                       <div class="btn-group">
-                        <a class="bg-transparent border-none text-brown font-weight-bold p-0 language"><img src="assets/img/vi.png" alt="<?php _e($lang['lang_vi']) ?>" /></a>
+                        <?php
+                          $titleLanguage = ($_SESSION['lang'] == 'en') ? $lang['lang_en'] : $lang['lang_vi'];
+                          _e('<a class="bg-transparent border-none text-brown font-weight-bold p-0 language"><img src="assets/img/'.$_SESSION['lang'].'.png" alt="'.$titleLanguage.'" /></a>');
+                        ?>
                         <div class="dropdown-menu dropdown-menu-right" id="menu_language" style="right: 0; left: auto;">
                             <a class="dropdown-item language_current language_choose" rel="vi"><img src="assets/img/vi.png" alt="<?php _e($lang['lang_vi']) ?>" /> <?php _e($lang['lang_vi']) ?></a>
                             <a class="dropdown-item language_choose" rel="en"><img src="assets/img/en.png" alt="<?php _e($lang['lang_en']) ?>" /> <?php _e($lang['lang_en']) ?></a>
@@ -144,13 +155,13 @@
                   if (!isset($_REQUEST['pqh']) || !in_array($mod1, $array_not)) {
                 ?>
                 <li class="navbar-item<?php if (!isset($_REQUEST['pqh'])) _e(' active') ?>">
-                  <a href="<?php _e(URL) ?>" class="nav-link text-uppercase"><?php _e($lang['home']) ?></a>
+                  <a href="<?php _e(URL.$_SESSION['lang']) ?>" class="nav-link text-uppercase"><?php _e($lang['home']) ?></a>
                 </li>
                 <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && $mod1 == $def['link_fabout']) _e(' active') ?>">
-                  <a href="<?php _e($def['link_fabout']) ?>" class="nav-link text-uppercase"><?php _e($lang['landing_about']) ?></a>
+                  <a href="<?php _e($_SESSION['lang'].'/'.$def['link_fabout']) ?>" class="nav-link text-uppercase"><?php _e($lang['landing_about']) ?></a>
                 </li>
                 <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && $mod1 == $def['link_fservice']) _e(' active') ?>">
-                  <a href="<?php _e($def['link_fservice']) ?>" class="nav-link text-uppercase"><?php _e($lang['service']) ?></a>
+                  <a href="<?php _e($_SESSION['lang'].'/'.$def['link_fservice']) ?>" class="nav-link text-uppercase"><?php _e($lang['service']) ?></a>
                 </li>
                 <li class="navbar-item m-1 text-nowrap queen-nature dropdown position-static text-center<?php if (isset($_REQUEST['pqh']) && $mod1 == $def['link_queennature']) _e(' active') ?>">
                   <a href="#" class="dropdown-toggle queen-nature nav-link" id="navbarDropdownMenuQueenNature" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">QUEEN NATURE</a>
@@ -172,7 +183,7 @@
                             $cateMenu .= '<div class="title"><p>'.$cateName.'</p></div>';
                             $menuProducts = $h->getAll("name_vi, name_en", $tableProduct, "product_id = $product_id and deleted_at is null and active = 1", "sort desc, id desc", "limit 0, 7");
                             $cateMenu .= '<ul class="menu">';
-                            $linkCateMenu = $def['link_queennature'].'/'.chuoilink($cate['name_vi']);
+                            $linkCateMenu = $_SESSION['lang'].'/'.$def['link_queennature'].'/'.chuoilink($cate['name_vi']);
                             foreach ($menuProducts as $menuProduct) {
                               $productMenuName = $menuProduct["name_$lng"];
                               $linkProductMenu = $linkCateMenu.'/'.chuoilink($menuProduct['name_vi']).'.html';
@@ -196,16 +207,16 @@
                   ?>
                 </li>
                 <li class="navbar-item m-1 text-nowrap">
-                  <a href="<?php _e($def['link_franchise']) ?>" class="nav-link text-uppercase"><?php _e($lang['franchise']) ?></a>
+                  <a href="<?php _e($_SESSION['lang'].'/'.$def['link_franchise']) ?>" class="nav-link text-uppercase"><?php _e($lang['franchise']) ?></a>
                 </li>
                 <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && ($mod1 == $def['link_freview'] || $mod == $def['link_celes_feel'])) _e(' active') ?>">
-                  <a href="<?php _e($def['link_freview']) ?>" class="nav-link text-uppercase"><?php _e($lang['review']) ?></a>
+                  <a href="<?php _e($_SESSION['lang'].'/'.$def['link_freview']) ?>" class="nav-link text-uppercase"><?php _e($lang['review']) ?></a>
                 </li>
                 <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && $mod1 == $def['link_fknowledge']) _e(' active') ?>">
-                  <a href="<?php _e($def['link_fknowledge']) ?>" class="nav-link text-uppercase"><?php _e($lang['n_knowledge']) ?></a>
+                  <a href="<?php _e($_SESSION['lang'].'/'.$def['link_fknowledge']) ?>" class="nav-link text-uppercase"><?php _e($lang['n_knowledge']) ?></a>
                 </li>
                 <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && $mod1 == $def['link_fnews']) _e(' active') ?>">
-                  <a href="<?php _e($def['link_fnews']) ?>" class="nav-link text-uppercase"><?php _e($lang['n_news']) ?></a>
+                  <a href="<?php _e($_SESSION['lang'].'/'.$def['link_fnews']) ?>" class="nav-link text-uppercase"><?php _e($lang['n_news']) ?></a>
                 </li>
                 <?php
                   } 

@@ -3,11 +3,29 @@
 	<div id="jssor_1" class="jso_2">
 		<!-- Loading Screen -->
 		<div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-			<img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/svg/spin.svg" />
+			<img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="assets/img/svg/spin.svg" />
 		</div>
 		<div data-u="slides" class="jsso_2">
-			<div><img data-u="image" alt="" src="img/slider_test/1.png" /></div>
-			<div><img data-u="image" alt="" src="img/slider_test/2.jpg" /></div>
+			<?php
+				$tableSlider = "sliders";
+				$checkSlider = $h->checkExist($tableSlider, "deleted_at is null and active = 1 and hc_id = 1");
+				if ($checkSlider) {
+						$sliders = $h->getAll("alt_vi, alt_en, url, image", $tableSlider, "deleted_at is null and active = 1 and hc_id = 1", "sort asc, id desc");
+						$imgSlider = "";
+						foreach ($sliders as $slider) {
+							/*
+							if ($slider['url'] != '' && $slider['url'] != '#')
+								$linkSlider = '<a href="'.$slider['url'].'"><img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" /></a>';
+							else
+								$linkSlider = '<img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" />';
+							*/
+							$linkSlider = ($slider['url'] != '' && $slider['url'] != '#') ? '<a href="'.$slider['url'].'"><img data-u="image" alt="" src="'.$def['upload_slider_home'].$slider['image'].'" alt="'.$slider["alt_$lng"].'" /></a>' : '<img data-u="image" alt="" src="'.$def['upload_slider_home'].$slider['image'].'" alt="'.$slider["alt_$lng"].'" />';
+							$imgSlider .= '<div>'.$linkSlider.'</div>';
+						}
+						_e($imgSlider);
+				} else 
+					_e('<div><img data-u="image" alt="" src="assets/img/slider_test/1.png" /></div>');
+			?>
 		</div>
 		<!-- Arrow Navigator -->
 		<div data-u="arrowleft" class="jssora051" style="width:65px;height:65px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
@@ -25,7 +43,7 @@
 <!-- content main -->
 <section class="content_main marginContent">
 	<div class="subcontent bglime">
-		<div class="row section_melisspa page-section" id="startup" style="background-image: url(img/bg_landing/about_1.jpg);">
+		<div class="row section_melisspa page-section" id="startup" style="background-image: url(assets/img/bg_landing/about_1.jpg);">
 			<div class="col-md-6 c_melis">
 				<div class="subc_melis">
 					<h2 class="startup text-center color_light_yellow">Câu chuyện khởi nghiệp</h2>
@@ -54,7 +72,7 @@
 			
 		</div>
 		<!-- vision -->
-		<div class="row section_melisspa page-section" id="vision" style="background-image: url(img/bg_landing/about_2.jpg);">
+		<div class="row section_melisspa page-section" id="vision" style="background-image: url(assets/img/bg_landing/about_2.jpg);">
 			<div class="col-md-11">
 				<div class="pt-5 pb-2 text-capitalize color_light_white text-right font_taviraj">
 					Hành Tình Lớn Đôi Khi Khởi Nguồn Từ Những Câu Chuyện Nhỏ<br />
@@ -81,7 +99,7 @@
 			</div>
 		</div>
 		<!-- goal -->
-		<div class="row section_melisspa" style="background-image: url(img/bg_landing/about_3.jpg);">
+		<div class="row section_melisspa" style="background-image: url(assets/img/bg_landing/about_3.jpg);">
 			<div class="col-md-4 offset-md-1 col-xs-offset-0 c_vision mb-5 mt-5">
 				<div class="sub_vision">
 					<div class="content_vision">
@@ -100,7 +118,7 @@
 			</div>
 		</div>
 		<!-- team -->
-		<div class="row section_melisspa page-section" id="team" style="background-image: url(img/bg_landing/about_4.jpg);">
+		<div class="row section_melisspa page-section" id="team" style="background-image: url(assets/img/bg_landing/about_4.jpg);">
 			<div class="col-md-6 offset-md-6 col-xs-offset-0 c_melis">
 				<div class="subc_melis">
 					<div class="melisbeaute_melismom text-uppercase color_light_white text-center mt-4">TÀI NGUYÊN CON NGƯỜI</div>
@@ -115,7 +133,7 @@
 			</div>                    
 		</div>
 		<!-- community -->
-		<div class="row section_melisspa page-section" id="community" style="background-image: url(img/bg_landing/about_5.jpg);">
+		<div class="row section_melisspa page-section" id="community" style="background-image: url(assets/img/bg_landing/about_5.jpg);">
 			<div class="col-md-6 c_melis">
 				<div class="subc_melis">
 					<div class="melisbeaute_melismom text-uppercase color_light_white text-center mt-4">Hoạt động cộng đồng</div>
@@ -141,37 +159,37 @@
 				<div class="row">
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a class="gallery_image" rel="2"><img src="img/bg_landing/gal_img_1.jpg" class="w-100 mb-1" alt="" /></a>
+							<a class="gallery_image" rel="2"><img src="assets/img/bg_landing/gal_img_1.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gal_text gallery_image" rel="2"><i class="fas fa-images"></i> Tết không đồng - BV nhi TW</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a class="gallery_image" rel="1"><img src="img/bg_landing/gal_img_2.jpg" class="w-100 mb-1" alt="" /></a>
+							<a class="gallery_image" rel="1"><img src="assets/img/bg_landing/gal_img_2.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gallery_image gal_text" rel="1"><i class="fas fa-images"></i> Happy Women's Day</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a class="gallery_image" rel="4"><img src="img/bg_landing/gal_img_3.jpg" class="w-100 mb-1" alt="" /></a>
+							<a class="gallery_image" rel="4"><img src="assets/img/bg_landing/gal_img_3.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gallery_image gal_text" rel="4"><i class="fas fa-images"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<img src="img/bg_landing/gal_img_1.jpg" class="w-100 mb-1" alt="" />
+							<img src="assets/img/bg_landing/gal_img_1.jpg" class="w-100 mb-1" alt="" />
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="#" class="gal_text"><i class="fas fa-images"></i> Tết không đồng - BV nhi TW</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<img src="img/bg_landing/gal_img_2.jpg" class="w-100 mb-1" alt="" />
+							<img src="assets/img/bg_landing/gal_img_2.jpg" class="w-100 mb-1" alt="" />
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="#" class="gal_text"><i class="fas fa-images"></i> Happy Women's Day</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<img src="img/bg_landing/gal_img_3.jpg" class="w-100 mb-1" alt="" />
+							<img src="assets/img/bg_landing/gal_img_3.jpg" class="w-100 mb-1" alt="" />
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="#" class="gal_text"><i class="fas fa-images"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
 					</div>
@@ -179,37 +197,37 @@
 				<div class="row d-none" id="viewallimages" >
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a class="gallery_image" rel="2"><img src="img/bg_landing/gal_img_1.jpg" class="w-100 mb-1" alt="" /></a>
+							<a class="gallery_image" rel="2"><img src="assets/img/bg_landing/gal_img_1.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gal_text gallery_image" rel="2"><i class="fas fa-images"></i> Tết không đồng - BV nhi TW</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a class="gallery_image" rel="1"><img src="img/bg_landing/gal_img_2.jpg" class="w-100 mb-1" alt="" /></a>
+							<a class="gallery_image" rel="1"><img src="assets/img/bg_landing/gal_img_2.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gallery_image gal_text" rel="1"><i class="fas fa-images"></i> Happy Women's Day</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a class="gallery_image" rel="3"><img src="img/bg_landing/gal_img_3.jpg" class="w-100 mb-1" alt="" /></a>
+							<a class="gallery_image" rel="3"><img src="assets/img/bg_landing/gal_img_3.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gallery_image gal_text" rel="3"><i class="fas fa-images"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<img src="img/bg_landing/gal_img_1.jpg" class="w-100 mb-1" alt="" />
+							<img src="assets/img/bg_landing/gal_img_1.jpg" class="w-100 mb-1" alt="" />
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="#" class="gal_text"><i class="fas fa-images"></i> Tết không đồng - BV nhi TW</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<img src="img/bg_landing/gal_img_2.jpg" class="w-100 mb-1" alt="" />
+							<img src="assets/img/bg_landing/gal_img_2.jpg" class="w-100 mb-1" alt="" />
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="#" class="gal_text"><i class="fas fa-images"></i> Happy Women's Day</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<img src="img/bg_landing/gal_img_3.jpg" class="w-100 mb-1" alt="" />
+							<img src="assets/img/bg_landing/gal_img_3.jpg" class="w-100 mb-1" alt="" />
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="#" class="gal_text"><i class="fas fa-images"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
 					</div>
@@ -229,37 +247,37 @@
 				<div class="row">
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a class="popup-youtube" href="https://www.youtube.com/watch?v=Romg9XOb0wQ"><img src="img/bg_landing/gal_video_1.jpg" class="w-100 mb-1" alt="" /></a>
+							<a class="popup-youtube" href="https://www.youtube.com/watch?v=Romg9XOb0wQ"><img src="assets/img/bg_landing/gal_video_1.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Tết không đồng - BV nhi TW</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="popup-youtube"><img src="img/bg_landing/gal_video_2.jpg" class="w-100 mb-1" alt="" /></a>
+							<a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_2.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="gal_text popup-youtube"><i class="fab fa-youtube"></i> Happy Women's Day</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube"><img src="img/bg_landing/gal_video_3.jpeg" class="w-100 mb-1" alt="" /></a>
+							<a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_3.jpeg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a class="popup-youtube" href="https://www.youtube.com/watch?v=Romg9XOb0wQ"><img src="img/bg_landing/gal_video_1.jpg" class="w-100 mb-1" alt="" /></a>
+							<a class="popup-youtube" href="https://www.youtube.com/watch?v=Romg9XOb0wQ"><img src="assets/img/bg_landing/gal_video_1.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Tết không đồng - BV nhi TW</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="popup-youtube"><img src="img/bg_landing/gal_video_2.jpg" class="w-100 mb-1" alt="" /></a>
+							<a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_2.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="gal_text popup-youtube"><i class="fab fa-youtube"></i> Happy Women's Day</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube"><img src="img/bg_landing/gal_video_3.jpeg" class="w-100 mb-1" alt="" /></a>
+							<a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_3.jpeg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
 					</div>
@@ -267,37 +285,37 @@
 				<div class="row d-none" id="viewallvideos">
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a class="popup-youtube" href="https://www.youtube.com/watch?v=Romg9XOb0wQ"><img src="img/bg_landing/gal_video_1.jpg" class="w-100 mb-1" alt="" /></a>
+							<a class="popup-youtube" href="https://www.youtube.com/watch?v=Romg9XOb0wQ"><img src="assets/img/bg_landing/gal_video_1.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Tết không đồng - BV nhi TW</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="popup-youtube"><img src="img/bg_landing/gal_video_2.jpg" class="w-100 mb-1" alt="" /></a>
+							<a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_2.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="gal_text popup-youtube"><i class="fab fa-youtube"></i> Happy Women's Day</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube"><img src="img/bg_landing/gal_video_3.jpeg" class="w-100 mb-1" alt="" /></a>
+							<a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_3.jpeg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a class="popup-youtube" href="https://www.youtube.com/watch?v=Romg9XOb0wQ"><img src="img/bg_landing/gal_video_1.jpg" class="w-100 mb-1" alt="" /></a>
+							<a class="popup-youtube" href="https://www.youtube.com/watch?v=Romg9XOb0wQ"><img src="assets/img/bg_landing/gal_video_1.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Tết không đồng - BV nhi TW</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="popup-youtube"><img src="img/bg_landing/gal_video_2.jpg" class="w-100 mb-1" alt="" /></a>
+							<a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_2.jpg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="gal_text popup-youtube"><i class="fab fa-youtube"></i> Happy Women's Day</a></h4>
 					</div>
 					<div class="col-md-4 mb-4">
 						<figure>
-							<a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube"><img src="img/bg_landing/gal_video_3.jpeg" class="w-100 mb-1" alt="" /></a>
+							<a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_3.jpeg" class="w-100 mb-1" alt="" /></a>
 						</figure>
 						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
 					</div>

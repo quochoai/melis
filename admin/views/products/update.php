@@ -7,13 +7,13 @@
 <div class="col-md-6">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['name_product'].' (Vie)') ?></label>
-		<input type="text" class="form-control" name="data[name_vi]" id="name_vi_product" value="<?php _e($product['name_vi']) ?>" />
+		<input type="text" class="form-control" name="data[name_vi]" id="name_vi_product_e" value="<?php _e($product['name_vi']) ?>" />
 	</div>
 </div>
 <div class="col-md-6">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['name_product'].' (Eng)') ?></label>
-		<input type="text" class="form-control" name="data[name_en]" id="name_en_product" value="<?php _e($product['name_en']) ?>" />
+		<input type="text" class="form-control" name="data[name_en]" id="name_en_product_e" value="<?php _e($product['name_en']) ?>" />
 	</div>
 </div>
 <div class="col-md-4">

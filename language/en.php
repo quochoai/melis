@@ -314,6 +314,7 @@
 		'fabout_steam' => 'Team',
 		'fabout_scommunity' => 'Community',
 		'fabout_simages' => 'Images',
+		'title_landing_about' => 'About Melis Spa',
 
 		// landing franchise frontend
 		'ff_melisspa' => 'MELIS SPA<br /><small>Why choose</small>',
@@ -389,5 +390,6 @@
 		'ff_step6intro' => 'Melis Spa conducts consulting on store design, importing raw materials, machines, training person, ..',
 		'ff_step7' => 'Step 7: Run the operation',
 		'ff_step7intro' => 'After 4-6 weeks the store goes into operation. Opening support',
+		'title_landing_franchise'	 => 'Franchise',
 
 	);

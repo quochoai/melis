@@ -285,20 +285,17 @@ function cutWords ($string, $from, $length) {
 	if ($lengthString <= $length)
 		$newString = $string;
 	else
-		$newstring = implode(" ", array_slice($arrayString, $from, $length));
+		$newString = implode(" ", array_slice($arrayString, $from, $length));
 	return $newString;
 }
 //removes string from the end of other
 function removeFromEnd($string, $stringToRemove) 
 {
-		$stringToRemoveLen = strlen($stringToRemove);
-		$stringLen = strlen($string);
-		
-		$pos = $stringLen - $stringToRemoveLen;
-
-		$out = substr($string, 0, $pos);
-
-		return $out;
+	$stringToRemoveLen = strlen($stringToRemove);
+	$stringLen = strlen($string);		
+	$pos = $stringLen - $stringToRemoveLen;
+	$out = substr($string, 0, $pos);
+	return $out;
 }
 function redirect($url,$second)
 {
@@ -315,19 +312,24 @@ window.location = "<?=$url?>";
 // SHOW MESSAGE
 ///////////////////////////////////////////////////////////////////////////
 
-function message($msg,$type)
-{
-	global $lang;
-
-	switch ($type)
-	{
+function message($msg, $type) {
+	switch ($type){
 		case "info":
-		default:
-			$message = '<div class="msg_info">'.$msg.'</div>';
-		break;
+			$message = '<div class="alert alert-info" role="alert">'.$msg.'</div>';
+			break;
 		case "error":
-			$message = '<div class="msg_error">'.$msg.'</div>';
-		break;
+			$message = '<div class="alert alert-danger" role="alert">'.$msg.'</div>';
+			break;
+		case "warning":
+			$message = '<div class="alert alert-warning" role="alert">'.$msg.'</div>';
+			break;
+		case "success":
+			$message = '<div class="alert alert-success" role="alert">'.$msg.'</div>';
+			break;
+		case "dark":
+		default:
+			$message = '<div class="alert alert-dark" role="alert">'.$msg.'</div>';
+			break;
 	}
 	return $message;
 }
@@ -545,4 +547,24 @@ function killInjection($str){
 	$bad = array("'","\\","=",":");
 	$good = str_replace($bad,"", $str);
 	return $good;
+}
+
+function getCaptcha($length) {
+	$token = "";
+	$codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	$max = strlen($codeAlphabet);
+	for ($i = 0; $i < $length; $i++) {
+			$token .= $codeAlphabet[random_int(0, $max-1)];
+	}
+	return $token;
+}
+
+function getCaptcha2($length) {
+	$token = "";
+	$codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	$max = strlen($codeAlphabet);
+	for ($i = 0; $i < $length; $i++) {
+			$token .= $codeAlphabet[random_int(0, $max-1)];
+	}
+	return $token;
 }

@@ -314,6 +314,7 @@
 		'fabout_steam' => 'Đội ngũ',
 		'fabout_scommunity' => 'Cộng đồng',
 		'fabout_simages' => 'Ảnh',
+		'title_landing_about' => 'Giới thiệu Melis Spa',
 
 		// landing franchise frontend
 		'ff_melisspa' => 'MELIS SPA<br /><small>Tại sao nên chọn</small>',
@@ -387,5 +388,6 @@
 		'ff_step6' => 'Bước 6: Setup nhượng quyền',
 		'ff_step6intro' => 'Melis Spa tiến hành tư vấn thiết kế cửa hàng, nhập nguyên liệu, máy móc, đào tạo nhân sự,..',
 		'ff_step7' => 'Bước 7: Vận hành hoạt động',
-		'ff_step7intro' => 'Sau 4-6 tuần của hàng đi vào hoạt động. Hỗ trợ khai trương',		
+		'ff_step7intro' => 'Sau 4-6 tuần của hàng đi vào hoạt động. Hỗ trợ khai trương',
+		'title_landing_franchise'	 => 'Nhượng quyền thương hiệu',
 	);

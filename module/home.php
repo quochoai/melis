@@ -200,7 +200,7 @@
 							<?php
 								$introAbout = $h->getById("noidung_vi, noidung_en", $tableHtml, 11);
 								$introAboutHome = $introAbout["noidung_$lng"];
-								$msgAboutHome = '<div>'.$introAboutHome.'</div><a href="'.$def['link_fabout'].'" class="btn readmore-textarea text-uppercase position-absolute py-0 px-1 nav-link">'.$lang['view_all'].'</a>';
+								$msgAboutHome = '<div>'.$introAboutHome.'</div><a href="'.$_SESSION['lang'].'/'.$def['link_fabout'].'" class="btn readmore-textarea text-uppercase position-absolute py-0 px-1 nav-link">'.$lang['view_all'].'</a>';
 								_e($msgAboutHome);
 							?>							
 						</div>
@@ -228,7 +228,7 @@
 						</div>
 					</div>
 					<div class="position-absolute" style="top: 0; right: 0;">
-						<a href="<?php _e($lang['link_fservice']) ?>" class="btn btn-read-more text-uppercase">
+						<a href="<?php _e($_SESSION['lang'].'/'.$lang['link_fservice']) ?>" class="btn btn-read-more text-uppercase">
 							<i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?>
 						</a>
 					</div>
@@ -244,12 +244,12 @@
 								foreach ($services as $ks => $service) {
 									$acti = ($ks == 1) ? ' active' : '';
 									//$cateService = $h->getById("name_vi", $tableService, $service['service_id']);
-									$linkService = $def['link_fservice'].'/'.chuoilink($service['cname_vi']).'/'.chuoilink($service['sname_vi']).'.html';
+									$linkService = $_SESSION['lang'].'/'.$def['link_fservice'].'/'.chuoilink($service['cname_vi']).'/'.chuoilink($service['sname_vi']).'.html';
 									$imgService = (!is_null($service['image']) && $service['image'] != '') ? $def['upload_service_avatar'].$service['image'] : $def['no_image_available'];
 									$titleService = $service["sname_$lng"];
 									$msgService .= '<div class="item'.$acti.'">';
 									$msgService .= '	<a href="'.$linkService.'" title="'.$titleService.'"><figure><img src="'.$imgService.'" alt="'.$titleService.'" class="img w-100 img_service_home" /></figure></a>';
-									$msgService .= '	<div class="text text-center pt-4"><div class="title"><a href="'.$linkService.'">CHĂM SÓC MẸ BẦU</a></div></div>';
+									$msgService .= '	<div class="text text-center pt-4"><div class="title text-uppercase"><a href="'.$linkService.'">'.$titleService.'</a></div></div>';
 									$msgService .= '	<div class="m-auto text-center pt-4"><div class="m-auto"><a href="'.$linkService.'" class="btn readmore-textarea text-uppercase p-2">'.$lang['view_detail'].'</a></div></div>';
 									$msgService .= '</div>';
 								}
@@ -292,11 +292,11 @@
 									$msgOfferProduct = "";
 									foreach ($offerProducts as $offerProduct) {
 										//$cateOfferProduct = $h->getById("name_vi", $tableProduct, $offerProduct['product_id']);
-										$linkOfferProduct = $def['link_queennature'].'/'.chuoilink($offerProduct['cname_vi']).'/'.chuoilink($offerProduct['pname_vi']).'.html';
+										$linkOfferProduct = $_SESSION['lang'].'/'.$def['link_queennature'].'/'.chuoilink($offerProduct['cname_vi']).'/'.chuoilink($offerProduct['pname_vi']).'.html';
 										$imgOfferProduct = (!is_null($offerProduct['image']) && $offerProduct['image'] != '') ? $def['upload_product_avatar'].$offerProduct['image'] : $def['no_image_available'];
 										$titleOfferProduct = $offerProduct["pname_$lng"];
 										$msgOfferProduct .= '<div class="col-lg-4"><div class="py-3"><div class="py-4 bg-brow">';
-										$msgOfferProduct .= '	<div class="img-prod w-50 m-auto"><div class="img w-100 m-auto"><a href="'.$linkOfferProduct.'" title="'.$titleOfferProduct.'"><figure><img src="'.$imgOfferProduct.'" alt="'.$titleOfferProduct.'" class="w-100" /></figure></a></div></div>';
+										$msgOfferProduct .= '	<div class="img-prod w-50 m-auto"><div class="img w-100 m-auto"><a href="'.$linkOfferProduct.'" title="'.$titleOfferProduct.'"><figure><img src="'.$imgOfferProduct.'" alt="'.$titleOfferProduct.'" class="w-100 img_offer_product" /></figure></a></div></div>';
 										$msgOfferProduct .= '	<div class="m-auto text-center pt-4"><div class="m-auto"><a href="'.$linkOfferProduct.'" class="btn readmore-textarea text-uppercase p-2">'.$lang['view_detail'].'</a></div></div>';
 										$msgOfferProduct .= '</div></div></div>';
 									}
@@ -333,7 +333,7 @@
 									</div>
 								</div>
 								<div class="position-absolute" style="top: 0; right: 0;">
-									<a href="<?php _e($def['link_fnews']) ?>" class="btn btn-read-more text-uppercase"><i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?></a>
+									<a href="<?php _e($_SESSION['lang'].'/'.$def['link_fnews']) ?>" class="btn btn-read-more text-uppercase"><i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?></a>
 								</div>
 								<div class="row">
 								<?php
@@ -341,10 +341,10 @@
 									$msgNews = "";
 									foreach ($newss as $kn => $news) {
 										if ($news['news_id'] == 1) {
-											$nOP = $def['link_fnews'];
+											$nOP = $_SESSION['lang'].'/'.$def['link_fnews'];
 											$folderNews = $def['upload_news'];
 										} else {
-											$nOP = $def['link_fpromotion'];
+											$nOP = $_SESSION['lang'].'/'.$def['link_fpromotion'];
 											$folderNews = $def['upload_promotion'];
 										}
 										$titleNews = $news["name_$lng"];
@@ -390,7 +390,7 @@
 									</div>
 								</div>
 								<div class="position-absolute" style="top: 0; right: 0;">
-									<a href="<?php _e($def['link_queennature']) ?>" class="btn btn-read-more text-uppercase"><i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?></a>
+									<a href="<?php _e($_SESSION['lang'].'/'.$def['link_queennature']) ?>" class="btn btn-read-more text-uppercase"><i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?></a>
 								</div>
 							</div>
 						</div>
@@ -402,11 +402,11 @@
 									<div class="list-item row" style="overflow: visible;">
 										<div class="col-12 pb-4"><figure><img src="<?php _e($def['img_queen_nature_home']) ?>" class="img w-100" alt=""></figure></div>
 									<?php
-										$queenProducts = $h->getAll("product_id, p.name_vi as pname_vi, p.name_en as pname_en, c.name_vi as cname_vi, image", $tableProduct, "(offer_product = 0 || offer_product is null) and show_home = 1 and c.active = 1 and c.deleted_at is null and p.active = 1 and p.deleted_at is null and c.id = p.product_id and cate_id = 1", "p.sort desc, p.id desc", "limit 0, 3");
+										$queenProducts = $h->getAll("product_id, p.name_vi as pname_vi, p.name_en as pname_en, c.name_vi as cname_vi, image", $tableCateProduct, "(offer_product = 0 || offer_product is null) and show_home = 1 and c.active = 1 and c.deleted_at is null and p.active = 1 and p.deleted_at is null and c.id = p.product_id and cate_id = 1", "p.sort desc, p.id desc", "limit 0, 3");
 										$msgQueenProduct = "";
 										foreach ($queenProducts as $queenProduct) {
 											//$cateQueenProduct = $h->getById("name_vi", $tableProduct, $queenProduct['product_id']);
-											$linkQueenProduct = $def['link_queennature'].'/'.chuoilink($queenProduct['cname_vi']).'/'.chuoilink($queenProduct['pname_vi']).'.html';
+											$linkQueenProduct = $_SESSION['lang'].'/'.$def['link_queennature'].'/'.chuoilink($queenProduct['cname_vi']).'/'.chuoilink($queenProduct['pname_vi']).'.html';
 											$titleQueenProduct = $queenProduct["pname_$lng"];
 											$imgQueenProduct = (!is_null($queenProduct['image']) && $queenProduct['image'] != '') ? $def['upload_product_avatar'].$queenProduct['image'] : $def['no_image_available'];
 											$msgQueenProduct .= '<div class="item col-xl-4 col-lg-4 col-md-12 col-12 position-relative">';
@@ -455,7 +455,7 @@
 								</div>
 							</div>
 							<div class="position-absolute" style="top: 0; right: 0;">
-								<a href="<?php _e($lang['link_freview']) ?>" class="btn btn-read-more"><i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?></a>
+								<a href="<?php _e($_SESSION['lang'].'/'.$lang['link_freview']) ?>" class="btn btn-read-more"><i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?></a>
 							</div>
 						</div>
 					</div>
@@ -535,7 +535,7 @@
 												foreach ($knowledges as $knowledge) {
 													$titleKnowledge = $knowledge["name_$lng"];
 													$postDate = $knowledge['post_date'];
-													$linkKnowledge = $def['link_fknowledge'].'/'.chuoilink($knowledge['name_vi']).'.html';
+													$linkKnowledge = $_SESSION['lang'].'/'.$def['link_fknowledge'].'/'.chuoilink($knowledge['name_vi']).'.html';
 													$msgKnowledge .= '<div class="col-12">';
 													$msgKnowledge .= '	<small>('.$postDate.')</small>';
 													$msgKnowledge .= '	<p class="font-weight-bold"><a href="'.$linkKnowledge.'" title="'.$titleKnowledge.'">'.$titleKnowledge.'</a></p>';
@@ -563,7 +563,7 @@
 														<div class="row">
 															<div class="py-3"><span class="text-center py-2 px-4 bg-xlad text-uppercase"><?php _e($lang['video_library']) ?></span></div>
 															<div class="position-absolute" style="top: 0; right: 0;">
-																<a href="<?php _e($def['link_video_gallery']) ?>" class="btn btn-read-more text-uppercase"><i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?></a>
+																<a href="<?php _e($_SESSION['lang'].'/'.$def['link_video_gallery']) ?>" class="btn btn-read-more text-uppercase"><i class="fas fa-plus"></i> <?php _e($lang['view_all']) ?></a>
 															</div>
 														</div>
 													</div>
