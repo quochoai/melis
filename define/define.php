@@ -174,6 +174,11 @@
 		'link_logout' => _process.'logout.php', 
 		
 		// link front end
+		'cateid_product' => 1,
+		'cateid_service' => 2,
+		'news_id_news' => 1,
+		'news_id_knowledge' => 2,
+		'news_id_promotion' => 3,
 		'link_fabout' => 'gioi-thieu.html',
 		'link_franchise' => 'nhuong-quyen.html',
 		'link_fservice' => 'dich-vu',
