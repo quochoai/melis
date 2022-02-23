@@ -86,7 +86,7 @@
       _e('<link rel="stylesheet" href="assets/plugins/jssor_slider/jssor_script.css" />
       <link rel="stylesheet" href="assets/css/landing_branch.css" />
       ');
-    if (isset($mod1) && ($mod1 == $def['link_fnews'] || $mod1 == $def['link_fknowledge'] || $mod1 == $def['link_fpromotion']))
+    if (isset($mod1) && ($mod1 == $def['link_fnews'] || $mod1 == $def['link_fknowledge'] || $mod1 == $def['link_fpromotion'] || $mod1 == $def['link_freview'] || $mod1 == $def['link_celes_feel']))
       _e('<link rel="stylesheet" href="assets/css/product.css" />');
   ?>
 </head>
@@ -216,7 +216,7 @@
                 <li class="navbar-item m-1 text-nowrap">
                   <a href="<?php _e($_SESSION['lang'].'/'.$def['link_franchise']) ?>" class="nav-link text-uppercase"><?php _e($lang['franchise']) ?></a>
                 </li>
-                <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && ($mod1 == $def['link_freview'] || $mod == $def['link_celes_feel'])) _e(' active') ?>">
+                <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && ($mod1 == $def['link_freview'] || $mod1 == $def['link_celes_feel'])) _e(' active') ?>">
                   <a href="<?php _e($_SESSION['lang'].'/'.$def['link_freview']) ?>" class="nav-link text-uppercase"><?php _e($lang['review']) ?></a>
                 </li>
                 <li class="navbar-item m-1 text-nowrap<?php if (isset($_REQUEST['pqh']) && $mod1 == $def['link_fknowledge']) _e(' active') ?>">

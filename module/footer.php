@@ -423,7 +423,7 @@
 <script type="text/javascript" src="assets/js/common.js"></script>
 <?php
 	if (isset($mod1) && !in_array($mod1, $array_not)) {
-		_e('<script type="text/javascript" src="assets/js/product.js"></script><script type="text/javascript" src="assets/js/news.js"></script>');
+		_e('<script type="text/javascript" src="assets/js/product.js"></script>'); // <script type="text/javascript" src="assets/js/news.js"></script>
 	}
 	
 	if (isset($mod1) && $mod1 == $def['link_fabout']) 
@@ -460,5 +460,7 @@
 		<script type="text/javascript" src="assets/js/landing_branch.js"></script>');
 	if (isset($mod1) && ($mod1 == $def['link_fnews'] || $mod1 == $def['link_fknowledge'] || $mod1 == $def['link_fpromotion']))
 		_e('<script type="text/javascript" src="assets/js/news.js"></script>');
+	if (isset($mod1) && ($mod1 == $def['link_freview'] || $mod1 == $def['link_celes_feel']))
+		_e('<script type="text/javascript" src="assets/js/review.js"></script>');
 ?>
 </body>

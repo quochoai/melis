@@ -61,6 +61,40 @@
           }
         }
         break;
+      case $def['link_freview']:
+        if ($mod2 == '' || !isset($mod2))
+          $title = $lang['customer_review'];
+        else {
+          $allReviews = $h->getAll("customer_vi, customer_en, title_vi, title_en", $tableReview, "rv_id = ".$def['rv_id_customer']." and deleted_at is null");
+          foreach ($allReviews as $r) {
+            $linkCompare = chuoilink($r['customer_vi']).'.html';
+            if ($linkCompare == $mod2) {
+              if ($r["title_$lng"] != '')
+                $title = $r["title_$lng"];
+              else
+                $title = $r["customer_$lng"];
+              break;
+            }
+          }
+        }
+        break;
+      case $def['link_celes_feel']:
+        if ($mod2 == '' || !isset($mod2))
+          $title = $lang['celebrity_feel'];
+        else {
+          $allReviews = $h->getAll("customer_vi, customer_en, title_vi, title_en", $tableReview, "rv_id = ".$def['rv_id_star']." and deleted_at is null");
+          foreach ($allReviews as $r) {
+            $linkCompare = chuoilink($r['customer_vi']).'.html';
+            if ($linkCompare == $mod2) {
+              if ($r["title_$lng"] != '')
+                $title = $r["title_$lng"];
+              else
+                $title = $r["customer_$lng"];
+              break;
+            }
+          }
+        }
+        break;
     }
   }
   _e($title);

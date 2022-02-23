@@ -17,5 +17,12 @@
         else
           include("module/news_detail.php");
         break;
+      case $def['link_freview']:
+      case $def['link_celes_feel']:
+        if ($mod2 == '' || !isset($mod2))
+          include("module/review.php");
+        else
+          include("module/review_detail.php");
+        break;
     }
   }

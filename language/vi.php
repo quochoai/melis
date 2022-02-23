@@ -252,6 +252,7 @@
 		'facial_skin_care_consultation' => 'Tư vấn chăm sóc da mặt',
 		'full_body_skin_care_consultation' => 'Tư vấn chăm sóc da toàn thân',
 		'related_news' => 'Tin liên quan',
+		'related_review' => 'Cảm nhận khác',
 		'first_page' => 'Trang đầu',
 		'previous_page' => 'Trang trước',
 		'next_page' => 'Trang sau',

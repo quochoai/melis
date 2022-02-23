@@ -7,32 +7,24 @@
   $next_btn = true;
   $first_btn = true;
   $last_btn = true;
-  $perPage = $def['perpage_news_relate'];
+  $perPage = $def['perpage_review_relate'];
   $start = $page * $perPage;
   $mod1 = $_REQUEST['mod1'];
-  $tableNews = "news";
+  $tableReview = "reviews";
   $wh = $_REQUEST['wh'];
-  $allNews = $h->getAll("id, name_vi, name_en, post_date", $tableNews, $wh, "sort desc, id desc", "limit $start, $perPage");
+  $allReviews = $h->getAll("id, customer_vi, customer_en", $tableReview, $wh, "sort desc, id desc", "limit $start, $perPage");
   $msg = "";
-  foreach ($allNews as $k => $news) {
-    $name = $news["name_$lng"];
-    $linkNews = $lng.'/'.$mod1.'/'.chuoilink($news['name_vi']).'.html';
-    $pD = strtotime($news['post_date']);
-    if ($lng == $def['lang_en'])
-      $postDate = date("l, m/d/Y H:i", $pD).' (GMT+7)';
-    else {
-      $weekDay = getDayWeekVietnam($pD);
-      $postDate = $weekDay.date("d/m/Y H:i", $pD).' (GMT+7)';
-    }
-    $msg .=  '<div class="eachnewsrelate"><a href="'.$linkNews.'" title="'.$name.'"><i class="fas fa-caret-right"></i> '.$name.'</a> <i><small>('.$postDate.')</small></i></div>';
+  foreach ($allReviews as $k => $review) {
+    $name = $review["customer_$lng"];
+    $linkReview = $lng.'/'.$mod1.'/'.chuoilink($review['customer_vi']).'.html';
+    $msg .=  '<div class="eachnewsrelate"><a href="'.$linkReview.'" title="'.$name.'"><i class="fas fa-caret-right"></i> '.$name.'</a></div>';
 
   }
   // Content for Data
-  /** <div class="eachnewsrelate"><a href="#" title=""><i class="fas fa-caret-right"></i> Nhận quà làm đẹp miễn phí tháng 3 tại Melis Spa</a></div> */
   
   $batdau = $start + 1;
   
-  $count = $h->checkExist($tableNews, $wh);
+  $count = $h->checkExist($tableReview, $wh);
   $no_of_paginations = ceil($count / $perPage);
   if($count >= ($perPage+1)) {
   /* ---------------Calculating the starting and endign values for the loop----------------------------------- */

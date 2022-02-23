@@ -63,7 +63,7 @@
 								$tagMsg .= "#".trim($tag)." ";
 							}
           ?>
-					<div class="tags">TAGS: <?php _e($tagMsg) ?></div>
+					<div class="tags"><i class="fa fa-tags" aria-hidden="true"></i> TAGS: <?php _e($tagMsg) ?></div>
 					<?php
             } 
 					?>

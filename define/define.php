@@ -196,5 +196,12 @@
 		'link_news_data' => 'module/news_data.php',
 		'link_news_related_data' => 'module/news_related_data.php',
 		'perpage_news' => 7,
+		'perpage_news_relate' => 9,
 		'perpage_product' => 7,
+		'perpage_review' => 7,
+		'perpage_review_relate' => 9,
+		'rv_id_customer' => 1,
+		'rv_id_star' => 2,
+		'link_review_data' => 'module/review_data.php',
+		'link_review_related_data' => 'module/review_related_data.php',
 	);

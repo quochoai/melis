@@ -23,7 +23,21 @@ jQuery(document).ready(function() {
     $("html, body").animate({scrollTop: 0}, 600);
     return false;
   });
+  $(document).on('click', '.sidebar li', function(){
+    $('.sidebar li ul').hide();
+    $('.sidebar li ul').removeClass('block');
+    var ulc = $(this).children('ul');
+    ulc.slideDown('slow');
+    ulc.addClass('block');
+    
+    var icc = $('.sidebar li p').children();
+    icc.removeClass('fa-caret-down');
+    icc.addClass('fa-caret-right');
 
+    var ic = $(this).children('p').children();
+    ic.removeClass('fa-caret-right');
+    ic.addClass('fa-caret-down');
+  });
   $('.book-calendar-demand').click(function(){
     $('#modal-book-calendar-demand').modal('show');
   });
