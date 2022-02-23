@@ -568,3 +568,30 @@ function getCaptcha2($length) {
 	}
 	return $token;
 }
+function getDayWeekVietnam ($pD) { // pD is the time
+	$day = date("l", $pD);
+	switch($day) {
+		case "Saturday":
+			$weekDay = "Thứ bảy, ";
+			break;
+		case "Sunday":
+			$weekDay = "Chủ nhật, ";
+			break;
+		case "Monday":
+			$weekDay = "Thứ hai, ";
+			break;
+		case "Tuesday":
+			$weekDay = "Thứ ba, ";
+			break;
+		case "Wednesday":
+			$weekDay = "Thứ tư, ";
+			break;
+		case "Thursday":
+			$weekDay = "Thứ năm, ";
+			break;
+		case "Friday":
+			$weekDay = "Thứ sáu, ";
+			break;
+	}
+	return $weekDay;
+}

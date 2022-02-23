@@ -321,4 +321,3 @@ function replace_link($string)
 	}
 	return $string;
 }
-?>

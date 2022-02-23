@@ -169,6 +169,7 @@
 		'not_name_product_vi' => 'Bạn chưa điền tên sản phẩm tiếng Việt',
 		'not_name_product_en' => 'Bạn chưa điền tên sản phẩm tiếng Anh',
 		'tag' => 'Tags',
+		'each_tag' => 'Mỗi tag cách nhau bởi dấu phảy ","',
 		'show_home' => 'Hiển thị ở trang chủ',
 		'size_product' => 'Kích thước 526px x 562px',
 		'size_thumbfb' => 'Kích thước 450px x 235px',
@@ -390,4 +391,5 @@
 		'ff_step7' => 'Bước 7: Vận hành hoạt động',
 		'ff_step7intro' => 'Sau 4-6 tuần của hàng đi vào hoạt động. Hỗ trợ khai trương',
 		'title_landing_franchise'	 => 'Nhượng quyền thương hiệu',
+		'not_data_on_this_page' => 'Chưa có dữ liệu trên trang này',
 	);

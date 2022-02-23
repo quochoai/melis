@@ -2,7 +2,7 @@
     include("../../../require_inc.php");
     $id = $_POST['id'];
     $table = "news";
-    $news = $h->getById("news_id, name_vi, name_en, image, thumbfb, scontent_vi, scontent_en, content_vi, content_en, post_date, title_vi, title_en, desc_vi, desc_en, keyw_vi, keyw_en, sort, active", $table, $id, "and deleted_at is null");
+    $news = $h->getById("news_id, name_vi, name_en, image, thumbfb, scontent_vi, scontent_en, content_vi, content_en, tag_vi, tag_en, post_date, title_vi, title_en, desc_vi, desc_en, keyw_vi, keyw_en, sort, active", $table, $id, "and deleted_at is null");
     $news_id = $news['news_id'];
     if ($news_id == 1)
         $folder = $def['upload_news'];
@@ -16,13 +16,13 @@
 <div class="col-md-6">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['title_news'].' (Vie)') ?></label>
-        <input type="text" class="form-control" name="data[name_vi]" id="name_vi" value="<?php _e($news['name_vi']) ?>" />
+        <input type="text" class="form-control" name="data[name_vi]" id="name_vi_e" value="<?php _e($news['name_vi']) ?>" />
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['title_news'].' (Eng)') ?></label>
-        <input type="text" class="form-control" name="data[name_en]" id="name_en" value="<?php _e($news['name_en']) ?>" />
+        <input type="text" class="form-control" name="data[name_en]" id="name_en_e" value="<?php _e($news['name_en']) ?>" />
     </div>
 </div>
 <div class="col-md-6">
@@ -73,6 +73,20 @@
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['content_news'].' (Eng)') ?></label><br>
         <textarea name="data[content_en]" id="content_en" cols="30" rows="10" class="form-control"><?php _e($news['content_en']) ?></textarea>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label class="col-form-label" for="name"><?php _e($lang['tag'].' (Vie)') ?></label>
+        <textarea class="form-control" name="data[tag_vi]" id="tag_vi" rows="4"><?php _e($news['tag_vi']) ?></textarea>
+        <small class="text-danger"><?php _e($lang['each_tag']) ?></small>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label class="col-form-label" for="name"><?php _e($lang['tag'].' (Eng)') ?></label>
+        <textarea class="form-control" name="data[tag_en]" id="tag_en" rows="4"><?php _e($news['tag_en']) ?></textarea>
+        <small class="text-danger"><?php _e($lang['each_tag']) ?></small>
     </div>
 </div>
 <div class="col-md-6">

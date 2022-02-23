@@ -86,9 +86,16 @@
       _e('<link rel="stylesheet" href="assets/plugins/jssor_slider/jssor_script.css" />
       <link rel="stylesheet" href="assets/css/landing_branch.css" />
       ');
+    if (isset($mod1) && ($mod1 == $def['link_fnews'] || $mod1 == $def['link_fknowledge'] || $mod1 == $def['link_fpromotion']))
+      _e('<link rel="stylesheet" href="assets/css/product.css" />');
   ?>
 </head>
 <body>
+  <?php 
+    if (isset($mod2) && ($mod1 == $def['link_fnews'] || $mod1 == $def['link_fknowledge'] || $mod1 == $def['link_fpromotion']))
+      _e('<div id="fb-root"></div>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=412157766037551&autoLogAppEvents=1" nonce="UqPJBmof"></script>');
+  ?>
     <main>
       <a id="scroll-top" style="display: none;"><i class="fas fa-arrow-up icon-scroll-up"></i></a>
       <!-- top -->

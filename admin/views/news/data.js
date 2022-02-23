@@ -236,8 +236,8 @@ jQuery(document).ready(function($) {
         });
     });
     $(document).on('click', '#update_news', function() {
-        let name_vi = $.trim($('#name_vi').val());
-        let name_en = $.trim($('#name_en').val());
+        let name_vi = $.trim($('#name_vi_e').val());
+        let name_en = $.trim($('#name_en_e').val());
         if (name_vi == '') {
             toastr.error(not_enter_title_news_vi);
             $('#name_vi').focus();

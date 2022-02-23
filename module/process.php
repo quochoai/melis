@@ -9,5 +9,13 @@
       case $def['link_franchise']:
         include("module/landing_franchise.php");
         break;
+      case $def['link_fnews']:
+      case $def['link_fknowledge']:
+      case $def['link_fpromotion']:
+        if ($mod2 == '' || !isset($mod2))
+          include("module/news.php");
+        else
+          include("module/news_detail.php");
+        break;
     }
   }

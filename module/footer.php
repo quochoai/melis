@@ -371,6 +371,11 @@
 		<!-- /.modal-content -->
 	</div>
 	<!-- /.modal-dialog -->
+	<!-- loading -->
+	<div id="loading" class="spinner-border text-success" role="status">
+		<span class="sr-only">Loading...</span>
+	</div>
+	<!-- end loading -->
 </div>
 </main>
 <script type="text/javascript" src="assets/fonts/fontawesome-5.15.1/js/all.min.js"></script>
@@ -453,5 +458,7 @@
 			var link_process_regis = "'.$def['link_process_regis_consultation'].'";
 		</script>
 		<script type="text/javascript" src="assets/js/landing_branch.js"></script>');
+	if (isset($mod1) && ($mod1 == $def['link_fnews'] || $mod1 == $def['link_fknowledge'] || $mod1 == $def['link_fpromotion']))
+		_e('<script type="text/javascript" src="assets/js/news.js"></script>');
 ?>
 </body>

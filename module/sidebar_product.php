@@ -11,7 +11,7 @@
 					$caret = 'fa-caret-down';
 					$clsBlock = ' class="block"';
 				} else {
-					if ($kCate == 0) {
+					if ($kCate == 0 && $mod1 == $def['link_queennature']) {
 						$caret = 'fa-caret-down';
 						$clsBlock = ' class="block"';
 					} else {
@@ -44,15 +44,15 @@
 		}
 		$sideProduct .= '<div class="mb-4">';
 		$sideProduct .= '	<div class="eachsidebar cskh">
-												<a href="'.$def['link_freview'].'">'.$lang['customer_review'].'</a>
+												<a href="'.$lng.'/'.$def['link_freview'].'">'.$lang['customer_review'].'</a>
 											</div>
 											<div class="diverEachsidebar"></div>
 											<div class="eachsidebar rvnnt">
-												<a href="'.$def['link_celes_feel'].'">'.$lang['celebrity_feel'].'</a>
+												<a href="'.$lng.'/'.$def['link_celes_feel'].'">'.$lang['celebrity_feel'].'</a>
 											</div>
 											<div class="diverEachsidebar"></div>
 											<div class="eachsidebar km">
-												<a href="'.$def['link_fpromotion'].'">'.$lang['n_promotion'].'</a>
+												<a href="'.$lng.'/'.$def['link_fpromotion'].'">'.$lang['n_promotion'].'</a>
 											</div>
 											<div class="diverEachsidebar"></div>
 											<div class="eachsidebar tvsm">

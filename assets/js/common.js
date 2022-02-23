@@ -188,3 +188,11 @@ jQuery(document).ready(function() {
     }
   });
 });
+// loading show
+function loading_show() {
+  $('#loading').show();
+}
+// loading hide
+function loading_hide() {
+  $('#loading').hide();
+}

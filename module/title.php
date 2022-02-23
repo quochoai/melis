@@ -10,6 +10,57 @@
       case $def['link_franchise']:
         $title = $lang['title_landing_franchise'];
         break;
+      case $def['link_fnews']:
+        if ($mod2 == '' || !isset($mod2))
+          $title = $lang['n_news'];
+        else {
+          $news = $h->getAll("name_vi, name_en, title_vi, title_en", $tableNews, "news_id = ".$def['news_id_news']." and deleted_at is null");
+          foreach ($news as $n) {
+            $linkCompare = chuoilink($n['name_vi']).'.html';
+            if ($linkCompare == $mod2) {
+              if ($n["title_$lng"] != '')
+                $title = $n["title_$lng"];
+              else
+                $title = $n["name_$lng"];
+              break;
+            }
+          }
+        }
+        break;
+      case $def['link_fknowledge']:
+        if ($mod2 == '' || !isset($mod2))
+          $title = $lang['n_knowledge'];
+        else {
+          $news = $h->getAll("name_vi, name_en, title_vi, title_en", $tableNews, "news_id = ".$def['news_id_knowledge']." and deleted_at is null");
+          foreach ($news as $n) {
+            $linkCompare = chuoilink($n['name_vi']).'.html';
+            if ($linkCompare == $mod2) {
+              if ($n["title_$lng"] != '')
+                $title = $n["title_$lng"];
+              else
+                $title = $n["name_$lng"];
+              break;
+            }
+          }
+        }
+        break;
+      case $def['link_fpromotion']:
+        if ($mod2 == '' || !isset($mod2))
+          $title = $lang['n_promotion'];
+        else {
+          $news = $h->getAll("name_vi, name_en, title_vi, title_en", $tableNews, "news_id = ".$def['news_id_promotion']." and deleted_at is null");
+          foreach ($news as $n) {
+            $linkCompare = chuoilink($n['name_vi']).'.html';
+            if ($linkCompare == $mod2) {
+              if ($n["title_$lng"] != '')
+                $title = $n["title_$lng"];
+              else
+                $title = $n["name_$lng"];
+              break;
+            }
+          }
+        }
+        break;
     }
   }
   _e($title);

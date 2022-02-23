@@ -57,6 +57,20 @@
 </div>
 <div class="col-md-6">
     <div class="form-group">
+        <label class="col-form-label" for="name"><?php _e($lang['tag'].' (Vie)') ?></label>
+        <textarea class="form-control" name="data[tag_vi]" id="tag_vi" rows="4"></textarea>
+        <small class="text-danger"><?php _e($lang['each_tag']) ?></small>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label class="col-form-label" for="name"><?php _e($lang['tag'].' (Eng)') ?></label>
+        <textarea class="form-control" name="data[tag_en]" id="tag_en" rows="4"></textarea>
+        <small class="text-danger"><?php _e($lang['each_tag']) ?></small>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['title_website'].' (Vie)') ?></label>
         <input type="text" class="form-control" name="data[title_vi]" id="title_vi" />
     </div>

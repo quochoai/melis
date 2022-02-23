@@ -391,5 +391,5 @@
 		'ff_step7' => 'Step 7: Run the operation',
 		'ff_step7intro' => 'After 4-6 weeks the store goes into operation. Opening support',
 		'title_landing_franchise'	 => 'Franchise',
-
+		'not_data_on_this_page' => 'There is no data on this page yet',
 	);

@@ -192,5 +192,9 @@
 		'link_video_gallery' => 'thu-vien-video',
 		'link_process_book_an_appointment' => 'module/process_book_an_appointment.php',
 		'link_captcha' => 'module/captcha.php',
-		'link_process_regis_consultation' => 'module/process_regis_consultation.php',			
+		'link_process_regis_consultation' => 'module/process_regis_consultation.php',	
+		'link_news_data' => 'module/news_data.php',
+		'link_news_related_data' => 'module/news_related_data.php',
+		'perpage_news' => 7,
+		'perpage_product' => 7,
 	);
