@@ -189,13 +189,14 @@
 		'name_service' => 'Tên dịch vụ',
 		'hieuqua' => 'Hiệu quả',
 		'nguyenly' => 'Nguyên lý, công nghệ',
+		'uudiemtaimelis' => 'Ưu điểm tại Melis Spa',
 		'banggia' => 'Bảng giá',
 		'manage_price' => 'Quản lý bảng giá của ',
 		'size_service' => 'Kích thước 720px x 480px',
 		'add_price' => 'Thêm giá dịch vụ',
 		'update_price' => 'Cập nhật giá dịch vụ',
 		'period' => 'Số buổi',
-		'time_period' => 'Thời gian/buổi (Phút)',
+		'time_period' => 'Thời gian<br />(Phút/Buổi)',
 		'price_service' => 'Giá dịch vụ (VNĐ)',
 		'gift' => 'Quà tặng',
 		
@@ -393,4 +394,14 @@
 		'ff_step7intro' => 'Sau 4-6 tuần của hàng đi vào hoạt động. Hỗ trợ khai trương',
 		'title_landing_franchise'	 => 'Nhượng quyền thương hiệu',
 		'not_data_on_this_page' => 'Chưa có dữ liệu trên trang này',
+		'send_question_to_doctor' => 'Gửi câu hỏi cho bác sĩ',
+		'fullname_doctor' => 'Họ tên',
+		'question_doctor' => 'Câu hỏi',
+		'not_question_doctor' => 'Qúy khách chưa điền câu hỏi. Vui lòng điền vào.',
+		'send' => 'Gửi',
+		'not_email' => 'Quý khách chưa điền địa chỉ email. Vui lòng điền vào.',
+		'send_question_to_doctor_success' => 'Bạn đã gửi câu hỏi cho bác sĩ thành công. Chúng tôi sẽ phản hồi trong thời gian sớm nhất có thể.',
+		'product_relate_text' => 'Sản phẩm liên quan',
+
+
 	);

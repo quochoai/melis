@@ -1,335 +1,276 @@
 <!-- content main -->
+<?php
+	$tableCateService = "categories as c, services as s";
+	$tablePrice = "price_tables";
+	$getSelect = "s.id as sid, service_id, s.name_vi as sname_vi, s.name_en as sname_en, c.name_vi as cname_vi, c.name_en as cname_en, image_detail, hieuqua_vi, hieuqua_en, nguyenly_vi, nguyenly_en, khtn_vi, khtn_en, uudiem_vi, uudiem_en, tag_vi, tag_en";
+	$getSelectPrice = "name_vi, name_en, period, time_period, price, gift_vi, gift_en";
+	$whService = "s.deleted_at is null and c.deleted_at is null and s.service_id = c.id";
+	$folderUpload = $def['upload_service_detail'];
+	$notImage = $def['no_image_available'];
+	$service_id = $checkServiceExist = 0;
+	if (!isset ($mod2) || $mod2 == '') {
+		$service = $h->getOne($getSelect, $tableCateService, $whService, "service_id asc, s.sort asc, s.id asc");
+		$idService = $service['sid'];
+		$cateName = $service["cname_$lng"];
+		$mod2 = chuoilink($service['cname_vi']);
+		$serviceName = $service["sname_$lng"];
+		$imgService = ($service['image_detail'] != '') ? $folderUpload.$service['image_detail'] : $notImage;
+		$hieuqua = $service["hieuqua_$lng"];
+		$nguyenly = $service["nguyenly_$lng"];
+		$khtn = $service["khtn_$lng"];
+		$uudiem = $service["uudiem_$lng"];
+		$tags = $service["tag_$lng"];
+		$checkServiceExist = 1;
+		$service_id = $service['service_id'];
+	} else {
+		$allCates = $h->getAll("id, name_vi", $tableCate, "deleted_at is null and cate_id = ".$def['cate_id_service'], "sort asc, id desc");
+		foreach ($allCates as $cate) {
+			$linkCompareCate = chuoilink($cate['name_vi']);
+			if ($linkCompareCate == $mod2) {
+				$service_id = $cate['id'];
+				break;
+			}
+		}
+		if ($service_id != 0) {
+			$whService .= " and service_id = $service_id";
+			$allServices = $h->getAll($getSelect, $tableCateService, $whService, "s.sort desc, s.id desc");
+			foreach ($allServices as $service) {
+				$linkCompareService = chuoilink($service['sname_vi']).'.html';
+				if ($linkCompareService == $mod3) {
+					$checkServiceExist = 1;
+					$idService = $service['sid'];
+					$cateName = $service["cname_$lng"];
+					$mod2 = chuoilink($service['cname_vi']);
+					$serviceName = $service["sname_$lng"];
+					$imgService = ($service['image_detail'] != '') ? $folderUpload.$service['image_detail'] : $notImage;
+					$hieuqua = $service["hieuqua_$lng"];
+					$nguyenly = $service["nguyenly_$lng"];
+					$khtn = $service["khtn_$lng"];
+					$uudiem = $service["uudiem_$lng"];
+					$tags = $service["tag_$lng"];
+					break;
+				}
+			}
+		}
+	}
+	if ($service_id != 0 && $checkServiceExist != 0) {
+		$whRelated = "deleted_at is null and service_id = $service_id and id != $idService";
+		$whPrice = "service_id = $idService and deleted_at is null";
+		$checkPrice = $h->checkExist($tablePrice, $whPrice);
+		$msgPrice = '<thead>
+									<tr class="text-uppercase text-center">
+										<th scope="col-md-1">'.$lang['no.'].'</th>
+										<th scope="col-md-4">'.$lang['name_service'].'</th>
+										<th scope="col-md-1">'.$lang['period'].'</th>
+										<th scope="col-md-2">'.$lang['time_period'].'</th>
+										<th scope="col-md-2">'.$lang['price_service'].'</th>
+										<th scope="col-md-2">'.$lang['gift'].'</th>
+									</tr>
+								</thead>';
+		if ($checkPrice) {
+			$allPrices = $h->getAll($getSelectPrice, $tablePrice, $whPrice, "sort asc, id asc");
+			$msgPrice .= "<tbody>";
+			foreach ($allPrices as $kp => $price) {
+				$no = $kp + 1;
+				$msgPrice .= '<tr><td scope="row" class="text-center">'.$no.'</td>';
+				$msgPrice .= '<td>'.$price["name_$lng"].'</td>';
+				$msgPrice .= '<td class="text-center">'.$price['period'].'</td>';
+				$msgPrice .= '<td class="text-center">'.$price['time_period'].'</td>';
+				$msgPrice .= '<td class="text-center text-success">'.number_format($price['price'], 0, ',', '.').'</td>';
+				$msgPrice .= '<td class="text-center">'.$price["gift_$lng"].'</td>';
+				$msgPrice .= '</tr>';
+			}
+			$msgPrice .= "</tbody>";
+		}
+	}
+?>
 <section class="content_main">
-            <div class="subcontent bglime">
-                <div class="row">
-                    <div class="col-md-12 p-2 text-right text-uppercase">
-                        <ul class="bread">
-                            <li><a href="#"><i class="fas fa-home"></i> Trang chủ</a></li>
-                            <li>></li>
-                            <li>Queen nature</li>
-                            <li>></li>
-                            <li>Cho mẹ sau sinh</li>
-                        </ul>
-                    </div>
-                    <!-- sidebar left -->
-                    <div class="col-md-3">
-                        <ul class="sidebar">
-                            <li>
-                                <p><i class="fas fa-caret-down"></i> Cho mẹ bầu</p>
-                                <ul class="block">
-                                    <li><a href="#" class="active">Trắng hồng da mặt, ngừa & trị mụn nám</a></li>
-                                    <li><a href="#">Ngũ cốc bầu và Vitamin bà bầu</a></li>
-                                    <li><a href="#">Hạt siêu dinh dưỡng</a></li>
-                                    <li><a href="#">Ngừa và trị thâm rạn mẹ bầu</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <p><i class="fas fa-caret-right"></i> Cho mẹ sau sinh</p>
-                                <ul>
-                                    <li><a href="#">Trắng hồng da mặt, ngừa & trị mụn nám</a></li>
-                                    <li><a href="#">Ngũ cốc bầu và Vitamin bà bầu</a></li>
-                                    <li><a href="#">Hạt siêu dinh dưỡng</a></li>
-                                    <li><a href="#">Ngừa và trị thâm rạn mẹ bầu</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <p><i class="fas fa-caret-right"></i> Cho mẹ thường</p>
-                                <ul>
-                                    <li><a href="#">Trắng hồng da mặt, ngừa & trị mụn nám</a></li>
-                                    <li><a href="#">Ngũ cốc bầu và Vitamin bà bầu</a></li>
-                                    <li><a href="#">Hạt siêu dinh dưỡng</a></li>
-                                    <li><a href="#">Ngừa và trị thâm rạn mẹ bầu</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <p><i class="fas fa-caret-right"></i> Cho bé</p>
-                                <ul>
-                                    <li><a href="#">Trắng hồng da mặt, ngừa & trị mụn nám</a></li>
-                                    <li><a href="#">Ngũ cốc bầu và Vitamin bà bầu</a></li>
-                                    <li><a href="#">Hạt siêu dinh dưỡng</a></li>
-                                    <li><a href="#">Ngừa và trị thâm rạn mẹ bầu</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <p><i class="fas fa-caret-right"></i> Cho bộ quà tặng</p>
-                                <ul>
-                                    <li><a href="#">Trắng hồng da mặt, ngừa & trị mụn nám</a></li>
-                                    <li><a href="#">Ngũ cốc bầu và Vitamin bà bầu</a></li>
-                                    <li><a href="#">Hạt siêu dinh dưỡng</a></li>
-                                    <li><a href="#">Ngừa và trị thâm rạn mẹ bầu</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="mb-4">
-                            <div class="eachsidebar cskh">
-                                <a href="#">Cảm nhận khách hàng</a>
-                            </div>
-                            <div class="diverEachsidebar"></div>
-                            <div class="eachsidebar rvnnt">
-                                <a href="#">Review người nổi tiếng</a>
-                            </div>
-                            <div class="diverEachsidebar"></div>
-                            <div class="eachsidebar km">
-                                <a href="#">Khuyến mại</a>
-                            </div>
-                            <div class="diverEachsidebar"></div>
-                            <div class="eachsidebar tvsm">
-                                <a href="#">Tư vấn sữa mẹ</a>
-                            </div>
-                            <div class="diverEachsidebar"></div>
-                            <div class="eachsidebar tvad">
-                                <a href="#">Tư vấn ăn dặm</a>
-                            </div>
-                            <div class="diverEachsidebar"></div>
-                            <div class="eachsidebar tvcsb">
-                                <a href="#">Tư vấn chăm sóc bầu</a>
-                            </div>
-                            <div class="diverEachsidebar"></div>
-                            <div class="eachsidebar tvcsss">
-                                <a href="#">Tư vấn chăm sóc sau sinh</a>
-                            </div>
-                            <div class="diverEachsidebar"></div>
-                            <div class="eachsidebar tvgbss">
-                                <a href="#">Tư vấn giảm béo sau sinh</a>
-                            </div>
-                            <div class="diverEachsidebar"></div>
-                            <div class="eachsidebar tvdd">
-                                <a href="#">Tư vấn dinh dưỡng</a>
-                            </div>
-                            <div class="diverEachsidebar"></div>
-                            <div class="eachsidebar vtmbb">
-                                <a href="#">Vitamin bà bầu</a>
-                            </div>
-                            <div class="diverEachsidebar"></div>
-                            <div class="eachsidebar tvcsdm">
-                                <a href="#">Tư vấn chăm sóc da mặt</a>
-                            </div>
-                            <div class="diverEachsidebar"></div>
-                            <div class="eachsidebar tvcsdtt">
-                                <a href="#">Tư vấn chăm sóc da toàn thân</a>
-                            </div>
-                            <div class="diverEachsidebar"></div>
-                        </div>
-                    </div>
-                    <!-- end sidebar left -->
-                    <div class="col-md-9">
-                        <h1 class="title_head">TRẮNG HỒNG DA MẶT, NGỪA & TRỊ MỤN NÁM</h1>
-                        <figure>
-                            <img src="img/product/img_product.jpg" class="img_detail" alt="" />
-                        </figure>
-                        <div id="accordion" class="img_detail">
-                            <div class="card">
-                              <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <div class="arrow-btn text-center"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-right"></i></div> Hiệu quả
-                                  </button>
-                                </h5>
-                              </div>
-                          
-                              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                <div class="card-body">
-                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </div>
-                              </div>
-                            </div>
-                            <div class="card">
-                              <div class="card-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <div class="arrow-btn text-center"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-right"></i></div>  
-                                    Nguyên lý, công nghệ
-                                  </button>
-                                </h5>
-                              </div>
-                              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                <div class="card-body">
-                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </div>
-                              </div>
-                            </div>
-                            <div class="card">
-                              <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <div class="arrow-btn text-center"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-right"></i></div>
-                                    Khách hàng trải nghiệm
-                                  </button>
-                                </h5>
-                              </div>
-                              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                <div class="card-body">
-                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </div>
-                              </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingFour">
-                                  <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                      <div class="arrow-btn text-center"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-right"></i></div>
-                                      Ưu điểm tại Melis Spa
-                                    </button>
-                                  </h5>
-                                </div>
-                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-                                  <div class="card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- 5 -->
-                              <div class="card">
-                                <div class="card-header" id="headingTablePrice">
-                                  <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTablePrice" aria-expanded="false" aria-controls="collapseTablePrice">
-                                      <div class="arrow-btn text-center"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-right"></i></div>
-                                      Bảng giá
-                                    </button>
-                                  </h5>
-                                </div>
-                                <div id="collapseTablePrice" class="collapse" aria-labelledby="headingTablePrice" data-parent="#accordion">
-                                  <div class="card-body">
-                                    <div class="table-responsive">
-                                      <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                          <tr class="text-uppercase text-center">
-                                            <th scope="col-md-1">STT</th>
-                                            <th scope="col-md-4">Tên dịch vụ</th>
-                                            <th scope="col-md-1">Số buổi</th>
-                                            <th scope="col-md-2">Thời gian<br />(Phút/Buổi)</th>
-                                            <th scope="col-md-2">Giá dịch vụ<br />(VNĐ)</th>
-                                            <th scope="col-md-2">Quà tặng</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td scope="row" class="text-center">1</td>
-                                            <td>ÁDASDSA</td>
-                                            <td class="text-center">10</td>
-                                            <td class="text-center">60</td>
-                                            <td class="text-center text-success">10.000.000</td>
-                                            <td></td>
-                                          </tr>
-                                          <tr>
-                                            <td scope="row" class="text-center">2</td>
-                                            <td>ÁDASDSA</td>
-                                            <td class="text-center">10</td>
-                                            <td class="text-center">60</td>
-                                            <td class="text-center text-success">10.000.000</td>
-                                            <td></td>
-                                          </tr>
-                                          <tr>
-                                            <td scope="row" class="text-center">3</td>
-                                            <td>ÁDASDSA</td>
-                                            <td class="text-center">10</td>
-                                            <td class="text-center">60</td>
-                                            <td class="text-center text-success">10.000.000</td>
-                                            <td></td>
-                                          </tr>
-                                          <tr>
-                                            <td scope="row" class="text-center">4</td>
-                                            <td>ÁDASDSA</td>
-                                            <td class="text-center">10</td>
-                                            <td class="text-center">60</td>
-                                            <td class="text-center text-success">10.000.000</td>
-                                            <td></td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              
-                              <!-- 7 -->
-                              <div class="card">
-                                <div class="card-header" id="headingSeven">
-                                  <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                      <div class="arrow-btn text-center"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-right"></i></div>
-                                      Đăng ký tư vấn chuyên sâu
-                                    </button>
-                                  </h5>
-                                </div>
-                                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
-                                  <div class="card-body">
-                                    <div class="form-send-question">
-                                        <h2 class="header-form-send-question py-3 px-4">GỬI CÂU HỎI CHO BÁC SĨ</h2>
-                                        <div class="px-4 py-3">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Họ tên</label>
-                                                        <input class="form-control ifsq" type="text" name="send[fullname]" id="fullname_send" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Email</label>
-                                                        <input class="form-control ifsq" type="text" name="send[email]" id="email_send" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Điện thoại</label>
-                                                        <input class="form-control ifsq" type="text" name="send[phone]" id="phone_send" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="">Facebook</label>
-                                                        <input class="form-control ifsq" type="text" name="send[facebook]" id="facebook_send" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="">Câu hỏi</label>
-                                                        <textarea class="form-control ifsq" type="text" name="send[question]" id="question_send" rows="6"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 justify-content-between">
-                                                    <button type="submit" class="send-question transition" id="sendQuestion"><i class="fas fa-paper-plane"></i> Gửi</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                        </div>
+	<div class="subcontent bglime">
+		<div class="row">
+			<div class="col-md-12 p-2 text-right text-uppercase">
+				<ul class="bread">
+					<?php 
+						$bread = '<li><a href="'.URL.'"><i class="fas fa-home"></i> '.$lang['home'].'</a></li><li>></li><li>'.$cateName.'</li><li>></li><li>'.$serviceName.'</li>';
+						_e($bread);
+					?>
+				</ul>
+			</div>
+			<!-- sidebar left -->
+			<?php include("module/sidebar_service.php") ?>
+			<!-- end sidebar left -->
+			<div class="col-md-9">
+			<?php 
+				if ($service_id != 0 && $checkServiceExist != 0) { ?>
+				<h1 class="title_head"><?php _e($serviceName) ?></h1>
+				<figure>
+					<img src="<?php _e($imgService) ?>" class="img_detail" alt="<?php _e($serviceName) ?>" />
+				</figure>
+				<div id="accordion" class="img_detail">
+					<div class="card">
+						<div class="card-header" id="hieuqua">
+							<h5 class="mb-0">
+								<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									<div class="arrow-btn text-center"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-right"></i></div> <?php _e($lang['hieuqua']) ?>
+								</button>
+							</h5>
+						</div>
+				
+						<div id="collapseOne" class="collapse show" aria-labelledby="hieuqua" data-parent="#accordion">
+							<div class="card-body"><?php _e($hieuqua) ?></div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="nguyenly">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									<div class="arrow-btn text-center"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-right"></i></div>  
+									<?php _e($lang['nguyenly']) ?>
+								</button>
+							</h5>
+						</div>
+						<div id="collapseTwo" class="collapse" aria-labelledby="nguyenly" data-parent="#accordion">
+							<div class="card-body"><?php _e($nguyenly) ?></div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="khachhangtrainghiem">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+									<div class="arrow-btn text-center"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-right"></i></div>
+									<?php _e($lang['khachhangtrainghiem']) ?>
+								</button>
+							</h5>
+						</div>
+						<div id="collapseThree" class="collapse" aria-labelledby="khachhangtrainghiem" data-parent="#accordion">
+							<div class="card-body"><?php _e($khtn) ?></div>
+						</div>
+					</div>
+					<div class="card">
+							<div class="card-header" id="uudiem">
+								<h5 class="mb-0">
+									<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+										<div class="arrow-btn text-center"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-right"></i></div>
+										<?php _e($lang['uudiemtaimelis']) ?>
+									</button>
+								</h5>
+							</div>
+							<div id="collapseFour" class="collapse" aria-labelledby="uudiem" data-parent="#accordion">
+								<div class="card-body"><?php _e($uudiem) ?></div>
+							</div>
+						</div>
+						<!-- 5 -->
+						<div class="card">
+							<div class="card-header" id="headingTablePrice">
+								<h5 class="mb-0">
+									<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTablePrice" aria-expanded="false" aria-controls="collapseTablePrice">
+										<div class="arrow-btn text-center"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-right"></i></div>
+										<?php _e($lang['banggia']) ?>
+									</button>
+								</h5>
+							</div>
+							<div id="collapseTablePrice" class="collapse" aria-labelledby="headingTablePrice" data-parent="#accordion">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-bordered table-hover table-striped">
+										<?php _e($msgPrice) ?>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- 7 -->
+						<div class="card">
+							<div class="card-header" id="regisConsultDeep">
+								<h5 class="mb-0">
+									<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+										<div class="arrow-btn text-center"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-right"></i></div>
+										<?php _e($lang['dangkytuvanchuyensau']) ?>
+									</button>
+								</h5>
+							</div>
+							<div id="collapseSeven" class="collapse" aria-labelledby="regisConsultDeep" data-parent="#accordion">
+								<div class="card-body">
+									<div class="form-send-question">
+										<h2 class="header-form-send-question py-3 px-4 text-uppercase"><?php _e($lang['send_question_to_doctor']) ?></h2>
+										<div class="px-4 py-3">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for=""><?php _e($lang['fullname_doctor']) ?></label>
+														<input class="form-control ifsq" type="text" name="send[fullname]" id="fullname_send" autofocus />
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="">Email</label>
+														<input class="form-control ifsq" type="text" name="send[email]" id="email_send" />
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for=""><?php _e($lang['mobilephone']) ?></label>
+														<input class="form-control ifsq" type="text" name="send[phone]" id="phone_send" />
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="">Facebook</label>
+														<input class="form-control ifsq" type="text" name="send[facebook]" id="facebook_send" />
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label for=""><?php _e($lang['question_doctor']) ?></label>
+														<textarea class="form-control ifsq" type="text" name="send[question]" id="question_send" rows="6"></textarea>
+													</div>
+												</div>
+												<div class="col-md-12 justify-content-between">
+													<button type="button" class="send-question transition" id="sendQuestion"><i class="fas fa-paper-plane"></i> <?php _e($lang['send']) ?></button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-                        <div class="img_detail">
-                            <div class="diverFormSendQuestion"></div>
-                            <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=450&layout=standard&action=like&size=large&share=true&height=35&appId=466813710589016" width="450" height="35" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                            <div class="tags">TAGS: #giảm mỡ #giảm mỡ bụng #giảm mỡ đùi #giảm mỡ bắp tay #giảm mỡ sau sinh #giảm cân sau sinh #giảm béo lâu năm</div>
-                            <div class="diverFormSendQuestion"></div>
-                            <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="100%" data-colorscheme="light" data-numposts="5"></div>
-                            <h2 class="relate_news_title text-uppercase">Tin liên quan</h2>
-                            <div class="mb-5">
-                                <div class="eachnewsrelate"><a href="#" title=""><i class="fas fa-caret-right"></i> Nhận quà làm đẹp miễn phí tháng 3 tại Melis Spa</a></div>
-                                <div class="eachnewsrelate"><a href="#" title=""><i class="fas fa-caret-right"></i> Nhận quà làm đẹp miễn phí tháng 3 tại Melis Spa</a></div>
-                                <div class="eachnewsrelate"><a href="#" title=""><i class="fas fa-caret-right"></i> Nhận quà làm đẹp miễn phí tháng 3 tại Melis Spa</a></div>
-                                <div class="eachnewsrelate"><a href="#" title=""><i class="fas fa-caret-right"></i> Nhận quà làm đẹp miễn phí tháng 3 tại Melis Spa</a></div>
-                                <div class="eachnewsrelate"><a href="#" title=""><i class="fas fa-caret-right"></i> Nhận quà làm đẹp miễn phí tháng 3 tại Melis Spa</a></div>
-                                <nav aria-label="Page navigation example mt-4">
-                                    <ul class="pagination justify-content-center">
-                                      <li class="page-item disabled">
-                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                      </li>
-                                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                      <li class="page-item">
-                                        <a class="page-link" href="#">Next</a>
-                                      </li>
-                                    </ul>
-                                  </nav>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end content main -->
+					<div class="img_detail">
+						<div class="diverFormSendQuestion"></div>
+						<iframe src="https://www.facebook.com/plugins/like.php?href=<?php _e($url) ?>&width=450&layout=standard&action=like&size=large&share=true&height=35&appId=466813710589016" width="450" height="35" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+						<?php 
+							if ($tags != '') {
+								$arrTags = explode(",", $tags);
+								$tagMsg = "";
+								foreach ($arrTags as $tag) {
+									$tagMsg .= "#".trim($tag)." ";
+								}
+						?>
+						<div class="tags"><i class="fa fa-tags" aria-hidden="true"></i> TAGS: <?php _e($tagMsg) ?></div>
+						<?php
+							} 
+						?>
+						<div class="diverFormSendQuestion"></div>
+						<div class="fb-comments" data-href="<?php _e($url) ?>" data-width="100%" data-colorscheme="light" data-numposts="5"></div>
+						<h2 class="relate_news_title text-uppercase"><?php _e($lang['related_news']) ?></h2>
+						<div class="mb-5" id="dataServiceRelated"></div>
+						<script type="text/javascript">
+							var wh = "<?php _e($whRelated) ?>";
+							var mod2 = "<?php _e($mod2) ?>";
+							var link_service_related_data = "<?php _e($def['link_service_related_data']) ?>";
+							var not_email = "<?php _e($lang['not_email']) ?>";
+							var not_question = "<?php _e($lang['not_question_doctor']) ?>";
+							var sendText = "<?php _e($lang['send']) ?>";
+							var send_success = "<?php _e($lang['send_question_to_doctor_success']) ?>";
+							var link_process_send_doctor = "<?php _e($def['link_process_send_doctor']) ?>";
+						</script>
+					</div>
+			<?php } else  
+				_e('<div class="col-md-12 text-center text-danger">'.$lang['not_data_on_this_page'].'</div>');
+			?>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- end content main -->

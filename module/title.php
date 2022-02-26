@@ -95,6 +95,85 @@
           }
         }
         break;
+      case $def['link_fservice']:
+        if (!isset($mod2) || $mod2 == '') {
+          $service = $h->getOne("name_vi, name_en, title_vi, title_en", $tableService, "deleted_at is null", "service_id asc, sort desc, id desc");
+          if ($service["title_$lng"] != '')
+            $title = $service["title_$lng"];
+          else
+            $title = $service["name_$lng"];
+        } else {
+          $allCates = $h->getAll("id, name_vi", $tableCate, "deleted_at is null and cate_id = ".$def['cate_id_service'], "sort asc, id desc");
+          $service_id = $checkService = 0;
+          foreach ($allCates as $cate) {
+            $linkCompareCate = chuoilink($cate['name_vi']);
+            if ($linkCompareCate == $mod2) {
+              $service_id = $cate['id'];
+              break;
+            }
+          }
+          $whServiceTitle = "deleted_at is null and service_id = $service_id";
+          $checkSer = $h->checkExist($tableService, $whServiceTitle);
+          if ($checkSer) {
+            $allServices = $h->getAll("name_vi, name_en, title_vi, title_en", $tableService, $whServiceTitle, "sort desc, id desc");
+            foreach ($allServices as $service) {
+              $linkCS = chuoilink($service['name_vi']).'.html';
+              if ($linkCS == $mod3) {
+                $checkService = 1;
+                if ($service["title_$lng"] != '')
+                  $titleS = $service["title_$lng"];
+                else
+                  $titleS = $service["name_$lng"];
+                break;
+              }
+            }
+          }
+          if ($service_id != 0 && $checkService != 0)
+            $title = $titleS;
+          else
+            $title = $lang['not_data_on_this_page'];
+        }
+        break;
+      case $def['link_queennature']:
+        if (!isset($mod2) || $mod2 == '') {
+          $productG = $h->getOne("name_vi, name_en, title_vi, title_en", $tableProduct, "deleted_at is null", "product_id asc, sort desc, id desc");
+          if ($productG["title_$lng"] != '')
+            $title = $productG["title_$lng"];
+          else
+            $title = $productG["name_$lng"];
+        } else {
+          $allCateProducts = $h->getAll("id, name_vi", $tableCate, "deleted_at is null and cate_id = ".$def['cate_id_product'], "sort asc, id desc");
+          $productIdGetT = $checkProductG = 0;
+          foreach ($allCateProducts as $catePT) {
+            $linkCompareCatePT = chuoilink($catePT['name_vi']);
+            if ($linkCompareCatePT == $mod2) {
+              $productIdGetT = $catePT['id'];
+              break;
+            }
+          }
+          $whProductTitle = "deleted_at is null and product_id = $productIdGetT";
+          $checkPro = $h->checkExist($tableProduct, $whProductTitle);
+          if ($checkPro) {
+            $allProductsG = $h->getAll("name_vi, name_en, title_vi, title_en", $tableProduct, $whProductTitle, "sort desc, id desc");
+            foreach ($allProductsG as $productG) {
+              $linkCP = chuoilink($productG['name_vi']).'.html';
+              if ($linkCP == $mod3) {
+                $checkProductG = 1;
+                if ($productG["title_$lng"] != '')
+                  $titleP = $productG["title_$lng"];
+                else
+                  $titleP = $productG["name_$lng"];
+                break;
+              }
+            }
+          }
+          if ($productIdGetT != 0 && $checkProductG != 0)
+            $title = $titleP;
+          else
+            $title = $lang['not_data_on_this_page'];
+        }
+        break;
+
     }
   }
   _e($title);

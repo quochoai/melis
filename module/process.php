@@ -24,5 +24,11 @@
         else
           include("module/review_detail.php");
         break;
+      case $def['link_fservice']:
+        include("module/service_detail.php");
+        break;
+      case $def['link_queennature']:
+        include("module/product_detail.php");
+        break;
     }
   }

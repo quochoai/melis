@@ -1,3 +1,12 @@
+function loading(button, text, isLoading) {
+  if (isLoading) {
+    $(button).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ' + processing);
+    $(button).attr('disabled', true);
+  } else {
+    $(button).html(text);
+    $(button).removeAttr('disabled');
+  }
+}
 jQuery(document).ready(function() {
   $(document).on('click', '.language', function(){
     $('#menu_language').toggle('slide');
@@ -41,15 +50,7 @@ jQuery(document).ready(function() {
   $('.book-calendar-demand').click(function(){
     $('#modal-book-calendar-demand').modal('show');
   });
-  function loading(button, text, isLoading) {
-    if (isLoading) {
-      $(button).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ' + processing);
-      $(button).attr('disabled', true);
-    } else {
-      $(button).html(text);
-      $(button).removeAttr('disabled');
-    }
-  }
+  
   function bookMeet() {
     var title_form = $.trim($('#title_form').text());
     var processm = $("input[name='process']:checked").val();

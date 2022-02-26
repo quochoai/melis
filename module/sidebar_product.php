@@ -11,13 +11,13 @@
 					$caret = 'fa-caret-down';
 					$clsBlock = ' class="block"';
 				} else {
-					if ($kCate == 0 && $mod1 == $def['link_queennature']) {
+					/*if ($kCate == 0 && $mod1 == $def['link_queennature']) {
 						$caret = 'fa-caret-down';
 						$clsBlock = ' class="block"';
-					} else {
+					} else {*/
 						$caret = 'fa-caret-right';
 						$clsBlock = '';
-					}
+					//}
 				}
 				
 				$nameCateProduct = $cateProduct["name_$lng"];
@@ -26,7 +26,7 @@
 				$sideProduct .= '   <p><i class="fas '.$caret.'"></i> '.$nameCateProduct.'</p>';
 				$checkProduct = $h->checkExist($tableProduct, "product_id = $product_id and deleted_at is null");
 				if ($checkProduct) {
-					$products = $h->getAll("id, name_vi, name_en", $tableProduct, "product_id = $product_id and deleted_at is null", "sort asc, id asc");
+					$products = $h->getAll("id, name_vi, name_en", $tableProduct, "product_id = $product_id and deleted_at is null", "sort desc, id desc");
 					$sideProduct .= '<ul'.$clsBlock.'>';
 					foreach ($products as $kProduct => $product) {
 						$linkProductHtml = chuoilink($product['name_vi']).'.html';
@@ -93,156 +93,5 @@
 											<div class="diverEachsidebar"></div>';
 		$sideProduct .= '</div>';
 		_e($sideProduct);
-	
-	/*
-	<div class="mb-4">
-		<div class="eachsidebar cskh">
-			<a href="">Cảm nhận khách hàng</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar rvnnt">
-			<a href="#">Review người nổi tiếng</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar km">
-			<a href="#">Khuyến mại</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvsm">
-			<a href="#">Tư vấn sữa mẹ</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvad">
-			<a href="#">Tư vấn ăn dặm</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvcsb">
-			<a href="#">Tư vấn chăm sóc bầu</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvcsss">
-			<a href="#">Tư vấn chăm sóc sau sinh</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvgbss">
-			<a href="#">Tư vấn giảm béo sau sinh</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvdd">
-			<a href="#">Tư vấn dinh dưỡng</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar vtmbb">
-			<a href="#">Vitamin bà bầu</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvcsdm">
-			<a href="#">Tư vấn chăm sóc da mặt</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvcsdtt">
-			<a href="#">Tư vấn chăm sóc da toàn thân</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-	</div>
-	<ul class="sidebar">
-		<li>
-			<p><i class="fas fa-caret-down"></i> Cho mẹ bầu</p>
-			<ul class="block">
-				<li><a href="#" class="active">Trắng hồng da mặt, ngừa & trị mụn nám</a></li>
-				<li><a href="#">Ngũ cốc bầu và Vitamin bà bầu</a></li>
-				<li><a href="#">Hạt siêu dinh dưỡng</a></li>
-				<li><a href="#">Ngừa và trị thâm rạn mẹ bầu</a></li>
-			</ul>
-		</li>
-		<li>
-			<p><i class="fas fa-caret-right"></i> Cho mẹ sau sinh</p>
-			<ul>
-				<li><a href="#">Trắng hồng da mặt, ngừa & trị mụn nám</a></li>
-				<li><a href="#">Ngũ cốc bầu và Vitamin bà bầu</a></li>
-				<li><a href="#">Hạt siêu dinh dưỡng</a></li>
-				<li><a href="#">Ngừa và trị thâm rạn mẹ bầu</a></li>
-			</ul>
-		</li>
-		<li>
-			<p><i class="fas fa-caret-right"></i> Cho mẹ thường</p>
-			<ul>
-				<li><a href="#">Trắng hồng da mặt, ngừa & trị mụn nám</a></li>
-				<li><a href="#">Ngũ cốc bầu và Vitamin bà bầu</a></li>
-				<li><a href="#">Hạt siêu dinh dưỡng</a></li>
-				<li><a href="#">Ngừa và trị thâm rạn mẹ bầu</a></li>
-			</ul>
-		</li>
-		<li>
-			<p><i class="fas fa-caret-right"></i> Cho bé</p>
-			<ul>
-				<li><a href="#">Trắng hồng da mặt, ngừa & trị mụn nám</a></li>
-				<li><a href="#">Ngũ cốc bầu và Vitamin bà bầu</a></li>
-				<li><a href="#">Hạt siêu dinh dưỡng</a></li>
-				<li><a href="#">Ngừa và trị thâm rạn mẹ bầu</a></li>
-			</ul>
-		</li>
-		<li>
-			<p><i class="fas fa-caret-right"></i> Cho bộ quà tặng</p>
-			<ul>
-				<li><a href="#">Trắng hồng da mặt, ngừa & trị mụn nám</a></li>
-				<li><a href="#">Ngũ cốc bầu và Vitamin bà bầu</a></li>
-				<li><a href="#">Hạt siêu dinh dưỡng</a></li>
-				<li><a href="#">Ngừa và trị thâm rạn mẹ bầu</a></li>
-			</ul>
-		</li>
-	</ul>
-	
-	<div class="mb-4">
-		<div class="eachsidebar cskh">
-			<a href="">Cảm nhận khách hàng</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar rvnnt">
-			<a href="#">Review người nổi tiếng</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar km">
-			<a href="#">Khuyến mại</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvsm">
-			<a href="#">Tư vấn sữa mẹ</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvad">
-			<a href="#">Tư vấn ăn dặm</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvcsb">
-			<a href="#">Tư vấn chăm sóc bầu</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvcsss">
-			<a href="#">Tư vấn chăm sóc sau sinh</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvgbss">
-			<a href="#">Tư vấn giảm béo sau sinh</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvdd">
-			<a href="#">Tư vấn dinh dưỡng</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar vtmbb">
-			<a href="#">Vitamin bà bầu</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvcsdm">
-			<a href="#">Tư vấn chăm sóc da mặt</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-		<div class="eachsidebar tvcsdtt">
-			<a href="#">Tư vấn chăm sóc da toàn thân</a>
-		</div>
-		<div class="diverEachsidebar"></div>
-	</div>
-	*/
 	?>
 </div>

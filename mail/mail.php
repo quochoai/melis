@@ -10,12 +10,12 @@
         $mail->Port = 465; // set the port to use
         $mail->SMTPAuth = true; // turn on SMTP authentication
         $mail->SMTPSecure = 'ssl';
-        $mail->Username = "noreply.kiguinhadat@gmail.com"; // your SMTP username or your gmail username
-        $mail->Password = "#kiguinhadat123#@!"; // your SMTP password or your gmail password
-        $mail->From = "noreply.kiguinhadat@gmail.com";
+        $mail->Username = "queennature.vn3012@gmail.com"; // your SMTP username or your gmail username
+        $mail->Password = "vukieuvi3012"; // your SMTP password or your gmail password
+        $mail->From = "queennature.vn3012@gmail.com";
         $mail->FromName = $from_name; // Name to indicate where the email came from when the recepient received
         $mail->AddAddress($to_email,$to_name);
-        $mail->AddReplyTo("noreply.kiguinhadat@gmail.com",$from_name);
+        $mail->AddReplyTo("queennature.vn3012@gmail.com",$from_name);
         $mail->WordWrap = 50; // set word wrap
         $mail->IsHTML(true); // send as HTML
         $mail->Subject = html_entity_decode($subject);

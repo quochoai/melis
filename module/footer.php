@@ -462,5 +462,9 @@
 		_e('<script type="text/javascript" src="assets/js/news.js"></script>');
 	if (isset($mod1) && ($mod1 == $def['link_freview'] || $mod1 == $def['link_celes_feel']))
 		_e('<script type="text/javascript" src="assets/js/review.js"></script>');
+	if (isset($mod1) && $mod1 == $def['link_fservice'])
+		_e('<script type="text/javascript" src="assets/js/service.js"></script><script type="text/javascript" src="assets/js/serviceProduct.js"></script>');
+	if (isset($mod1) && $mod1 == $def['link_queennature'])
+		_e('<script type="text/javascript" src="assets/js/product_detail.js"></script><script type="text/javascript" src="assets/js/serviceProduct.js"></script>');
 ?>
 </body>

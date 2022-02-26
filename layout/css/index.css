@@ -1,4 +1,11 @@
 /* Index.html */
+:root {
+  --red: #FE2E2E;
+  --orange: #FF4000;
+  --white: white;
+  --w100: 100%;
+}
+.testvar {width: var(--w100); background-color: var(--red); color: var(--white)}
 .submenu-queen-nature p{line-height:1.5em;color:#ccb08d;}
 .submenu-queen-nature .title p{font-weight:500;margin-bottom:0.5rem;}
 .submenu-queen-nature .sub-nav-link{padding:4px 0;color:#ccb08d;font-size:0.7em;font-weight:400;display:block;margin:0 5px 3px 0;overflow:hidden;}

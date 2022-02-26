@@ -202,6 +202,13 @@
 		'perpage_review_relate' => 9,
 		'rv_id_customer' => 1,
 		'rv_id_star' => 2,
+		'cate_id_product' => 1,
+		'cate_id_service' => 2,
+		'perpage_service_relate' => 9,
+		'perpage_product_relate' => 9,
 		'link_review_data' => 'module/review_data.php',
 		'link_review_related_data' => 'module/review_related_data.php',
+		'link_service_related_data' => 'module/service_related_data.php',
+		'link_process_send_doctor' => 'module/process_send_doctor.php',
+		'link_product_related_data' => 'module/product_related_data.php',
 	);
