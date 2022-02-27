@@ -173,7 +173,9 @@
             $title = $lang['not_data_on_this_page'];
         }
         break;
-
+      case $def['link_search']:
+        $title = $lang['search_result'];
+        break;
     }
   }
   _e($title);

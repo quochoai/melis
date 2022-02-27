@@ -30,5 +30,8 @@
       case $def['link_queennature']:
         include("module/product_detail.php");
         break;
+      case $def['link_search']:
+        include("module/search.php");
+        break;
     }
   }

@@ -401,4 +401,8 @@
 		'not_email' => 'You have not filled in email address. Please fill in.',
 		'send_question_to_doctor_success' => 'You have successfully submitted your question to the doctor. We will respond as soon as possible.',
 		'product_relate_text' => 'Related products',
+		'search_result' => 'Search results',
+		'findout' => 'Found',
+		'result_with_keyword' => 'Results with keywords',
+		'no_result_with_keyword' => 'No results found for keyword',
 	);

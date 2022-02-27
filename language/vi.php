@@ -402,6 +402,8 @@
 		'not_email' => 'Quý khách chưa điền địa chỉ email. Vui lòng điền vào.',
 		'send_question_to_doctor_success' => 'Bạn đã gửi câu hỏi cho bác sĩ thành công. Chúng tôi sẽ phản hồi trong thời gian sớm nhất có thể.',
 		'product_relate_text' => 'Sản phẩm liên quan',
-
-
+		'search_result' => 'Kết quả tìm kiếm',
+		'findout' => 'Tìm thấy',
+		'result_with_keyword' => 'Kết quả với từ khóa',
+		'no_result_with_keyword' => 'Không tìm thấy kết quả với từ khóa',
 	);

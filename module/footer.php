@@ -387,7 +387,7 @@
 <script type="text/javascript" src="assets/plugins/nprogress/nprogress.js"></script>
 <script type="text/javascript">
 	var keyword_error = "<?php _e($lang['keyword_error']) ?>";
-	var link_search = "<?php _e($def['link_search']) ?>";
+	var link_search = "<?php _e($lng.'/'.$def['link_search']) ?>";
 	var link_process_book_an_appointment = "<?php _e($def['link_process_book_an_appointment']) ?>";
 	var fullname_error = "<?php _e($lang['not_fullname']) ?>";
 	var phone_error = "<?php _e($lang['not_mobilephone']) ?>";

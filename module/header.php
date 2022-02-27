@@ -88,6 +88,8 @@
       ');
     if (isset($mod1) && ($mod1 == $def['link_fnews'] || $mod1 == $def['link_fknowledge'] || $mod1 == $def['link_fpromotion'] || $mod1 == $def['link_freview'] || $mod1 == $def['link_celes_feel']))
       _e('<link rel="stylesheet" href="assets/css/product.css" />');
+    if (isset($mod1) && $mod1 == $def['link_search'])
+      _e('<link rel="stylesheet" href="assets/css/product.css" /><link rel="stylesheet" href="assets/css/search.css" />');
   ?>
 </head>
 <body>
