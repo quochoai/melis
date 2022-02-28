@@ -179,6 +179,10 @@
 		'news_id_news' => 1,
 		'news_id_knowledge' => 2,
 		'news_id_promotion' => 3,
+		'ld_id_about' => 1,
+		'ld_id_franchise' => 2,
+		'gal_id_image' => 1,
+		'gal_id_video' => 2,
 		'link_fabout' => 'gioi-thieu.html',
 		'link_franchise' => 'nhuong-quyen.html',
 		'link_fservice' => 'dich-vu',
@@ -211,4 +215,5 @@
 		'link_service_related_data' => 'module/service_related_data.php',
 		'link_process_send_doctor' => 'module/process_send_doctor.php',
 		'link_product_related_data' => 'module/product_related_data.php',
+		'limit_gallery_show' => 6,
 	);

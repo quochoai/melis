@@ -286,6 +286,7 @@
 		'offer_products' => 'Offer Products',
 		'queen_nature_products' => 'Queen Nature Products',
 		'news_events' => 'News - Events',
+		'images_library' => 'Images library',
 		'video_library' => 'Video library',
 		'celebs_talk_about_us' => 'Celes talk about us',
 		'our_partner' => 'Our Partners',

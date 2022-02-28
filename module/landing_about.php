@@ -13,12 +13,6 @@
 						$sliders = $h->getAll("alt_vi, alt_en, url, image", $tableSlider, "deleted_at is null and active = 1 and hc_id = 1", "sort asc, id desc");
 						$imgSlider = "";
 						foreach ($sliders as $slider) {
-							/*
-							if ($slider['url'] != '' && $slider['url'] != '#')
-								$linkSlider = '<a href="'.$slider['url'].'"><img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" /></a>';
-							else
-								$linkSlider = '<img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" />';
-							*/
 							$linkSlider = ($slider['url'] != '' && $slider['url'] != '#') ? '<a href="'.$slider['url'].'"><img data-u="image" alt="" src="'.$def['upload_slider_home'].$slider['image'].'" alt="'.$slider["alt_$lng"].'" /></a>' : '<img data-u="image" alt="" src="'.$def['upload_slider_home'].$slider['image'].'" alt="'.$slider["alt_$lng"].'" />';
 							$imgSlider .= '<div>'.$linkSlider.'</div>';
 						}
@@ -41,284 +35,214 @@
 	</div>
 </div>
 <!-- content main -->
+<?php
+	$tableLanding = 'landings';
+	$whLanding = "deleted_at is null and ld_id = ".$def['ld_id_about'];
+	$orderLanding = "sort asc, id asc";
+	$checkAbout = $h->checkExist($tableLanding, $whLanding);
+	$contentMelis = $contentVision = $contentTeam = $contentCommunity = $contentMission = $nameMelis = $nameVision = $nameTeam = $nameCommunity = $nameMission = $imgMelis = $imgVision = $imgTeam = $imgCommunity = $imgMission = $introMelis = $introVision = $introTeam = $introCommunity = $introMission = "";
+	$folderUpload = $def['upload_landing_about'];
+	if ($checkAbout) {
+		$allLandingAbout = $h->getAll("id, name_vi, name_en, image, intro_vi, intro_en, content_vi, content_en", $tableLanding, $whLanding, $orderLanding);
+		foreach ($allLandingAbout as $lAbout) {
+			if ($lAbout['id'] == 1) {
+				$nameMelis = $lAbout["name_$lng"];
+				$imgMelis = ($lAbout['image'] != '') ? $folderUpload.$lAbout['image'] : 'assets/img/bg_landing/about_1.jpg';
+				$introMelis = $lAbout["intro_$lng"];
+				$contentMelis = $lAbout["content_$lng"];
+			} elseif ($lAbout['id'] == 2) {
+				$nameVision = $lAbout["name_$lng"];
+				$imgVision = ($lAbout['image'] != '') ? $folderUpload.$lAbout['image'] : 'assets/img/bg_landing/about_2.jpg';
+				$introVision = $lAbout["intro_$lng"];
+				$contentVision = $lAbout["content_$lng"];
+			} elseif ($lAbout['id'] == 3) {
+				$nameMission = $lAbout["name_$lng"];
+				$imgMission = ($lAbout['image'] != '') ? $folderUpload.$lAbout['image'] : 'assets/img/bg_landing/about_3.jpg';
+				$introMission = $lAbout["intro_$lng"];
+				$contentMission = $lAbout["content_$lng"];
+			} elseif ($lAbout['id'] == 4) {
+				$nameTeam = $lAbout["name_$lng"];
+				$imgTeam = ($lAbout['image'] != '') ? $folderUpload.$lAbout['image'] : 'assets/img/bg_landing/about_4.jpg';
+				$introTeam = $lAbout["intro_$lng"];
+				$contentTeam = $lAbout["content_$lng"];
+			} elseif ($lAbout['id'] == 5) {
+				$nameCommunity = $lAbout["name_$lng"];
+				$imgCommunity = ($lAbout['image'] != '') ? $folderUpload.$lAbout['image'] : 'assets/img/bg_landing/about_5.jpg';
+				$introCommunity = $lAbout["intro_$lng"];
+				$contentCommunity = $lAbout["content_$lng"];
+			}
+		}
+	}
+?>
 <section class="content_main marginContent">
 	<div class="subcontent bglime">
-		<div class="row section_melisspa page-section" id="startup" style="background-image: url(assets/img/bg_landing/about_1.jpg);">
+		<div class="row section_melisspa page-section" id="startup" style="background-image: url(<?php _e($imgMelis) ?>);">
 			<div class="col-md-6 c_melis">
 				<div class="subc_melis">
-					<h2 class="startup text-center color_light_yellow">Câu chuyện khởi nghiệp</h2>
-					<div class="melisbeaute_melismom text-uppercase color_light_white text-center">Melis Mom - Melis Beaute'</div>
-					<div class="content_melis color_light_white text-justify">
-						<p>Với 10 năm kinh nghiệm trong lĩnh vực chăm 
-							sóc sức khỏe và làm đẹp, Melis Mom- Melis 
-							Beaute’ ra đời với khao khát mang tới một dịch 
-							vụ chăm sóc sức khỏe và làm đẹp cho phụ nữ 
-							trong hành trình làm mẹ tuyệt vời và nuôi con 
-							khôn lớn</p>
-						<p>Mặc dù đã có lúc chùn bước giữa cơ hội và đam 
-							mê khi lựa chọn lĩnh vực kinh doanh, nhưng 
-							sau cùng Melis Mom- Melis Beaute’ vẫn là sựa 
-							lựa chọn bằng tâm huyết của một người mẹ, 
-							người vợ với khát khao đẹp để giữ lửa hạnh 
-							phúc gia đình, đẹp để các con tự hào, đẹp để tự 
-							tin và thành công trên mặt trận gia đình và xã 
-							hội.</p>
-						<p>Từ trái tim, cảm ơn các mẹ đã tin yêu! </p>
-						<p class="pr-3 text-right">Chủ Tịch HĐQT</p>
-						<p class="pr-5 text-right">Vũ Kiều Vi</p>
-					</div>
+					<h2 class="startup text-center color_light_yellow"><?php _e($nameMelis) ?></h2>
+					<?php _e($contentMelis) ?>
 				</div>
 			</div>
 			
 		</div>
 		<!-- vision -->
-		<div class="row section_melisspa page-section" id="vision" style="background-image: url(assets/img/bg_landing/about_2.jpg);">
+		<div class="row section_melisspa page-section" id="vision" style="background-image: url(<?php _e($imgVision) ?>);">
 			<div class="col-md-11">
-				<div class="pt-5 pb-2 text-capitalize color_light_white text-right font_taviraj">
-					Hành Tình Lớn Đôi Khi Khởi Nguồn Từ Những Câu Chuyện Nhỏ<br />
-					Melis Spa - Giúp Phụ Nữ Đã Hoàn Thành Thiên Chức Sinh Nở Ngày Càng Trẻ Đẹp, Tự Tin<br />
-					Và Thành Công - Trở Thành Người Mẹ Tuyệt Vời Nhất Của Con Mình!
-				</div>
+				<div class="pt-5 pb-2 text-capitalize color_light_white text-right font_taviraj"><?php _e($introVision) ?></div>
 			</div>
 			<div class="col-md-4 offset-md-7 col-xs-offset-0 c_vision mb-5">
 				<div class="sub_vision">
-					<div class="content_vision">
-						<h3 class="title_landing text-capitalize color_light_white font_taviraj">Tầm nhìn</h3>
-						<ul class="color_light_white li font_taviraj">
-							<li>Khẳng định vị thế Spa Bầu Sau Sinh 5 sao chuẩn Nhật</li>
-							<li>Cập nhật phương pháp và liệu trình chăm sóc hiệu quả nhất</li>
-							<li>Mang tới dịch vụ Tận Tâm - Chu Đáo - An Toàn - Chuyên Nghiệp Nhất</li>
-						</ul>
-						<h3 class="title_landing text-capitalize color_light_white font_taviraj">Mục tiêu</h3>
-						<ul class="color_light_white li font_taviraj">
-							<li>Spa được nhiều khách hàng phân khúc cao cấp tin chọn nhất.</li>
-							<li>Hệ Thống Thương Hiệu Melis Mom-Melis Beaute’ khắp cả nước và vươn xa tầm quốc tế</li>
-						</ul>
-					</div>
+					<div class="content_vision"><?php _e($contentVision) ?></div>
 				</div>
 			</div>
 		</div>
 		<!-- goal -->
-		<div class="row section_melisspa" style="background-image: url(assets/img/bg_landing/about_3.jpg);">
+		<div class="row section_melisspa" style="background-image: url(<?php _e($imgMission) ?>);">
+			<?php
+				if ($introMission != '')
+					_e('<div class="col-md-11 offset-md-1"><div class="pt-5 pb-2 text-capitalize color_light_white text-left font_taviraj">'.$introMission.'</div></div>');
+			?>
 			<div class="col-md-4 offset-md-1 col-xs-offset-0 c_vision mb-5 mt-5">
 				<div class="sub_vision">
-					<div class="content_vision">
-						<h3 class="title_landing text-capitalize color_light_white font_taviraj">Sứ mệnh</h3>
-						<ul class="color_light_white li font_taviraj">
-							<li>Giúp phụ nữ trong thời kỳ mang thai khỏe đẹp - hạnh phúc- mẹ tròn con vuông</li>
-							<li>Giúp phụ nữ sau sinh về form nhanh và nuôi con sữa mẹ hoàn toàn</li>
-							<li>Giúp phụ nữ đã hoàn thành thiên chức sinh nở ngày càng trẻ đẹp, tự tin và thành công, trở thành người mẹ tuyệt vời nhất của con mình!</li>
-						</ul>
-						<h3 class="title_landing text-capitalize color_light_white font_taviraj">Giá Trị Cốt Lõi</h3>
-						<ul class="color_light_white li font_taviraj">
-							<li>Niềm Tin – Chất Lượng- Bản Sắc- Chuyên Nghiệp- Văn Minh</li>
-						</ul>
-					</div>
+					<div class="content_vision"><?php _e($contentMission) ?></div>
 				</div>
 			</div>
 		</div>
 		<!-- team -->
-		<div class="row section_melisspa page-section" id="team" style="background-image: url(assets/img/bg_landing/about_4.jpg);">
+		<div class="row section_melisspa page-section" id="team" style="background-image: url(<?php _e($imgTeam) ?>);">
+			<?php
+				if ($introTeam != '')
+					_e('<div class="col-md-11 offset-md-1"><div class="pt-5 pb-2 text-capitalize color_light_white text-right font_taviraj">'.$introTeam.'</div></div>');
+			?>
 			<div class="col-md-6 offset-md-6 col-xs-offset-0 c_melis">
-				<div class="subc_melis">
-					<div class="melisbeaute_melismom text-uppercase color_light_white text-center mt-4">TÀI NGUYÊN CON NGƯỜI</div>
-					<div class="content_melis color_light_white text-justify">
-						<p>Chuyên Viên Bầu Sau Sinh tại Melis Mom đều là y tá điều dưỡng được đào tạo chính quy</p>
-						<p>Đội Ngũ Bác Sĩ Cố Vấn Chuyên Môn liệu trình chăm sóc tại Melis Mom đều là Tiến Sĩ, Thạc Sĩ, Bác Sĩ có kinh nghiệm lâu năm trong lĩnh vực Sản Khoa</p>
-						<p>Kỹ Thuật Viên tại Melis Beaute’ đều có thâm niên kinh nghiệm tối thiểu 3 năm trong lĩnh vực Spa </p>
-						<p>Đội Ngũ Chuyên Gia, Bác Sĩ Cố Vấn tại Melis Beaute’ đều là bác sĩ có kinh nghiệm lâu năm về da liễu, giảm béo, làm đẹp</p>
-						<p>Đội ngũ nhân viên tại Melis Mom- Melis Beaute’ đều được đào tạo bài bản để đảm bảo một môi trường thư giãn làm đẹp gần gũi, nhiệt thành, văn minh và chuyên nghiệp.</p>
-					</div>
-				</div>
+				<div class="subc_melis"><?php _e($contentTeam) ?></div>
 			</div>                    
 		</div>
 		<!-- community -->
-		<div class="row section_melisspa page-section" id="community" style="background-image: url(assets/img/bg_landing/about_5.jpg);">
+		<div class="row section_melisspa page-section" id="community" style="background-image: url(<?php _e($imgCommunity) ?>);">
+			<?php
+				if ($introCommunity != '')
+					_e('<div class="col-md-11 offset-md-1"><div class="pt-5 pb-2 text-capitalize color_light_white text-left font_taviraj">'.$introCommunity.'</div></div>');
+			?>
 			<div class="col-md-6 c_melis">
-				<div class="subc_melis">
-					<div class="melisbeaute_melismom text-uppercase color_light_white text-center mt-4">Hoạt động cộng đồng</div>
-					<div class="content_melis color_light_white text-justify">
-						<p>Với mục tiêu hành động ngay khi cho đi là đã được nhận lại nhận lại, Sống có Tâm ắt sẽ có Tầm:</p>
-						<p>Mỗi năm Melis Mom- Melis Beaute’ đều trích từ 5-10% lợi nhuận kinh doanh để tham gia cùng Báo Nhân Đạo và Đời Sống ủng hộ cho các trẻ em nghèo khó khăn, người già có hoàn cảnh neo đơn ...</p>
-						<p>Bên cạnh đó Melis Mom- Melis Beaute’ cũng luôn ưu tiên cho những mẹ bỉm sữa có một công việc tốt và ổn định, phù hợp tại công ty.</p>
-						<p>Melis Mom – Melis Beaute’ cũng sẵn sàng trợ giúp những hoàn cảnh khó khăn khi liên hệ trực tiếp về đường dây nóng hoặc các Group Cộng Đồng của công ty sau khi xác thực thông tin. </p>
-						<p>Đội ngũ nhân viên tại Melis Mom- Melis Beaute’ đều được đào tạo bài bản để đảm bảo một môi trường thư giãn làm đẹp gần gũi, nhiệt thành, văn minh và chuyên nghiệp.</p>
-					</div>
-				</div>
+				<div class="subc_melis"><?php _e($contentCommunity) ?></div>
 			</div>                    
 		</div>
 		<!-- gallery image -->
 		<div class="row py-4 mx-4 position-relative page-section" id="gallery_image">
-			<h2 class="title_gallery text-uppercase color_light_white py-3 px-5">Thư viện ảnh</h2>
+			<h2 class="title_gallery text-uppercase color_light_white py-3 px-5"><?php _e($lang['images_library']) ?></h2>
 			<div class="viewall">
-				<a class="btn btn-read-more viewall_images">
-					<i class="fas fa-plus"></i>&nbsp;XEM TẤT CẢ
+				<a class="btn btn-read-more viewall_images text-uppercase">
+					<i class="fas fa-plus"></i>&nbsp;<?php _e($lang['view_all']) ?>
 				</a>
 			</div>
 			<div class="col-md-12 mt-4">
 				<div class="row">
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a class="gallery_image" rel="2"><img src="assets/img/bg_landing/gal_img_1.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gal_text gallery_image" rel="2"><i class="fas fa-images"></i> Tết không đồng - BV nhi TW</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a class="gallery_image" rel="1"><img src="assets/img/bg_landing/gal_img_2.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gallery_image gal_text" rel="1"><i class="fas fa-images"></i> Happy Women's Day</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a class="gallery_image" rel="4"><img src="assets/img/bg_landing/gal_img_3.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gallery_image gal_text" rel="4"><i class="fas fa-images"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<img src="assets/img/bg_landing/gal_img_1.jpg" class="w-100 mb-1" alt="" />
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="#" class="gal_text"><i class="fas fa-images"></i> Tết không đồng - BV nhi TW</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<img src="assets/img/bg_landing/gal_img_2.jpg" class="w-100 mb-1" alt="" />
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="#" class="gal_text"><i class="fas fa-images"></i> Happy Women's Day</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<img src="assets/img/bg_landing/gal_img_3.jpg" class="w-100 mb-1" alt="" />
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="#" class="gal_text"><i class="fas fa-images"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
-					</div>
+					<?php
+						$tableGalleries = "galleries";
+						$whGalImages = "gal_id = ".$def['gal_id_image']." and deleted_at is null";
+						$orderGallery = "sort desc, id desc";
+						$limitGallery = "limit 0, ".$def['limit_gallery_show'];
+						$selectGalleryImage = "id, name_vi, name_en, avatar";
+						$folderUploadImage = $def['upload_gallery_image_avatar'];
+						$folderUploadVideo = $def['upload_gallery_video_avatar'];
+						$notImage = $def['no_image_available'];
+						$notIdGalleryImage = [];
+						$checkGalImage = $h->checkExist($tableGalleries, $whGalImages);
+						if ($checkGalImage) {
+							$allGalleryImage = $h->getAll($selectGalleryImage, $tableGalleries, $whGalImages, $orderGallery, $limitGallery);
+							$msgGalleryImage = "";
+							foreach ($allGalleryImage as $galleryImage) {
+								$idGalImage = $galleryImage['id'];
+								array_push($notIdGalleryImage, $idGalImage);
+								$imgGalleryImage = ($galleryImage['avatar'] != '') ? $folderUploadImage.$galleryImage['avatar'] : $notImage;
+								$nameGalleryImage = $galleryImage["name_$lng"];
+								$msgGalleryImage .= '<div class="col-md-4 mb-4">';
+								$msgGalleryImage .= '	<figure><a class="gallery_image" rel="'.$idGalImage.'"><img src="'.$imgGalleryImage.'" class="w-100 mb-1" alt="'.$nameGalleryImage.'" /></a></figure>';
+								$msgGalleryImage .= '	<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gal_text gallery_image" rel="'.$idGalImage.'"><i class="fas fa-images"></i> '.$nameGalleryImage.'</a></h4>';
+								$msgGalleryImage .= '</div>';
+							}
+							_e($msgGalleryImage);
+						}
+					?>
+					
 				</div>
 				<div class="row d-none" id="viewallimages" >
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a class="gallery_image" rel="2"><img src="assets/img/bg_landing/gal_img_1.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gal_text gallery_image" rel="2"><i class="fas fa-images"></i> Tết không đồng - BV nhi TW</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a class="gallery_image" rel="1"><img src="assets/img/bg_landing/gal_img_2.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gallery_image gal_text" rel="1"><i class="fas fa-images"></i> Happy Women's Day</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a class="gallery_image" rel="3"><img src="assets/img/bg_landing/gal_img_3.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gallery_image gal_text" rel="3"><i class="fas fa-images"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<img src="assets/img/bg_landing/gal_img_1.jpg" class="w-100 mb-1" alt="" />
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="#" class="gal_text"><i class="fas fa-images"></i> Tết không đồng - BV nhi TW</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<img src="assets/img/bg_landing/gal_img_2.jpg" class="w-100 mb-1" alt="" />
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="#" class="gal_text"><i class="fas fa-images"></i> Happy Women's Day</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<img src="assets/img/bg_landing/gal_img_3.jpg" class="w-100 mb-1" alt="" />
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="#" class="gal_text"><i class="fas fa-images"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
-					</div>
+				<?php
+					if ($checkGalImage > $def['limit_gallery_show'] && count($notIdGalleryImage) > 0) {
+						$notIdGalleryImageString = implode(",", $notIdGalleryImage);
+						$whGalImages .= " and id NOT IN ($notIdGalleryImageString)";
+						$allGalleryImageOther = $h->getAll($selectGalleryImage, $tableGalleries, $whGalImages, $orderGallery);
+						$msgGalleryImageOther = "";
+						foreach ($allGalleryImageOther as $galleryImageOther) {
+							$idGalImageOther = $galleryImageOther['id'];
+							$imgGalleryImageOther = ($galleryImageOther['avatar'] != '') ? $folderUploadImage.$galleryImageOther['avatar'] : $notImage;
+							$nameGalleryImageOther = $galleryImageOther["name_$lng"];
+							$msgGalleryImageOther .= '<div class="col-md-4 mb-4">';
+							$msgGalleryImageOther .= '	<figure><a class="gallery_image" rel="'.$idGalImageOther.'"><img src="'.$imgGalleryImageOther.'" class="w-100 mb-1" alt="'.$nameGalleryImageOther.'" /></a></figure>';
+							$msgGalleryImageOther .= '	<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gal_text gallery_image" rel="'.$idGalImageOther.'"><i class="fas fa-images"></i> '.$nameGalleryImageOther.'</a></h4>';
+							$msgGalleryImageOther .= '</div>';
+						}
+						_e($msgGalleryImageOther);
+					}
+				?>
 				</div>
 				<div class="img_gal"></div>
 			</div>
 		</div>
 		<!-- gallery video -->
 		<div class="row py-4 mx-4 position-relative page-section" id="gallery_video">
-			<h2 class="title_gallery text-uppercase color_light_white py-3 px-5">Thư viện Video</h2>
+			<h2 class="title_gallery text-uppercase color_light_white py-3 px-5"><?php _e($lang['video_library']) ?></h2>
 			<div class="viewall">
-				<a class="btn btn-read-more viewall_videos">
-					<i class="fas fa-plus"></i>&nbsp;XEM TẤT CẢ
+				<a class="btn btn-read-more viewall_videos text-uppercase">
+					<i class="fas fa-plus"></i>&nbsp;<?php _e($lang['view_all']) ?>
 				</a>
 			</div>
 			<div class="col-md-12 mt-4">
 				<div class="row">
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a class="popup-youtube" href="https://www.youtube.com/watch?v=Romg9XOb0wQ"><img src="assets/img/bg_landing/gal_video_1.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Tết không đồng - BV nhi TW</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_2.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="gal_text popup-youtube"><i class="fab fa-youtube"></i> Happy Women's Day</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_3.jpeg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a class="popup-youtube" href="https://www.youtube.com/watch?v=Romg9XOb0wQ"><img src="assets/img/bg_landing/gal_video_1.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Tết không đồng - BV nhi TW</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_2.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="gal_text popup-youtube"><i class="fab fa-youtube"></i> Happy Women's Day</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_3.jpeg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
-					</div>
+				<?php
+						$whGalVideo = "gal_id = ".$def['gal_id_video']." and deleted_at is null";
+						$selectGalleryVideo = "id, name_vi, name_en, avatar, link_youtube";
+						$notImage = $def['no_image_available'];
+						$notIdGalleryVideo = [];
+						$checkGalVideo = $h->checkExist($tableGalleries, $whGalVideo);
+						if ($checkGalVideo) {
+							$allGalleryVideo = $h->getAll($selectGalleryVideo, $tableGalleries, $whGalVideo, $orderGallery, $limitGallery);
+							$msgGalleryVideo = "";
+							foreach ($allGalleryVideo as $galleryVideo) {
+								$idGalVideo = $galleryVideo['id'];
+								array_push($notIdGalleryVideo, $idGalVideo);
+								$imgGalleryVideo = ($galleryVideo['avatar'] != '') ? $folderUploadVideo.$galleryVideo['avatar'] : $notImage;
+								$nameGalleryVideo = $galleryVideo["name_$lng"];
+								$linkYoutube = $galleryVideo['link_youtube'];
+								$msgGalleryVideo .= '<div class="col-md-4 mb-4">';
+								$msgGalleryVideo .= '	<figure><a class="popup-youtube" href="'.$linkYoutube.'"><img src="'.$imgGalleryVideo.'" class="w-100 mb-1" alt="'.$nameGalleryVideo.'" /></a></figure>';
+								$msgGalleryVideo .= '	<h4 class="m-0 p-0 color_brown text-capitalize"><a class="popup-youtube gal_text" href="'.$linkYoutube.'"><i class="fab fa-youtube"></i> '.$nameGalleryVideo.'</a></h4>';
+								$msgGalleryVideo .= '</div>';
+							}
+							_e($msgGalleryVideo);
+						}
+					?>
 				</div>
 				<div class="row d-none" id="viewallvideos">
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a class="popup-youtube" href="https://www.youtube.com/watch?v=Romg9XOb0wQ"><img src="assets/img/bg_landing/gal_video_1.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Tết không đồng - BV nhi TW</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_2.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="gal_text popup-youtube"><i class="fab fa-youtube"></i> Happy Women's Day</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_3.jpeg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a class="popup-youtube" href="https://www.youtube.com/watch?v=Romg9XOb0wQ"><img src="assets/img/bg_landing/gal_video_1.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Tết không đồng - BV nhi TW</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_2.jpg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=D0UragpOAiE" class="gal_text popup-youtube"><i class="fab fa-youtube"></i> Happy Women's Day</a></h4>
-					</div>
-					<div class="col-md-4 mb-4">
-						<figure>
-							<a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube"><img src="assets/img/bg_landing/gal_video_3.jpeg" class="w-100 mb-1" alt="" /></a>
-						</figure>
-						<h4 class="m-0 p-0 color_brown text-capitalize"><a href="https://www.youtube.com/watch?v=GtgDM6wFNvg" class="popup-youtube gal_text"><i class="fab fa-youtube"></i> Beauty talk - Trò chuyện cùng bác sĩ</a></h4>
-					</div>
+				<?php
+					if ($checkGalVideo > $def['limit_gallery_show'] && count($notIdGalleryVideo) > 0) {
+						$notIdGalleryVideoString = implode(",", $notIdGalleryVideo);
+						$whGalVideo .= " and id NOT IN ($notIdGalleryVideoString)";
+						$allGalleryVideoOther = $h->getAll($selectGalleryVideo, $tableGalleries, $whGalVideo, $orderGallery);
+						$msgGalleryVideoOther = "";
+						foreach ($allGalleryVideoOther as $galleryVideoOther) {
+							$imgGalleryVideoOther = ($galleryVideoOther['avatar'] != '') ? $folderUploadVideo.$galleryVideoOther['avatar'] : $notImage;
+							$nameGalleryVideoOther = $galleryVideoOther["name_$lng"];
+							$msgGalleryVideoOther .= '<div class="col-md-4 mb-4">';
+							$linkYoutubeOther = $galleryVideoOther['link_youtube'];
+							$msgGalleryVideoOther .= '	<figure><a class="popup-youtube" href="'.$linkYoutubeOther.'"><img src="'.$nameGalleryVideoOther.'" class="w-100 mb-1" alt="'.$nameGalleryVideoOther.'" /></a></figure>';
+							$msgGalleryVideoOther .= '	<h4 class="m-0 p-0 color_brown text-capitalize"><a class="gal_text popup-youtube" href="'.$linkYoutubeOther.'"><i class="fab fa-youtube"></i> '.$nameGalleryVideoOther.'</a></h4>';
+							$msgGalleryVideoOther .= '</div>';
+						}
+						_e($msgGalleryVideoOther);
+					}
+				?>
 				</div>
 			</div>
 		</div>

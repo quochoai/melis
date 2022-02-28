@@ -6,6 +6,8 @@
         else
             $user_id = $_COOKIE['islogined'];
         $data = $_POST['data'];
+        $data['intro_vi'] = nl2br(trim($data['intro_vi']));
+        $data['intro_en'] = nl2br(trim($data['intro_en']));
         $ld_id = $data['ld_id'];
         $array_ext_image = array(".png", ".jpg", "jpeg", ".gif", ".bmp", ".PNG", ".JPG", ".JPEG", ".GIF", ".BMP");
         $path = '../../../upload/landing';

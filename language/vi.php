@@ -288,6 +288,7 @@
 		'offer_products' => 'Sản phẩm ưu đãi',
 		'queen_nature_products' => 'Sản phẩm Queen Nature',
 		'news_events' => 'Tin tức - Sự kiện',
+		'images_library' => 'Thư viện ảnh',
 		'video_library' => 'Thư viện Video',
 		'celebs_talk_about_us' => 'Người nổi tiếng nói về chúng tôi',
 		'our_partner' => 'Đối tác của chúng tôi',

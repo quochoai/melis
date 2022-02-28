@@ -2,7 +2,7 @@
     include("../../../require_inc.php");
     $id = $_POST['id'];
     $table = "landings";
-    $landing = $h->getById("ld_id, name_vi, name_en, image, content_vi, content_en, sort, active", $table, $id, "and deleted_at is null");
+    $landing = $h->getById("ld_id, name_vi, name_en, image, intro_vi, intro_en, content_vi, content_en, sort, active", $table, $id, "and deleted_at is null");
     $ld_id = $landing['ld_id'];
     if ($ld_id == 1)
         $folder = $def['upload_landing_about'];
@@ -36,17 +36,28 @@
         </div>
     </div>
 </div>
-
+<div class="col-md-6">
+    <div class="form-group">
+        <label class="col-form-label" for="name"><?php _e('Intro (Vie)') ?></label><br>
+        <textarea name="data[intro_vi]" id="intro_vi" cols="30" rows="5" class="form-control"><?php _e(str_replace("<br>", "\n",$landing['intro_vi'])) ?></textarea>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label class="col-form-label" for="name"><?php _e('Intro (Eng)') ?></label><br>
+        <textarea name="data[intro_en]" id="intro_en" cols="30" rows="5" class="form-control"><?php _e(str_replace("<br>", "\n", $landing['intro_en'])) ?></textarea>
+    </div>
+</div>
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['content_landing'].' (Vie)') ?></label><br>
-        <textarea name="data[content_vi]" id="content_vi" cols="30" rows="10" class="form-control"><?php _e($landing['content_vi']) ?></textarea>
+        <textarea name="data[content_vi]" id="content_vi_landing_e" cols="30" rows="10" class="form-control"><?php _e($landing['content_vi']) ?></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['content_landing'].' (Eng)') ?></label><br>
-        <textarea name="data[content_en]" id="content_en" cols="30" rows="10" class="form-control"><?php _e($landing['content_en']) ?></textarea>
+        <textarea name="data[content_en]" id="content_en_landing_e" cols="30" rows="10" class="form-control"><?php _e($landing['content_en']) ?></textarea>
     </div>
 </div>
 <div class="col-md-6">
@@ -73,7 +84,7 @@
 <script type="text/javascript" src="<?php _e(URL) ?>tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
     tinymce.init({
-        selector: "textarea#content_vi, textarea#content_en",
+        selector: "textarea#content_vi_landing_e, textarea#content_en_landing_e",
         theme: "modern",
         width: 750,
         height: 300,
