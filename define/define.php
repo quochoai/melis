@@ -216,4 +216,7 @@
 		'link_process_send_doctor' => 'module/process_send_doctor.php',
 		'link_product_related_data' => 'module/product_related_data.php',
 		'limit_gallery_show' => 6,
+		'slider_id_home' => 1,
+		'slider_id_about' => 2,
+		'slider_id_franchise' => 3,
 	);

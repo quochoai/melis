@@ -10,15 +10,9 @@
 				$tableSlider = "sliders";
 				$checkSlider = $h->checkExist($tableSlider, "deleted_at is null and active = 1 and hc_id = 1");
 				if ($checkSlider) {
-						$sliders = $h->getAll("alt_vi, alt_en, url, image", $tableSlider, "deleted_at is null and active = 1 and hc_id = 1", "sort asc, id desc");
+						$sliders = $h->getAll("alt_vi, alt_en, url, image", $tableSlider, "deleted_at is null and active = 1 and hc_id = ".$def['slider_id_home'], "sort asc, id desc");
 						$imgSlider = "";
 						foreach ($sliders as $slider) {
-							/*
-							if ($slider['url'] != '' && $slider['url'] != '#')
-								$linkSlider = '<a href="'.$slider['url'].'"><img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" /></a>';
-							else
-								$linkSlider = '<img data-u="image" alt="" src="'.upload_slider_home.$slider['image'].'" alt="'.$slider["alt_$lng"].'" />';
-							*/
 							$linkSlider = ($slider['url'] != '' && $slider['url'] != '#') ? '<a href="'.$slider['url'].'"><img data-u="image" alt="" src="'.$def['upload_slider_home'].$slider['image'].'" alt="'.$slider["alt_$lng"].'" /></a>' : '<img data-u="image" alt="" src="'.$def['upload_slider_home'].$slider['image'].'" alt="'.$slider["alt_$lng"].'" />';
 							$imgSlider .= '<div>'.$linkSlider.'</div>';
 						}

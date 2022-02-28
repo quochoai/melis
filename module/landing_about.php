@@ -8,15 +8,20 @@
 		<div data-u="slides" class="jsso_2">
 			<?php
 				$tableSlider = "sliders";
-				$checkSlider = $h->checkExist($tableSlider, "deleted_at is null and active = 1 and hc_id = 1");
+				$whSlider = "deleted_at is null and active = 1 and hc_id = ".$def['slider_id_about'];
+				$checkSlider = $h->checkExist($tableSlider, $whSlider);
 				if ($checkSlider) {
-						$sliders = $h->getAll("alt_vi, alt_en, url, image", $tableSlider, "deleted_at is null and active = 1 and hc_id = 1", "sort asc, id desc");
-						$imgSlider = "";
-						foreach ($sliders as $slider) {
-							$linkSlider = ($slider['url'] != '' && $slider['url'] != '#') ? '<a href="'.$slider['url'].'"><img data-u="image" alt="" src="'.$def['upload_slider_home'].$slider['image'].'" alt="'.$slider["alt_$lng"].'" /></a>' : '<img data-u="image" alt="" src="'.$def['upload_slider_home'].$slider['image'].'" alt="'.$slider["alt_$lng"].'" />';
-							$imgSlider .= '<div>'.$linkSlider.'</div>';
-						}
-						_e($imgSlider);
+					$folderSlider = $def['upload_slider_about'];
+					$sliders = $h->getAll("alt_vi, alt_en, url, image", $tableSlider, $whSlider, "sort asc, id desc");
+					$imgSlider = "";
+					foreach ($sliders as $slider) {
+						$uSlider = trim($slider['url']);
+						$iSlider = $folderSlider.$slider['image'];
+						$altSlider = $slider["alt_$lng"];
+						$linkSlider = ($uSlider != '' && $uSlider != '#') ? '<a href="'.$uSlider.'"><img data-u="image" alt="" src="'.$iSlider.'" alt="'.$altSlider.'" /></a>' : '<img data-u="image" alt="" src="'.$iSlider.'" alt="'.$altSlider.'" />';
+						$imgSlider .= '<div>'.$linkSlider.'</div>';
+					}
+					_e($imgSlider);
 				} else 
 					_e('<div><img data-u="image" alt="" src="assets/img/slider_test/1.png" /></div>');
 			?>
