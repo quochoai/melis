@@ -61,73 +61,73 @@
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['uudiem'].' (Vie)') ?></label>
-		<textarea name="data[uudiem_vi]" id="uudiem_vi" class="form-control"><?php _e($product['uudiem_vi']) ?></textarea>
+		<textarea name="data[uudiem_vi]" id="uudiem_vi_e" class="form-control"><?php _e($product['uudiem_vi']) ?></textarea>
 	</div>
 </div>
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['uudiem'].' (Eng)') ?></label>
-		<textarea name="data[uudiem_en]" id="uudiem_en" class="form-control"><?php _e($product['uudiem_en']) ?></textarea>
+		<textarea name="data[uudiem_en]" id="uudiem_en_e" class="form-control"><?php _e($product['uudiem_en']) ?></textarea>
 	</div>
 </div>
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['thanhphan'].' (Vie)') ?></label>
-		<textarea name="data[thanhphan_vi]" id="thanhphan_vi" class="form-control"><?php _e($product['thanhphan_vi'])?></textarea>
+		<textarea name="data[thanhphan_vi]" id="thanhphan_vi_e" class="form-control"><?php _e($product['thanhphan_vi'])?></textarea>
 	</div>
 </div>
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['thanhphan'].' (Eng)') ?></label>
-		<textarea name="data[thanhphan_en]" id="thanhphan_en" class="form-control"><?php _e($product['thanhphan_en']) ?></textarea>
+		<textarea name="data[thanhphan_en]" id="thanhphan_en_e" class="form-control"><?php _e($product['thanhphan_en']) ?></textarea>
 	</div>
 </div>
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['congdung'].' (Vie)') ?></label>
-		<textarea name="data[congdung_vi]" id="congdung_vi" class="form-control"><?php _e($product['congdung_vi']) ?></textarea>
+		<textarea name="data[congdung_vi]" id="congdung_vi_e" class="form-control"><?php _e($product['congdung_vi']) ?></textarea>
 	</div>
 </div>
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['congdung'].' (Eng)') ?></label>
-		<textarea name="data[congdung_en]" id="congdung_en" class="form-control"><?php _e($product['congdung_en']) ?></textarea>
+		<textarea name="data[congdung_en]" id="congdung_en_e" class="form-control"><?php _e($product['congdung_en']) ?></textarea>
 	</div>
 </div>
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['huongdansudung'].' (Vie)') ?></label>
-		<textarea name="data[hdsd_vi]" id="hdsd_vi" class="form-control"><?php _e($product['hdsd_vi']) ?></textarea>
+		<textarea name="data[hdsd_vi]" id="hdsd_vi_e" class="form-control"><?php _e($product['hdsd_vi']) ?></textarea>
 	</div>
 </div>
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['huongdansudung'].' (Eng)') ?></label>
-		<textarea name="data[hdsd_en]" id="hdsd_en" class="form-control"><?php _e($product['hdsd_en']) ?></textarea>
+		<textarea name="data[hdsd_en]" id="hdsd_en_e" class="form-control"><?php _e($product['hdsd_en']) ?></textarea>
 	</div>
 </div>
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['khachhangtrainghiem'].' (Vie)') ?></label>
-		<textarea name="data[khtn_vi]" id="khtn_vi" class="form-control"><?php _e($product['khtn_vi']) ?></textarea>
+		<textarea name="data[khtn_vi]" id="khtn_vi_e" class="form-control"><?php _e($product['khtn_vi']) ?></textarea>
 	</div>
 </div>
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['khachhangtrainghiem'].' (Eng)') ?></label>
-		<textarea name="data[khtn_en]" id="khtn_en" class="form-control"><?php _e($product['khtn_en']) ?></textarea>
+		<textarea name="data[khtn_en]" id="khtn_en_e" class="form-control"><?php _e($product['khtn_en']) ?></textarea>
 	</div>
 </div>
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['uudiemkhimuataimelis'].' (Vie)') ?></label>
-		<textarea name="data[udmuahang_vi]" id="udmuahang_vi" class="form-control"><?php _e($product['udmuahang_vi']) ?></textarea>
+		<textarea name="data[udmuahang_vi]" id="udmuahang_vi_e" class="form-control"><?php _e($product['udmuahang_vi']) ?></textarea>
 	</div>
 </div>
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['uudiemkhimuataimelis'].' (Eng)') ?></label>
-		<textarea name="data[udmuahang_en]" id="udmuahang_en" class="form-control"><?php _e($product['udmuahang_en']) ?></textarea>
+		<textarea name="data[udmuahang_en]" id="udmuahang_en_e" class="form-control"><?php _e($product['udmuahang_en']) ?></textarea>
 	</div>
 </div>
 <div class="col-md-4">
@@ -232,7 +232,7 @@
 <script type="text/javascript" src="<?php _e(URL) ?>tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
 	tinymce.init({
-		selector: "textarea#uudiem_vi, textarea#uudiem_en, textarea#thanhphan_vi, textarea#thanhphan_en, textarea#congdung_vi, textarea#congdung_en, textarea#hdsd_vi, textarea#hdsd_en, textarea#khtn_vi, textarea#khtn_en, textarea#udmuahang_vi, textarea#udmuahang_en",
+		selector: "textarea#uudiem_vi_e, textarea#uudiem_en_e, textarea#thanhphan_vi_e, textarea#thanhphan_en_e, textarea#congdung_vi_e, textarea#congdung_en_e, textarea#hdsd_vi_e, textarea#hdsd_en_e, textarea#khtn_vi_e, textarea#khtn_en_e, textarea#udmuahang_vi_e, textarea#udmuahang_en_e",
 		theme: "modern",
 		width: 750,
 		height: 300,

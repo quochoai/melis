@@ -7,13 +7,13 @@
     <div class="col-md-6">
         <div class="form-group">
             <label class="col-form-label" for="name"><?php _e($lang['name_category'].' (Vie)') ?></label>
-            <input type="text" class="form-control" name="data[name_vi]" id="name_vi" />
+            <input type="text" class="form-control" name="data[name_vi]" id="name_vi_cate_service" />
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
             <label class="col-form-label" for="name"><?php _e($lang['name_category'].' (Eng)') ?></label>
-            <input type="text" class="form-control" name="data[name_en]" id="name_en" />
+            <input type="text" class="form-control" name="data[name_en]" id="name_en_cate_service" />
         </div>
     </div>
     <div class="col-md-6">

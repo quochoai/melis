@@ -90,8 +90,8 @@
   <script type="text/javascript">
       var lang_url = "<?php _e($def['theme'].'plugins/datatables/vn.json') ?>";
       var column_not_sort = "3, 4, 5";
-      var backend_list = "views/products/data_cate.php";
-      var table_id = "#categories";
+      var backend_list_cate_product = "views/products/data_cate.php";
+      var table_id_cate_product = "#categories";
       var all_page = "<?php _e($lang['all']) ?>";
       var link_delete = "<?php _e($def['link_process_delete_category_product']) ?>";
       var link_active = "<?php _e($def['link_process_active']) ?>";
@@ -117,7 +117,7 @@
       var manage_product = "<?php _e($lang['manage_product']) ?>";
       var manage = "<?php _e($lang['manage']) ?>";
       var cate_id = <?php _e($cate_id) ?>;
-      var tables = "categories";
+      var table_cate_product = "categories";
   </script>
-  <script src="views/products/data_cate.js"></script>
+  <script src="views/products/data_cate_product.js"></script>
 </div>

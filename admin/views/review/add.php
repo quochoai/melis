@@ -27,13 +27,13 @@
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['content_review'].' (Vie)') ?></label><br>
-		<textarea name="data[content_vi]" id="content_vi" cols="30" rows="10" class="form-control"></textarea>
+		<textarea name="data[content_vi]" id="content_vi_review" cols="30" rows="10" class="form-control"></textarea>
 	</div>
 </div>
 <div class="col-md-12">
 	<div class="form-group">
 		<label class="col-form-label" for="name"><?php _e($lang['content_review'].' (Eng)') ?></label><br>
-		<textarea name="data[content_en]" id="content_en" cols="30" rows="10" class="form-control"></textarea>
+		<textarea name="data[content_en]" id="content_en_review" cols="30" rows="10" class="form-control"></textarea>
 	</div>
 </div>
 <div class="col-md-6">
@@ -90,7 +90,7 @@
 <script type="text/javascript" src="<?php _e(URL) ?>tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
 	tinymce.init({
-		selector: "textarea#content_vi, textarea#content_en",
+		selector: "textarea#content_vi_review, textarea#content_en_review",
 		theme: "modern",
 		width: 750,
 		height: 300,

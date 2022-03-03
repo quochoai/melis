@@ -115,6 +115,6 @@
 	var manage_service = "<?php _e($lang['manage_service']) ?>";
 	var manage = "<?php _e($lang['manage']) ?>";
 	var cate_id = "<?php _e($cate_id) ?>";
-	var tables = "categories";
+	var table_cate_service = "categories";
 </script>
 <script src="views/services/data_cate_service.js"></script>

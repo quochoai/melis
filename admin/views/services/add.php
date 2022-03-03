@@ -6,13 +6,13 @@
 <div class="col-md-6">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['name_service'].' (Vie)') ?></label>
-        <input type="text" class="form-control" name="data[name_vi]" id="name_vi" />
+        <input type="text" class="form-control" name="data[name_vi]" id="name_vi_service" />
     </div>
 </div>
 <div class="col-md-6">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['name_service'].' (Eng)') ?></label>
-        <input type="text" class="form-control" name="data[name_en]" id="name_en" />
+        <input type="text" class="form-control" name="data[name_en]" id="name_en_service" />
     </div>
 </div>
 <div class="col-md-4">
@@ -42,49 +42,49 @@
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['hieuqua'].' (Vie)') ?></label>
-        <textarea name="data[hieuqua_vi]" id="hieuqua_vi" class="form-control"></textarea>
+        <textarea name="data[hieuqua_vi]" id="hieuqua_vi_service" class="form-control"></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['hieuqua'].' (Eng)') ?></label>
-        <textarea name="data[hieuqua_en]" id="hieuqua_en" class="form-control"></textarea>
+        <textarea name="data[hieuqua_en]" id="hieuqua_en_service" class="form-control"></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['nguyenly'].' (Vie)') ?></label>
-        <textarea name="data[nguyenly_vi]" id="nguyenly_vi" class="form-control"></textarea>
+        <textarea name="data[nguyenly_vi]" id="nguyenly_vi_service" class="form-control"></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['nguyenly'].' (Eng)') ?></label>
-        <textarea name="data[nguyenly_en]" id="nguyenly_en" class="form-control"></textarea>
+        <textarea name="data[nguyenly_en]" id="nguyenly_en_service" class="form-control"></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['khachhangtrainghiem'].' (Vie)') ?></label>
-        <textarea name="data[khtn_vi]" id="khtn_vi" class="form-control"></textarea>
+        <textarea name="data[khtn_vi]" id="khtn_vi_service" class="form-control"></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['khachhangtrainghiem'].' (Eng)') ?></label>
-        <textarea name="data[khtn_en]" id="khtn_en" class="form-control"></textarea>
+        <textarea name="data[khtn_en]" id="khtn_en_service" class="form-control"></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['uudiemkhimuataimelis'].' (Vie)') ?></label>
-        <textarea name="data[uudiem_vi]" id="uudiem_vi" class="form-control"></textarea>
+        <textarea name="data[uudiem_vi]" id="uudiem_vi_service" class="form-control"></textarea>
     </div>
 </div>
 <div class="col-md-12">
     <div class="form-group">
         <label class="col-form-label" for="name"><?php _e($lang['uudiemkhimuataimelis'].' (Eng)') ?></label>
-        <textarea name="data[uudiem_en]" id="uudiem_en" class="form-control"></textarea>
+        <textarea name="data[uudiem_en]" id="uudiem_en_service" class="form-control"></textarea>
     </div>
 </div>
 <div class="col-md-4">
@@ -153,7 +153,7 @@
 <script type="text/javascript" src="<?php _e(URL) ?>tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
     tinymce.init({
-        selector: "textarea#uudiem_vi, textarea#uudiem_en, textarea#nguyenly_vi, textarea#nguyenly_en, textarea#hieuqua_vi, textarea#hieuqua_en, textarea#khtn_vi, textarea#khtn_en",
+        selector: "textarea#uudiem_vi_service, textarea#uudiem_en_service, textarea#nguyenly_vi_service, textarea#nguyenly_en_service, textarea#hieuqua_vi_service, textarea#hieuqua_en_service, textarea#khtn_vi_service, textarea#khtn_en_service",
         theme: "modern",
         width: 750,
         height: 300,
